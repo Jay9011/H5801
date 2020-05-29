@@ -8,5 +8,6 @@
 </head>
 <body>
 윤종섭 출석!
+수빈이도
 </body>
 </html>
