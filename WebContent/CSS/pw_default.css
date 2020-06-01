@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+
+.div1{
+    box-sizing: border-box;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+    font-size: 14px;
+    width: 340px;
+    margin: auto;
+    
+}
+
+.title{
+    text-align: center;
+}
+
+.div2 {
+    padding: 15px;
+    text-align: right;
+}
+
+.email {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px;
+    
+}
+
+.btn_submit {
+    background-color:dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 20px;
+
+}
+
+.chkKeyCode, .resetPw, .confirmPw {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px;
+    
+}
