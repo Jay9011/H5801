@@ -75,7 +75,7 @@ CREATE TABLE m_user
 	m_nick varchar2(30) NOT NULL UNIQUE,
 	m_name varchar2(20) NOT NULL,
 	m_birth date NOT NULL,
-	m_phoneNum number NOT NULL,
+	m_phoneNum varchar2(15) NOT NULL,
 	m_gender varchar2(6),
 	m_addressA varchar2(150) NOT NULL,
 	m_grade number DEFAULT 1 NOT NULL,
@@ -259,17 +259,17 @@ ALTER TABLE Reserve
 ;
 
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA, m_grade)
-	VALUES (SEQ_m_user_m_uid.NEXTVAL, '관리자', 'admin', 'admin@gmail.com', '1234', to_date('90-11-07', 'yy-mm-dd'), 'm', 01011111111, 1, '어딘가에', 9);
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '관리자', 'admin', 'admin@gmail.com', '1234', to_date('90-11-07', 'yy-mm-dd'), 'm', '010-1111-1111', 1, '어딘가에', 9);
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
-	VALUES (SEQ_m_user_m_uid.NEXTVAL, '윤종섭', 'whdtjq', 'test@gmail.com', '1234', to_date('90-11-07', 'yy-mm-dd'), 'm', 01011111111, 1, '인천광역시 서구');
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '윤종섭', 'whdtjq', 'test@gmail.com', '1234', to_date('90-11-07', 'yy-mm-dd'), 'm', '010-1111-1111', 1, '인천광역시 서구');
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
-	VALUES (SEQ_m_user_m_uid.NEXTVAL, '김재현', 'wogus', 'wogus@gmail.com', 'qwer', to_date('96-05-27', 'yy-mm-dd'), 'm', 01022222222, 1, '경기도 수원');
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '김재현', 'wogus', 'wogus@gmail.com', 'qwer', to_date('96-05-27', 'yy-mm-dd'), 'm', '010-1111-1111', 1, '경기도 수원');
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
-	VALUES (SEQ_m_user_m_uid.NEXTVAL, '윤지우', 'jiwoo', 'jiwoo@gmail.com', '1q2w', to_date('94-10-11', 'yy-mm-dd'), 'm', 01033333333, 1, '서울특별시 금천구');
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '윤지우', 'jiwoo', 'jiwoo@gmail.com', '1q2w', to_date('94-10-11', 'yy-mm-dd'), 'm', '010-1111-1111', 1, '서울특별시 금천구');
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
-	VALUES (SEQ_m_user_m_uid.NEXTVAL, '주낙경', 'joo', 'joo@gmail.com', 'asdf@#', to_date('91-04-07', 'yy-mm-dd'), 'm', 01044444444, 1, '서울특별시 강남구');
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '주낙경', 'joo', 'joo@gmail.com', 'asdf@#', to_date('91-04-07', 'yy-mm-dd'), 'm', '010-1111-1111', 1, '서울특별시 강남구');
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
-	VALUES (SEQ_m_user_m_uid.NEXTVAL, '한수빈', 'subin', 'subin@gmail.com', 'mb^&12', to_date('96-12-23', 'yy-mm-dd'), 'f', 01055555555, 1, '경기도 성남');
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '한수빈', 'subin', 'subin@gmail.com', 'mb^&12', to_date('96-12-23', 'yy-mm-dd'), 'f', '010-1111-1111', 1, '경기도 성남');
 
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
 	VALUES (SEQ_n_table_n_uid.NEXTVAL, '첫번째 공지사항', '냉무', 1);
