@@ -31,6 +31,23 @@ public class DTOStudyTable {
 		this.s_viewCnt = s_viewCnt;
 	}
 
+	public DTOStudyTable(int s_uid, String sc_name, String s_title, String s_content, String s_date_day,
+			String s_date_time, String m_nick, int s_viewCnt, String s_date, String s_udate, int sc_uid, int m_uid) {
+		super();
+		this.s_uid = s_uid;
+		this.sc_name = sc_name;
+		this.s_title = s_title;
+		this.s_content = s_content;
+		this.s_date_day = s_date_day;
+		this.s_date_time = s_date_time;
+		this.m_nick = m_nick;
+		this.s_viewCnt = s_viewCnt;
+		this.s_date = s_date;
+		this.s_udate = s_udate;
+		this.sc_uid = sc_uid;
+		this.m_uid = m_uid;
+	}
+
 	public int getS_uid() { return s_uid; }
 	public void setS_uid(int s_uid) { this.s_uid = s_uid; }
 	public String getS_title() { return s_title; }

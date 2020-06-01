@@ -17,11 +17,9 @@ public class Common {
 
 	public static final String SQL_SELECT_ALL_ASC = "SELECT * FROM s_table ORDER BY s_uid ASC";
 	public static final String SQL_SELECT_ALL_DESC = "SELECT * FROM s_table ORDER BY s_uid DESC";
+	public static final String SQL_SELECT_ALL_WHERE_S_UID = "SELECT * FROM s_table WHERE s_uid = ?";
 	public static final String SQL_SELECT_USER_WHERE_M_UID = "SELECT * FROM m_user WHERE m_uid = ?";
 	public static final String SQL_SELECT_CATEGORY_WHERE_SC_UID = "SELECT * FROM s_category WHERE sc_uid = ?";
-	public static final String SQL_SELECT_ALL_WHERE_DESC = "SELECT * FROM ? WHERE ? ORDER BY ? DESC";
 	public static final String SQL_INSERT_STABLE = "INSERT INTO s_table (s_uid, s_title, s_content, sc_uid, m_uid) VALUES (SEQ_s_table_s_uid.NEXTVAL, ?, ?, ?, ?)";
-	public static final String SQL_UPDATE = "UPDATE ? SET ? WHERE ?";
-	public static final String SQL_DELETE_WHERE = "DELETE FROM ? WHERE ?";
 
 }
