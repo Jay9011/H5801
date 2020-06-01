@@ -127,7 +127,7 @@ CREATE TABLE sr_comment
 	sr_deleted number,
 	s_uid number NOT NULL,
 	m_uid number NOT NULL,
-	sr_numUidt number NOT NULL,
+	sr_numUidt number,
 	PRIMARY KEY (sr_numUid)
 );
 
