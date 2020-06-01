@@ -28,7 +28,7 @@ textarea{
     height: 150px;
     border: 1px solid #e9e9e9;
     background: #f7f7f7;
-    color: #666;
+    color: #666666;
 }
 p#agreechk{
 color: red;
