@@ -12,7 +12,7 @@
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
 	<x>0</x>
-	<y>76</y>
+	<y>54</y>
 	<default_color>
 		<r>255</r>
 		<g>255</g>
@@ -89,7 +89,7 @@
 				<is_open_after_saved>true</is_open_after_saved>
 			</export_html_setting>
 			<export_image_setting>
-				<output_file_path></output_file_path>
+				<output_file_path>D:\Users\trowe\Desktop\ERD2.png</output_file_path>
 				<category_dir_path></category_dir_path>
 				<with_category_image>true</with_category_image>
 				<is_open_after_saved>true</is_open_after_saved>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2020-05-29 11:24:55</creation_date>
-			<updated_date>2020-05-30 01:29:27</updated_date>
+			<updated_date>2020-05-31 17:30:02</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>

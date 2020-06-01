@@ -381,17 +381,17 @@ INSERT INTO s_category (sc_uid, sc_name)
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid)
 	VALUES (SEQ_s_table_s_uid.NEXTVAL, '현타아아아', '아아아아....', to_date('2020-05-30 00:01:10', 'yyyy-mm-dd hh24:MI:ss'), 1, 2);
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid)
-	VALUES (SEQ_s_table_s_uid.NEXTVAL, '무슨 재미있는 일이 있을까?', '글쎄...', to_date('2020-05-30 00:04:10', 'yyyy-mm-dd hh24:MI:ss'), 1, 3);
+	VALUES (SEQ_s_table_s_uid.NEXTVAL, '무슨 재미있는 일이 있을까?', '글쎄...', to_date('2020-05-30 00:04:10', 'yyyy-mm-dd hh24:MI:ss'), 2, 3);
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid)
-	VALUES (SEQ_s_table_s_uid.NEXTVAL, 'test', 'test', to_date('2020-05-30 00:10:10', 'yyyy-mm-dd hh24:MI:ss'), 1, 2);
+	VALUES (SEQ_s_table_s_uid.NEXTVAL, 'test', 'test', to_date('2020-05-30 00:10:10', 'yyyy-mm-dd hh24:MI:ss'), 3, 2);
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid)
-	VALUES (SEQ_s_table_s_uid.NEXTVAL, '아이스크림은?', '녹는다', to_date('2020-05-30 00:13:10', 'yyyy-mm-dd hh24:MI:ss'), 1, 4);
+	VALUES (SEQ_s_table_s_uid.NEXTVAL, '아이스크림은?', '녹는다', to_date('2020-05-31 00:13:10', 'yyyy-mm-dd hh24:MI:ss'), 4, 4);
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid)
-	VALUES (SEQ_s_table_s_uid.NEXTVAL, '나도...', '녹는다....', to_date('2020-05-30 00:18:10', 'yyyy-mm-dd hh24:MI:ss'), 1, 5);
+	VALUES (SEQ_s_table_s_uid.NEXTVAL, '나도...', '녹는다....', to_date('2020-05-31 00:18:10', 'yyyy-mm-dd hh24:MI:ss'), 5, 5);
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid)
-	VALUES (SEQ_s_table_s_uid.NEXTVAL, '프로그래밍', '재밌지만!', to_date('2020-05-30 00:21:10', 'yyyy-mm-dd hh24:MI:ss'), 1, 6);
+	VALUES (SEQ_s_table_s_uid.NEXTVAL, '프로그래밍', '재밌지만!', to_date('2020-05-31 00:21:10', 'yyyy-mm-dd hh24:MI:ss'), 6, 6);
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid)
-	VALUES (SEQ_s_table_s_uid.NEXTVAL, '아무거나', '쓰는거지 뭐', to_date('2020-06-01 00:09:10', 'yyyy-mm-dd hh24:MI:ss'), 1, 4);
+	VALUES (SEQ_s_table_s_uid.NEXTVAL, '아무거나', '쓰는거지 뭐', to_date('2020-06-01 00:09:10', 'yyyy-mm-dd hh24:MI:ss'), 7, 4);
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid) SELECT SEQ_s_table_s_uid.NEXTVAL, s_title, s_content, s_date, sc_uid, m_uid FROM s_table;
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid) SELECT SEQ_s_table_s_uid.NEXTVAL, s_title, s_content, s_date, sc_uid, m_uid FROM s_table;
 INSERT INTO s_table (s_uid, s_title, s_content, s_date, sc_uid, m_uid) SELECT SEQ_s_table_s_uid.NEXTVAL, s_title, s_content, s_date, sc_uid, m_uid FROM s_table;
@@ -414,7 +414,7 @@ INSERT INTO S_FAVOR (m_uid, s_uid, sl_date)
 
 SELECT * FROM M_USER;
 SELECT * FROM MF_FILE;
-SELECT * FROM N_TABLE;
+SELECT * FROM N_TABLE ;
 SELECT * FROM FAQ;
 SELECT * FROM S_TABLE;
 SELECT * FROM SR_COMMENT;
@@ -424,3 +424,4 @@ SELECT * FROM S_CATEGORY;
 SELECT * FROM T_DETAIL;
 SELECT * FROM RESERVE;
 
+SELECT * FROM ALL_TABLES;
