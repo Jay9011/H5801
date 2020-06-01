@@ -1,0 +1,218 @@
+@charset "UTF-8";
+/* 기본 설정 */
+* {
+	box-sizing: border-box !important;
+}
+html, body{
+    position: relative;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+body {
+    max-width: 100%;
+    height: auto;
+    /* font-family: Helvetica Neue, Helvetica, Arial, sans-serif, ; */
+    margin: 0;
+    padding: 0;   
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+div{
+    text-align: center;
+}
+
+/* */
+
+
+
+
+/* introduce.css 공통 */
+*{
+    width: 100%;
+}
+
+.left{
+    float: left;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    width: auto;
+    height: auto;
+    background-size: cover;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  .center{
+      text-align: center;
+  }
+  .def{
+      width: 100%;
+      height: 100%;
+  }
+
+.hr{
+    padding: 0px 30px 0px 30px;
+}
+/* intro */
+#i_intro{
+    background-color: #ffffff;
+    height: 1080px;
+    
+}
+
+.i_half{
+    height: 917px;
+    padding: 0px 50px 200px 50px;
+}
+
+.text_title{
+	text-align: left;
+	padding: 20px 0px 0px 50px;
+}
+
+.text{
+    color: #000000;
+    text-align: left;
+}
+
+
+
+/* room */
+#i_room{
+    background-color: #ffffff;
+    height: 1080px;
+    
+}
+
+.r_half{
+    height: 600px;
+    padding: 0px 50px 200px 50px;
+}
+
+.r_size{
+    height: 500px;
+}
+
+.price{
+    /* padding-top: 50px; */
+    height: 100%;
+}
+
+.hober{
+    border-bottom: 2px solid turquoise;
+}
+/* map */
+#i_map{
+    background-color: #ffffff;
+    height: 1080px;
+}
+
+.map2{
+    padding: 40px 40px 60px 40px;
+}
+
+/* 사이즈 */
+@media screen and (min-width: 600px){
+    .w-1 {width: 8.33%; }  /* 1칸 짜리 폭 */
+    .w-2 {width: 16.66%; }  /* 2칸 짜리 폭 */
+    .w-3 {width: 25%;}
+    .w-4 {width: 33.33%;}
+    .w-5 {width: 41.66%;}
+    .w-6 {width: 50%;}
+    .w-7 {width: 58.33%;}
+    .w-8 {width: 66.66%;}
+    .w-9 {width: 75%;}
+    .w-10 {width: 83.33%;}
+    .w-11 {width: 91.66%;}
+    .w-12 {width: 100%;}
+    }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700,900');
+.effect-wrap {
+    /* width: 100vw; height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 50em;
+}
+/* .effect7 {
+    position: relative;
+    height: 100%;
+    border: 7px solid #f1f1f1;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+} */
+.effect7 img {
+    width: 100%;
+    filter: saturate(50%);
+    transition: all 0.6s ease 0.2s;
+    backface-visibility: hidden;
+}
+.effect7 figcaption {
+    position: absolute;
+    top: 50%; left: 0;
+    width: 100%;
+    /* padding: 5%; */
+    box-sizing: border-box;
+    z-index: 1;
+    line-height: 1.7em;
+    color: #000;
+    font-size: 20px;
+    opacity:1;
+    transition: all 0.5s ease;
+    transform: rotatex(90deg) translate(0, -50%);
+    transform-origin: 0% 0%;
+}
+.effect7 figcaption h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.effect7 figcaption p {
+    font-weight: 500; margin-bottom: 15px;
+}
+.effect7 figcaption .read {
+    border: 2px solid #fff;
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.effect7 figcaption .read:hover {
+    background: #fff;
+    color: #000;
+}
+
+.effect7:hover> .boom {
+    transform: rotatex(-180deg);
+    opacity: 0;
+    transition-delay: 0;
+}
+.effect7:hover figcaption {
+    transform: rotatex(0deg) translate(0, -50%);
+    opacity: 1;
+    transition-delay: 0.35s;
+}
+.test{
+    margin: 15px !important;
+}
