@@ -33,22 +33,32 @@
 				<tr>
 					<td>${listRow.s_uid }</td>
 					<td>${listRow.sc_name }</td>
-					<td><a href='view.ho?uid=${listRow.s_uid}'>${listRow.s_title}</a></td>
+					<td><a href='view.ho?s_uid=${listRow.s_uid}'>${listRow.s_title}</a></td>
 					<td>${listRow.m_nick}</td>
-					<fmt:formatDate value="${now }" pattern="yyyy-MM-dd" var="nowDate"/>
+					<c:set var="now" value="<%= new java.util.Date() %>" />
+					<fmt:parseDate var="s_date" value="${listRow.s_date }" pattern="yyyy-MM-dd HH:mm:ss" />
+					<fmt:formatDate var="now_date" value="${now}" pattern="yyyyMMdd"/>
+					<fmt:formatDate var="this_date" value="${s_date}" pattern="yyyyMMdd"/>
 					<c:choose>
-						<c:when test="">
+						<c:when test="${now_date - this_date == 0}">
+							<td>${listRow.s_date_time }</td>
 						</c:when>
-						<c:when test="">
-						</c:when>
+						<c:otherwise>
+							<td>${listRow.s_date_day }</td>
+						</c:otherwise>
 					</c:choose>
 					<td>${listRow.s_viewCnt }</td>
-					<td>${listRow.s_date }</td>
 				</tr>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</table>
-	<button onclick="location.href='write.ho'">글쓰기</button>
+	<c:if test="${m_uid != null}">
+		<button onclick="location.href='write.ho'">글쓰기</button>
+	</c:if>
+	<c:if test="${m_uid == null}">
+		<button onclick="location.href='../Login/Login.ho'">로그인</button>
+	</c:if>
+
 </body>
 </html>

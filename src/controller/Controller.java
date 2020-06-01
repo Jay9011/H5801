@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import command.Command;
 import command.login.LoginCommand;
 import command.studying.TableList;
+import command.studying.View;
 import command.studying.WriteOk;
 import command.studying.WriteTable;
+import command.studying.commentOk;
 
 @WebServlet("*.ho")
 public class Controller extends HttpServlet {
@@ -73,6 +75,17 @@ public class Controller extends HttpServlet {
 			command = new WriteOk();
 			command.execute(request, response);
 			viewPage = "/StudyBoard/writeOk.jsp";
+			break;
+
+		case "/StudyBoard/view.ho":
+			command = new View();
+			command.execute(request, response);
+			viewPage = "/StudyBoard/view.jsp";
+			break;
+
+		case "/StudyBoard/commentOk.ho":
+			command = new commentOk();
+			command.execute(request, response);
 			break;
 
 		default:

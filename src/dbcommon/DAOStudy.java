@@ -56,6 +56,7 @@ public class DAOStudy {
 				s_date_day = new SimpleDateFormat("yyyy-MM-dd").format(day);
 				s_date_time = new SimpleDateFormat("HH:mm:ss").format(time);
 			} // end if
+			String s_date = s_date_day + " " + s_date_time;
 
 			String u_date_day = "";
 			String u_date_time = "";
@@ -63,6 +64,7 @@ public class DAOStudy {
 				u_date_day = new SimpleDateFormat("yyyy-MM-dd").format(u_day);
 				u_date_time = new SimpleDateFormat("HH:mm:ss").format(u_time);
 			} // end if
+			String s_udate = u_date_day + " " + u_date_time;
 
 			String m_nick = "";
 			String sc_name = "";
@@ -94,8 +96,8 @@ public class DAOStudy {
 				if(pstmt2 != null) pstmt2.close();
 			}
 
-			DTOStudyTable dto = new DTOStudyTable(s_uid, sc_name, s_title, s_content, s_date_day, s_date_time, m_nick, s_viewCnt);
-
+//			DTOStudyTable dto = new DTOStudyTable(s_uid, sc_name, s_title, s_content, s_date_day, s_date_time, m_nick, s_viewCnt);
+			DTOStudyTable dto = new DTOStudyTable(s_uid, sc_name, s_title, s_content, s_date_day, s_date_time, m_nick, s_viewCnt, s_date, s_udate, sc_uid, m_uid);
 			list.add(dto);
 		} // end while
 
@@ -121,6 +123,20 @@ public class DAOStudy {
 		return dtoStudyTables;
 	} // end selectAll()
 
+	public DTOStudyTable[] viewPage(int s_uid) throws SQLException {
+		DTOStudyTable[] dtoStudyTables = null;
+
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_ALL_WHERE_S_UID);
+			pstmt.setInt(1, s_uid);
+			rs = pstmt.executeQuery();
+			dtoStudyTables = createArray(rs);
+		} finally {
+			close();
+		}
+		return dtoStudyTables;
+	}
+
 	public int insert(String m_uid, String subject, String content) throws SQLException {
 		int cnt = 0;
 		int member_uid = Integer.parseInt(m_uid);
@@ -140,5 +156,16 @@ public class DAOStudy {
 
 		return cnt;
 	} // end insert()
+
+	public int insertComment(String s_uid, String m_uid, String content, String sc_group, String depth) {
+		int cnt = 0;
+		int study_uid = Integer.parseInt(s_uid);
+		int member_uid = Integer.parseInt(m_uid);
+		int scomment_group = Integer.parseInt(sc_group);
+		int scomment_depth = Integer.parseInt(depth);
+
+
+		return cnt;
+	}
 
 } // end Class

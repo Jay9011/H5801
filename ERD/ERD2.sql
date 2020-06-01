@@ -269,7 +269,10 @@ INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_p
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
 	VALUES (SEQ_m_user_m_uid.NEXTVAL, '주낙경', 'joo', 'joo@gmail.com', 'asdf@#', to_date('1991-04-07', 'yyyy-mm-dd'), 'm', '010-1111-1111', 1, '서울특별시 강남구');
 INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
-	VALUES (SEQ_m_user_m_uid.NEXTVAL, '한수빈', 'subin', 'subin@gmail.com', 'mb^&12', to_date('1996-12-23', 'yyyy-mm-dd'), 'f', '010-1111-1111', 1, '경기도 성남');
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '한수빈', 'subin', 'subin@gmail.com', 'mb^&12', to_date('96-12-23', 'yy-mm-dd'), 'f', 01055555555, 1, '경기도 성남');
+INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA)
+	VALUES (SEQ_m_user_m_uid.NEXTVAL, '테스터', 'test', 'damianju1015@gmail.com', '1234', to_date('91-04-07', 'yy-mm-dd'), 'm', 01044444444, 1, '서울특별시 강남구');
+
 
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
 	VALUES (SEQ_n_table_n_uid.NEXTVAL, '첫번째 공지사항', '냉무', 1);

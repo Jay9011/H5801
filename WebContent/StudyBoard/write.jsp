@@ -12,7 +12,7 @@
 	function chkSubmit(){
 		frm = document.forms["writeTable"];
 		var subject = frm["subject"].value.trim();
-		var subject = frm["content"].value.trim();
+		var content = frm["content"].value.trim();
 
 		if(subject == ""){
 			alert("제목은 반드시 작성해야 합니다.");
