@@ -13,6 +13,7 @@ public class DTOStudyTable {
 	private String s_udate;
 	private int sc_uid;
 	private int m_uid;
+	
 
 	public DTOStudyTable() {
 		super();

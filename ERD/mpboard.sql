@@ -20,13 +20,13 @@ WHERE m_uid=3;
 SELECT * FROM s_table
 WHERE s_uid=1;
 
-SELECT t.s_uid, t.s_title, t.s_content, t.s_date, t.M_UID, sc.M_UID
-FROM s_table t, SR_COMMENT sc  
-WHERE t.S_UID = sc.S_UID AND sc.M_UID = 3;
+SELECT s.s_uid, s.s_title, s.s_content, s.s_date
+FROM s_table s, sr_comment sc
+WHERE s.s_uid = sc.s_uid AND sc.m_uid = 3;
 
 --내가 찜한 게시물
 SELECT * FROM s_favor;
 
-SELECT s.S_UID , s.S_TITLE 
-FROM s_favor st, s_table s
-WHERE st.S_UID = s.S_UID AND st.M_UID = 3;
+SELECT s.s_uid , s.s_title, s.s_content, s.s_date 
+FROM s_favor sf, s_table s
+WHERE sf.s_uid = s.s_uid AND sf.m_uid = 3;
