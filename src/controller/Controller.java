@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
-import login.LoginCommand;
-import studying.TableList;
-import studying.WriteOk;
-import studying.WriteTable;
+import command.login.LoginCommand;
+import command.studying.TableList;
+import command.studying.WriteOk;
+import command.studying.WriteTable;
 
 @WebServlet("*.ho")
 public class Controller extends HttpServlet {

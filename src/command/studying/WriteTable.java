@@ -1,4 +1,4 @@
-package studying;
+package command.studying;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

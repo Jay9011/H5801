@@ -1,4 +1,4 @@
-package studying;
+package command.studying;
 
 import java.sql.SQLException;
 
