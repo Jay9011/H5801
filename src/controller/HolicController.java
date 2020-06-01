@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.command.holic.Command;
-import com.command.holic.JoinCommand;
-import com.command.holic.LoginCommand;
-import com.command.holic.LogoutCommand;
+import command.Command;
+import command.JoinCommand;
+import command.LoginCommand;
+import command.LogoutCommand;
 
 
-@WebServlet("*.ho")
+@WebServlet("*.hol")
 public class HolicController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,9 @@
-package com.holic.beans;
+package dbcommon;
 
-public class MemberDTO {
+// 작성자: 낙경
+// 2020-06-01  23:00 수정
+
+public class DTOPassword {
 	private int uid; // m_uid
 	private String email; // m_email
 	private String pw; // m_pw
@@ -8,12 +11,12 @@ public class MemberDTO {
 	private String name; // m_name
 	
 	// 기본 생성자
-	public MemberDTO() {
+	public DTOPassword() {
 		super();
 	}
 	
 	// 매개변수 생성자
-	public MemberDTO(int uid, String email, String pw, String nick, String name) {
+	public DTOPassword(int uid, String email, String pw, String nick, String name) {
 		super();
 		this.uid = uid;
 		this.email = email;

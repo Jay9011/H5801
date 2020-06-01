@@ -1,4 +1,7 @@
-package com.holic.beans;
+package dbcommon;
+
+// 작성자: 낙경
+// 2020-06-01  23:00 수정
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,23 +11,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import common.DB;
+import dbcommon.Common;
 
-public class MemberDAO {
+public class DAOPassword {
 	Connection conn = null; // DB 연결을 위한 받기 객체
 	Statement stmt = null; // SQL 문을 수행하고 그 결과를 리턴하기 위한 객체
 	PreparedStatement pstmt = null; // 강화된 statement(precompiled SQL문, for multiple time)
 	ResultSet rs = null; // SELECT 결과, executeQuery() // 쿼리 수행결과를 테이블로 담는 객체 (행 단위로 커서 이동)
 	
 	// DAO 객체가 생성될때 Connection 도 생성된다.	
-	public MemberDAO() {
+	public DAOPassword() {
 		
 		try {
-			Class.forName(DB.DRIVER);
+			Class.forName(Common.DRIVER);
 			// DriverManager: JDBC 드라이버를 관리하기 위한 기본 서비스 
 			// getConnection: 해당 DB URL에 연결 시도
-			conn = DriverManager.getConnection(DB.URL, DB.USERID, DB.USERPW);
-			System.out.println("MemberDAO 생성, 데이터베이스 연결");
+			conn = DriverManager.getConnection(Common.URL, Common.USERID, Common.USERPW);
+			System.out.println("DAOPassword 생성, 데이터베이스 연결");
 		} catch (Exception e) {
 			e.printStackTrace();
 			// throw e;
@@ -41,10 +44,10 @@ public class MemberDAO {
 	} // end close()
 	
 	// ResultSet --> DTO 배열 리턴
-	public MemberDTO[] createArray(ResultSet rs) throws SQLException {
-		MemberDTO [] arr = null; // DTO 배열
+	public DTOPassword[] createArray(ResultSet rs) throws SQLException {
+		DTOPassword [] arr = null; // DTO 배열
 		
-		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+		ArrayList<DTOPassword> list = new ArrayList<DTOPassword>();
 		
 		// next(): 커서를 첫 행부터 다음 행으로 옮김
 			// 리턴값: true - 다음 행이 있음, false - 다음 행이 없음
@@ -58,7 +61,7 @@ public class MemberDAO {
 			String nick = rs.getString("m_nick");
 			String name = rs.getString("m_name");
 			
-			MemberDTO dto = new MemberDTO(uid, email, pw, nick, name);
+			DTOPassword dto = new DTOPassword(uid, email, pw, nick, name);
 			
 			// add(): Appends the specified element to the end of this list.
 				// 매개변수: element
@@ -72,7 +75,7 @@ public class MemberDAO {
 		
 		if(size == 0) return null;
 		
-		arr = new MemberDTO[size];
+		arr = new DTOPassword[size];
 		
 		// toArray()
 			// 매개변수: list의 elements를 담을 array
@@ -82,8 +85,8 @@ public class MemberDAO {
 	} // end createArray()
 	
 	// 특정 uid 의 회원정보만 SELECT --> 수정을 위한 메소드
-	public MemberDTO [] selectByUid(int uid) throws SQLException {
-		MemberDTO [] arr = null;
+	public DTOPassword [] selectByUid(int uid) throws SQLException {
+		DTOPassword [] arr = null;
 		
 		try {
 			pstmt = conn.prepareStatement("SELECT * FROM m_user WHERE m_uid = ?");
@@ -97,8 +100,8 @@ public class MemberDAO {
 	}
 	
 	
-	public MemberDTO[] selectByEmail(String email) throws SQLException {
-		MemberDTO[] arr = null;
+	public DTOPassword[] selectByEmail(String email) throws SQLException {
+		DTOPassword[] arr = null;
 		try {
 			pstmt = conn.prepareStatement("SELECT * FROM m_user WHERE m_email = ?");
 			pstmt.setString(1, email);
@@ -113,26 +116,7 @@ public class MemberDAO {
 		return arr;
 	}
 	
-	public int updateByEmail1(String email, String pw) throws SQLException {
-		int cnt = 0;
-		
-		try {
-			// 임시 비밀번호 설정
-			pstmt = conn.prepareStatement("UPDATE m_user SET m_pw = ? WHERE m_email = ?");
-			pstmt.setString(1, pw);
-			pstmt.setString(2, email);			
-			
-			cnt = pstmt.executeUpdate();
-			
-			
-		} finally {
-			close();
-		}
-		
-		return cnt;
-	} // end updateByEmail1
-	
-	public int updateByEmail2(int uid, String pw) throws SQLException {
+	public int updateByEmail(int uid, String pw) throws SQLException {
 		int cnt = 0;
 		
 		try {
@@ -149,46 +133,6 @@ public class MemberDAO {
 		}
 		
 		return cnt;
-	} // end updateByEmai2
+	} // end updateByEmail
 	
-	public int updatePwByEmail(String email, String pw) throws SQLException {
-		MemberDTO[] arr = null;
-		int cnt = 0;
-		
-		try {
-			// 트랜잭션 처리
-			// Auto-commit 비활성화
-			conn.setAutoCommit(false);
-			
-			// 쿼리들 수행
-			
-			// email 검색
-			pstmt = conn.prepareStatement("SELECT * FROM m_user WHERE m_email = ?");
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-			
-			arr = createArray(rs);
-			
-			pstmt.close();
-			
-			// 임시 비밀번호 설정
-			pstmt = conn.prepareStatement("UPDATE m_user SET m_pw = ? WHERE m_email = ?");
-			pstmt.setString(1, pw);
-			pstmt.setString(2, email);			
-			
-			cnt = pstmt.executeUpdate();
-			
-			// Makes all changes made since the previous commit/rollback permanent 
-			conn.commit();
-		} finally {
-			close();
-		}
-		
-		return cnt;
-	} // end updatePwByEmail
-	
-
-	
-	
-	
-}
+} // end class

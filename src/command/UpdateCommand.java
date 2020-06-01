@@ -1,20 +1,22 @@
-package com.command.member;
+package command;
 
+// 작성자: 낙경
+// 2020-06-01  23:00 수정
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.holic.beans.MemberDAO;
+import dbcommon.DAOPassword;
 
 
-public class UpdateCommand implements Command1 {
+public class UpdateCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		int cnt = 0;
-		MemberDAO dao = new MemberDAO();
+		DAOPassword dao = new DAOPassword();
 		
 		// 매개변수 받아오기
 		int uid = Integer.parseInt(request.getParameter("uid").trim());
@@ -37,7 +39,7 @@ public class UpdateCommand implements Command1 {
 		if(uid != 0 && pw != null && pw.trim().length()>0) {
 			
 			try {
-				cnt = dao.updateByEmail2(uid, pw);
+				cnt = dao.updateByEmail(uid, pw);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

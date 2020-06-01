@@ -1,5 +1,7 @@
-package com.command.member;
+package command;
 
+// 작성자: 낙경
+// 2020-06-01  23:00 수정
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,22 +15,22 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
-import com.holic.beans.MemberDAO;
-import com.holic.beans.MemberDTO;
+import dbcommon.DAOPassword;
+import dbcommon.DTOPassword;
 
-import common.Email;
+import email.Email;
 
 import java.util.Properties;
 import java.util.Random;
 
 
-public class SendCommand implements Command1, Email{
+public class SendCommand implements Command, Email{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int cnt = 0;
-		MemberDAO dao = new MemberDAO();
-		MemberDTO [] arr = null;
+		DAOPassword dao = new DAOPassword();
+		DTOPassword [] arr = null;
 		
 		
 		// 매개변수 받아오기

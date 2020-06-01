@@ -1,18 +1,20 @@
-package com.command.member;
+package command;
 
+// 작성자: 낙경
+// 2020-06-01  23:00 수정
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.holic.beans.MemberDAO;
-import com.holic.beans.MemberDTO;
+import dbcommon.DAOPassword;
+import dbcommon.DTOPassword;
 
-public class SelectCommand implements Command1 {
+public class SelectCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		MemberDAO dao = new MemberDAO();
-		MemberDTO [] arr = null; 
+		DAOPassword dao = new DAOPassword();
+		DTOPassword [] arr = null; 
 		
 		// 매개변수 받아오기
 		int uid = Integer.parseInt(request.getParameter("uid"));

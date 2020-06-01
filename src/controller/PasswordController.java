@@ -1,34 +1,27 @@
-package com.controller.member;
+package controller;
+
+// 작성자: 낙경
+// 2020-06-01  23:00 수정
 
 import java.io.IOException;
 
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.command.member.Command1;
-import com.command.member.SelectCommand;
-import com.command.member.SendCommand;
-import com.command.member.UpdateCommand;
-import com.holic.beans.MemberDTO;
-
-import java.util.Properties;
-import java.util.Random;
+import command.Command;
+import command.SelectCommand;
+import command.SendCommand;
+import command.UpdateCommand;
 
 @WebServlet("*.holic")
-public class MemberController extends HttpServlet {
+public class PasswordController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MemberController() {
+    public PasswordController() {
         super();
     }
 
@@ -48,7 +41,7 @@ public class MemberController extends HttpServlet {
 		
 		// 컨트롤러는 다음 두 개를 선택해야 한다.
 		String viewPage = null; // 어떠한 뷰? --> 페이지
-		Command1 command = null; // 어떠한 커맨드?--> 어떠한 로직 수행
+		Command command = null; // 어떠한 커맨드?--> 어떠한 로직 수행
 		
 		// URL로부터 URI, ContextPath, Command 분리
 		String uri = request.getRequestURI(); 
