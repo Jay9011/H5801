@@ -7,14 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.holic.common.Common;
+import dbcommon.Common;
 
-public class UserDAO {
+public class DAOUser {
 	Connection conn = null;
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	public UserDAO() {
+	public DAOUser() {
 		try {
 			Class.forName(Common.DRIVER);
 			conn = DriverManager.getConnection(Common.URL, Common.USERID, Common.USERPW);

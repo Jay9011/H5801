@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.holic.beans.UserDAO;
+import dbcommon.DAOUser;
 
 public class LoginCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		UserDAO udao = new UserDAO();
+		DAOUser udao = new DAOUser();
 
 		// 매개변수 받아오기
 		String email = request.getParameter("email");

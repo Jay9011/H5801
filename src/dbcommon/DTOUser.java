@@ -1,6 +1,6 @@
 package dbcommon;
 
-public class UserDTO {
+public class DTOUser {
 	private int uid; // m_uid
 	private String email; // m_email
 	private String pw; // m_pw
@@ -16,14 +16,14 @@ public class UserDTO {
 	private String profile; //m_profile  프로필 사진 
 	private String link; //m_link 프로필 주소?... 왜 굳이..
 	
-	public UserDTO() {
+	public DTOUser() {
 		super();
 		System.out.println("UserDTO()객체 생성");
 	}
 	
 	
 
-	public UserDTO(int uid, String email, String pw, String nick, String name, String birth, String phoneNum,
+	public DTOUser(int uid, String email, String pw, String nick, String name, String birth, String phoneNum,
 			String gender, String addressA, String addressB, int grade, int smsOk, String profile, String link) {
 		super();
 		this.uid = uid;
