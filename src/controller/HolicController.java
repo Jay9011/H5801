@@ -15,7 +15,7 @@ import com.command.holic.LoginCommand;
 import com.command.holic.LogoutCommand;
 
 
-@WebServlet("*.ho")
+//@WebServlet("*.ho")
 public class HolicController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,17 +32,17 @@ public class HolicController extends HttpServlet {
 	}
 	protected void actionHo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("actionHo() 호출");
-		
+
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String viewPage = null;
 		Command command = null;
-		
+
 		//URL 로 부터,URI, ContextPath, Command 분리
 		String uri= request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
-		
+
 		switch (com) {
 		case "/login.ho":
 			viewPage = "login.jsp";

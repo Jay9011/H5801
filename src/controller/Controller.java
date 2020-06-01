@@ -17,7 +17,7 @@ import command.studying.WriteOk;
 import command.studying.WriteTable;
 import command.studying.commentOk;
 
-@WebServlet("*.ho")
+//@WebServlet("*.ho")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -59,31 +59,31 @@ public class Controller extends HttpServlet {
 			viewPage = "LoginOk.jsp";
 			break;
 
-		case "/StudyBoard/list.ho":
+		case "/Study/list.ho":
 			command = new TableList();
 			command.execute(request, response);
 			viewPage = "/StudyBoard/list.jsp";
 			break;
 
-		case "/StudyBoard/write.ho":
+		case "/Study/write.ho":
 			command = new WriteTable();
 			command.execute(request, response);
 			viewPage = "/StudyBoard/write.jsp";
 			break;
 
-		case "/StudyBoard/writeOk.ho":
+		case "/Study/writeOk.ho":
 			command = new WriteOk();
 			command.execute(request, response);
 			viewPage = "/StudyBoard/writeOk.jsp";
 			break;
 
-		case "/StudyBoard/view.ho":
+		case "/Study/view.ho":
 			command = new View();
 			command.execute(request, response);
 			viewPage = "/StudyBoard/view.jsp";
 			break;
 
-		case "/StudyBoard/commentOk.ho":
+		case "/Study/commentOk.ho":
 			command = new commentOk();
 			command.execute(request, response);
 			break;
