@@ -176,6 +176,12 @@ public class DAOStudy {
 		}
 
 		return cnt;
+	} // end insertComment()
+
+	public int deleteComment() {
+		int cnt = 0;
+
+		return cnt;
 	}
 
 } // end Class
