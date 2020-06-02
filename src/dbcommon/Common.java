@@ -21,7 +21,9 @@ public class Common {
 	public static final String SQL_SELECT_USER_WHERE_M_UID = "SELECT * FROM m_user WHERE m_uid = ?";
 	public static final String SQL_SELECT_CATEGORY_WHERE_SC_UID = "SELECT * FROM s_category WHERE sc_uid = ?";
 	public static final String SQL_INSERT_STABLE = "INSERT INTO s_table (s_uid, s_title, s_content, sc_uid, m_uid) VALUES (SEQ_s_table_s_uid.NEXTVAL, ?, ?, ?, ?)";
-	
+	public static final String SQL_INSERT_SRCOMMENT_ORIGIN = "INSERT INTO sr_comment (sr_numUid, sr_group, sr_depth, sr_com, s_uid, m_uid) "
+															+ "VALUES (SEQ_sr_comment_sr_numUid.NEXTVAL, SEQ_sr_comment_sr_numUid.CURRVAL, 0, ?, ?, ?)";
+
 //	내가 쓴 게시글 찾기
 	public static final String SQL_SELECT_ALL_BOARD = "SELECT s_uid, s_title, s_content, s_date FROM s_table WHERE m_uid = ?";
 //	내가 댓글 닷 게시글 찾기

@@ -65,17 +65,38 @@ ${viewInfo[0].s_content}
 </c:if>
 <hr />
 <c:if test="${m_uid != null}">
-	<form name="commentTable" action="commentOk.ho" method="get" onsubmit="return chkSubmit()">
-		<input type="hidden" name="s_uid" value="${viewInfo[0].s_uid}" />
-		<input type="hidden" name="m_uid" value="${m_uid }" />
+	<form id="newComForm${viewInfo[0].s_uid }" name="commentTable" method="POST">
+		<input id="bordUid" type="hidden" name="s_uid" value="${viewInfo[0].s_uid}" />
+		<input id="memberUid" type="hidden" name="m_uid" value="${m_uid }" />
 		작성자: <input type="text" name="m_name" value="${m_name }" disabled="disabled"/><br>
 		<br><textarea id="editor1" name="content"></textarea><br>
-		<br> <input type="submit" value="등록" />
+		<br> <input id="newComFormSubmit" type="button" value="등록" onclick="comSubmit('newComForm${viewInfo[0].s_uid }'); return false;"/>
 	</form>
 </c:if>
 <script>
-		CKEDITOR.replace( 'editor1' );
-	</script>
+	CKEDITOR.replace( 'editor1' );
+	var frmid;
+	function comSubmit(frmid){
+		var form = $('#' + frmid)[0];
+		var data = new FormData(form);
+
+		$.ajax({
+			type:"POST"
+			,url:"commentOk.ho"
+			,data: data
+			,processData:false
+			,contentType:false
+			,cache:false
+			,success: function(data){
+				alert("등록 성공");
+			}
+			,error: function(e){
+				console.log("ERROR : ", e);
+                alert("등록 실패");
+			}
+		});
+	}
+</script>
 </body>
 </html>
 	</c:otherwise>

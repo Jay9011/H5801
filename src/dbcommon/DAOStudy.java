@@ -164,6 +164,16 @@ public class DAOStudy {
 		int scomment_group = Integer.parseInt(sc_group);
 		int scomment_depth = Integer.parseInt(depth);
 
+		if(sc_group != null) {
+			try {
+				pstmt = conn.prepareStatement(Common.SQL_INSERT_SRCOMMENT_ORIGIN);
+				pstmt.setString(1, content); // 내용
+				pstmt.setInt(2, study_uid);	// 게시판번호
+				pstmt.setInt(3, member_uid);// 회원번호
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 		return cnt;
 	}
