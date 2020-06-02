@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import command.LoadCommand;
 import command.login.LoginCommand;
 import command.studying.TableList;
 import command.studying.View;
@@ -85,6 +86,11 @@ public class Controller extends HttpServlet {
 
 		case "/StudyBoard/commentOk.ho":
 			command = new commentOk();
+			command.execute(request, response);
+			break;
+			
+		case "/MyPage/list.ho":
+			command = new LoadCommand();
 			command.execute(request, response);
 			break;
 
