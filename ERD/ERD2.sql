@@ -428,3 +428,36 @@ SELECT * FROM T_DETAIL;
 SELECT * FROM RESERVE;
 
 SELECT * FROM ALL_TABLES;
+
+CREATE OR REPLACE VIEW v_book
+AS
+SELECT 
+a.p_uid
+, a.p_startTime
+, a.p_endTime
+, TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
+, TO_CHAR(a.p_startTime, 'HH24:MI:SS') AS "b_stime"
+, TO_CHAR(a.p_endTime, 'HH24:MI:SS') AS "b_etime"
+, ROUND((a.p_endTime-a.p_startTime)*24) AS "b_term"
+, ROUND((a.p_startTime-SYSDATE)*24) AS "b_duration"
+, CASE WHEN ROUND((a.p_startTime-SYSDATE)*24) >= 2 THEN '1' ELSE '0' END AS "b_refund"
+, a.total_amount
+, a.pay_date
+, TO_CHAR(a.pay_date, 'YYYY-MM-DD') AS "b_date"
+, a.p_cancel
+, b.m_uid
+, b.m_email
+, b.m_nick
+, b.m_name
+, b.m_grade
+, c.t_uid
+, CASE WHEN SUBSTR(c.t_uid, 1, 1) = 1 THEN '스터디룸' ELSE '좌석' END AS "b_seatType"
+, c.t_name
+, c.t_pay
+, c.t_maxnum
+FROM Reserve a, m_user b, t_detail c
+WHERE a.m_uid = b.m_uid 
+AND a.t_uid = c.t_uid
+;
+
+SELECT * FROM v_book;

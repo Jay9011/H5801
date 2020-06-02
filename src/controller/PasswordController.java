@@ -5,6 +5,7 @@ package controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.BookCommand;
 import command.Command;
 import command.SelectCommand;
 import command.SendCommand;
 import command.UpdateCommand;
+import command.LoginCommand_test;
 
 @WebServlet("*.holic")
 public class PasswordController extends HttpServlet {
@@ -79,6 +82,28 @@ public class PasswordController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "resetPwOk.jsp";
 			break;
+			
+		// 예약현황 목록
+		case "/book.holic":
+			command = new BookCommand();
+			command.execute(request, response);
+			viewPage = "/book.jsp";
+			break;	
+			
+		// Test: 로그인
+		case "/login_test.holic":
+			viewPage = "login_test.jsp";
+			break;
+			
+		case "/loginOk_test.holic":
+			command = new LoginCommand_test();
+			command.execute(request, response);
+			viewPage = "loginOk_test.jsp";
+			break;
+		case "/locationBook_test.holic":
+			viewPage = "locationBook_test.jsp";
+			break;
+		
 		} // end switch
 		
 		if(viewPage != null) {
