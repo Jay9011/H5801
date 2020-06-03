@@ -30,4 +30,20 @@ public class Common {
 	public static final String SQL_SELECT_ALL_CMTBOARD = "SELECT s.s_uid, s.s_title, s.s_content, s.s_date FROM s_table s, sr_comment sc WHERE s.s_uid = sc.s_uid AND sc.m_uid = ?";
 //	내가 찜한 게시글 찾기기
 	public static final String SQL_SELECT_ALL_LIKEBOARD = "SELECT s.s_uid, s.s_title, s.s_content, s.s_date FROM s_favor sf, s_table s WHERE sf.s_uid = s.s_uid AND sf.m_uid = ?";
+	
+	//USER (로그인,회원가입)
+	// 1. 유저 등록하기
+		 public static final String SQL_USER_INSERT ="INSERT INTO M_USER "
+		 		+ "(m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_phoneNum, m_SMSOk, m_addressA, m_addressB)" + 
+		 		"	VALUES (SEQ_m_user_m_uid.NEXTVAL, ?, ?, ?, ?, to_date(?, 'yyyy-mm-dd'), ?, ?, ?, ?, ?)";
+		 
+		// 2. user 로그인
+		 public static final String SQL_USER_SELECT = "SELECT * FROM M_USER WHERE m_email = ?";
+		 	
+		// 3. userNick중복검사		 
+		 public static final String SQL_UNICK_SELECT = "SELECT m_nick FROM m_user WHERE m_nick = ?";
+		 
+		 
+		 // 4. userEmail 중복검사		 
+		 public static final String SQL_UEMAIL_SELECT = "SELECT m_email FROM m_user WHERE m_email = ?";
 }
