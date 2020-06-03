@@ -292,7 +292,6 @@ INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.NEXTVAL, n_title, n_content, m_uid FROM N_TABLE;
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.NEXTVAL, n_title, n_content, m_uid FROM N_TABLE;
 
-
 INSERT INTO faq (f_uid, f_title, f_content)
 	VALUES (SEQ_faq_f_uid.NEXTVAL, '제일 많이 궁금해 하는 내용', '이건 어떻게 구현해야 할까?');
 INSERT INTO faq (f_uid, f_title, f_content)
@@ -300,6 +299,14 @@ INSERT INTO faq (f_uid, f_title, f_content)
 INSERT INTO faq (f_uid, f_title, f_content)
 	VALUES (SEQ_faq_f_uid.NEXTVAL, '고민 되는 내용', '오늘 뭐먹지?');
 
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (001, '룸 4인실', 140000, 4);
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (002, '룸 6인실', 180000, 6);
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (003, '룸 8인실', 220000, 8);
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (005, '개인 좌석', 9000, 1);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
 	VALUES (101, '1', 170000, 6);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)

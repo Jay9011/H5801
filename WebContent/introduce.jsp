@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="ko">
     <link rel="stylesheet" href="CSS/index.css">
@@ -56,8 +62,9 @@
 
 
 
+		
 
-<div class="" id="i_room">
+<div id="i_room">
     <div class="w-12 text_title"><h1>Study Room Introduction</h1></div>
     <div class="left w-6 r_half">
 
@@ -92,9 +99,9 @@
         <div class="w-4 left price">
             <div class="effect-wrap">
                 <figure class="effect7 test">
-                    <div class="w-12 boom"><h4 class="center">4-person room</h4></div>
+                    <div class="w-12 boom"><h4 class="center">${introRow[0].t_name }</h4></div>
                     <figcaption>
-                        <div class="w-12 boom"><h5>4-person room</h5><h6>140,000 Won</h6></div>
+                        <div class="w-12 boom"><h5>${introRow[0].t_maxnum } Persons</h5><h6>${introRow[0].t_pay } Won</h6></div>
                     </figcaption>
                 </figure>
             </div>
@@ -165,8 +172,6 @@
                 </figcaption>
             </figure>
         </div>
-
-            
         </div>
         <div class="hr"><hr></div>
 
@@ -197,27 +202,27 @@
 
 
 
-<div class="" id="i_map">
+<div id="i_map">
     <div class="w-12 text_title"><h1>Way to come</h1></div>
     <div class="map map2">
         <div id="map" style="width:100%;height:350px;"></div>
         <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpXCUpAbetxI0sTqAX8IgAJ3UG8zGLn2E&callback=initMap"
-            async defer>
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpXCUpAbetxI0sTqAX8IgAJ3UG8zGLn2E&callback=initMap" async defer>
             </script>
     </div> <!-- //map -->
     <div class="hr"><hr></div>
-    <div style="text-align: left; padding-left: 40px;"><h4>오시는길</h4></div>
+    <div style="text-align: left; padding-left: 40px;"><h4>ì¤ìëê¸¸</h4></div>
     <div style="text-align: left; padding-left: 40px;">
-        <h5>비행기타고</h5>
-        <h5>버스타고 전철타고</h5>
-        <h5>자차타고</h5>
+        <h5>ë¹íê¸°íê³ </h5>
+        <h5>ë²ì¤íê³  ì ì² íê³ </h5>
+        <h5>ìì°¨íê³ </h5>
     </div>
 
 
 
 
 </div>
+
 
 
 

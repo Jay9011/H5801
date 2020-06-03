@@ -7,4 +7,14 @@
 
   $(document).ready(function(){
     $('.collapsible').collapsible();
+    $('.FAQ2').hide();
+    $('#FAQBTN').click(function(){
+      $('.FAQ2').hide();
+      $('.FAQ').fadeIn(500);
+    })
+    $('#GONGBTN').click(function(){
+      $('.FAQ').hide();
+      $('.FAQ2').fadeIn(500);
+    })
+
   });
