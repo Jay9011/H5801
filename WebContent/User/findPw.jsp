@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link href ="CSS/pw_default.css" rel="stylesheet" type="text/css">
+<link href ="../CSS/pw_default.css" rel="stylesheet" type="text/css">
 </head>
 <script>
 function chkSubmit(){
