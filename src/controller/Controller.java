@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import command.JoinCommand;
 import command.LoadCommand;
+import command.LogoutCommand;
 import command.login.LoginCommand;
 import command.studying.TableList;
 import command.studying.View;
@@ -93,7 +95,33 @@ public class Controller extends HttpServlet {
 			command = new LoadCommand();
 			command.execute(request, response);
 			break;
-
+		case "/User/login.ho":
+			viewPage = "login.jsp";
+			break;
+		case "/User/loginOk.ho":
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewPage = "loginOk.jsp";
+			break;
+		case "/User/joinchk.ho":
+			viewPage = "joinchk.jsp";
+			break;
+		case "/User/join.ho":
+			viewPage = "join.jsp";
+			break;
+		case "/User/joinOk.ho":
+			command = new JoinCommand();
+			command.execute(request, response);
+			viewPage = "joinOk.jsp";
+			break;
+		case "/index.ho":
+			viewPage = "index.jsp";
+			break;
+		case "/User/logout.ho":
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewPage = "logout.jsp";
+			break;
 		default:
 			break;
 		}
