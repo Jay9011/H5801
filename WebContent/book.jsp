@@ -1,3 +1,9 @@
+<%-- 비밀번호 변경 --%>
+<%-- 
+  작성자: 낙경
+ 2020-06-02  23:00 수정
+ --%>
+
 <%--contentType="charset=UTF-8": (결과) 웹 브라우저가 받아볼 페이지의 인코딩 방식 --%>
 <%--pageEncoding="UTF-8": (작업) JSP파일(페이지)에 기록된 소스코드 자체의 인코딩 방식 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
