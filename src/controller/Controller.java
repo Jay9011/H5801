@@ -95,11 +95,14 @@ public class Controller extends HttpServlet {
 			command = new commentOk();
 			command.execute(request, response);
 			break;
-			
+		
+//		마이페이지
 		case "/MyPage/list.ho":
 			command = new LoadCommand();
 			command.execute(request, response);
+			viewPage = "/MyPage/list.jsp";
 			break;
+			
 		case "/User/login.ho":
 			viewPage = "login.jsp";
 			break;

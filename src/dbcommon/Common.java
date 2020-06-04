@@ -31,6 +31,31 @@ public class Common {
 //	내가 찜한 게시글 찾기기
 	public static final String SQL_SELECT_ALL_LIKEBOARD = "SELECT s.s_uid, s.s_title, s.s_content, s.s_date FROM s_favor sf, s_table s WHERE sf.s_uid = s.s_uid AND sf.m_uid = ?";
 	
+	//==== 내가 쓴 게시판 받아오는 쿼리들
+		// 쿼리: 받아온 게시판의 내가 쓴 글 갯수
+		public static final	String SQL_COUNT_Board = "SELECT COUNT(*) FROM s_table WHERE m_uid = ?";
+		// 쿼리: fromRow 부터 pageRows 만큼 SELECT
+		public static final	String SQL_SELECT_FROM_ROW = "SELECT * FROM " + 
+					"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM s_table WHERE m_uid = ? ORDER BY s_uid DESC) T) " + 
+					"WHERE RNUM >= ? AND RNUM < ?";
+		
+		//==== 내가 쓴 댓글에 게시판 받아오는 쿼리들
+			// 쿼리: 받아온 게시판의 내가 쓴 글 갯수
+			public static final	String SQL_COUNT_CMTBOARD = "SELECT COUNT(*) FROM sr_comment WHERE m_uid = ?";
+			// 쿼리: fromRow 부터 pageRows 만큼 SELECT
+			public static final	String SQL_SELECT_FROM_CMT = "SELECT * FROM " + 
+						"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT s.s_uid, s.s_title, s.s_content, s.s_date FROM s_table s, sr_comment sc WHERE s.s_uid = sc.s_uid AND sc.m_uid = ? ORDER BY s_uid DESC) T) " + 
+						"WHERE RNUM >= ? AND RNUM < ?";
+		
+		
+			//==== 내가 좋아요 한 게시판 받아오는 쿼리들
+			// 쿼리: 받아온 게시판의 내가 쓴 글 갯수
+			public static final	String SQL_COUNT_LIKEBOARD = "SELECT COUNT(*) FROM s_favor WHERE m_uid = ?";
+			// 쿼리: fromRow 부터 pageRows 만큼 SELECT
+			public static final	String SQL_SELECT_FROM_LIKE = "SELECT * FROM " + 
+						"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT s.s_uid, s.s_title, s.s_content, s.s_date FROM s_favor sf, s_table s WHERE sf.s_uid = s.s_uid AND sf.m_uid = ? ORDER BY s_uid DESC) T) " + 
+						"WHERE RNUM >= ? AND RNUM < ?";
+	
 	//USER (로그인,회원가입)
 	// 1. 유저 등록하기
 		 public static final String SQL_USER_INSERT ="INSERT INTO M_USER "

@@ -43,8 +43,7 @@ public class DAOLoadBoard {
 			String s_content = resultSet.getString("s_content");
 			Date day = resultSet.getDate("s_date");
 			Time time = resultSet.getTime("s_date");
-			int m_uid = resultSet.getInt("m_uid");
-			
+//			int m_uid = resultSet.getInt("m_uid");
 			
 			String s_date_day = "";
 			String s_date_time = "";
@@ -54,9 +53,8 @@ public class DAOLoadBoard {
 			} // end if
 			String s_date = s_date_day + " " + s_date_time;
 			
-
 //			DTOStudyTable dto = new DTOStudyTable(s_uid, sc_name, s_title, s_content, s_date_day, s_date_time, m_nick, s_viewCnt);
-			DTOStudyTable dto = new DTOStudyTable(s_uid, s_title, s_content, s_date_day, s_date_time, s_date, m_uid);
+			DTOStudyTable dto = new DTOStudyTable(s_uid, s_title, s_content, s_date_day, s_date_time, s_date);
 			list.add(dto);
 		} // end while
 
@@ -112,4 +110,70 @@ public class DAOLoadBoard {
 	}
 	
 	
+	// 쿼리: 페이지네이션 구현
+	public int getCount(int m_uid, String table) throws SQLException {
+		int count = 0;
+
+		try {
+			pstmt = conn.prepareStatement("SELECT COUNT(*) FROM " + table + " WHERE m_uid = ?");
+			pstmt.setInt(1, m_uid);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} finally {
+			close();
+		}
+		return count;
+	}
+	// BOARD의 페이징
+	public DTOStudyTable[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
+		DTOStudyTable[] stables = null;
+		
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_ROW);
+			pstmt.setInt(1, m_uid);
+			pstmt.setInt(2, fromRow);
+			pstmt.setInt(3, toRow);
+			rs = pstmt.executeQuery();
+			stables = createArray(rs);
+		} finally {
+			close();
+		}
+		return stables;
+	}
+	
+	// 쿼리: cmt 페이징
+	public DTOStudyTable[] selectPaging_cmt(int m_uid, int fromRow, int toRow) throws SQLException {
+		DTOStudyTable[] stables = null;
+		
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_CMT);
+			pstmt.setInt(1, m_uid);
+			pstmt.setInt(2, fromRow);
+			pstmt.setInt(3, toRow);
+			rs = pstmt.executeQuery();
+			stables = createArray(rs);
+		} finally {
+			close();
+		}
+		return stables;
+	}
+	
+	// 쿼리: like 페이징
+		public DTOStudyTable[] selectPaging_like(int m_uid, int fromRow, int toRow) throws SQLException {
+			DTOStudyTable[] stables = null;
+			
+			try {
+				pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_LIKE);
+				pstmt.setInt(1, m_uid);
+				pstmt.setInt(2, fromRow);
+				pstmt.setInt(3, toRow);
+				rs = pstmt.executeQuery();
+				stables = createArray(rs);
+			} finally {
+				close();
+			}
+			return stables;
+		}
 }

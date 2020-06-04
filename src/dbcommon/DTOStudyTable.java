@@ -2,7 +2,7 @@ package dbcommon;
 
 public class DTOStudyTable {
 	private int s_uid;
-	private String sc_name;
+	private String sc_name; 
 	private String s_title;
 	private String s_content;
 	private String s_date_day;
@@ -22,7 +22,7 @@ public class DTOStudyTable {
 	
 	
 	public DTOStudyTable(int s_uid, String s_title, String s_content, String s_date_day, String s_date_time,
-			String s_date, int m_uid) {
+			String s_date) {
 		super();
 		this.s_uid = s_uid;
 		this.s_title = s_title;
@@ -30,7 +30,6 @@ public class DTOStudyTable {
 		this.s_date_day = s_date_day;
 		this.s_date_time = s_date_time;
 		this.s_date = s_date;
-		this.m_uid = m_uid;
 	}
 
 
