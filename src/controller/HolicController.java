@@ -44,32 +44,29 @@ public class HolicController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		
 		switch (com) {
-		case "/login.ho":
+		case "/User/login.ho":
 			viewPage = "login.jsp";
 			break;
-		case "/loginOk.ho":
+		case "/User/loginOk.ho":
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
 			break;
-		case "/joinchk.ho":
+		case "/User/joinchk.ho":
 			viewPage = "joinchk.jsp";
 			break;
-		case "/join.ho":
+		case "/User/join.ho":
 			viewPage = "join.jsp";
 			break;
-		case "/joinOk.ho":
+		case "/User/joinOk.ho":
 			command = new JoinCommand();
 			command.execute(request, response);
 			viewPage = "joinOk.jsp";
 			break;
-		case "/id_check.ho":
-			viewPage = "id_check.jsp";
-			break;
 		case "/index.ho":
 			viewPage = "index.jsp";
 			break;
-		case "/logout.ho":
+		case "/User/logout.ho":
 			command = new LogoutCommand();
 			command.execute(request, response);
 			viewPage = "logout.jsp";

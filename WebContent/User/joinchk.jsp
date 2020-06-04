@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="JS/submit.js"></script> <!-- 유효성검사 -->
+<script type="text/javascript" src="../JS/submit.js"></script> <!-- 유효성검사 -->
 <title>Insert title here</title>
 </head>
 <style>
@@ -28,7 +28,7 @@ textarea{
     height: 150px;
     border: 1px solid #e9e9e9;
     background: #f7f7f7;
-    color: #666666;
+    color: #666;
 }
 p#agreechk{
 color: red;

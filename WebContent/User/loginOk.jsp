@@ -10,7 +10,7 @@ history.back();
 	</c:when>
 	<c:when test="${chk == 1 }">
 	<script>
-	<% response.sendRedirect("index.ho");%>
+	<% response.sendRedirect("../index.ho");%>
 	</script>
 	</c:when>
 </c:choose>

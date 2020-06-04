@@ -1,0 +1,96 @@
+@charset "UTF-8";
+header{
+      background: url(../IMAGES/typewriter-801921_1920.jpg);
+      background-size: cover;
+      background-position: center;
+      min-height: 1000px;
+    }
+    .progress1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.progress1-container {
+  transform: translateY(-50%);
+  top: 60%;
+  left: 5%;
+  position: absolute;
+  width: calc(100% - 200px);
+  color: black;
+  padding: 0 100px;
+  text-align: center;
+}
+
+.progress1-container label {
+  font-size: 20px;
+  opacity: 0;
+  display:inline-block;
+  color: black;
+  font-family: 'Great Vibes', cursive;
+ /*  font-family: 'Yellowtail', cursive; */
+  font-size: 13em;
+  font-weight: 500;
+}
+    
+    
+    @keyframes anim {
+  0% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  33% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  66% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes anim {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(0px);
+  }
+  33% {
+      opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+  66% {
+   opacity:1;
+    -webkit-transform: translateX(0px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+}
+    @media screen and (max-width: 670px){
+      header{
+        min-height: 500px;
+      }
+       .progress1-container{
+            padding: 0;
+   			left: 0;
+    		width: calc(100%);
+      }
+      .progress1-container label {
+      	font-size: 10em;
+      }
+     h2{
+     	margin-top:1rem;
+     }
+    }
+    @media only screen and (min-width: 1200px){
+    html {
+    font-size: 16px;
+}
+    }
