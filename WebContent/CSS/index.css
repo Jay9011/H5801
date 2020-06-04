@@ -94,6 +94,10 @@ header{
 h2.pfont{
   font-weight: bold;
 }
+ .acolor a{
+       color: #ff932d;
+       font-weight: 700;
+   }
     @media screen and (max-width: 670px){
      h2{
      	margin-top:1rem;

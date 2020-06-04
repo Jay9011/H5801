@@ -5,15 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="../top.jsp"/>
 <!-- 주소 API  -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="../JS/submit.js"></script> <!--  로그인 유효성 검사 -->
-<script type="text/javascript" src="../JS/chkInform.js"></script> 
-<script type="text/javascript" src="../JS/addrAPI.js"></script>
 <title>JOIN</title>
 </head>
 <body>
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
 <%
 String agree1 = request.getParameter("agree1");
 String agree2 = request.getParameter("agree2");
@@ -44,5 +42,11 @@ location.href="joinchk.ho";
 </form>
 <button type="button" onclick="joinmit()">회원가입</button>
 <%} %>
+<jsp:include page="../foot.jsp"/>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="../JS/submit.js"></script> <!--  로그인 유효성 검사 -->
+<script type="text/javascript" src="../JS/chkInform.js"></script> 
+<script type="text/javascript" src="../JS/addrAPI.js"></script>
 </body>
 </html>
