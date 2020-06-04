@@ -13,39 +13,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
-<title>비밀번호 찾기</title>
-<link href ="../CSS/pw_default.css" rel="stylesheet" type="text/css">
+<jsp:include page="../top.jsp"/>
+<title>FIND YOUR PASSWORD</title>
 </head>
+
 <script>
-function chkSubmit(){
-	frm=document.forms['frm']; // 변수 정의: 현재 문서(document)의 'frm'이라는 form을 frm으로 정의
-	var email= frm['email'].value.trim();
+
+function chkEmailSubmit() {
+	var frm = document.findPwFrm;
 	
-	if(email==""){ // 프런트엔드 변수 검즘 (제목은 필수), required로도 처리 가능
-		alert("이메일은 반드시 입력해야 합니다");
-		frm['email'].focus(); // cursor 포커스 옮겨주기
-		return false; // submit 실패
+	var email = frm.email.value.trim();
+	var emailPat = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	 document.getElementById("chkid").innerHTML = "";
+     
+	if(email == ""){
+		document.getElementById("chkid").innerHTML = "이메일을 써주세요";                                    
+	    frm.email.focus();
+        return false;
 	}
-	return true; // submit 성공
-}
+	
+	if(!emailPat.test(email)){
+		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";                         
+		   frm.email.focus();
+           return false;
+	}
+	
+	
+	
+	frm.submit();
+}  
 
 </script>
 <body>
-    <div>
-        <div class="div1">
-            <h2 class="title">비밀번호 찾기</h2>
-            <form name="frm" action="findPwOk.holic" method="post" onsubmit="return chkSubmit()">
-            	<div>
-            		<label>ID (이메일)</label>
-                </div>
-                <div>
-                    <input type="email" name="email" placeholder="email 입력란" class= "email"/>
-                </div>
-	            <div class="div2">
-	                <input type="submit" value="전송" class="btn_submit">
-	            </div>
-            </form>
-        </div>
-    </div>
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
+<section class="container section scrollspy" id="intro">
+	 <div class="row">
+		<div class="col s12 14">
+			<h1 class="center-align pfont">FIND YOUR PASSWORD</h1>
+            <form name="findPwFrm" action="findPwOk.ho" method="post" >
+            	<div class="row">
+					<div class="col s1 "></div>
+					<div class="input-field col s10 ">
+                    	<input id="email_inline" type="email" name="email" class= "validate"/>
+            			<label for="email_inline">이메일(아이디)</label>
+                 		<span id="chkid" class="helper-text"></span>
+                 	</div>
+                 	<div class="col s1 "></div>
+                 </div>
+			</form>
+			<div class="row">
+				<div class="col s12 14 center-align">
+	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">확인</button>
+	             </div>
+          	</div>
+		</div>
+	</div>
+</section>
+<jsp:include page="../foot.jsp"/>
 </body>
 </html>

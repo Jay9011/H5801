@@ -18,7 +18,7 @@ import command.LogoutCommand;
 import command.SelectCommand;
 import command.SendCommand;
 import command.UpdateCommand;
-import command.login.LoginCommand;
+import command.LoginCommand;
 import command.studying.TableList;
 import command.studying.View;
 import command.studying.WriteOk;
@@ -158,7 +158,7 @@ public class Controller extends HttpServlet {
 		case "/book.ho":
 			command = new BookCommand();
 			command.execute(request, response);
-			viewPage = "/book.jsp";
+			viewPage = "book.jsp";
 			break;	
 			
 		// Test: 로그인

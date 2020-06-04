@@ -16,7 +16,7 @@
       <div class="row">
           <div class="col s12 14">
               <h1 class="center-align pfont">LOGIN</h1>
-              <form action="User/loginOk.ho" name="loginFrm" method="post">
+              <form action="loginOk.ho" name="loginFrm" method="post">
                   <div class="row">
                         <div class="col s1 "></div>
                         <div class="input-field col s10 ">
@@ -47,7 +47,7 @@
             </div>
           </div>
       </div>
-
+	</div>
   </section>
  
 <jsp:include page="../foot.jsp"/>

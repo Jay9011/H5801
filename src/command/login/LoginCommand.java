@@ -17,8 +17,8 @@ public class LoginCommand implements Command {
 		HttpSession session = request.getSession();
 		int result = 0;
 
-		String m_email = request.getParameter("m_email");
-		String m_pw = request.getParameter("m_pw");
+		String m_email = request.getParameter("email");
+		String m_pw = request.getParameter("pw");
 
 		if(m_email.trim().length() > 0 && m_email != null && m_pw.trim().length() > 0 && m_pw != null) {
 			member = login.login(m_email);
