@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="top.jsp"/>
+<jsp:include page="../top.jsp"/>
    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
  <title>타이틀 써주기</title>
    </head>
    <body>
-<jsp:include page="nav.jsp"/>
+<jsp:include page="../nav.jsp"/>
 <jsp:include page="../header.jsp"/>
  <!-- 페이지에 해당하는 내용 적기  -->
 <section class="container section scrollspy" id="intro">
@@ -29,6 +29,7 @@
 	</div>
 </section>
 
-	<jsp:include page="foot.jsp"/>
+	<jsp:include page="../foot.jsp"/>
+<!--  js 추가는 여기에 -->
 </body>
 </html>
