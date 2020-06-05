@@ -30,9 +30,9 @@
 <body>
 	<h1>Write</h1>
 	<form name="writeTable" action="writeOk.ho" method="post" onsubmit="return chkSubmit()">
-		<input type="hidden" name="m_uid" value="${m_uid }" />
-		작성자: <input type="text" name="m_nick" value="${m_nick }" disabled="disabled"/><br>
-		학년: <input type="radio" name="sc_uid" value="1">중1
+		<input type="hidden" name="m_uid" value="${uid }" />
+		작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br>
+		학년: <input type="radio" name="sc_uid" value="1" checked="checked">중1
 			<input type="radio" name="sc_uid" value="2">중2
 			<input type="radio" name="sc_uid" value="3">중3
 			<input type="radio" name="sc_uid" value="4">고1

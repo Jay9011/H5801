@@ -71,32 +71,32 @@ ${viewInfo[0].s_content}
 </div>
 <hr>
 <br>
-<c:if test="${m_uid != null}">
+<c:if test="${uid != null}">
 	<c:choose>
 		<c:when test="${liked > 0 }">
-			<button id="likeBtn" onclick="favorite(${m_uid}, ${viewInfo[0].s_uid})">좋아요 취소</button>
+			<button id="likeBtn" onclick="favorite(${uid}, ${viewInfo[0].s_uid})">좋아요 취소</button>
 		</c:when>
 		<c:otherwise>
-			<button id="likeBtn" onclick="favorite(${m_uid}, ${viewInfo[0].s_uid})">좋아요</button>
+			<button id="likeBtn" onclick="favorite(${uid}, ${viewInfo[0].s_uid})">좋아요</button>
 		</c:otherwise>
 	</c:choose>
 </c:if>
 <button onclick="location.href = 'list.ho'">목록보기</button>
-<c:if test="${m_uid == viewInfo[0].m_uid }">
+<c:if test="${uid == viewInfo[0].m_uid }">
 	<button onclick="location.href = 'update.ho?s_uid=${viewInfo[0].s_uid}'">수정하기</button>
 </c:if>
-<c:if test="${m_uid == viewInfo[0].m_uid || m_grade > 8}">
+<c:if test="${uid == viewInfo[0].m_uid || grade > 8}">
 	<button onclick="chkDelete(${viewInfo[0].s_uid})">삭제하기</button>
 </c:if>
-<c:if test="${m_uid != null}">
+<c:if test="${uid != null}">
 	<button onclick="location.href = 'write.ho'">글쓰기</button>
 </c:if>
 <hr />
-<c:if test="${m_uid != null}">
+<c:if test="${uid != null}">
 	<form id="newComForm${viewInfo[0].s_uid }" name="commentTable" method="POST" enctype="multipart/form-data">
 		<input id="bordUid" type="hidden" name="s_uid" value="${viewInfo[0].s_uid}" />
-		<input id="memberUid" type="hidden" name="m_uid" value="${m_uid }" />
-		작성자: <input type="text" name="m_nick" value="${m_nick }" disabled="disabled"/><br>
+		<input id="memberUid" type="hidden" name="m_uid" value="${uid }" />
+		작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br>
 		<br><textarea id="editor1"></textarea>
 		<br><input id="newComFormSubmit" type="button" value="등록" onclick="comSubmit('newComForm${viewInfo[0].s_uid }');"/>
 	</form>
@@ -128,11 +128,11 @@ ${viewInfo[0].s_content}
 			var user_id = row[i].m_uid;
 			var user_grade = 1;
 			var logined_id = 0;
-			<c:if test="${m_uid != null}">
-				var logined_id = ${m_uid};
+			<c:if test="${uid != null}">
+				var logined_id = ${uid};
 			</c:if>
-			<c:if test="${m_grade != null}">
-				var user_grade = ${m_grade};
+			<c:if test="${grade != null}">
+				var user_grade = ${grade};
 			</c:if>
 			if(row[i].sr_depth == 0){
 				commentrow += "<div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>"
@@ -163,13 +163,13 @@ ${viewInfo[0].s_content}
 				replyClick = true;
 				initPage();
 				$(".cke_editor_editor2").remove();
-				if(${m_uid != null}){
+				if(${uid != null}){
 					var commentrow = "";
 					commentrow += "<form id='addReply' name='commentTable' method='POST' enctype='multipart/form-data'>";
 					commentrow += "<input id='parent' type='hidden' name='parent_uid' value='" + $(this).attr('id') + "' />";
 					commentrow += "<input id='bordUid' type='hidden' name='s_uid' value='${viewInfo[0].s_uid}' />";
-					commentrow += "<input id='memberUid' type='hidden' name='m_uid' value='${m_uid }' />";
-					commentrow += "작성자: <input type='text' name='m_nick' value='${m_nick }' disabled='disabled'/><br>";
+					commentrow += "<input id='memberUid' type='hidden' name='m_uid' value='${uid }' />";
+					commentrow += "작성자: <input type='text' name='m_nick' value='${nick }' disabled='disabled'/><br>";
 					commentrow += "<br><textarea id='editor2'></textarea>";
 					commentrow += "<br><input id='addReplySubmit' type='button' value='등록' onclick='comSubmit(\"addReply\");'/>";
 					commentrow += "</form>";

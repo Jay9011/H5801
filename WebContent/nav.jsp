@@ -12,7 +12,7 @@
 			$(this).attr('href', 'reservation.jsp');
 		});
 		$('.loginNN2').click(function() {
-			$(this).attr('href', 'reservation.jsp');
+			$(this).attr('href', '${pageContext.request.contextPath}/StudyBoard/list.ho');
 		});
 	});
 </script>
@@ -26,7 +26,7 @@ $(document).ready(function() {
 			location.replace("${pageContext.request.contextPath}/User/login.ho");
 		}
 	});
-	
+
 });
 </script>
 	</c:otherwise>

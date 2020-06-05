@@ -151,6 +151,7 @@ public class Controller extends HttpServlet {
 
 		case "/StudyBoard/favor.ho":
 			new FavorClick().execute(request, response);
+			break;
 
 //		마이페이지
 		case "/MyPage/list.ho":
@@ -158,13 +159,13 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/MyPage/list.jsp";
 			break;
-			
+
 		case "/MyPage/reInfo.ho":
 			command = new ReinfoCommand();
 			command.execute(request, response);
 			viewPage = "/MyPage/reInfo.jsp";
 			break;
-			
+
 			// 예약현황 목록
 		case "/MyPage/book.ho":
 			new BookCommand().execute(request, response);
@@ -200,7 +201,7 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "logout.jsp";
 			break;
-			
+
 		// 비밀번호 찾기(인증번호 받기)
 		case "/User/findPw.ho":
 			viewPage = "findPw.jsp";

@@ -39,7 +39,7 @@ function chkSubmit(){
 <h2>수정</h2>
 <form action="updateOk.ho" name="frm" method="post" onsubmit="return chkSubmit()">
 <input type="hidden" name="s_uid" value="${selected[0].s_uid}"/>
-작성자: <input type="text" name="m_nick" value="${m_nick }" disabled="disabled"/><br>
+작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br>
 제목 : <input type="text" name="subject" value="${selected[0].s_title}" /><br>
 <hr>
 내용 :

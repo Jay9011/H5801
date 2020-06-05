@@ -16,7 +16,7 @@
 </head>
 <body>
 	<h1>List</h1>
-	현재 로그인중인 유저 : ${m_nick }<br>
+	현재 로그인중인 유저 : ${nick }<br>
 	<table>
 		<tr>
 			<th></th>
@@ -53,11 +53,11 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
-	<c:if test="${m_uid != null}">
+	<c:if test="${uid != null}">
 		<button onclick="location.href='write.ho'">글쓰기</button>
 	</c:if>
-	<c:if test="${m_uid == null}">
-		<button onclick="location.href='../Login/Login.ho'">로그인</button>
+	<c:if test="${uid == null}">
+		<button onclick="location.href='${pageContext.request.contextPath}/User/login.ho'">로그인</button>
 	</c:if>
 
 </body>

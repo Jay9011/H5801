@@ -42,10 +42,10 @@ public class View implements Command {
 			studyTable = daoStudy.viewPage(uid, isViewed);
 
 			daoStudy = new DAOStudy();
-			HttpSession session = request.getSession(false);
+			HttpSession session = request.getSession(true);
 			int m_uid = 0;
-			if(session.getAttribute("m_uid") != null) {
-				m_uid = (int) session.getAttribute("m_uid");
+			if(session.getAttribute("uid") != null) {
+				m_uid = (int) session.getAttribute("uid");
 				liked = daoStudy.selectFavor(uid, m_uid);
 			}
 		} catch (SQLException e) {
