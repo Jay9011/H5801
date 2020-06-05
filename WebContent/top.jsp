@@ -3,7 +3,7 @@
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- 파비콘 -->
-  <link rel=" shortcut icon" href="/Holic_test/IMAGES/favicon.ico">
+  <link rel=" shortcut icon" href="${pageContext.request.contextPath}/IMAGES/favicon.ico">
   <!-- font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <!--Import Google Icon Font-->
