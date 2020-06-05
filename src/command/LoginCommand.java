@@ -28,7 +28,7 @@ public class LoginCommand implements Command {
 				HttpSession session = request.getSession();
 				udao = new DAOUser();
 				udto = udao.login(email);
-				session.setAttribute("email", email);
+				session.setAttribute("email",udto.getEmail());
 				session.setAttribute("uid", udto.getUid());
 				session.setAttribute("nick", udto.getNick());
 				session.setAttribute("grade", udto.getGrade());

@@ -106,4 +106,6 @@ public class Common {
 		 
 		 // 4. userEmail 중복검사		 
 		 public static final String SQL_UEMAIL_SELECT = "SELECT m_email FROM m_user WHERE m_email = ?";
+		 // 5. 
+		 public static final String SQL_UEMAIL_SELECT2 = "SELECT * FROM m_user WHERE m_email = ?";
 }

@@ -421,6 +421,7 @@ INSERT INTO S_FAVOR (m_uid, s_uid, sl_date)
 	VALUES (5, 1, to_date('2020-06-01 00:09:10', 'yyyy-mm-dd hh24:MI:ss'));
 INSERT INTO S_FAVOR (m_uid, s_uid, sl_date)
 	VALUES (6, 1, to_date('2020-06-01 00:09:10', 'yyyy-mm-dd hh24:MI:ss'));
+SELECT * FROM m_user WHERE m_email ='admin@gmail.com';
 
 SELECT * FROM M_USER;
 SELECT * FROM MF_FILE;

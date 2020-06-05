@@ -85,7 +85,6 @@ public int insert(DTOUser dto) throws SQLException{
 		ArrayList<DTOUser> list = new ArrayList<DTOUser>();
 		
 		while(rs.next()) {
-			int uid = rs.getInt("m_uid");
 			String email = rs.getString("m_email");
 			String pw = rs.getString("m_pw");
 			String nick = rs.getString("m_nick");
@@ -97,6 +96,7 @@ public int insert(DTOUser dto) throws SQLException{
 			String addressB = rs.getString("m_addressB");
 			int smsOk = rs.getInt("m_SMSOk");
 			int grade = rs.getInt("m_grade");
+			int uid = rs.getInt("m_uid");
 			
 			DTOUser udto = new DTOUser(uid, email, pw, nick, name, birth, phoneNum, gender, addressA, addressB, grade, smsOk);
 			
@@ -136,7 +136,7 @@ public int insert(DTOUser dto) throws SQLException{
 		DTOUser [] arr = null;
 		
 		try {
-			pstmt = conn.prepareStatement(Common.SQL_UEMAIL_SELECT);
+			pstmt = conn.prepareStatement(Common.SQL_UEMAIL_SELECT2);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			arr = createArray(rs);

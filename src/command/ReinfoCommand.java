@@ -4,9 +4,11 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dbcommon.DAOUser;
 import dbcommon.DTOUser;
+import oracle.net.aso.s;
 
 public class ReinfoCommand implements Command{
 
@@ -14,8 +16,9 @@ public class ReinfoCommand implements Command{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		DAOUser udao = new DAOUser();
 		DTOUser [] uarr = null;
-		
-		String email = request.getParameter("email");
+	
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("email");
 		
 		try {
 			uarr = udao.selectByEmail(email);

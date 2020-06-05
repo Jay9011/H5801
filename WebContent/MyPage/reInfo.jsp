@@ -3,9 +3,8 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<c:out value="${sessionScope.email }"/>
 <c:choose>
-	<c:when test="${email != null}">
+	<c:when test="${email == null}">
 	<script>
 				alert("회원이 아니시면 접근할 수 없습니다.");
 				location.href="${pageContext.request.contextPath}/index.ho";
