@@ -24,6 +24,16 @@ public class UpdateCommand implements Command {
 		
 		String keyCode = (String) request.getSession().getAttribute("keyCode");
 		String chkKeyCode = request.getParameter("chkKeyCode").trim();
+		System.out.println(keyCode);
+		System.out.println(chkKeyCode);
+		
+		if(keyCode == null) {
+			System.out.println("인증번호 존재하지 않음");
+			cnt = -2;
+			request.setAttribute("reset_result", cnt);
+			
+			return;
+		}
 		
 		if(!keyCode.equals(chkKeyCode)) {
 			System.out.println("인증번호 불일치");

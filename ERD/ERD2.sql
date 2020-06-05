@@ -292,7 +292,6 @@ INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.NEXTVAL, n_title, n_content, m_uid FROM N_TABLE;
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.NEXTVAL, n_title, n_content, m_uid FROM N_TABLE;
 
-
 INSERT INTO faq (f_uid, f_title, f_content)
 	VALUES (SEQ_faq_f_uid.NEXTVAL, '제일 많이 궁금해 하는 내용', '이건 어떻게 구현해야 할까?');
 INSERT INTO faq (f_uid, f_title, f_content)
@@ -300,6 +299,14 @@ INSERT INTO faq (f_uid, f_title, f_content)
 INSERT INTO faq (f_uid, f_title, f_content)
 	VALUES (SEQ_faq_f_uid.NEXTVAL, '고민 되는 내용', '오늘 뭐먹지?');
 
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (001, '룸 4인실', 140000, 4);
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (002, '룸 6인실', 180000, 6);
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (003, '룸 8인실', 220000, 8);
+INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
+	VALUES (005, '개인 좌석', 9000, 1);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
 	VALUES (101, '1', 170000, 6);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
@@ -428,3 +435,36 @@ SELECT * FROM T_DETAIL;
 SELECT * FROM RESERVE;
 
 SELECT * FROM ALL_TABLES;
+
+CREATE OR REPLACE VIEW v_book
+AS
+SELECT
+a.p_uid
+, a.p_startTime
+, a.p_endTime
+, TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
+, TO_CHAR(a.p_startTime, 'HH24:MI:SS') AS "b_stime"
+, TO_CHAR(a.p_endTime, 'HH24:MI:SS') AS "b_etime"
+, ROUND((a.p_endTime-a.p_startTime)*24) AS "b_term"
+, ROUND((a.p_startTime-SYSDATE)*24) AS "b_duration"
+, CASE WHEN ROUND((a.p_startTime-SYSDATE)*24) >= 2 THEN '1' ELSE '0' END AS "b_refund"
+, a.total_amount
+, a.pay_date
+, TO_CHAR(a.pay_date, 'YYYY-MM-DD') AS "b_date"
+, a.p_cancel
+, b.m_uid
+, b.m_email
+, b.m_nick
+, b.m_name
+, b.m_grade
+, c.t_uid
+, CASE WHEN SUBSTR(c.t_uid, 1, 1) = 1 THEN '스터디룸' ELSE '좌석' END AS "b_seatType"
+, c.t_name
+, c.t_pay
+, c.t_maxnum
+FROM Reserve a, m_user b, t_detail c
+WHERE a.m_uid = b.m_uid
+AND a.t_uid = c.t_uid
+;
+
+SELECT * FROM v_book;

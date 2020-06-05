@@ -1,1 +1,111 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Do+Hyeon&family=Great+Vibes&family=Nanum+Gothic:wght@400;700&family=Sunflower:wght@300&display=swap');
+/* font-family: 'Berkshire Swash', cursive;
+font-family: 'Do Hyeon', sans-serif;
+font-family: 'Great Vibes', cursive;
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Sunflower', sans-serif; 
+*/
+body,html{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ div .alogo{
+      font-family:'Berkshire Swash', cursive;
+      font-size: 3em;
+    
+    }
+    .afont{
+      font-family:'Berkshire Swash', cursive;
+    }
+   nav{
+    background: rgba(0, 0, 0, 0.2);
+    height: 70px;
+    line-height: 70px;
+    transition: all 0.5s; 
+
+  }
+.sidenav{
+  width: 200px;
+}
+
+.dropdown-content>li>a{
+  color: white !important;
+ 
+}
+.dropdown-content{
+  background-color: #00000042;
+}
+.collapsible-body a{
+  color: rgb(29, 29, 29) !important;
+  background-color: #fff5d5;
+  font-weight: 600;
+}
+ .navbar-fixed{
+   z-index: 900 !important;
+   position: absolute;
+ }
+  #mobile-menu{
+   z-index: 1000 !important;
+ }
+  nav .sidenav-trigger i {
+    height: 65px;
+    line-height: 65px;
+} 
+.sidenav .collapsible-header:hover, .sidenav.fixed .collapsible-header:hover {
+  background-color: #ffc380b6;
+}
+.sidenav li>a:hover {
+  background-color: #ffc380b6;
+}
+.apad{
+  padding: 0 32px !important;
+}
+header{
+      min-height: 100px;
+    }
+    .section{
+        /* 뷰포트 너비를 기준으로 하는 단위 vw */
+        padding-top: 4vw;
+        padding-bottom: 4vw;
+    }
+  .tabs .indicator{
+        background-color: #ffa537;
+    }
+    .tabs .tab a:focus, .tabs .tab a:focus.active{
+        background: transparent;
+    }
+
+    .btn:not(.waves-light) {
+    /*   background: transparent; */
+    background-color:#ad855a;
+    border-radius: 5px;
+    color: white;
+    height: 30px;
+  font-weight: bold;
+    line-height: 0px;
+}
+.pfont{
+  font-family: 'Sunflower', sans-serif; 
+  
+}
+h2.pfont{
+  font-weight: bold;
+}
+ .acolor a{
+       color: #ff932d;
+       font-weight: 700;
+   }
+    @media screen and (max-width: 670px){
+     h2{
+     	margin-top:1rem;
+     }
+    }
+    @media only screen and (min-width: 1200px){
+    html {
+    font-size: 16px;
+}
+    }
+  

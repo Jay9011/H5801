@@ -22,7 +22,7 @@ WHERE s_uid=1;
 
 SELECT s.s_uid, s.s_title, s.s_content, s.s_date
 FROM s_table s, sr_comment sc
-WHERE s.s_uid = sc.s_uid AND sc.m_uid = 3;
+WHERE s.s_uid = sc.s_uid AND sc.m_uid = 2;
 
 --내가 찜한 게시물
 SELECT * FROM s_favor;

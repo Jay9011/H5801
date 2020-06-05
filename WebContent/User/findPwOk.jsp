@@ -1,8 +1,8 @@
-<!-- 비밀번호 찾기 확인 -->
-<!-- 
+<%-- 비밀번호 변경 --%>
+<%-- 
   작성자: 낙경
- 2020-06-01  23:00 수정
- -->
+ 2020-06-01  21:00 수정
+ --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,14 +10,11 @@
 
 <c:choose>
 	
-		<c:when test="${send_result ==  1}">
+	<c:when test="${send_result ==  1}">
 	
 		<script> 
 			alert("인증번호가 이메일로 전송되었습니다.");
-			//location.href = "resetPw.holic?uid=${param.uid}";
-			location.href = "resetPw.holic?uid=${send_arr[0].getUid()}";
-			//location.href = "resetPw.holic";
-			
+			location.href = "resetPw.ho?uid=${send_arr[0].uid }";
 		</script>
 	
 	</c:when>
@@ -30,5 +27,6 @@
 		</script>
 	
 	</c:otherwise>
+	
 	
 </c:choose>

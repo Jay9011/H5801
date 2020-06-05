@@ -9,11 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.BookCommand;
 import command.Command;
-import command.login.LoginCommand;
 import command.studying.ComDeleteOk;
 import command.studying.CommentJsonParse;
 import command.studying.CommentList;
+import command.JoinCommand;
+import command.LoadCommand;
+import command.LoginCommand_test;
+import command.LogoutCommand;
+import command.SelectCommand;
+import command.SendCommand;
+import command.UpdateCommand;
+import command.LoginCommand;
 import command.studying.TableList;
 import command.studying.Update;
 import command.studying.UpdateOk;
@@ -143,6 +151,85 @@ public class Controller extends HttpServlet {
 
 		case "/StudyBoard/favor.ho":
 			new FavorClick().execute(request, response);
+
+//		마이페이지
+		case "/MyPage/list.ho":
+			command = new LoadCommand();
+			command.execute(request, response);
+			viewPage = "/MyPage/list.jsp";
+			break;
+
+		case "/User/login.ho":
+			viewPage = "login.jsp";
+			break;
+		case "/User/loginOk.ho":
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewPage = "loginOk.jsp";
+			break;
+		case "/User/joinchk.ho":
+			viewPage = "joinchk.jsp";
+			break;
+		case "/User/join.ho":
+			viewPage = "join.jsp";
+			break;
+		case "/User/joinOk.ho":
+			command = new JoinCommand();
+			command.execute(request, response);
+			viewPage = "joinOk.jsp";
+			break;
+		case "/index.ho":
+			viewPage = "index.jsp";
+			break;
+		case "/User/logout.ho":
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewPage = "logout.jsp";
+			break;
+		// 비밀번호 찾기(인증번호 받기)
+		case "/User/findPw.ho":
+			viewPage = "findPw.jsp";
+			break;
+
+		case "/User/findPwOk.ho":
+			command = new SendCommand();
+			command.execute(request, response);
+			viewPage = "findPwOk.jsp";
+			break;
+
+		// 비밀번호 변경
+		case "/User/resetPw.ho":
+			command = new SelectCommand();
+			command.execute(request, response);
+			viewPage = "resetPw.jsp";
+			break;
+
+		case "/User/resetPwOk.ho":
+			command = new UpdateCommand();
+			command.execute(request, response);
+			viewPage = "resetPwOk.jsp";
+			break;
+
+		// 예약현황 목록
+		case "/book.ho":
+			command = new BookCommand();
+			command.execute(request, response);
+			viewPage = "book.jsp";
+			break;
+
+		// Test: 로그인
+		case "/login_test.ho":
+			viewPage = "login_test.jsp";
+			break;
+
+		case "/loginOk_test.ho":
+			command = new LoginCommand_test();
+			command.execute(request, response);
+			viewPage = "loginOk_test.jsp";
+			break;
+
+		case "/locationBook_test.ho":
+			viewPage = "locationBook_test.jsp";
 			break;
 		}
 
