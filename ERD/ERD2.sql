@@ -93,7 +93,7 @@ CREATE TABLE n_table
 	n_title varchar2(60) NOT NULL,
 	n_content clob NOT NULL,
 	n_viewCnt NUMBER DEFAULT 0,
-	n_date date,
+	n_date DATE DEFAULT SYSDATE,
 	m_uid number NOT NULL,
 	PRIMARY KEY (n_uid)
 );
@@ -189,49 +189,49 @@ CREATE TABLE t_detail
 
 ALTER TABLE mf_file
 	ADD FOREIGN KEY (m_uid)
-	REFERENCES m_user (m_uid)
+	REFERENCES m_user (m_uid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE n_table
 	ADD FOREIGN KEY (m_uid)
-	REFERENCES m_user (m_uid)
+	REFERENCES m_user (m_uid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE Reserve
 	ADD FOREIGN KEY (m_uid)
-	REFERENCES m_user (m_uid)
+	REFERENCES m_user (m_uid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE sr_comment
 	ADD FOREIGN KEY (m_uid)
-	REFERENCES m_user (m_uid)
+	REFERENCES m_user (m_uid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE s_favor
 	ADD FOREIGN KEY (m_uid)
-	REFERENCES m_user (m_uid)
+	REFERENCES m_user (m_uid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE s_table
 	ADD FOREIGN KEY (m_uid)
-	REFERENCES m_user (m_uid)
+	REFERENCES m_user (m_uid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE sr_comment
 	ADD FOREIGN KEY (sr_numUidt)
-	REFERENCES sr_comment (sr_numUid)
+	REFERENCES sr_comment (sr_numUid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE sr_file
 	ADD FOREIGN KEY (sr_numUid)
-	REFERENCES sr_comment (sr_numUid)
+	REFERENCES sr_comment (sr_numUid) ON DELETE CASCADE
 ;
 
 
@@ -243,13 +243,13 @@ ALTER TABLE s_table
 
 ALTER TABLE sr_comment
 	ADD FOREIGN KEY (s_uid)
-	REFERENCES s_table (s_uid)
+	REFERENCES s_table (s_uid) ON DELETE CASCADE
 ;
 
 
 ALTER TABLE s_favor
 	ADD FOREIGN KEY (s_uid)
-	REFERENCES s_table (s_uid)
+	REFERENCES s_table (s_uid) ON DELETE CASCADE
 ;
 
 

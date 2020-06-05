@@ -123,7 +123,38 @@ public class DAOStudy {
 		return dtoStudyTables;
 	} // end selectAll()
 
-	public DTOStudyTable[] viewPage(int s_uid) throws SQLException {
+	public DTOStudyTable[] viewPage(int s_uid, boolean isViewed) throws SQLException {
+		DTOStudyTable[] dtoStudyTables = null;
+		int cnt = 0;
+
+		try {
+			// 트랜잭션 처리
+			// Auto0commit 비활성화
+			conn.setAutoCommit(false);
+
+			if(!isViewed) {
+				pstmt = conn.prepareStatement(Common.SQL_INC_VIEWCNT_STABLE);
+				pstmt.setInt(1, s_uid);
+				cnt = pstmt.executeUpdate();
+				pstmt.close();
+			} // end if
+
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_ALL_WHERE_S_UID);
+			pstmt.setInt(1, s_uid);
+			rs = pstmt.executeQuery();
+			dtoStudyTables = createArray(rs);
+			conn.commit();
+		} catch (SQLException e) {
+			conn.rollback();
+			throw e;
+		} finally {
+			close();
+		}
+
+		return dtoStudyTables;
+	}
+
+	public DTOStudyTable[] selectByUid(int s_uid) throws SQLException {
 		DTOStudyTable[] dtoStudyTables = null;
 
 		try {
@@ -134,20 +165,19 @@ public class DAOStudy {
 		} finally {
 			close();
 		}
+
 		return dtoStudyTables;
 	}
 
-	public int insert(String m_uid, String subject, String content) throws SQLException {
+	public int insert(int m_uid, String subject, String content, int sc_uid) throws SQLException {
 		int cnt = 0;
-		int member_uid = Integer.parseInt(m_uid);
-		System.out.println(member_uid);
 
 		try {
 			pstmt = conn.prepareStatement(Common.SQL_INSERT_STABLE);
 			pstmt.setString(1, subject);
 			pstmt.setString(2, content);
-			pstmt.setInt(3, 1);
-			pstmt.setInt(4, member_uid);
+			pstmt.setInt(3, sc_uid);
+			pstmt.setInt(4, m_uid);
 
 			cnt = pstmt.executeUpdate();
 		} finally {
@@ -157,33 +187,255 @@ public class DAOStudy {
 		return cnt;
 	} // end insert()
 
-	public int insertComment(String s_uid, String m_uid, String content, String sc_group, String depth) {
+	public int update(int uid, String subject, String content) throws SQLException {
 		int cnt = 0;
-		int study_uid = Integer.parseInt(s_uid);
-		int member_uid = Integer.parseInt(m_uid);
-		int scomment_group = Integer.parseInt(sc_group);
-		int scomment_depth = Integer.parseInt(depth);
 
-		if(sc_group != null) {
-			try {
-				pstmt = conn.prepareStatement(Common.SQL_INSERT_SRCOMMENT_ORIGIN);
-				pstmt.setString(1, content); // 내용
-				pstmt.setInt(2, study_uid);	// 게시판번호
-				pstmt.setInt(3, member_uid);// 회원번호
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_UPDATE_STABLE);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, uid);
+
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
 		}
 
 		return cnt;
+	} // end update()
+
+	public DTOComment[] createArrayComment(ResultSet resultSet) throws SQLException {
+		DTOComment[] comments = null;
+
+		ArrayList<DTOComment> list = new ArrayList<DTOComment>();
+		while(resultSet.next()) {
+			int sr_numUid = resultSet.getInt("sr_numUid");
+			int sr_group = resultSet.getInt("sr_group");
+			int sr_depth = resultSet.getInt("sr_depth");
+			String sr_com = resultSet.getString("sr_com");
+			Date day = resultSet.getDate("sr_date");
+			Time time = resultSet.getTime("sr_date");
+			Date uday = resultSet.getDate("sr_udate");
+			Time utime = resultSet.getTime("sr_udate");
+			int sr_deleted = resultSet.getInt("sr_deleted");
+			int s_uid = resultSet.getInt("s_uid");
+			int m_uid = resultSet.getInt("m_uid");
+			String m_nick = resultSet.getString("m_nick");
+
+			String reg_date = "";
+			if(day != null){
+				reg_date = new SimpleDateFormat("yyyy-MM-dd").format(day) + " "
+						+ new SimpleDateFormat("hh:mm:ss").format(time);
+			}
+			String up_date = "";
+			if(uday != null){
+				up_date = new SimpleDateFormat("yyyy-MM-dd").format(uday) + " "
+						+ new SimpleDateFormat("hh:mm:ss").format(utime);
+			}
+
+			DTOComment comment = new DTOComment(sr_numUid, sr_group, sr_depth, sr_com, reg_date, up_date, sr_deleted, s_uid, m_uid, sr_group);
+			comment.setM_nick(m_nick);
+
+			list.add(comment);
+		}
+		int size = list.size();
+		if(size == 0) return null;
+
+		comments = new DTOComment[size];
+		list.toArray(comments);
+
+		return comments;
+	} // end createArrayComment()
+
+	public DTOComment[] selectCommentBySuid(int s_uid) throws SQLException {
+		DTOComment[] dtoComments = null;
+
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_ALL_SRCOMMENT_WHERE_S_UID);
+			pstmt.setInt(1, s_uid);
+			rs = pstmt.executeQuery();
+			dtoComments = createArrayComment(rs);
+		} finally {
+			close();
+		}
+
+		return dtoComments;
+	} // end selectCommentBySuid()
+
+	public DTOComment[] selectCommentBySRuid(int sr_uid) throws SQLException {
+		DTOComment[] dtoComments = null;
+
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_ALL_SRCOMMENT_WHERE_SR_UID);
+			pstmt.setInt(1, sr_uid);
+			rs = pstmt.executeQuery();
+			dtoComments = createArrayComment(rs);
+		} finally {
+			close();
+		}
+
+		return dtoComments;
+	} // end selectCommentBySuid()
+
+	public DTOComment[] insertComment(String s_uid, String m_uid, String content, String parent_uid) throws SQLException {
+		DTOComment[] dtoComments = null;
+		int cnt = 0;
+		int study_uid = 0;
+		int member_uid = 0;
+		int parent = 0;
+		try {
+			study_uid = Integer.parseInt(s_uid);
+			member_uid = Integer.parseInt(m_uid);
+			if(!parent_uid.equals("") && parent_uid != null) {
+				parent = Integer.parseInt(parent_uid);
+			}
+		} catch (Exception e) {
+		}
+
+		try {
+			if(s_uid != null) {
+				String[] generatedCols = {"sr_numuid"};
+				if(parent == 0) {
+					pstmt = conn.prepareStatement(Common.SQL_INSERT_SRCOMMENT_ORIGIN, generatedCols);
+					pstmt.setString(1, content); // 내용
+					pstmt.setInt(2, study_uid);	// 게시판번호
+					pstmt.setInt(3, member_uid);// 회원번호
+				} // end if
+				if(parent != 0) {
+					pstmt = conn.prepareStatement(Common.SQL_SELECT_ALL_SRCOMMENT_WHERE_SR_UID_ORIGIN);
+					pstmt.setInt(1, parent);
+					rs = pstmt.executeQuery();
+					int p_uid = 0;
+					int p_group = 0;
+					int p_depth = 0;
+					if(rs.next()) {
+						p_uid = rs.getInt("sr_numuid");
+						p_group = rs.getInt("sr_group");
+						p_depth = rs.getInt("sr_depth");
+					}
+					pstmt = conn.prepareStatement(Common.SQL_INSERT_SRCOMMENT, generatedCols);
+					pstmt.setInt(1, p_group);	// 그룹
+					pstmt.setInt(2, p_depth + 1);	// 댓글 깊이
+					pstmt.setString(3, content); // 내용
+					pstmt.setInt(4, study_uid);	// 게시판번호
+					pstmt.setInt(5, member_uid);// 회원번호
+					pstmt.setInt(6, parent);// 회원번호
+				} // end if
+				cnt = pstmt.executeUpdate();
+				rs = pstmt.getGeneratedKeys();
+				if(rs.next()) {
+					dtoComments = selectCommentBySRuid(rs.getInt(1));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return dtoComments;
 	} // end insertComment()
 
-	public int deleteComment() {
+	public int updateComment(String sr_com, int sr_uid) throws SQLException {
 		int cnt = 0;
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_UPDATE_SRCOMMENT);
+			pstmt.setString(1, sr_com);
+			pstmt.setInt(2, sr_uid);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
 
 		return cnt;
 	}
 
-//	저는 윤지우 입니다.
+	public int deleteComment(int sr_uid) throws SQLException {
+		int cnt = 0;
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_DELETE_SRCOMMENT);
+			pstmt.setInt(1, sr_uid);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+
+		return cnt;
+	}
+
+	public int deleteByUid(int s_uid) throws SQLException {
+		int cnt = 0;
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_DELETE_SRCOMMENT_WHERE_S_UID);
+			pstmt.setInt(1, s_uid);
+			pstmt.executeUpdate();
+			pstmt.close();
+			pstmt = conn.prepareStatement(Common.SQL_DELETE_SFAVOR_WHERE_S_UID);
+			pstmt.setInt(1, s_uid);
+			pstmt.executeUpdate();
+			pstmt.close();
+			pstmt = conn.prepareStatement(Common.SQL_DELETE_STABLE);
+			pstmt.setInt(1, s_uid);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+
+		return cnt;
+	}
+
+	public int selectFavor(int s_uid, int m_uid) throws SQLException {
+		int cnt = 0;
+
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_SFAVOR);
+			pstmt.setInt(1, m_uid);
+			pstmt.setInt(2, s_uid);
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt(1);
+		} finally {
+			close();
+		}
+
+		return cnt;
+	}
+
+	public int[] favorClick(int s_uid, int m_uid) throws SQLException {
+		int chk = 0;
+		int cnt = 0;
+		int[] resultSet = new int[2];
+
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_SFAVOR);
+			pstmt.setInt(1, m_uid);
+			pstmt.setInt(2, s_uid);
+			rs = pstmt.executeQuery();
+			rs.next();
+			chk = rs.getInt(1);
+			pstmt.close();
+			if(chk > 0) {
+				// 만약 기존에 좋아요를 눌렀다면
+				pstmt = conn.prepareStatement(Common.SQL_DELETE_SFAVOR);
+				pstmt.setInt(1, m_uid);
+				pstmt.setInt(2, s_uid);
+				cnt = pstmt.executeUpdate();
+				resultSet[0] = cnt;
+				resultSet[1] = 0;
+			} else {
+				// 좋아요를 새로 누른다면
+				pstmt = conn.prepareStatement(Common.SQL_INSERT_SFAVOR);
+				pstmt.setInt(1, m_uid);
+				pstmt.setInt(2, s_uid);
+				cnt = pstmt.executeUpdate();
+				resultSet[0] = cnt;
+				resultSet[1] = 1;
+			}
+		} finally {
+			close();
+		}
+
+		return resultSet;
+	}
 
 } // end Class

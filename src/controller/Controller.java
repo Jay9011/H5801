@@ -11,11 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
 import command.login.LoginCommand;
+import command.studying.ComDeleteOk;
+import command.studying.CommentJsonParse;
+import command.studying.CommentList;
 import command.studying.TableList;
+import command.studying.Update;
+import command.studying.UpdateOk;
 import command.studying.View;
 import command.studying.WriteOk;
 import command.studying.WriteTable;
-import command.studying.commentOk;
+import command.studying.comUpdate;
+import command.studying.comUpdateOk;
+import command.studying.CommentOk;
+import command.studying.DeleteOk;
+import command.studying.FavorClick;
+import command.studying.ResultJsonParse;
+import command.studying.FileUploadCommand;
 
 @WebServlet("*.ho")
 public class Controller extends HttpServlet {
@@ -50,7 +61,7 @@ public class Controller extends HttpServlet {
 
 		switch (com) {
 		case "/Login/Login.ho":
-			viewPage = "/Login/Login.jsp";
+			viewPage = "Login.jsp";
 			break;
 
 		case "/Login/LoginOk.ho":
@@ -62,35 +73,79 @@ public class Controller extends HttpServlet {
 		case "/StudyBoard/list.ho":
 			command = new TableList();
 			command.execute(request, response);
-			viewPage = "/StudyBoard/list.jsp";
+			viewPage = "list.jsp";
 			break;
 
 		case "/StudyBoard/write.ho":
 			command = new WriteTable();
 			command.execute(request, response);
-			viewPage = "/StudyBoard/write.jsp";
+			viewPage = "write.jsp";
 			break;
 
 		case "/StudyBoard/writeOk.ho":
 			command = new WriteOk();
 			command.execute(request, response);
-			viewPage = "/StudyBoard/writeOk.jsp";
+			viewPage = "writeOk.jsp";
 			break;
 
 		case "/StudyBoard/view.ho":
 			command = new View();
 			command.execute(request, response);
-			viewPage = "/StudyBoard/view.jsp";
+			viewPage = "view.jsp";
+			break;
+
+		case "/StudyBoard/commentJSON.ho":
+			new CommentList().execute(request, response);
+			new CommentJsonParse().execute(request, response);
 			break;
 
 		case "/StudyBoard/commentOk.ho":
-			command = new commentOk();
+			command = new CommentOk();
 			command.execute(request, response);
 			break;
 
-		default:
+		case "/StudyBoard/fileUpload.ho":
+			new FileUploadCommand().execute(request, response);
+			break;
+
+		case "/StudyBoard/update.ho":
+			command = new Update();
+			command.execute(request, response);
+			viewPage = "update.jsp";
+			break;
+
+		case "/StudyBoard/updateOk.ho":
+			command = new UpdateOk();
+			command.execute(request, response);
+			viewPage = "updateOk.jsp";
+			break;
+
+		case "/StudyBoard/comUpdate.ho":
+			new comUpdate().execute(request, response);
+			new CommentJsonParse().execute(request, response);
+			break;
+
+		case "/StudyBoard/comUpdateOk.ho":
+			new comUpdateOk().execute(request, response);
+			new ResultJsonParse().execute(request, response);
+			break;
+
+		case "/StudyBoard/deleteOk.ho":
+			command = new DeleteOk();
+			command.execute(request, response);
+			viewPage = "deleteOk.jsp";
+			break;
+
+		case "/StudyBoard/comDeleteOk.ho":
+			new ComDeleteOk().execute(request, response);
+			new ResultJsonParse().execute(request, response);
+			break;
+
+		case "/StudyBoard/favor.ho":
+			new FavorClick().execute(request, response);
 			break;
 		}
+
 
 		if(viewPage != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
