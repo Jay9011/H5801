@@ -15,9 +15,15 @@ public class SelectCommand implements Command {
 		
 		DAOPassword dao = new DAOPassword();
 		DTOPassword [] arr = null; 
-		
+		int uid;
 		// 매개변수 받아오기
-		int uid = Integer.parseInt(request.getParameter("uid"));
+		if(request.getSession().getAttribute("uid") != null) {
+			uid = (int)(request.getSession().getAttribute("uid"));
+		} else {
+			uid = 0;
+			return;
+		}
+		
 		
 		try {
 			arr = dao.selectByUid(uid);

@@ -55,6 +55,7 @@ public class SendCommand implements Command, Email{
 		
 		// 메일 받을 주소
 		String to_email = arr[0].getEmail();
+		int uid = arr[0].getUid();
 		
 		// SMTP 서버 정보 설정
 		Properties props = new Properties();
@@ -118,6 +119,7 @@ public class SendCommand implements Command, Email{
 		}
 		HttpSession saveKey = request.getSession();
 		saveKey.setAttribute("keyCode", keyCode);
+		saveKey.setAttribute("uid", uid);
 		
 		
 	} // end execute()

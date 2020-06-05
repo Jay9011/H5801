@@ -372,6 +372,30 @@ INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name,
 	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-02 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 14000, 14000, to_date('2020-05-28 10:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 103);
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
 	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-04 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 101);
+/*(낙경) 예약 데이터 추가: 페이징 구현*/
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-04 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 101);
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-07 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 101);
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-09 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 101);
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-05 05:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 103);
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-29 07:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 102);
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-20 09:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 101);
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-11 10:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 101);
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-21 11:00:00', 'yyyy-mm-dd hh24:MI:ss'), '1304', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 102);
+
+-- 다량의 데이터 필요
+SELECT * FROM RESERVE ORDER BY p_uid DESC;
+
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid) SELECT SEQ_Reserve_p_uid.NEXTVAL, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid FROM RESERVE ;
+
+DELETE FROM RESERVE WHERE SEQ_Reserve_p_uid.NEXTVAL >10;
 
 INSERT INTO s_category (sc_uid, sc_name)
 	VALUES (1, '중1');

@@ -49,7 +49,8 @@ function chkEmailSubmit() {
 <jsp:include page="../header.jsp"/>
 <section class="container section scrollspy" id="intro">
 	 <div class="row">
-		<div class="col s12 14">
+	 <div class="col s1 "></div>
+		<div class="col s10">
 			<h1 class="center-align pfont">FIND YOUR PASSWORD</h1>
             <form name="findPwFrm" action="${pageContext.request.contextPath}/User/findPwOk.ho" method="post" >
             	<div class="row">
@@ -67,7 +68,8 @@ function chkEmailSubmit() {
 	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">확인</button>
 	             </div>
           	</div>
-		</div>
+			</div>
+		<div class="col s1 "></div>
 	</div>
 </section>
 <jsp:include page="../foot.jsp"/>

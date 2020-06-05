@@ -16,10 +16,17 @@ public class UpdateCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		int cnt = 0;
+		int uid;
 		DAOPassword dao = new DAOPassword();
 		
 		// 매개변수 받아오기
-		int uid = Integer.parseInt(request.getParameter("uid").trim());
+		if(request.getParameter("uid").trim() != null) {
+			uid = Integer.parseInt(request.getParameter("uid").trim());
+		} else {
+			uid =0;
+			return;
+		}
+		
 		String pw = request.getParameter("resetPw");
 		
 		String keyCode = (String) request.getSession().getAttribute("keyCode");
