@@ -16,7 +16,7 @@ public class LoadCommand implements Command {
 		DAOLoadBoard dao = new DAOLoadBoard();
 		DTOStudyTable[] stables = null;
 		HttpSession session = request.getSession(true);
-		int uid = (Integer)session.getAttribute("m_uid");
+		int uid = (Integer)session.getAttribute("uid");
 //		System.out.println(uid);
 		//매개변수 받아오기
 		//int uid = Integer.parseInt(request.getParameter("m_uid"));

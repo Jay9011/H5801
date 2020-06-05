@@ -1,11 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="../top.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
  <c:choose>
 <c:when test="${chk == 0}">
+<div id="demo-modal" class="modal">
+    <div class="modal-content">
+      <h4>로그인 실패</h4>
+      <p>아이디 혹은 패스워드가 틀렸습니다.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 <script>
-alert("아이디 혹은 패스워드가 틀렸습니다.");
-history.back(); 
+document.addEventListener('DOMContentLoaded', function () {
+    var Modalelem = document.querySelector('.modal');
+    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
+    instance.open();
+});
 		</script>
 	</c:when>
 	<c:when test="${chk == 1 }">
@@ -14,14 +33,6 @@ history.back();
 	</script>
 	</c:when>
 	<c:when test="${chk == -1 }">
-
-    <!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="../top.jsp"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
 <title>LOGIN</title>
    </head>
    <body>

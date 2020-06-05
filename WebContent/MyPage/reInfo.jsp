@@ -24,7 +24,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="<c:url value='/'/>CSS/loginout.css">
-<title>JOIN</title>
+<title>회원정보 수정</title>
 </head>
 <body>
 <jsp:include page="../nav.jsp"/>
