@@ -21,7 +21,7 @@
               <form action="join.ho" name="joinChkFrm" method="post">
                   <section>
                       <div class="row">
-                          < <div class="input-field col s12">
+                          <div class="input-field col s12">
                               <h6 class="center-align pfont">회원가입 약관</h6>
                               <textarea readonly>
                         제1장 총 칙

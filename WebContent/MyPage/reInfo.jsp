@@ -32,9 +32,9 @@
 
 <section class="container section scrollspy" id="intro">
       <div class="row">
-           <div class="col s1"></div>
-          <div class="col s10 14">
-              <h1 class="center-align pfont">회원 정보 수정</h1>
+           <div class="col m1"></div>
+          <div class="col m10 s11">
+              <h1 class="center-align pfont">회원 정보 <span>수정</span></h1>
               <form action="reInfoOk.ho" name="reInfoFrm" method="post">
                   <div class="row">
                      <div class="input-field col s12">
@@ -147,13 +147,11 @@
                   </div>
               </div>
           </div>
-                 <div class="col s1"></div>
+                 <div class="col m1"></div>
       </div>
   </section>
 <jsp:include page="../foot.jsp"/>
 <!-- 주소 API  -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="../JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 <script type="text/javascript" src="../JS/chkInform.js"></script> 
 <script type="text/javascript" src="../JS/addrAPI.js"></script>

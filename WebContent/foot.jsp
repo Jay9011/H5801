@@ -26,3 +26,4 @@
           <div class="container center-align">&copy; 2020 Holic</div>
       </div>
   </footer>
+    <script src="${pageContext.request.contextPath}/JS/index.js"></script>
