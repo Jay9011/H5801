@@ -59,9 +59,9 @@ $(document).ready(function() {
         </li>
            <li><a class="dropdown-trigger btnOut" data-target="dropdown3" style="display: none;">마이페이지</a>
           <ul id='dropdown3' class='dropdown-content'>
-            <li><a href="#!">예약현황</a></li>
-            <li><a href="#!">게시물 조회</a></li>
-            <li><a href="#!">정보수정</a></li>
+            <li><a href="Mypage/">예약현황</a></li>
+            <li><a href="Mypage/">게시물 조회</a></li>
+            <li><a href="${pageContext.request.contextPath}/Mypage/reInfo.ho">정보수정</a></li>
           </ul>
         </li>
           <li>
@@ -110,7 +110,7 @@ $(document).ready(function() {
 						<ul>
 							<li><a href="#!">예약현황</a></li>
 							<li><a href="#!">게시물 조회</a></li>
-							<li><a href="#!">정보수정</a></li>
+							<li><a href="${pageContext.request.contextPath}/Mypage/reInfo.ho">정보수정</a></li>
 						</ul>
 					</div>
 				</li>

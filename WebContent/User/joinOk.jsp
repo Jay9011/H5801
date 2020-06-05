@@ -5,7 +5,7 @@
 <c:when test="${cnt == 1}">
 	<script>
 			alert("회원가입에 성공하셨습니다.");
-			location.href = "index.ho";
+			location.href = "${pageContext.request.contextPath}/index.ho";
 		</script>
 </c:when>
 <c:otherwise>

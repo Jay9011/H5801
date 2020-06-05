@@ -24,13 +24,12 @@ header{
   text-align: center;
 }
 
-.progress1-container label {
+.progress1-container > label {
   font-size: 20px;
   opacity: 0;
   display:inline-block;
   color: black;
   font-family: 'Great Vibes', cursive;
- /*  font-family: 'Yellowtail', cursive; */
   font-size: 13em;
   font-weight: 500;
 }
@@ -80,6 +79,7 @@ header{
        .progress1-container{
             padding: 0;
    			left: 0;
+ 			top: 40%;
     		width: calc(100%);
       }
       .progress1-container label {

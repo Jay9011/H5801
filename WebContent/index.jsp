@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="top.jsp"/>
-   <link rel="stylesheet" href="<c:url value='/'/>CSS/indexmain.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
  <title>HolicStudy</title>
    </head>
    <body>
@@ -21,6 +21,7 @@
       <label> l</label>
       <label> i</label>
       <label> c</label>
+    </div>
     </div>
     <!-- 이부분은 뺴고 가져올것 -->
   </header>

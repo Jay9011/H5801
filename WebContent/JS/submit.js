@@ -83,6 +83,11 @@ function joinmit(){
 		   frm.pw.focus();
 		   return false;	
 	}
+	if(pw != pwchk){
+		cPw.innerHTML = "비밀번호 확인을 해주세요222";
+		   frm.pwchk.focus();
+		   return false;	
+	}
 	
 	if(birth == "" || !birthJ.test(birth)){
 		cBrith.innerHTML = "생년월일 8자리를입력해주세요";
