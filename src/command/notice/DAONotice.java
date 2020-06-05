@@ -61,9 +61,9 @@ public class DAONotice{
 				n_date_day = new SimpleDateFormat("yyyy-MM-dd").format(n_day);
 				n_date_time = new SimpleDateFormat("HH:mm:ss").format(n_time);
 			} // end if
-			String n_ndate = n_date_day + " " + n_date_time;
+			String n_date = n_date_day + " " + n_date_time;
 			
-			DTONotice ndto = new DTONotice(n_uid, n_title, n_content, n_viewCnt, n_ndate, m_uid);
+			DTONotice ndto = new DTONotice(n_uid, n_title, n_content, n_viewCnt, n_date, m_uid);
 			list.add(ndto);
 		}
 		
@@ -80,7 +80,7 @@ public class DAONotice{
 		DTONotice[] dtoNotices = null;
 		try {
 			pstmt = conn.prepareStatement(NoticeCommon.SQL_SELECT_ALL_NOTICE);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();	// TABLE
 			dtoNotices = createArray(rs);
 		} finally {
 			close();
@@ -88,6 +88,40 @@ public class DAONotice{
 		return dtoNotices;
 	}
 	
+	public DTONotice[] selectUid(int n_uid) throws SQLException{
+		DTONotice[] dtoNotices = null;
+		int cnt = 0;
+		
+		try {
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_SELECT_INC_VIEWCNT);
+			pstmt.setInt(1, n_uid);
+			cnt = pstmt.executeUpdate(); // INT
+
+			pstmt.close();
+			
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_SELECT_NOTICE_UID);
+			pstmt.setInt(1, n_uid);
+			rs = pstmt.executeQuery();
+			dtoNotices =  createArray(rs);
+			
+			conn.commit();
+		}catch (Exception e) {
+			conn.rollback();
+			throw e;
+		}finally {
+			close();
+		}
+		return dtoNotices;
+	}
+	
+	public DTONotice[] selectList() throws SQLException{
+		
+		
+		return null;
+	}
+		
 	
 	
 	

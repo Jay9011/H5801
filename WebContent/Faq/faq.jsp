@@ -26,11 +26,10 @@
     <body>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
-      <div class="w-12 text_title FAQ2"><h1>22Introdus Holic Reading Room</h1></div>
   <div class="text_title"><span class="ButtomBtn1 colorsel" id="FAQBTN">FAQ</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="ButtomBtn2 colorsel" id="GONGBTN">Gong</span></div>
   <br>
   <div>
-    <div class="hr"><hr></div>
+    <div class="hr"><hr class="hr2"></div>
       <div class="FAQ">
 <!-- https://material.io/resources/icons/?style=baseline -->
 
@@ -39,10 +38,10 @@
     <c:choose>
     	<c:when test="${empty listRow || fn:length(listRow) == 0 }"></c:when>
     	<c:otherwise>
-    		<c:forEach var="fnow" items="${listRow }">
+    		<c:forEach var="faq" items="${listRow }">
     	<li>
-      		<div class="collapsible-header"><i class="material-icons">live_help</i>${fnow.f_title }</div>
-      		<div class="collapsible-body" id="test"><span>${fnow.f_content }</span></div>
+      		<div class="collapsible-header"><i class="material-icons">live_help</i>${faq.f_title }</div>
+      		<div class="collapsible-body" id="test"><span>${faq.f_content }</span></div>
     	</li>
     		</c:forEach>
     	</c:otherwise>
@@ -56,26 +55,7 @@
 </div>  <!-- END -->
 
 <br>
-<div>
-      <div class="FAQ2">
-      <div class="ac">
-        
-<!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
-        
-
-      
-
-
-
-
-
-  </div>
-  <br><br><br>
-  </div>  <!-- END -->
-</div>  <!-- END -->
-
-
-<div class="hr"><hr></div>
+<div class="hr"><hr class="hr2"></div>
 <div><h5>If you have more questions, click the button to go</h5></div>
 <br>
 <div class="bt-1"><a class="waves-effect waves-light btn bt-2">Ask a question</a></div>

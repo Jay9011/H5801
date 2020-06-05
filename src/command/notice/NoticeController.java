@@ -43,10 +43,15 @@ public class NoticeController extends HttpServlet {
 		System.out.println("com: " + com);
 		
 		switch (com) {
-		case "/faq.fc3":
+		case "/notice.fc3":
 			command = new NoticeLoad();
 			command.execute(request, response);
-			viewPage = "faq.jsp";
+			viewPage = "notice.jsp";
+			break;
+		case "/noticeview.fc3":
+			command = new NoticeView();
+			command.execute(request, response);
+			viewPage = "noticeview.jsp";
 			break;
 
 		default:

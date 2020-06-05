@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
 
-public class NoticeLoad implements Command{
+
+public class NoticeView implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -19,9 +20,9 @@ public class NoticeLoad implements Command{
 		DTONotice[] table = null;
 		
 		try {
-			table = daoNotice.selectAll();
-			request.setAttribute("nListRow", table);
-			
+			int n_uid = Integer.parseInt(request.getParameter("uid"));			
+			table = daoNotice.selectUid(n_uid);
+			request.setAttribute("nListView", table);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

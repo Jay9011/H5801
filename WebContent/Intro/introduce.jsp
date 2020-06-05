@@ -101,7 +101,7 @@
                 <figure class="effect7 test">
                     <div class="w-12 boom"><h4 class="center">${introRow[0].t_name }</h4></div>
                     <figcaption>
-                        <div class="w-12 boom"><h5>${introRow[0].t_maxnum } Persons</h5><h6>${introRow[0].t_pay } Won</h6></div>
+                        <div class="w-12 boom"><h5>${introRow[0].t_maxnum }</h5><h6>${introRow[0].t_pay } Won</h6></div>
                     </figcaption>
                 </figure>
             </div>
@@ -109,9 +109,9 @@
         <div class="w-4 left price">
             <div class="effect-wrap">
                 <figure class="effect7 test">
-                    <div class="w-12 boom"><h4 class="center">6-person room</h4></div>
+                    <div class="w-12 boom"><h4 class="center">${introRow[1].t_name }</h4></div>
                     <figcaption>
-                        <div class="w-12 boom"><h5>6-person room</h5><h6>180,000 Won</h6></div>
+                        <div class="w-12 boom"><h5>${introRow[1].t_maxnum }</h5><h6>${introRow[1].t_pay } Won</h6></div>
                     </figcaption>
                 </figure>
             </div>
@@ -119,9 +119,9 @@
         <div class="w-4 left price">
             <div class="effect-wrap">
                 <figure class="effect7 test">
-                    <div class="w-12 boom"><h4 class="center">8-person room</h4></div>
+                    <div class="w-12 boom"><h4 class="center">${introRow[2].t_name }</h4></div>
                     <figcaption>
-                        <div class="w-12 boom"><h5>8-person room</h5><h6>220,000 Won</h6></div>
+                        <div class="w-12 boom"><h5>${introRow[2].t_maxnum }</h5><h6>${introRow[2].t_pay } Won</h6></div>
                     </figcaption>
                 </figure>
             </div>
@@ -133,10 +133,10 @@
         <div class="w-3 left price">
             <div class="effect-wrap">
                 <figure class="effect7 test">
-                    <div class="w-12 boom"><h4>2-hour</h4></div>
+                    <div class="w-12 boom"><h4>2({introRow[3].t_pay}* 2)</h4></div>
                     <figcaption>
                         
-                        <div class="w-12 boom"><h5>2-hour</h5><h6>10,000 won</h6></div>
+                        <div class="w-12 boom"><h5>${introRow[3].t_maxnum }</h5><h6>${introRow[3].t_pay } Won</h6></div>
                     </figcaption>
                 </figure>
             </div>
@@ -144,10 +144,10 @@
             <div class="w-3 left price">
                 <div class="effect-wrap">
                     <figure class="effect7 test">
-                        <div class="w-12 boom"><h4>4-hour</h4></div>
-                        <figcaption>
-                            
-                            <div class="w-12 boom"><h5>4-hour</h5><h6>18,000 won</h6></div>
+                    <div class="w-12 boom"><h4>4${introRow[3].t_name }</h4></div>
+                    <figcaption>
+                        
+                        <div class="w-12 boom"><h5>${introRow[3].t_maxnum }</h5><h6>${introRow[3].t_pay * 1.8} Won</h6></div>
                         </figcaption>
                     </figure>
                 </div>
@@ -155,9 +155,10 @@
             <div class="w-3 left price">
                 <div class="effect-wrap">
                     <figure class="effect7 test">
-                        <div class="w-12 boom"><h4>6-hour</h4></div>
-                        <figcaption>
-                            <div class="w-12 boom"><h5>6-hour</h5><h6>24,000 won</h6></div>
+                    <div class="w-12 boom"><h4>6${introRow[3].t_name }</h4></div>
+                    <figcaption>
+                        
+                        <div class="w-12 boom"><h5>${introRow[3].t_maxnum }</h5><h6>${introRow[3].t_pay } Won</h6></div>
                         </figcaption>
                     </figure>
                 </div>
@@ -165,10 +166,10 @@
             <div class="w-3 left price">
         <div class="effect-wrap">
             <figure class="effect7 test">
-                <div class="w-12 boom"><h4>8-hour</h4></div>
-                <figcaption>
-                    
-                    <div class="w-12 boom"><h5>8-hour</h5><h6>28,000 won</h6></div>
+                    <div class="w-12 boom"><h4>8${introRow[3].t_name }</h4></div>
+                    <figcaption>
+                        
+                        <div class="w-12 boom"><h5>${introRow[3].t_maxnum }</h5><h6>${introRow[3].t_pay } Won</h6></div>
                 </figcaption>
             </figure>
         </div>

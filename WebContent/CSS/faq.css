@@ -13,7 +13,6 @@ html, body{
 body {
     max-width: 100%;
     height: auto;
-    /* font-family: Helvetica Neue, Helvetica, Arial, sans-serif, ; */
     margin: 0;
     padding: 0;   
     color:#000;
@@ -24,13 +23,25 @@ div{
     text-align: center;
 }
 
+.acol{
+	color: black !important;
+}
+
+.hr1{
+    margin: 0;
+    border: 1px solid
+}
+.hr2{
+    border: 2px solid
+}
+
 .text_title{
 	text-align: left;
 	padding: 20px 0px 0px 60px;
 }
 
 .hr{
-    padding: 0px 60px 60px 60px;
+    padding: 0px 60px 10px 60px;
 }
 
 .ac{
@@ -54,10 +65,22 @@ div{
     float: right;
 }
 
-.ClickColor{
-    color: dodgerblue;
+.menu{
+    border-bottom: 1px solid black;
+    padding-top: 10px;
 }
 
+.clear{
+    clear: both;
+}
+
+.header{
+    font-size: 16px;
+}
+
+.menu:hover{
+    background-color: rgba(0,0,0,0.2);
+}
 
 
 
