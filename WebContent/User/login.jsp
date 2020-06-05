@@ -40,7 +40,7 @@
               </form>
               <div class="row">
                 <div class="col s12 14 center-align acolor">
-              <a href="${pageContext.request.contextPath}/User/findpw.ho">비밀번호 찾기</a> | <a href="${pageContext.request.contextPath}/User/join.ho">회원가입</a>
+              <a href="${pageContext.request.contextPath}/User/findPw.ho">비밀번호 찾기</a> | <a href="${pageContext.request.contextPath}/User/join.ho">회원가입</a>
               </div>
               </div>
               <div class="row">

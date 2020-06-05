@@ -43,7 +43,7 @@
 				
 				<script> 
 					alert("비밀번호 업데이트에 성공하였습니다");
-					location.href = "login.ho";
+					location.href = "${pageContext.request.contextPath}/User/login.ho";
 				</script>
 			
 			</c:otherwise>

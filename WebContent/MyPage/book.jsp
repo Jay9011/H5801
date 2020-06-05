@@ -12,7 +12,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
-
+<c:if test="${uid == null }">
+	<script>
+		alert("잘못된 접근입니다. 로그인 해주세요.")
+		location.href = "${pageContext.request.contextPath}/User/login.ho";
+	</script>
+</c:if>
 <c:if test="${uid != null }">
 <!DOCTYPE html>
 <html lang="ko">
