@@ -32,7 +32,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
 <title>MY RESERVATION</title>
-<style>
+<style> 
 h3 {
 	margin-top: 0;
 	border-bottom: 1px dotted #666;
