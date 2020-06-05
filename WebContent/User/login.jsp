@@ -48,11 +48,11 @@
               <button type="button" class="btn waves-effect " onclick="chkSubmit()">로그인</button>
             </div>
           </div>
+          </div>
           <div class="col s1"></div>
       </div>
       </div>
   </section>
- 
 <jsp:include page="../foot.jsp"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 </body>
