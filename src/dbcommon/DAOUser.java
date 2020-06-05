@@ -121,7 +121,7 @@ public int insert(DTOUser dto) throws SQLException{
 			
 			// 아이디 있는지 없는지 체크
 			if(rs.next()) {
-				 if(rs.getString("m_pw").equals(pw)) {
+				 if(rs.getString("m_pw").equals(pw) && rs.getString("m_email").equals(email)) {
 					 return 1;
 				 }else{
 					 return 0; // 비밀번호 틀림

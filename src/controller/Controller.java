@@ -172,6 +172,8 @@ public class Controller extends HttpServlet {
 			break;
 
 		case "/User/login.ho":
+			command = new LoginCommand();
+			command.execute(request, response);
 			viewPage = "login.jsp";
 			break;
 		case "/User/loginOk.ho":
