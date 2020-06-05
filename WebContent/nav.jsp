@@ -59,7 +59,7 @@ $(document).ready(function() {
         </li>
            <li><a class="dropdown-trigger btnOut" data-target="dropdown3" style="display: none;">마이페이지</a>
           <ul id='dropdown3' class='dropdown-content'>
-            <li><a href="#!">예약현황</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho">예약현황</a></li>
             <li><a href="#!">게시물 조회</a></li>
             <li><a href="#!">정보수정</a></li>
           </ul>
@@ -108,7 +108,7 @@ $(document).ready(function() {
 					class="collapsible-header apad btnOut2">마이페이지</a>
 					<div class="collapsible-body">
 						<ul>
-							<li><a href="#!">예약현황</a></li>
+							<li><a href="${pageContext.request.contextPath}/MyPage/book.ho">예약현황</a></li>
 							<li><a href="#!">게시물 조회</a></li>
 							<li><a href="#!">정보수정</a></li>
 						</ul>

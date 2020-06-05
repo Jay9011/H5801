@@ -12,7 +12,7 @@
 
 <body>
 <h1>로그인</h1>
-<form action="loginOk_test.holic" name="loginFrm" method="post">
+<form action="loginOk_test.ho" name="loginFrm" method="post">
 <div>
 아이디 : <input type="text" name="email" placeholder="이메일을 입력해 주세요" value="admin@gmail.com" class="email"/>
 </div>
@@ -24,6 +24,6 @@
 <input type="submit" value="로그인" class="btn_submit">
 
 </form>
-<a href="findPw.holic">비밀번호 찾기</a> | <a href="join.ho">회원가입</a>
+<a href="findPw.ho">비밀번호 찾기</a> | <a href="join.ho">회원가입</a>
 </body>
 </html>

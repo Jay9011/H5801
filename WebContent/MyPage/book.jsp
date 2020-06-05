@@ -14,7 +14,6 @@
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 
 
-
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head: 현재 문서의 정보를 제공하는 역할 -->
@@ -39,6 +38,8 @@ table, th, td {
 </style>
 </head>
 <body>
+<c:if test="${uid } != null">
+
 
 		<hr>
 		<h3>▶ 예약 현황</h3>
@@ -79,7 +80,7 @@ table, th, td {
 		<br>
 		<button onclick="location.href='write.do'">신규등록</button>
 
-
+</c:if>
 
 </body>
 </html>

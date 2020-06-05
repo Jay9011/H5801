@@ -19,7 +19,7 @@ public class BookCommand implements Command {
 		
 		// 매개변수 받아오기
 		int uid = (int)(request.getSession().getAttribute("uid"));
-		
+		System.out.println(uid);
 		
 		try {
 			arr = dao.selectByUid(uid);
