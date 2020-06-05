@@ -9,7 +9,7 @@
 </head>
 <body>
 
-		<a href="book.holic">예약현황</a>
+		<a href="${pageContext.request.contextPath}/MyPage/book.ho">예약현황</a>
 
 </body>
 </html>

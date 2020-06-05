@@ -52,7 +52,7 @@ function chkPwd(){
 		document.getElementById('chkPW').style.color = "red";
 		document.getElementById('chkPW').innerHTML = "동일한 암호를 입력하세요.";
 	}else{
-		   document.getElementById('chkPW').style.color = "black";
+		   document.getElementById('chkPW').style.color = "blue";
 		   document.getElementById('chkPW').innerHTML = "암호가 확인 되었습니다.";
 	 }
 }

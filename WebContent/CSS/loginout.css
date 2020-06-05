@@ -1,0 +1,53 @@
+@charset "UTF-8";
+    /* 라벨 기본 색 */
+    .input-field label {
+     color: #000;
+   }
+
+   .input-field input[type=text]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=email]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=password]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=radio]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=tel]:not(.browser-defaiut):focus:not([readonly]){
+        border-bottom: 1px solid #dfb429;
+        box-shadow: 0 1px 0 0 #dfb429;
+   }
+   .input-field input[type=text]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=email]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=password]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=radio]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=tel]:not(.browser-defaiut):focus:not([readonly])+label{
+        color: #dfb429;
+   }
+   [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after{
+       background-color: #dfb429;
+   }
+   [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after{
+    border: 2px solid  #dfb429;
+   }
+[type="checkbox"]:checked+span:not(.lever):before{
+    border-right: 2px solid #dfb429;
+    border-bottom: 2px solid #dfb429;
+	
+}
+
+.row a{
+       color: #ff932d;
+       font-weight: 700;
+}
+   /* 회원가입 체크 css */
+p{
+    text-align: right;
+}
+.pcolor span{
+    font-size: 13px !important;
+    color: #9e9e9e;
+}
+
+textarea{
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    width: 98%;
+    height: 150px;
+    border: 1px solid #e9e9e9;
+    background: #f7f7f7;
+    color: #666;
+}
+span#agreechk{
+color: red;
+text-align: center;
+}

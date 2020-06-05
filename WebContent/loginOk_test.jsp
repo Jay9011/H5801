@@ -5,7 +5,7 @@
 	<c:when test="${login == 1 }">
 		<script>
 			alert("로그인 성공");
-			location.href = "locationBook_test.holic";
+			location.href = "locationBook_test.ho";
 		</script>
 	</c:when>
 	<c:otherwise>

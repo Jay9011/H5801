@@ -300,13 +300,13 @@ INSERT INTO faq (f_uid, f_title, f_content)
 	VALUES (SEQ_faq_f_uid.NEXTVAL, '고민 되는 내용', '오늘 뭐먹지?');
 
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
-	VALUES (001, '룸 4인실', 140000, 4);
+	VALUES (001, '4-person room', 140000, 4);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
-	VALUES (002, '룸 6인실', 180000, 6);
+	VALUES (002, '6-person room', 180000, 6);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
-	VALUES (003, '룸 8인실', 220000, 8);
+	VALUES (003, '8-person room', 220000, 8);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
-	VALUES (005, '개인 좌석', 9000, 1);
+	VALUES (005, '-time seating', 9000, 1);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
 	VALUES (101, '1', 170000, 6);
 INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
