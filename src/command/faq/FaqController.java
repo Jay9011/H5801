@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.omg.CORBA.Request;
 
 import command.Command;
-import command.login.LoginCommand;
+import command.LoginCommand;
 import command.notice.NoticeLoad;
 import command.studying.View;
 
@@ -35,7 +35,7 @@ public class FaqController extends HttpServlet {
 
 	protected void getFaq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String viewPage = null;
 		Command command = null;
 
@@ -47,7 +47,7 @@ public class FaqController extends HttpServlet {
 		System.out.println("uri: " + uri);
 		System.out.println("conPath: " + conPath);
 		System.out.println("com: " + com);
-		
+
 		switch (com) {
 		case "/faq.fc":
 			command = new FaqLoad();
@@ -60,12 +60,12 @@ public class FaqController extends HttpServlet {
 		default:
 			break;
 		}
-		
+
 		if(viewPage != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}
-		
+
 	}
-	
+
 }
