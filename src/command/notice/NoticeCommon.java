@@ -13,7 +13,12 @@ public class NoticeCommon{
 			"SELECT * FROM " + 
 			"(SELECT ROWNUM AS RNUM, N.* FROM (SELECT * FROM N_TABLE ORDER BY N_UID DESC) T) " + 
 			"WHERE RNUM >= ? AND RNUM < ?";
-
+	public static final String SQL_COUNT_SELECT_NTABLE = 
+			"SELECT COUNT(*) FROM N_TABLE";
+	
+	public static final	String SQL_SELECT_FROM_ROW = "SELECT * FROM " + 
+			"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM n_table ORDER BY n_uid DESC) T) " + 
+			"WHERE RNUM >= ? AND RNUM < ?";
 	
 	
 }

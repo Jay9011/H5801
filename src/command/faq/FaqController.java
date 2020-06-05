@@ -49,7 +49,7 @@ public class FaqController extends HttpServlet {
 		System.out.println("com: " + com);
 
 		switch (com) {
-		case "/faq.fc":
+		case "/Faq/faq.fc":
 			command = new FaqLoad();
 			command.execute(request, response);
 			command = new NoticeLoad();

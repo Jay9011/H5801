@@ -42,9 +42,9 @@ public class IntroController extends HttpServlet {
 		System.out.println("uri: " + uri);
 		System.out.println("conPath: " + conPath);
 		System.out.println("com: " + com);
-		
 		switch (com) {
-		case "/introduce.fc2":
+		case "/Intro/introduce.fc2":
+			System.out.println("아아악");
 			command = new IntroLoad();
 			command.execute(request, response);
 			viewPage = "introduce.jsp";

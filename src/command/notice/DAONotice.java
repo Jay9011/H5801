@@ -116,10 +116,41 @@ public class DAONotice{
 		return dtoNotices;
 	}
 	
-	public DTONotice[] selectList() throws SQLException{
+	public int getNCount() throws SQLException{
+		int nCount = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_COUNT_SELECT_NTABLE);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				nCount = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return nCount;
+		
+	}
+
+	public DTONotice[] selectPaging_nt(int fromRow, int toRow) throws SQLException {
+		DTONotice [] ndto = null;
+		
+		try {
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_SELECT_FROM_ROW);
+			pstmt.setInt(1, fromRow);
+			pstmt.setInt(2, toRow);
+			rs = pstmt.executeQuery();
+			ndto = createArray(rs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
 		
 		
-		return null;
+		
+		return ndto;
 	}
 		
 	

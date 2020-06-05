@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import command.pagenotice.NoticePageingLoad;
 
 @WebServlet("*.fc3")
 public class NoticeController extends HttpServlet {
@@ -43,12 +44,12 @@ public class NoticeController extends HttpServlet {
 		System.out.println("com: " + com);
 		
 		switch (com) {
-		case "/notice.fc3":
-			command = new NoticeLoad();
+		case "/Notice/notice.fc3":
+			command = new NoticePageingLoad();
 			command.execute(request, response);
 			viewPage = "notice.jsp";
 			break;
-		case "/noticeview.fc3":
+		case "Notice/noticeview.fc3":
 			command = new NoticeView();
 			command.execute(request, response);
 			viewPage = "noticeview.jsp";

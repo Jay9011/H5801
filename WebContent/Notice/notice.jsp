@@ -6,8 +6,7 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/faq.css">
+    <link rel="stylesheet" href="../CSS/faq.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -25,7 +24,7 @@
       
     </head>
     <body>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="../js/materialize.min.js"></script>
       <div class="w-12 text_title FAQ"><h1>22Introdus Holic Reading Room</h1></div>
   <div class="text_title"><span class="ButtomBtn1 colorsel" id="FAQBTN">FAQ</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="ButtomBtn2 colorsel" id="GONGBTN">Gong</span></div>
   <br>
@@ -46,9 +45,9 @@
           <br>
           <div class="w-12"><hr class="hr1"></div>
 	    <c:choose>
-    	<c:when test="${empty nListRow || fn:length(nListRow) == 0 }"></c:when>
+    	<c:when test="${empty npagetable || fn:length(npagetable) == 0 }"></c:when>
     	<c:otherwise>
-    		<c:forEach var="notice" items="${nListRow }">
+    		<c:forEach var="notice" items="${npagetable }">
         <div class="menu">
           <div class="w-1 left-1">${notice.n_uid }</div>
           <div class="w-7 left-1"><a class="acol" href="noticeview.fc3?uid=${notice.n_uid}">${notice.n_title }</a></div>
@@ -61,6 +60,47 @@
     </c:choose>
         </div>
       <br><br><br>
+      
+      <!--  -->
+      
+      <div class="pager">
+    <ul>
+        <c:if test="${ curPageNum > 5 && !empty kwd }">
+            <li><a href="notice.fc3?page=${ blockStartNum - 1 }&kwd=${ kwd }">◀</a></li>
+        </c:if>
+        
+        <c:if test="${ curPageNum > 5 }">
+            <li><a href="notice.fc3?page=${ blockStartNum - 1 }">◀</a></li>
+        </c:if>
+        
+        <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
+            <c:choose>
+                <c:when test="${ i > lastPageNum }">
+                    <li>${ i }</li>
+                </c:when>
+                <c:when test="${ i == curPageNum }">
+                    <li class="selected">${ i }</li>
+                </c:when>
+                <c:when test="${ !empty kwd}">
+                    <li><a href="notice.fc3?page=${ i }&kwd=${ kwd }">${ i }</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="notice.fc3?page=${ i }">${ i }</a></li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        
+        <c:if test="${ lastPageNum > blockLastNum && !empty kwd }">
+            <li><a href="notice.fc3?page=${ blockLastNum + 1 }&kwd=${ kwd }">▶</a></li>
+        </c:if>
+        
+        <c:if test="${ lastPageNum > blockLastNum }">
+            <li><a href="notice.fc3?page=${ blockLastNum + 1 }">▶</a></li>
+        </c:if>
+    </ul>
+</div> 
+      
+      <!--  -->
   </div>  <!-- END -->
 </div>
 
