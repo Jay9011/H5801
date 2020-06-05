@@ -8,31 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
- <c:choose>
-<c:when test="${chk == 0}">
-<div id="demo-modal" class="modal">
-    <div class="modal-content">
-      <h4>로그인 실패</h4>
-      <p>아이디 혹은 패스워드가 틀렸습니다.</p>
-    </div>
-    <div class="modal-footer">
-      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var Modalelem = document.querySelector('.modal');
-    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
-    instance.open();
-});
-		</script>
-	</c:when>
-	<c:when test="${chk == 1 }">
-	<script>
-	<% response.sendRedirect("../index.ho");%>
-	</script>
-	</c:when>
-	<c:when test="${chk == -1 }">
 <title>LOGIN</title>
    </head>
    <body>
@@ -81,6 +56,29 @@ document.addEventListener('DOMContentLoaded', function () {
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 </body>
 </html>
+ <c:choose>
+<c:when test="${chk == 0}">
+<div id="demo-modal" class="modal">
+    <div class="modal-content">
+      <h4>로그인 실패</h4>
+      <p>아이디 혹은 패스워드가 틀렸습니다.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var Modalelem = document.querySelector('.modal');
+    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
+    instance.open();
+});
+		</script>
+	</c:when>
+	<c:when test="${chk == 1 }">
+	<script>
+	<% response.sendRedirect("../index.ho");%>
+	</script>
 	</c:when>
 </c:choose>
 
