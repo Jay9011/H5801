@@ -14,7 +14,6 @@ import command.Command;
 import command.JoinCommand;
 import command.LoadCommand;
 import command.LoginCommand;
-import command.LoginCommand_test;
 import command.LogoutCommand;
 import command.ReinfoCommand;
 import command.SelectCommand;
@@ -165,6 +164,12 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/MyPage/reInfo.jsp";
 			break;
+			
+			// 예약현황 목록
+		case "/MyPage/book.ho":
+			new BookCommand().execute(request, response);
+			viewPage = "book.jsp";
+			break;
 
 		case "/User/login.ho":
 			viewPage = "login.jsp";
@@ -193,51 +198,29 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "logout.jsp";
 			break;
+			
 		// 비밀번호 찾기(인증번호 받기)
 		case "/User/findPw.ho":
 			viewPage = "findPw.jsp";
 			break;
 
 		case "/User/findPwOk.ho":
-			command = new SendCommand();
-			command.execute(request, response);
+			new SendCommand().execute(request, response);
 			viewPage = "findPwOk.jsp";
 			break;
 
 		// 비밀번호 변경
 		case "/User/resetPw.ho":
-			command = new SelectCommand();
-			command.execute(request, response);
+			new SelectCommand().execute(request, response);
 			viewPage = "resetPw.jsp";
 			break;
 
 		case "/User/resetPwOk.ho":
-			command = new UpdateCommand();
-			command.execute(request, response);
+			new UpdateCommand().execute(request, response);
 			viewPage = "resetPwOk.jsp";
 			break;
 
-		// 예약현황 목록
-		case "/MyPage/book.ho":
-			command = new BookCommand();
-			command.execute(request, response);
-			viewPage = "book.jsp";
-			break;
 
-		// Test: 로그인
-		case "/login_test.ho":
-			viewPage = "login_test.jsp";
-			break;
-
-		case "/loginOk_test.ho":
-			command = new LoginCommand_test();
-			command.execute(request, response);
-			viewPage = "loginOk_test.jsp";
-			break;
-
-		case "/locationBook_test.ho":
-			viewPage = "locationBook_test.jsp";
-			break;
 		}
 
 
