@@ -38,64 +38,75 @@
               <form action="reInfoOk.ho" name="reInfoFrm" method="post">
                   <div class="row">
                      <div class="input-field col s12">
-                          <input type="text" name="name" id="name" class="validate" value="${ulist[0].uid }">
+                          <input type="text" name="name" id="name" class="validate" value="${ulist[0].name }" readonly>
                           <label for="name">이름</label>
                           <span id="chkName" class="helper-text"></span>
                       </div>
                   </div>
                   <div class="row">
                          <div class="input-field col s12 m6">
-                          <input type="text" name="nick" id="nick" class="validate" onkeyup="chknick(nick.value);">
+                          <input type="text" name="nick" id="nick" class="validate" onkeyup="chknick(nick.value);"  value="${ulist[0].nick }">
                           <label for="nick">닉네임</label>
                           <span id="chkNick" class="helper-text"></span>
                       </div>
                          <div class="input-field col s12 m6">
                           <input type="email" name="email" id="email" class="validate"
-                              onkeyup="chkemail(email.value);"><label for="email">이메일</label>
-                          <span id="chkEmail" class="helper-text">유효한 이메일을 써주셔야 비밀번호 찾기가 가능합니다.</span>
+                             value="${ulist[0].email }" readonly><label for="email">이메일</label>
                       </div>
                   </div>
                   <div class="row">
                           <div class="input-field col s12 m6">
-                          <input type="password" name="pw" id="pw" class="validate" minlength="4">
+                          <input type="password" name="pw" id="pw" class="validate" minlength="4"  value="${ulist[0].pw }" readonly>
                           <label for="pw">비밀번호</label>
                       </div>
                          <div class="input-field col s12 m6">
-                          <input type="password" name="pwchk" id="pwchk" onkeyup="chkPwd();" class="validate"><label
+                          <input type="password" name="pwchk" id="pwchk" onkeyup="chkPwd2();" class="validate"><label
                               for="pwchk" minlength="4">비밀번호 확인</label>
                           <span id="chkPW" class="helper-text">비밀번호는 4자 이상 써주세요</span>
                       </div>
                   </div>
                   <div class="row">
                          <div class="input-field col s12 m6">
-                          <input type="text" name="birth" id="birth" maxlength="10" class="validate">
+                          <input type="text" name="birth" id="birth" maxlength="10" class="validate"  value="${ulist[0].birth }" readonly>
                           <label for="birth">생년월일</label>
-                          <span id="chkBirth" class="helper-text">생년월일은 8자리 써주세요</span>
                       </div>
                        <div class="input-field col s12 m6">
                           <p>
                               <span>성별 &emsp;</span>
+                              <c:if test="${ulist[0].gender== '남자'}">
                               <label>
-                                  <input type="radio" name="gender" value="남자" checked>
+                                  <input type="radio" name="gender" value="남자" checked >
                                   <span>남자</span>
                               </label> &emsp;
                               <label>
                                   <input type="radio" name="gender" value="여자">
                                   <span>여자</span>
                               </label>
+                              </c:if>
+                               <c:if test="${ulist[0].gender== '여자'}">
+                               <label>
+                                  <input type="radio" name="gender" value="남자" >
+                                  <span>남자</span>
+                              </label> &emsp;
+                              <label>
+                                  <input type="radio" name="gender" value="여자" checked>
+                                  <span>여자</span>
+                              </label>
+                              </c:if>
                           </p>
                       </div>
                   </div>
                   <div class="row">
                       <div class="input-field col s12 m6">
-                          <input type="tel" name="phoneNum" id="phoneNum" maxlength="13" class="validate">
+                          <input type="tel" name="phoneNum" id="phoneNum" maxlength="13" class="validate" value="${ulist[0].phoneNum }" >
                           <label for="phoneNum">핸드폰</label>
                           <span id="chkPhone" class="helper-text">핸드폰 번호를 정확히 기제해 주세요</span>
                       </div>
                         <div class="input-field col s12 m6">
                           <p>
                               <span>SMS 수신여부 &emsp;</span>
-                              <label>
+                                       <c:if test="${ulist[0].smsOk == '1'}">
+                               <label>
                                   <input type="radio" name="smsok" value="1" checked>
                                   <span>동의</span>
                               </label> &emsp;
@@ -103,17 +114,29 @@
                                   <input type="radio" name="smsok" value="0">
                                   <span>비동의</span>
                               </label>
+                              </c:if>
+                               <c:if test="${ulist[0].smsOk == '0'}">
+                                  <label>
+                                  <input type="radio" name="smsok" value="1" >
+                                  <span>동의</span>
+                              </label> &emsp;
+                              <label>
+                                  <input type="radio" name="smsok" value="0" checked>
+                                  <span>비동의</span>
+                              </label>
+                              </c:if>
+                           
                           </p>
                       </div>
                   </div>
                   <div class="row">
                         <div class="input-field col s12 m6">
                           <input type="text" name="addressA" class="validate" id="addressA" readonly
-                              onclick="exeAddress();" />
+                              onclick="exeAddress();" value="${ulist[0].addressA }" />
                           <span id="chkAddr" class="helper-text">클릭하여 주소를 입력해 주세요.</span>
                       </div>
                        <div class="input-field col s12 m6">
-                          <input type="text" name="addressB" id="addressB">
+                          <input type="text" name="addressB" id="addressB" value="${ulist[0].addressB }" >
                           <label for="addressB">상세 주소</label>
                       </div>
                   </div>

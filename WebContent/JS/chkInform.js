@@ -56,3 +56,17 @@ function chkPwd(){
 		   document.getElementById('chkPW').innerHTML = "암호가 확인 되었습니다.";
 	 }
 }
+
+// 수정 중복확인
+function chkPwd2(){
+	var frm = document.reInfoFrm;
+	var pw1 = frm.pw.value;
+	var pw2 = frm.pwchk.value;
+	if(pw1 != pw2){
+		document.getElementById('chkPW').style.color = "red";
+		document.getElementById('chkPW').innerHTML = "동일한 암호를 입력하세요.";
+	}else{
+		   document.getElementById('chkPW').style.color = "blue";
+		   document.getElementById('chkPW').innerHTML = "암호가 확인 되었습니다.";
+	 }
+}

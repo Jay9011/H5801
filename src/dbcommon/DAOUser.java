@@ -89,7 +89,7 @@ public int insert(DTOUser dto) throws SQLException{
 			String pw = rs.getString("m_pw");
 			String nick = rs.getString("m_nick");
 			String name = rs.getString("m_name");
-			String birth = rs.getString("m_birth");
+			Date birthday = rs.getDate("m_birth");
 			String phoneNum = rs.getString("m_phoneNum");
 			String gender = rs.getString("m_gender");
 			String addressA = rs.getString("m_addressA");
@@ -97,6 +97,8 @@ public int insert(DTOUser dto) throws SQLException{
 			int smsOk = rs.getInt("m_SMSOk");
 			int grade = rs.getInt("m_grade");
 			int uid = rs.getInt("m_uid");
+			
+			String birth = new SimpleDateFormat("yyyy-MM-dd").format(birthday);
 			
 			DTOUser udto = new DTOUser(uid, email, pw, nick, name, birth, phoneNum, gender, addressA, addressB, grade, smsOk);
 			

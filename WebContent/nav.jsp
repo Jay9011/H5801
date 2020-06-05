@@ -43,7 +43,7 @@ $(document).ready(function() {
 			</a>
 			<!-- 화면의 크기가 줄어들면 숨기기 -->
 			<ul class="right hide-on-med-and-down Hnav">
-				<li><a class="dropdown-trigger" data-target="dropdown1">${email }</a>
+				<li><a class="dropdown-trigger" data-target="dropdown1">Holic 소개</a>
 					<ul id='dropdown1' class='dropdown-content'>
 						<li><a href="#!">Holic 소개</a></li>
 						<li><a href="#!">스터디룸 소개</a></li>

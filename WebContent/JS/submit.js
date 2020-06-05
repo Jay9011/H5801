@@ -84,7 +84,7 @@ function joinmit(){
 		   return false;	
 	}
 	if(pw != pwchk){
-		cPw.innerHTML = "비밀번호 확인을 해주세요222";
+		cPw.innerHTML = "기존 비밀번호와 다름니다";
 		   frm.pwchk.focus();
 		   return false;	
 	}
@@ -149,6 +149,74 @@ function joinChk() {
     }
    frm.submit();
 }// end joinChk()
+
+// 회원수정
+function reInfomit(){
+    var frm = document.reInfoFrm;
+    //닉네임 정규식
+    var nickJ = /^[가-힣A-z0-9]{3,12}$/;
+    // 비밀번호 정규식
+    var pwJ = /^[A-Za-z0-9]{4,12}$/; 
+ 
+    var phoneJ = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
+    
+    var nick = frm.nick.value.trim();
+	var pw = frm.pw.value.trim();
+	var pwchk = frm.pwchk.value.trim();
+	var phoneNum = frm.phoneNum.value.trim();
+	var addressA = frm.addressA.value.trim();
+	var smsOk = frm.smsok.value.checked;
+	
+	
+	var cNick = document.getElementById("chkNick");  
+	var cEmail = document.getElementById("chkEmail");
+	var cPw = document.getElementById("chkPW");
+	var cPhone = document.getElementById("chkPhone");
+	var cAddr = document.getElementById("chkAddr");
+	cNick.innerHTML = "";
+	cPw.innerHTML = "";
+	cPhone.innerHTML = "";
+	cAddr.innerHTML = "";
+	
+	if(nick == "" || !nickJ.test(nick)){
+		cNick.innerHTML ="닉네임을 써주세요 닉네임은 한글 숫자 영어만 가능합니다. 4-12 글자";                                    
+	    frm.nick.focus();
+        return false;	
+	}
+
+	if(pw == ""){
+		cPw.innerHTML = "비밀번호를 써주세요";
+		   frm.pw.focus();
+		   return false;	
+	}
+	if(!pwJ.test(pw)){
+		cPw.innerHTML = "비밀번호는 영어(대소문자), 숫자만 가능합니다. 4이상 12까지";
+		   frm.pw.focus();
+		   return false;	
+	}
+	if(pwchk == ""){
+		cPw.innerHTML = "비밀번호 확인을 해주세요";
+		   frm.pw.focus();
+		   return false;	
+	}
+	if(pw != pwchk){
+		cPw.innerHTML = "기존 비밀번호와 다름니다";
+		   frm.pwchk.focus();
+		   return false;	
+	}
+
+	if(phoneNum == "" || !phoneJ.test(phoneNum)){
+		cPhone.innerHTML = "정확한 핸드폰 번호를 입력해 주세요";
+		frm.phoneNum.focus();
+		return false;	
+	}
+	if(addressA == ""){
+		cAddr.innerHTML = "주소를 입력해주세요";
+		frm.addressA.focus();
+		return false;	
+	}
+	 frm.submit();
+}
 
 
 
