@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import dbcommon.DAOPassword;
 import dbcommon.DTOPassword;
 
-import email.Email;
+import dbcommon.Email;
 
 import java.util.Properties;
 import java.util.Random;

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import dbcommon.DAOBook;
 import dbcommon.DTOBook;
 
-import java.util.Enumeration;
 
 public class BookCommand implements Command {
 
@@ -20,13 +19,16 @@ public class BookCommand implements Command {
 		// 매개변수 받아오기
 		int uid = (int)(request.getSession().getAttribute("uid"));
 		System.out.println(uid);
-		
-		try {
-			arr = dao.selectByUid(uid);
+		if(uid != 0 && !(uid<0)){
+			try {
+				arr = dao.selectByUid(uid);
+				//System.out.println(arr.length);
+				
+				request.setAttribute("book", arr);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
-			request.setAttribute("book", arr);
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		
 	} // end execute()
