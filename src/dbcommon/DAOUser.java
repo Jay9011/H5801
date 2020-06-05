@@ -1,11 +1,14 @@
 package dbcommon;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import dbcommon.Common;
 
@@ -35,9 +38,21 @@ public class DAOUser {
 			conn.close();
 	} // end close();
 	
-	//public int insert(UserDTO dto) throws SQLException{
- //int cnt = 0;
-//	}
+public int insert(DTOUser dto) throws SQLException{
+		String email = dto.getEmail();
+		String pw = dto.getPw();
+		String nick = dto.getNick();
+		String name = dto.getName();
+		String birth = dto.getBirth();
+		String phoneNum = dto.getPhoneNum();
+		String gender = dto.getGender();
+		String addressA = dto.getAddressA();
+		String addressB = dto.getAddressB();
+		int smsOk = dto.getSmsOk();
+		
+		int cnt = this.insert(email, pw, nick, name, birth, phoneNum, gender, addressA, addressB, smsOk);
+		return cnt;
+	}
 	
 	// 회원가입
 	public int insert(String email, String pw, String nick, String name, String birth, String phoneNum, String gender, String addressA, String addressB, int smsOk) throws SQLException{
@@ -64,6 +79,37 @@ public class DAOUser {
 		return cnt;
 	}
 	
+	public DTOUser[] createArray(ResultSet rs) throws SQLException{
+		DTOUser [] arr = null;
+		
+		ArrayList<DTOUser> list = new ArrayList<DTOUser>();
+		
+		while(rs.next()) {
+			int uid = rs.getInt("m_uid");
+			String email = rs.getString("m_email");
+			String pw = rs.getString("m_pw");
+			String nick = rs.getString("m_nick");
+			String name = rs.getString("m_name");
+			String birth = rs.getString("m_birth");
+			String phoneNum = rs.getString("m_phoneNum");
+			String gender = rs.getString("m_gender");
+			String addressA = rs.getString("m_addressA");
+			String addressB = rs.getString("m_addressB");
+			int smsOk = rs.getInt("m_SMSOk");
+			int grade = rs.getInt("m_grade");
+			
+			DTOUser udto = new DTOUser(uid, email, pw, nick, name, birth, phoneNum, gender, addressA, addressB, grade, smsOk);
+			
+			list.add(udto);
+		}// end while
+		int size = list.size();
+		if(size == 0) return null;
+		
+		arr = new DTOUser[size];
+		list.toArray(arr);
+		return arr;
+	}
+	
 	// 로그인 
 	public int selectByUid(String email, String pw) throws SQLException{
 		try {
@@ -85,6 +131,53 @@ public class DAOUser {
 		return -1;
 	}
 	
+	
+	public DTOUser[] selectByEmail(String email) throws SQLException{
+		DTOUser [] arr = null;
+		
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_UEMAIL_SELECT);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			arr = createArray(rs);
+		} finally {
+			close();
+		}
+		
+		return arr;
+	}
+
+	public DTOUser login(String email) {
+		DTOUser user = null;
+
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_USER_SELECT);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				int uid = rs.getInt("m_uid");
+				String pw = rs.getString("m_pw");
+				String nick = rs.getString("m_nick");
+				String name = rs.getString("m_name");
+				String birth = rs.getString("m_birth");
+				String phoneNum = rs.getString("m_phoneNum");
+				String gender = rs.getString("m_gender");
+				String addressA = rs.getString("m_addressA");
+				String addressB = rs.getString("m_addressB");
+				int smsOk = rs.getInt("m_SMSOk");
+				int grade = rs.getInt("m_grade");
+
+				user = new DTOUser(uid, email, pw, nick, name, birth, phoneNum, gender, addressA, addressB, grade, smsOk);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return user;
+	}
+	
 	// nick 실시간 유효성 체크
 	public int check_nick(String nick) {
 		int chk = 0;
@@ -96,6 +189,8 @@ public class DAOUser {
 			
 			if(rs.next()) {
 				chk = 1;
+			}else {
+				chk = 0;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -121,14 +216,7 @@ public class DAOUser {
 		return chk;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
 
 

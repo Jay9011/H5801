@@ -43,6 +43,23 @@ public class DTOUser {
 		System.out.println("UserDTO(모든 매개변수)객체 생성");
 	}
 
+	public DTOUser(int uid, String email, String pw, String nick, String name, String birth, String phoneNum,
+			String gender, String addressA, String addressB, int grade, int smsOk) {
+		super();
+		this.uid = uid;
+		this.email = email;
+		this.pw = pw;
+		this.nick = nick;
+		this.name = name;
+		this.birth = birth;
+		this.phoneNum = phoneNum;
+		this.gender = gender;
+		this.addressA = addressA;
+		this.addressB = addressB;
+		this.grade = grade;
+		this.smsOk = smsOk;
+	}
+
 
 
 	public int getUid() {
@@ -156,9 +173,5 @@ public class DTOUser {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
-	
-	
-	
-	
+
 }

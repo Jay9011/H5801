@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dbcommon.DAOUser;
+import dbcommon.DTOUser;
 
 public class LoginCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		DAOUser udao = new DAOUser();
-
+		DTOUser udto = null;
 		// 매개변수 받아오기
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
@@ -25,7 +26,12 @@ public class LoginCommand implements Command {
 			if (chk == 1) {
 				request.setAttribute("chk", chk);
 				HttpSession session = request.getSession();
+				udao = new DAOUser();
+				udto = udao.login(email);
 				session.setAttribute("email", email);
+				session.setAttribute("uid", udto.getUid());
+				session.setAttribute("nick", udto.getNick());
+				session.setAttribute("grade", udto.getGrade());
 			} else {
 				request.setAttribute("chk", chk);
 			}
@@ -36,3 +42,4 @@ public class LoginCommand implements Command {
 	}
 
 }
+
