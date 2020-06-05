@@ -14,7 +14,7 @@
 	
 		<script> 
 			alert("인증번호가 이메일로 전송되었습니다.");
-			location.href = "resetPw.ho?uid=${send_arr[0].uid }";
+			location.href = "${pageContext.request.contextPath}/User/resetPw.ho?uid=${send_arr[0].uid }";
 		</script>
 	
 	</c:when>

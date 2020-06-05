@@ -1,7 +1,7 @@
 <%-- 비밀번호 변경 --%>
 <%-- 
   작성자: 낙경
- 2020-06-02  23:00 수정
+ 2020-06-05  16:00 수정
  --%>
 
 <%--contentType="charset=UTF-8": (결과) 웹 브라우저가 받아볼 페이지의 인코딩 방식 --%>
@@ -12,13 +12,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
-<c:if test="${uid == null }">
+<c:choose>
+<c:when test="${uid == null }">
 	<script>
 		alert("잘못된 접근입니다. 로그인 해주세요.")
 		location.href = "${pageContext.request.contextPath}/User/login.ho";
 	</script>
-</c:if>
-<c:if test="${uid != null }">
+</c:when>
+<c:when test="${uid != null }">
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head: 현재 문서의 정보를 제공하는 역할 -->
@@ -28,7 +29,9 @@
 <!-- width=device-width: 브라우저(페이지) 너비를 장치(기기) 너비와 동일하게 설정 -->
 <!-- initial-scale=1.0(100%): 뷰포트의 초기 배율 (로딩시 확대/축소 없는 원래 크기, 범위: 0~10)-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>예약 현황</title>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
+<title>MY RESERVATION</title>
 <style>
 h3 {
 	margin-top: 0;
@@ -43,7 +46,8 @@ table, th, td {
 </style>
 </head>
 <body>
-
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
 
 
 		<hr>
@@ -89,5 +93,5 @@ table, th, td {
 
 </body>
 </html>
-
-</c:if>
+	</c:when>
+</c:choose>

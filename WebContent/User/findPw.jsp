@@ -51,7 +51,7 @@ function chkEmailSubmit() {
 	 <div class="row">
 		<div class="col s12 14">
 			<h1 class="center-align pfont">FIND YOUR PASSWORD</h1>
-            <form name="findPwFrm" action="findPwOk.ho" method="post" >
+            <form name="findPwFrm" action="${pageContext.request.contextPath}/User/findPwOk.ho" method="post" >
             	<div class="row">
 					<div class="col s1 "></div>
 					<div class="input-field col s10 ">

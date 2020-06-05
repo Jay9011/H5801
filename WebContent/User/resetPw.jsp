@@ -8,13 +8,18 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <c:choose>
+	<c:when test="${keyCode == null || uid == 0 }">
+		<script>
+			alert("잘못된 접근입니다. 이메일을 입력해주세요.")
+			location.href = "${pageContext.request.contextPath}/User/findPw.ho";
+		</script>
+	</c:when>
 	<c:when test="${empty select_arr || fn:length(select_arr) ==0 }">
 	
 		<script>
 			alert("해당 정보가 삭제되거나 없습니다");
-			location.href = "findPw.ho";
+			location.href = "${pageContext.request.contextPath}/User/findPw.ho";
 		</script>
 	
 	</c:when>
@@ -81,7 +86,7 @@ function chkKeyCodeSubmit(){
 	<div class="row">
 		<div class="col s12 14">
             <h1 class="center-align pfont">RESET YOUR PASSWORD</h1>
-            <form name="resetPwFrm" action="resetPwOk.ho" method="post">
+            <form name="resetPwFrm" action="${pageContext.request.contextPath}/User/resetPwOk.ho" method="post">
             <input type="hidden" name="uid" value="${select_arr[0].uid}"/> <!-- parameter 넘길 때 자주 사용 -->
 				<div class="row">
 					<div class="col s1 "></div>
@@ -124,5 +129,5 @@ function chkKeyCodeSubmit(){
 </html>
 
 
-</c:otherwise>
+	</c:otherwise>
 </c:choose>
