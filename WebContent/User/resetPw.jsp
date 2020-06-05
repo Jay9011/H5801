@@ -127,7 +127,5 @@ function chkKeyCodeSubmit(){
 <jsp:include page="../foot.jsp"/>
 </body>
 </html>
-
-
 	</c:otherwise>
 </c:choose>

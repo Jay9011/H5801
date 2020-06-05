@@ -123,8 +123,6 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
 <%} %>
 <jsp:include page="../foot.jsp"/>
 <!-- 주소 API  -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="../JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 <script type="text/javascript" src="../JS/chkInform.js"></script> 
 <script type="text/javascript" src="../JS/addrAPI.js"></script>
