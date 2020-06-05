@@ -11,17 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.BookCommand;
 import command.Command;
-import command.studying.ComDeleteOk;
-import command.studying.CommentJsonParse;
-import command.studying.CommentList;
 import command.JoinCommand;
 import command.LoadCommand;
+import command.LoginCommand;
 import command.LoginCommand_test;
 import command.LogoutCommand;
+import command.ReinfoCommand;
 import command.SelectCommand;
 import command.SendCommand;
 import command.UpdateCommand;
-import command.LoginCommand;
+import command.studying.ComDeleteOk;
+import command.studying.CommentJsonParse;
+import command.studying.CommentList;
+import command.studying.CommentOk;
+import command.studying.DeleteOk;
+import command.studying.FavorClick;
+import command.studying.FileUploadCommand;
+import command.studying.ResultJsonParse;
 import command.studying.TableList;
 import command.studying.Update;
 import command.studying.UpdateOk;
@@ -30,11 +36,6 @@ import command.studying.WriteOk;
 import command.studying.WriteTable;
 import command.studying.comUpdate;
 import command.studying.comUpdateOk;
-import command.studying.CommentOk;
-import command.studying.DeleteOk;
-import command.studying.FavorClick;
-import command.studying.ResultJsonParse;
-import command.studying.FileUploadCommand;
 
 @WebServlet("*.ho")
 public class Controller extends HttpServlet {
@@ -157,6 +158,12 @@ public class Controller extends HttpServlet {
 			command = new LoadCommand();
 			command.execute(request, response);
 			viewPage = "/MyPage/list.jsp";
+			break;
+			
+		case "/MyPage/reInfo.ho":
+			command = new ReinfoCommand();
+			command.execute(request, response);
+			viewPage = "/MyPage/reInfo.jsp";
 			break;
 
 		case "/User/login.ho":

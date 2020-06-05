@@ -5,11 +5,12 @@ import java.sql.SQLException;
 import dbcommon.DAOLoadBoard;
 
 public class Pagination {
-	private final static int pageCount = 5;
-    private int blockStartNum = 0;
-    private int blockLastNum = 0;
-    private int lastPageNum = 0;
-    private int listCnt = 5;
+	private final static int pageCount = 5; //몇 개의 페이지네이션
+	//block 은  1~5 page 가 속해있는 그룹
+    private int blockStartNum = 0; // 그 블럭의 첫번쨰 page 번호
+    private int blockLastNum = 0; // 그 블럭의 마지막 page 번호
+    private int lastPageNum = 0; // 전체 page의 마지막 번호
+    private int listCnt = 5; // 보여지는 게시판의 갯수
 
     public int getBlockStartNum() {
         return blockStartNum;
