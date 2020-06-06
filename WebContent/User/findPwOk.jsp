@@ -22,7 +22,7 @@
 	<c:otherwise>
 		
 		<script> 
-			alert("일치하는 이메일 주소가 없습니다.");
+			alert("존재하지 않는 이메일 입니다. 다시 한번 시도해 주세요.");
 			history.back();
 		</script>
 	
