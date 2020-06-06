@@ -172,6 +172,7 @@ public class Controller extends HttpServlet {
 			command = new ReinfoOkCommand();
 			command.execute(request, response);
 			viewPage = "/MyPage/reInfoOk.jsp";
+			break;
 
 			// 예약현황 목록
 		case "/MyPage/book.ho":

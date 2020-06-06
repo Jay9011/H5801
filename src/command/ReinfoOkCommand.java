@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dbcommon.DAOUser;
-import dbcommon.DTOUser;
 
 public class ReinfoOkCommand implements Command {
 
@@ -22,12 +21,11 @@ public class ReinfoOkCommand implements Command {
 		String pw = (String) session.getAttribute("pw");
 		String phoneNum = (String) session.getAttribute("phoneNum");
 		
-		
 		try {
 			cnt = udao.update(uid, nick, pw, phoneNum);
-			request.setAttribute("update", cnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("update", cnt);
 	}
 }
