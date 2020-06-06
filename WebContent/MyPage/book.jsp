@@ -23,6 +23,7 @@
 <meta charset="UTF-8">
 <!-- width=device-width: 브라우저(페이지) 너비를 장치(기기) 너비와 동일하게 설정 -->
 <!-- initial-scale=1.0(100%): 뷰포트의 초기 배율 (로딩시 확대/축소 없는 원래 크기, 범위: 0~10)-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="../top.jsp"/>
 
@@ -84,9 +85,51 @@ table, th, td {
 		</c:choose>
 
 		</table>
+		<div class="pager">
+			<ul>
+				<c:if test="${curPageNum > 5 && !empty kwd }">
+					<li><a href="book.ho?menu=1&page=${blockStartNum -1 }&kwd=${kwd }">◀</a></li>
+				</c:if>
+				<c:if test="${curPageNum > 5 }">
+					<li><a href="book.ho?menu=1&page=${blockStartNum -1 }">◀</a></li>
+				</c:if>
+				
+				<c:forEach var="i" begin="${blockStartNum }" end="${blockLastNum }">
+					<c:choose>
+						<c:when test="${i>lastPageNum }">
+							<li>${i }</li>
+						</c:when>
+						<c:when test="${i == curPageNum }">
+							<li class="selected">${i }</li>
+						</c:when>
+						<c:when test="${!empty kwd }">
+							<li><a href="book.ho?menu=1&a=search&page=${i }&kwd=${kwd }">${i }</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="book.ho?menu=1&page=${i }">${i }</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<c:if test="${lastPageNum > blockLastNum && !empty kwd }">
+					<li><a href="book.ho?menu=1&a=search&page=${blockLastNum +1 }&kwd=${kwd }">▶</a></li>
+				</c:if>
+				<c:if test="${lastPageNum > blockLastNum }">
+					<li><a href="book.ho?menu=1&a=search&page=${blockLastNum +1 }">▶</a></li>
+				</c:if>
+			</ul>
+		</div>
 		<br>
-		<button onclick="location.href='write.do'">신규등록</button>
-
+		<div class="row">
+				<div class="col s8 14 right-align"></div>
+				<div class="col s2 14 right-align">
+	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">결제</button>
+				</div>
+	        
+				<div class="col s2 14 right-align">
+	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">취소</button>
+	            </div>
+        </div>
           	
 			</div>
 		<div class="col s1 "></div>

@@ -31,7 +31,7 @@ public class BookCommand implements Command {
 		if(uid != 0 && !(uid<0)){
 			try {
 				arr = dao.selectByUid(uid);
-				System.out.println(arr.length);
+				//System.out.println(arr.length);
 				
 				request.setAttribute("book", arr);
 			} catch (SQLException e) {

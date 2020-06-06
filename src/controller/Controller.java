@@ -15,6 +15,7 @@ import command.JoinCommand;
 import command.LoadCommand;
 import command.LoginCommand;
 import command.LogoutCommand;
+import command.Page_testCommand;
 import command.ReinfoCommand;
 import command.ReinfoOkCommand;
 import command.SelectCommand;
