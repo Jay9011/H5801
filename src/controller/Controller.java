@@ -20,6 +20,8 @@ import command.ReinfoOkCommand;
 import command.SelectCommand;
 import command.SendCommand;
 import command.UpdateCommand;
+import command.chkMailCommand;
+import command.chkNickCommand;
 import command.studying.ComDeleteOk;
 import command.studying.CommentJsonParse;
 import command.studying.CommentList;
@@ -199,6 +201,16 @@ public class Controller extends HttpServlet {
 			command = new JoinCommand();
 			command.execute(request, response);
 			viewPage = "joinOk.jsp";
+			break;
+		case "/User/nickChk.ho":
+			command = new chkNickCommand();
+			command.execute(request, response);
+			viewPage = "nickChk.jsp";
+			break;
+		case "/User/emailChk.ho":
+			command = new chkMailCommand();
+			command.execute(request, response);
+			viewPage = "emailChk.jsp";
 			break;
 		case "/index.ho":
 			viewPage = "index.jsp";

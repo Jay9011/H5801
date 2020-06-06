@@ -127,5 +127,4 @@ $(document).ready(function() {
 			onclick="location.href='${pageContext.request.contextPath}/User/logout.ho'">로그아웃</button>
 	</li>
 </ul>
-</div>
 <!--  여기 realHeader end (뺴야되요 부분 삭제후 가져가기 -->
