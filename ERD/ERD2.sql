@@ -493,3 +493,11 @@ AND a.t_uid = c.t_uid
 ;
 
 SELECT * FROM v_book;
+
+SELECT COUNT(*) FROM S_TABLE WHERE REGEXP_LIKE(S_TITLE||REGEXP_REPLACE(S_CONTENT ,'<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') , '아', 'i') AND SC_UID > 0;
+
+SELECT * FROM
+(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM s_table WHERE REGEXP_LIKE(S_TITLE||REGEXP_REPLACE(S_CONTENT ,'<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') , '글', 'i') AND SC_UID > 0  ORDER BY s_uid DESC) T)
+WHERE RNUM >= 1 AND RNUM < 11
+
+SELECT MAX(SC_UID ) FROM S_CATEGORY ;

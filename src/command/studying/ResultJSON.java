@@ -1,15 +1,11 @@
 package command.studying;
 
-public class ResultJSON {
-	private int count;
-	private String status;
+import command.JSONBase;
+
+public class ResultJSON extends JSONBase{
 
 	public ResultJSON() {
 		super();
 	}
 
-	public int getCount() { return count; }
-	public void setCount(int count) { this.count = count; }
-	public String getStatus() { return status; }
-	public void setStatus(String status) { this.status = status; }
 }

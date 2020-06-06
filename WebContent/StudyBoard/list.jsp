@@ -8,51 +8,124 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 	table {
 		border: 1px solid #333;
 	}
 </style>
 </head>
+<script>
+var page;
+var search;
+var category;
+function getList(){
+	$.ajax({
+		type:"POST"
+		,url:"listAjax.ho"
+		,data: {
+			'page' : page
+			,'search' : search
+			,'category' : category
+		}
+		,dataType: "json"
+		,success: function(data){
+			if(data.status == "OK"){
+				var table = "<tr><th></th><th>카테고리</th><th>제목</th>\<th>작성자</th><th>작성일</th><th>조회수</th></tr>";
+				if(data.count > 0){
+					var row = data.data;
+					var now = new Date();
+					for (var i = 0; i < row.length; i++) {
+						table += "<tr>";
+						table += "<td>" + row[i].postId + "</td>";
+						table += "<td>" + row[i].categoryName + "</td>";
+						table += "<td>" + row[i].title + "</td>";
+						table += "<td>" + row[i].nickname + "</td>";
+						if((Math.ceil((now - new Date(row[i].date)) / (1000 * 3600 * 24)) - 1) == 0){
+							table += "<td>" + row[i].dateTime + "</td>";
+						} else {
+							table += "<td>" + row[i].dateDay + "</td>";
+						}
+						table += "<td>" + row[i].viewcnt + "</td>";
+						table += "</tr>";
+					}
+				} else {
+					table += "<tr>";
+					table += "<td colspan='6'>" + data.message + "</td>";
+					table += "</tr>";
+				}
+				$("#postList").html(table);
+
+				var paging = "<ul>";
+				if(data.page > data.writePages){
+					paging += "<li><a href='javascript:isPaging(" + (data.blockStartNum - 1) + ")'>◀</a></li>";
+				}
+				for(i = data.blockStartNum; i < data.blockLastNum; i++){
+					if(i > data.totalPage){
+						paging += "<li>" + i + "</li>";
+					} else if(i == data.page){
+						paging += "<li class='selected'>" + i + "</li>";
+					} else {
+						paging += "<li><a href='javascript:isPaging(" + i + ")'>" + i + "</a></li>"
+					}
+				}
+				if(data.totalPage > data.blockLastNum){
+					paging += "<li><a href='javascript:isPaging(" + (data.blockLastNum + 1) + ")'>▶</a></li>";
+				}
+				paging += "</ul>";
+				$(".pager").html(paging);
+
+			} else if(data.status == "FAIL"){
+			}
+		}
+		,error: function(e){
+			console.log("ERROR : ", e);
+	        alert("서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.");
+		}
+	});
+}
+function isSearch(){
+	page = 1;
+	search = $("#search").val();
+	search = search.trim().replace(/ /g,"|");
+	getList();
+}
+function isPaging(num){
+	page = num;
+	getList();
+}
+$(function(){
+	$('#category').on('change', function(){
+		page = 1;
+		category = $(this).val();
+		getList();
+	});
+});
+getList();
+</script>
 <body>
 	<h1>List</h1>
 	현재 로그인중인 유저 : ${nick }<br>
-	<table>
-		<tr>
-			<th></th>
-			<th>카테고리</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-		</tr>
-		<c:choose>
-			<c:when test="${empty listRow || fn:length(listRow) == 0}"></c:when>
-			<c:otherwise>
-				<c:forEach var="listRow" items="${listRow }">
-				<tr>
-					<td>${listRow.s_uid }</td>
-					<td>${listRow.sc_name }</td>
-					<td><a href='view.ho?s_uid=${listRow.s_uid}'>${listRow.s_title}</a></td>
-					<td>${listRow.m_nick}</td>
-					<c:set var="now" value="<%= new java.util.Date() %>" />
-					<fmt:parseDate var="s_date" value="${listRow.s_date }" pattern="yyyy-MM-dd HH:mm:ss" />
-					<fmt:formatDate var="now_date" value="${now}" pattern="yyyyMMdd"/>
-					<fmt:formatDate var="this_date" value="${s_date}" pattern="yyyyMMdd"/>
-					<c:choose>
-						<c:when test="${now_date - this_date == 0}">
-							<td>${listRow.s_date_time }</td>
-						</c:when>
-						<c:otherwise>
-							<td>${listRow.s_date_day }</td>
-						</c:otherwise>
-					</c:choose>
-					<td>${listRow.s_viewCnt }</td>
-				</tr>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
+	<select id="category" name="category">
+		<option value="0" selected="selected">전체</option>
+		<option value="1">중1</option>
+		<option value="2">중2</option>
+		<option value="3">중3</option>
+		<option value="4">고1</option>
+		<option value="5">고2</option>
+		<option value="6">고3</option>
+		<option value="7">대학생</option>
+	</select>
+	<table id="postList">
 	</table>
+
+	<div class="pager">
+	</div>
+
+	<form onsubmit="return false;">
+		<input id="search" name="searchBox" type="text" onKeypress="">
+		<button onclick="isSearch()">검색</button>
+	</form>
 	<c:if test="${uid != null}">
 		<button onclick="location.href='write.ho'">글쓰기</button>
 	</c:if>
