@@ -40,15 +40,16 @@ table, th, td {
 	border-collapse: collapse;
 }
 </style>
+<link rel="stylesheet" type="text/css" href="../CSS/bp_defualt.css"/>
 </head>
 
 <body>
 <jsp:include page="../nav.jsp"/>
 <jsp:include page="../header.jsp"/>
 <section class="container section scrollspy" id="intro">
-	 <div class="row">
-	 <div class="col s1 "></div>
-		<div class="col s10">
+	<div class="row">
+	<div class="col s1 "></div>
+	<div class="col s10">
 
 		<h3 class="center-align pfont">MY RESERVATION</h3>
 		<table>
@@ -83,59 +84,70 @@ table, th, td {
 			
 			</c:otherwise>
 		</c:choose>
-
 		</table>
-		<div class="pager">
-			<ul>
-				<c:if test="${curPageNum > 5 && !empty kwd }">
-					<li><a href="book.ho?menu=1&page=${blockStartNum -1 }&kwd=${kwd }">◀</a></li>
-				</c:if>
-				<c:if test="${curPageNum > 5 }">
-					<li><a href="book.ho?menu=1&page=${blockStartNum -1 }">◀</a></li>
-				</c:if>
-				
-				<c:forEach var="i" begin="${blockStartNum }" end="${blockLastNum }">
-					<c:choose>
-						<c:when test="${i>lastPageNum }">
-							<li>${i }</li>
-						</c:when>
-						<c:when test="${i == curPageNum }">
-							<li class="selected">${i }</li>
-						</c:when>
-						<c:when test="${!empty kwd }">
-							<li><a href="book.ho?menu=1&a=search&page=${i }&kwd=${kwd }">${i }</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="book.ho?menu=1&page=${i }">${i }</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-				<c:if test="${lastPageNum > blockLastNum && !empty kwd }">
-					<li><a href="book.ho?menu=1&a=search&page=${blockLastNum +1 }&kwd=${kwd }">▶</a></li>
-				</c:if>
-				<c:if test="${lastPageNum > blockLastNum }">
-					<li><a href="book.ho?menu=1&a=search&page=${blockLastNum +1 }">▶</a></li>
-				</c:if>
-			</ul>
+	</div>
+	
+
+<div class="row">
+			<div class="col s12 14 center-align">
+		<div class="pager center">
+    <ul class="pagination">
+
+        
+        <c:if test="${ curPageNum > 5 }">
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?menu=1&page=${ blockStartNum - 1 }" class='tooltip-top'>◀</a></li>
+        </c:if>
+        
+        <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
+            <c:choose>
+                <c:when test="${ i > lastPageNum }">
+                    <li>${ i }</li>
+                </c:when>
+                <c:when test="${ i == curPageNum }">
+                    <li class="selected" class='active tooltip-top'>${ i }</li>
+                </c:when>
+                
+                <c:otherwise>
+                    <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?menu=1&page=${ i }" >${ i }</a></li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+
+        
+        <c:if test="${ lastPageNum > blockLastNum }">
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?menu=1&page=${ blockLastNum + 1 }" class='tooltip-top'>▶</a></li>
+        </c:if>
+    </ul>
+</div> 
+	</div>
 		</div>
-		<br>
+		<%--<div class="row">
+			<div class="col s12 14 center-align">
+				<jsp:include page="bookPage.jsp">
+				<jsp:param value="${curPageNum }" name="curPageNum"/>
+				<jsp:param value="${blockStartNum }" name="blockStartNum"/>
+				<jsp:param value="${lastPageNum }" name="lastPageNum"/>
+				<jsp:param value="${kwd }" name="kwd"/>
+				</jsp:include>
+			</div>
+		</div>--%>
+	
 		<div class="row">
-				<div class="col s8 14 right-align"></div>
-				<div class="col s2 14 right-align">
+				<div class="col s8 14 center-align"></div>
+				<div class="col s2 14 center-align">
 	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">결제</button>
 				</div>
 	        
-				<div class="col s2 14 right-align">
+				<div class="col s2 14 center-align">
 	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">취소</button>
 	            </div>
         </div>
           	
-			</div>
+			
 		<div class="col s1 "></div>
 	</div>
 </section>
-
+	
 </body>
 </html>
 <jsp:include page="../foot.jsp"/>

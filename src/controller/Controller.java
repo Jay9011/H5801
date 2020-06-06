@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.BookCommand;
+import command.BookCommand2;
+import command.BookCommand3;
 import command.Command;
 import command.JoinCommand;
 import command.LoadCommand;
 import command.LoginCommand;
 import command.LogoutCommand;
-import command.Page_testCommand;
 import command.ReinfoCommand;
 import command.ReinfoOkCommand;
 import command.SelectCommand;
@@ -178,9 +179,14 @@ public class Controller extends HttpServlet {
 
 			// 예약현황 목록
 		case "/MyPage/book.ho":
-			new BookCommand().execute(request, response);
+			new BookCommand3().execute(request, response);
+			//new BookCommand2().execute(request, response);
+
 			viewPage = "book.jsp";
 			break;
+//		case "/MyPage/bookPage.ho":
+//			viewPage = "bookPage.jsp";
+//			break;
 
 		case "/User/login.ho":
 			command = new LoginCommand();

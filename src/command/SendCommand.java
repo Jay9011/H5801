@@ -61,9 +61,10 @@ public class SendCommand implements Command, Email{
 		Properties props = new Properties();
 		
 		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", 465);
+		props.put("mail.smtp.port", 465); // 465 혹은 587
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.ssl.enable", "true");
+		//props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.ssl.trust", host);
 		props.put("mail.debug", "true");
 		
