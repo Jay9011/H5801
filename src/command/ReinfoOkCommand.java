@@ -25,6 +25,7 @@ public class ReinfoOkCommand implements Command {
 		
 		try {
 			cnt = udao.update(uid, nick, pw, phoneNum);
+			request.setAttribute("update", cnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
