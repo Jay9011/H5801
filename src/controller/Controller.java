@@ -16,6 +16,7 @@ import command.LoadCommand;
 import command.LoginCommand;
 import command.LogoutCommand;
 import command.ReinfoCommand;
+import command.ReinfoOkCommand;
 import command.SelectCommand;
 import command.SendCommand;
 import command.UpdateCommand;
@@ -165,6 +166,11 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/MyPage/reInfo.jsp";
 			break;
+		
+		case "/MyPage/reInfoOk.ho":
+			command = new ReinfoOkCommand();
+			command.execute(request, response);
+			viewPage = "/MyPage/reInfoOk.jsp";
 
 			// 예약현황 목록
 		case "/MyPage/book.ho":

@@ -90,6 +90,9 @@ public class Common {
 			public static final	String SQL_SELECT_FROM_LIKE = "SELECT * FROM " + 
 						"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT s.s_uid, s.s_title, s.s_content, s.s_date FROM s_favor sf, s_table s WHERE sf.s_uid = s.s_uid AND sf.m_uid = ? ORDER BY s_uid DESC) T) " + 
 						"WHERE RNUM >= ? AND RNUM < ?";
+			
+			//==== 정보 수정 ok
+			public static final String SQL_USER_UPDATE =  "UPDATE M_USER SET m_nick = ?, m_pw = ?, m_phoneNum = ? WHERE m_uid = ?";
 	
 	//USER (로그인,회원가입)
 	// 1. 유저 등록하기

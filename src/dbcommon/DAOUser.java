@@ -218,6 +218,25 @@ public int insert(DTOUser dto) throws SQLException{
 		return chk;
 	}
 	
+	public int update(int uid, String nick, String pw, String phoneNum) throws SQLException{
+		int cnt = 0;
+		
+		try {
+			//트랜잭션 실행
+			pstmt = conn.prepareStatement(Common.SQL_USER_UPDATE);
+			
+			pstmt.setString(1, nick);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, phoneNum);
+			pstmt.setInt(4, uid);
+			
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}//end update()
 
 }
 

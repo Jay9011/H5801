@@ -23,6 +23,16 @@ public class DTOUser {
 	
 	
 
+	public DTOUser(int uid, String pw, String nick, String phoneNum) {
+		super();
+		this.uid = uid;
+		this.pw = pw;
+		this.nick = nick;
+		this.phoneNum = phoneNum;
+	}
+
+
+
 	public DTOUser(int uid, String email, String pw, String nick, String name, String birth, String phoneNum,
 			String gender, String addressA, String addressB, int grade, int smsOk, String profile, String link) {
 		super();
