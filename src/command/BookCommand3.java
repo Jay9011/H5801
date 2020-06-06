@@ -13,7 +13,7 @@ import dbcommon.DAOBook2;
 import dbcommon.DAOBook3;
 import dbcommon.DTOBook;
 
-
+ 
 public class BookCommand3 implements Command {
 
 	@Override
