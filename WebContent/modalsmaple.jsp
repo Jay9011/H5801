@@ -13,7 +13,7 @@
       <p class="left-align">내용써주기</p>
     </div>
     <div class="modal-footer">
-      <a href="${pageContext.request.contextPath}/index.ho" class="modal-close waves-effect waves-green btn-flat">확인</a>
+      <a href="${pageContext.request.contextPath}/index.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
     </div>
   </div>
 <%-- </c:when>
@@ -24,7 +24,7 @@
       <p class="left-align">회원 가입에 실패하였습니다.<br>회원가입을 다시시도해 주세요.</p>
     </div>
     <div class="modal-footer">
-      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat">확인</a>
+      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
     </div>
   </div>
 <%-- 	</c:otherwise>
