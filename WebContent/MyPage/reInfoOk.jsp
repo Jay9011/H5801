@@ -6,12 +6,13 @@
 <c:choose>
 	<c:when test="${update == 0 }">
 		<script>
+		alert("수정 실패");
 			history.back();   // 브라우저가 기억하는 직전 페이지(입력중 페이지로)
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("수정 성공, 리스트를 출력합니다");
+			alert("수정 성공");
 			/* location.href = "list.do"; */
 			location.href = "reInfo.ho";
 		</script>

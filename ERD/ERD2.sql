@@ -493,3 +493,5 @@ AND a.t_uid = c.t_uid
 ;
 
 SELECT * FROM v_book;
+UPDATE M_USER SET m_nick = 'tn44', m_pw = '1313'  WHERE m_uid = 17;
+UPDATE  m_user SET 
