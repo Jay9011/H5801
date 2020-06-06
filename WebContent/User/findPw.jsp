@@ -14,53 +14,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <jsp:include page="../top.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
 <title>FIND YOUR PASSWORD</title>
 </head>
-
-<script>
-
-function chkEmailSubmit() {
-	var frm = document.findPwFrm;
-	
-	var email = frm.email.value.trim();
-	var emailPat = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	 document.getElementById("chkid").innerHTML = "";
-     
-	if(email == ""){
-		document.getElementById("chkid").innerHTML = "이메일을 써주세요";                                    
-	    frm.email.focus();
-        return false;
-	}
-	
-	if(!emailPat.test(email)){
-		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";                         
-		   frm.email.focus();
-           return false;
-	}
-	
-	
-	
-	frm.submit();
-}  
-
-</script>
 <body>
 <jsp:include page="../nav.jsp"/>
 <jsp:include page="../header.jsp"/>
 <section class="container section scrollspy" id="intro">
 	 <div class="row">
-	 <div class="col s1 "></div>
-		<div class="col s10">
+	    <div class="col m1 "></div>
+		<div class="input-field col m10 s12">
 			<h1 class="center-align pfont">FIND YOUR PASSWORD</h1>
             <form name="findPwFrm" action="${pageContext.request.contextPath}/User/findPwOk.ho" method="post" >
             	<div class="row">
-					<div class="col s1 "></div>
-					<div class="input-field col s10 ">
+				  <div class="col m1 "></div>
+                        <div class="input-field col m10 s12">
                     	<input id="email_inline" type="email" name="email" class= "validate"/>
             			<label for="email_inline">이메일(아이디)</label>
                  		<span id="chkid" class="helper-text"></span>
                  	</div>
-                 	<div class="col s1 "></div>
+                 	 <div class="col s1 m1"></div>
                  </div>
 			</form>
 			<div class="row">
@@ -69,9 +42,10 @@ function chkEmailSubmit() {
 	             </div>
           	</div>
 			</div>
-		<div class="col s1 "></div>
+		 <div class="col m1 "></div>
 	</div>
 </section>
 <jsp:include page="../foot.jsp"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 </body>
 </html>

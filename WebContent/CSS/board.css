@@ -1,0 +1,24 @@
+@charset "UTF-8";
+h3 {
+	margin-top: 0;
+	border-bottom: 1px dotted #666;
+	padding: 5px 0;
+}
+
+.category-field .dropdown-content {
+	background-color: white !important;
+	width: 100% !important;
+	z-index: 10;
+}
+
+.clear {
+	clear: both;
+}
+
+#searchBlock {
+	margin-top: 30px;
+}
+
+.searchbtn {
+	height: 3rem;
+}

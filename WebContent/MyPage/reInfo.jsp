@@ -56,7 +56,7 @@
                   </div>
                   <div class="row">
                           <div class="input-field col s12 m6">
-                          <input type="password" name="pw" id="pw" class="validate" minlength="4"  value="${ulist[0].pw }" readonly>
+                          <input type="password" name="pw" id="pw" class="validate" minlength="4"  value="${ulist[0].pw }" >
                           <label for="pw">비밀번호</label>
                       </div>
                          <div class="input-field col s12 m6">

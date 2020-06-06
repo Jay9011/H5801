@@ -218,6 +218,74 @@ function reInfomit(){
 	 frm.submit();
 }
 
+// 비밀번호 찾기
+function chkEmailSubmit() {
+	var frm = document.findPwFrm;
+	
+	var email = frm.email.value.trim();
+	var emailPat = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	 document.getElementById("chkid").innerHTML = "";
+     
+	if(email == ""){
+		document.getElementById("chkid").innerHTML = "이메일을 써주세요";                                    
+	    frm.email.focus();
+        return false;
+	}
+	
+	if(!emailPat.test(email)){
+		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";                         
+		   frm.email.focus();
+           return false;
+	}
+	
+	frm.submit();
+}  
+//비밀번호 변경
+function chkKeyCodeSubmit(){
+	var frm = document.resetPwFrm;
+	var chkKeyCode = frm.chkKeyCode.value.trim();
+	var resetPw = frm.resetPw.value.trim();
+	var confirmPw = frm.confirmPw.value.trim();
+    // 비밀번호 정규식
+    var pwJ = /^[A-Za-z0-9]{4,12}$/; 
+
+	document.getElementById("chkKeyCode").innerHTML = "";
+	if(chkKeyCode == ""){
+			document.getElementById("chkKeyCode").innerHTML = "인증번호를 써주세요";                                    
+		    frm.chkKeyCode.focus();
+	        return false;
+		}
+	 
+	if(resetPw == ""){
+		  document.getElementById("chkpw1").innerHTML = "비밀번호를 써주세요";      
+		  frm.resetPw.focus();
+	      return false;
+	}
+	
+	if(!pwJ.test(resetPw)){
+		document.getElementById("chkpw1").innerHTML = "비밀번호는 영어(대소문자), 숫자만 가능합니다. 4이상 12까지";
+		frm.resetPw.focus();
+		return false;	
+	}
+	
+	if(confirmPw == ""){
+		  document.getElementById("chkpw2").innerHTML = "비밀번호 확인을 해주세요";      
+		  frm.confirmPw.focus();
+	      return false;
+	}
+	
+	if(resetPw != confirmPw){
+		  document.getElementById("chkpw2").innerHTML = "비밀번호가 일치하지 않습니다";      
+		  frm.confirmPw.focus();
+	      return false;
+	}
+	
+
+	frm.submit(); // submit 성공
+}
+
+
+
 
 
 
