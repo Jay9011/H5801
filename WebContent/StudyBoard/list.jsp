@@ -7,19 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<jsp:include page="../top.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <title>Insert title here</title>
-<style>
-	table {
-		border: 1px solid #333;
-	}
-</style>
 </head>
 <body>
-	<h1>List</h1>
-	현재 로그인중인 유저 : ${nick }<br>
-	<table>
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
+<section class="container section scrollspy" id="intro">
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s10">
+	<h3 class="center-align pfont">학습 문의 게시판 </h3>
+	<p>현재 로그인중인 유저 : ${nick }</p>
+	<table class="highlight">
 		<tr>
-			<th></th>
+			<th>NO</th>
 			<th>카테고리</th>
 			<th>제목</th>
 			<th>작성자</th>
@@ -59,6 +62,10 @@
 	<c:if test="${uid == null}">
 		<button onclick="location.href='${pageContext.request.contextPath}/User/login.ho'">로그인</button>
 	</c:if>
-
+	</div>
+		<div class="col s1"></div>
+	</div>
+</section>
+	<jsp:include page="../foot.jsp"/>
 </body>
 </html>

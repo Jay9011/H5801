@@ -64,7 +64,7 @@
       <p>아이디 혹은 패스워드가 틀렸습니다.</p>
     </div>
     <div class="modal-footer">
-      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat">확인</a>
     </div>
   </div>
 <script>
