@@ -6,8 +6,8 @@ package dbcommon;
 import java.sql.Date;
 import java.sql.Time;
 
-public class DTOBook {
-	private int rnum;
+public class DTOPay {
+
 	private int p_uid; // 테이블명: RESERVE 컬럼명: p_uid
 	private String tid;
 	private Date b_sdate;// 테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
@@ -30,16 +30,15 @@ public class DTOBook {
 	private int t_maxmun;//	테이블명: t_detail 컬럼명: t_maxnum 
 	
 	// 기본 생성자
-	public DTOBook() {
+	public DTOPay() {
 		super();
 	}
 	
 	// 매개변수 생성자
-	public DTOBook(int rnum, int p_uid, String tid, Date b_sdate, Time b_stime, Time b_etime, int b_term, int b_duration, int b_refund,
+	public DTOPay(int p_uid, String tid, Date b_sdate, Time b_stime, Time b_etime, int b_term, int b_duration, int b_refund,
 			int total_amount, Date b_date, int p_cancel, int m_uid, String email, String m_nick, String m_name,
 			int m_grade, String b_seatType, int t_name, float t_pay, int t_maxmun) {
 		super();
-		this.rnum = rnum;
 		this.p_uid = p_uid;
 		this.tid = tid;
 		this.b_sdate = b_sdate;
@@ -65,15 +64,13 @@ public class DTOBook {
 	// getter & setter
 	
 	
-	public int getRnum() {
-		return rnum;
+
+
+
+	public int getP_uid() {
+		return p_uid;
 	}
-	
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
-	}
-	
-	
+
 
 	public String getTid() {
 		return tid;
@@ -82,11 +79,6 @@ public class DTOBook {
 	public void setTid(String tid) {
 		this.tid = tid;
 	}
-
-	public int getP_uid() {
-		return p_uid;
-	}
-
 
 	public void setP_uid(int p_uid) {
 		this.p_uid = p_uid;

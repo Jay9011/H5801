@@ -17,6 +17,8 @@ import command.JoinCommand;
 import command.LoadCommand;
 import command.LoginCommand;
 import command.LogoutCommand;
+import command.PayCommand;
+import command.PayOkCommand;
 import command.ReinfoCommand;
 import command.ReinfoOkCommand;
 import command.SelectCommand;
@@ -196,12 +198,26 @@ public class Controller extends HttpServlet {
 		case "/MyPage/book.ho":
 			new BookCommand3().execute(request, response);
 			//new BookCommand2().execute(request, response);
-
 			viewPage = "book.jsp";
 			break;
 //		case "/MyPage/bookPage.ho":
 //			viewPage = "bookPage.jsp";
 //			break;
+			
+		// 예약 결제
+		case "/Payment/pay.ho":
+			new PayCommand().execute(request, response);
+			viewPage = "pay.jsp";
+			break;
+			
+		case "/Payment/payOk.ho":
+			new PayOkCommand().execute(request, response);
+			viewPage = "payOk.jsp";
+			break;
+
+		case "/Payment/refund.ho":
+			viewPage = "refund.jsp";
+			break;
 
 		case "/User/login.ho":
 			command = new LoginCommand();
