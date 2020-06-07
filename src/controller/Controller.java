@@ -185,7 +185,7 @@ public class Controller extends HttpServlet {
 		case "/MyPage/book.ho":
 			new BookCommand3().execute(request, response);
 			//new BookCommand2().execute(request, response);
-
+ 
 			viewPage = "book.jsp";
 			break;
 //		case "/MyPage/bookPage.ho":
