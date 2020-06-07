@@ -24,6 +24,8 @@ import command.SendCommand;
 import command.UpdateCommand;
 import command.chkMailCommand;
 import command.chkNickCommand;
+import command.reservation.ReservJsonParse;
+import command.reservation.ReservListCommand;
 import command.studying.ComDeleteOk;
 import command.studying.CommentJsonParse;
 import command.studying.CommentList;
@@ -161,8 +163,14 @@ public class Controller extends HttpServlet {
 		case "/StudyBoard/favor.ho":
 			new FavorClick().execute(request, response);
 			break;
+
 		case "/StudyBoard/reservation.ho":
 			viewPage = "/StudyBoard/reservation.jsp";
+			break;
+
+		case "/StudyBoard/reservInfo.ho":
+			new ReservListCommand().execute(request, response);
+			new ReservJsonParse().execute(request, response);
 			break;
 
 //		마이페이지
@@ -188,7 +196,7 @@ public class Controller extends HttpServlet {
 		case "/MyPage/book.ho":
 			new BookCommand3().execute(request, response);
 			//new BookCommand2().execute(request, response);
- 
+
 			viewPage = "book.jsp";
 			break;
 //		case "/MyPage/bookPage.ho":
