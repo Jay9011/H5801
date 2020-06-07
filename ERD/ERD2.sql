@@ -491,10 +491,23 @@ AND a.t_uid = c.t_uid
 ;
 
 SELECT * FROM v_book;
+
+SELECT COUNT(*) FROM S_TABLE WHERE REGEXP_LIKE(S_TITLE||REGEXP_REPLACE(S_CONTENT ,'<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') , '아', 'i') AND SC_UID > 0;
+
+SELECT * FROM
+(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM s_table WHERE REGEXP_LIKE(S_TITLE||REGEXP_REPLACE(S_CONTENT ,'<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') , '글', 'i') AND SC_UID > 0  ORDER BY s_uid DESC) T)
+WHERE RNUM >= 1 AND RNUM < 11
+
+SELECT MAX(SC_UID ) FROM S_CATEGORY ;
+
 UPDATE M_USER SET m_nick = 'tn44', m_pw = '1313'  WHERE m_uid = 17;
+<<<<<<< HEAD
 UPDATE  m_user SET 
 
 SELECT ROWNUM, p_uid FROM v_book WHERE ROWNUM >= 1 AND ROWNUM < 1 + 5;
 SELECT * FROM v_book ORDER BY p_uid DESC;
 SELECT COUNT(*) FROM v_book;
 
+=======
+UPDATE  m_user SET
+>>>>>>> branch 'master' of https://github.com/Jay9011/Holic.git

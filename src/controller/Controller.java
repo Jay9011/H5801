@@ -32,7 +32,8 @@ import command.studying.DeleteOk;
 import command.studying.FavorClick;
 import command.studying.FileUploadCommand;
 import command.studying.ResultJsonParse;
-import command.studying.TableList;
+import command.studying.ListCommand;
+import command.studying.ListJSONParse;
 import command.studying.Update;
 import command.studying.UpdateOk;
 import command.studying.View;
@@ -84,9 +85,12 @@ public class Controller extends HttpServlet {
 			break;
 
 		case "/StudyBoard/list.ho":
-			command = new TableList();
-			command.execute(request, response);
 			viewPage = "list.jsp";
+			break;
+
+		case "/StudyBoard/listAjax.ho":
+			new ListCommand().execute(request, response);
+			new ListJSONParse().execute(request, response);
 			break;
 
 		case "/StudyBoard/write.ho":
@@ -170,7 +174,7 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/MyPage/reInfo.jsp";
 			break;
-		
+
 		case "/MyPage/reInfoOk.ho":
 			command = new ReinfoOkCommand();
 			command.execute(request, response);

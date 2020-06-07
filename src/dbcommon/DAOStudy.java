@@ -33,6 +33,11 @@ public class DAOStudy {
 		if(conn != null) conn.close();
 	} // end close()
 
+	public void closeWithoutConn() throws SQLException{
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+	} // end closeWithoutConn()
+
 	public DTOStudyTable[] createArray(ResultSet resultSet) throws SQLException {
 		DTOStudyTable[] dtoStudyTables = null;
 
@@ -96,7 +101,6 @@ public class DAOStudy {
 				if(pstmt2 != null) pstmt2.close();
 			}
 
-//			DTOStudyTable dto = new DTOStudyTable(s_uid, sc_name, s_title, s_content, s_date_day, s_date_time, m_nick, s_viewCnt);
 			DTOStudyTable dto = new DTOStudyTable(s_uid, sc_name, s_title, s_content, s_date_day, s_date_time, m_nick, s_viewCnt, s_date, s_udate, sc_uid, m_uid);
 			list.add(dto);
 		} // end while
@@ -109,6 +113,61 @@ public class DAOStudy {
 
 		return dtoStudyTables;
 	} // end createArray()
+
+	public int countAll(String fromBlock, String whereBlock) throws SQLException {
+		int cnt = 0;
+
+		BasicBoardSQL sql = new BasicBoardSQL();
+		sql.setFromBlock(fromBlock);
+		sql.setWhereBlock(whereBlock);
+		try {
+			pstmt = conn.prepareStatement(sql.getCount_WHERE());
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt(1);
+		} finally {
+			closeWithoutConn();
+		} // end try
+
+		return cnt;
+	} // end countAll(String fromBlock)
+
+	public int maxCol(String col, String fromBlock) throws SQLException{
+		int cnt = 0;
+
+		BasicBoardSQL sql = new BasicBoardSQL();
+		sql.setColName(col);
+		sql.setFromBlock(fromBlock);
+		try {
+			pstmt = conn.prepareStatement(sql.getMAX_COL());
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt(1);
+		} finally {
+			closeWithoutConn();
+		} // end try
+
+		return cnt;
+	} // end maxCol(String col, String fromBlock)
+
+	public DTOStudyTable[] selectFromRow(int from, int rows, String fromBlock) throws SQLException {
+		DTOStudyTable[] tables = null;
+
+		BasicBoardSQL sql = new BasicBoardSQL();
+		sql.setFromBlock(fromBlock);
+
+		try {
+			pstmt = conn.prepareStatement(sql.getPAGING_SELECT_FROM_ROW());
+			pstmt.setInt(1, from);
+			pstmt.setInt(2, from + rows);
+			rs = pstmt.executeQuery();
+			tables = createArray(rs);
+		} finally {
+			close();
+		} // end try
+
+		return tables;
+	} // end selectFromRow(int from, int rows, String fromBlock)
 
 	public DTOStudyTable[] selectAll() throws SQLException {
 		DTOStudyTable[] dtoStudyTables = null;

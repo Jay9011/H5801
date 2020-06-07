@@ -1,26 +1,40 @@
 package dbcommon;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class DTOStudyTable {
+	@JsonProperty("postId")
 	private int s_uid;
-	private String sc_name; 
+	@JsonProperty("categoryName")
+	private String sc_name;
+	@JsonProperty("title")
 	private String s_title;
+	@JsonProperty("content")
 	private String s_content;
+	@JsonProperty("dateDay")
 	private String s_date_day;
+	@JsonProperty("dateTime")
 	private String s_date_time;
+	@JsonProperty("nickname")
 	private String m_nick;
+	@JsonProperty("viewcnt")
 	private int s_viewCnt;
+	@JsonProperty("date")
 	private String s_date;
+	@JsonProperty("update")
 	private String s_udate;
+	@JsonProperty("categoryId")
 	private int sc_uid;
+	@JsonProperty("userId")
 	private int m_uid;
-	
+
 
 	public DTOStudyTable() {
 		super();
 	}
-	
-	
-	
+
+
+
 	public DTOStudyTable(int s_uid, String s_title, String s_content, String s_date_day, String s_date_time,
 			String s_date) {
 		super();
