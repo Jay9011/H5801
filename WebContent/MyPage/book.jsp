@@ -26,7 +26,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="../top.jsp"/>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" type="text/css" href="../CSS/bp_defualt.css"/>
 <title>MY RESERVATION</title>
 <style> 
 h3 {
@@ -40,7 +41,6 @@ table, th, td {
 	border-collapse: collapse;
 }
 </style>
-<link rel="stylesheet" type="text/css" href="../CSS/bp_defualt.css"/>
 </head>
 
 <body>
@@ -52,7 +52,8 @@ table, th, td {
 	<div class="col s10">
 
 		<h3 class="center-align pfont">MY RESERVATION</h3>
-		<table>
+		<form action="" method="post">
+		<table class="highlight">
 			<tr>
 				<th>예약번호</th>
 				<th>결재번호</th>
@@ -81,7 +82,14 @@ table, th, td {
 				<td>${dto.m_nick }</td>
 				<td>${dto.total_amount }</td>
 				<td>${dto.b_refund }</td>
-				<td><form><input type="radio" name="&nbsp;" value="&nbsp;">&nbsp;</form></td>
+				<td>
+				    <p>
+				      <label>
+				        <input class="with-gap" name="group1" type="radio"  />
+				        <span></span>
+				      </label>
+				    </p>
+				</td>
 				
 			</tr>
 
@@ -90,8 +98,8 @@ table, th, td {
 			</c:otherwise>
 		</c:choose>
 		</table>
+		</form>
 	</div>
-	
 
 <div class="row">
 			<div class="col s12 14 center-align">
