@@ -475,6 +475,7 @@ CREATE OR REPLACE VIEW v_book
 AS
 SELECT
 a.p_uid
+, a.partner_order_id
 , a.p_startTime
 , a.p_endTime
 , TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"

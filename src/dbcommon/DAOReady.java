@@ -1,6 +1,3 @@
-// 작성자: 낙경
-// 2020-06-02  22:00 수정
-
 package dbcommon;
 
 import java.sql.Connection;
@@ -13,14 +10,14 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 
-public class DAOBook3 {
+public class DAOReady {
 	Connection conn = null; // DB 연결을 위한 받기 객체
 	Statement stmt = null; // SQL 문을 수행하고 그 결과를 리턴하기 위한 객체
 	PreparedStatement pstmt = null; // 강화된 statement(precompiled SQL문, for multiple time)
 	ResultSet rs = null;   // SELECT 결과, executeQuery() // 쿼리 수행결과를 테이블로 담는 객체 (행 단위로 커서 이동)
 	
 	// DAO 객체가 생성될때 Connection 도 생성된다.
-	public DAOBook3() {
+	public DAOReady() {
 		
 		try {
 			Class.forName(Common.DRIVER);
@@ -122,13 +119,13 @@ public class DAOBook3 {
 		} // end createArray()
 		
 		// 전체 SELECT
-		public DTOBook [] selectByUid(int uid) throws SQLException {
+		public DTOBook [] selectByUid(int p_uid) throws SQLException {
 			DTOBook [] arr = null;
 			
 			try {
 				// "SELECT * FROM test_write ORDER BY wr_uid DESC"
-				pstmt = conn.prepareStatement("SELECT * FROM v_book WHERE m_uid = ? ORDER BY p_startTime DESC");
-				pstmt.setInt(1, uid);
+				pstmt = conn.prepareStatement("SELECT * FROM v_book WHERE p_uid = ?");
+				pstmt.setInt(1, p_uid);
 				// executeQuery(): 쿼리문 수행
 					// 리턴값: 수행한 결과를 담은 ResultSet
 				rs = pstmt.executeQuery();
@@ -140,40 +137,4 @@ public class DAOBook3 {
 			
 			return arr;
 		} // end select()
-		
-		// 쿼리: 페이지네이션 구현
-		public int getCount(int m_uid) throws SQLException {
-			int count = 0;
-
-			try {
-				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ?");
-				pstmt.setInt(1, m_uid);
-				rs = pstmt.executeQuery();
-				while(rs.next()) {
-					count = rs.getInt(1);
-				}
-			} finally {
-				close();
-			}
-			return count;
-		}
-		// BOARD의 페이징
-		public DTOBook[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
-			DTOBook[] arr = null;
-			
-			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? ORDER BY m_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
-				pstmt.setInt(1, m_uid);
-				pstmt.setInt(2, fromRow);
-				pstmt.setInt(3, toRow);
-				rs = pstmt.executeQuery();
-				arr = createArray(rs);
-			} finally {
-				close();
-			}
-			return arr;
-		}
-		
-		
-	
-} // end class
+}
