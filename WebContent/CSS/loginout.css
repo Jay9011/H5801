@@ -1,27 +1,4 @@
 @charset "UTF-8";
-    /* 라벨 기본 색 */
-    .input-field label {
-     color: #000;
-   }
-
-   .input-field input[type=text]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=email]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=password]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=radio]:not(.browser-defaiut):focus:not([readonly]),.input-field input[type=tel]:not(.browser-defaiut):focus:not([readonly]){
-        border-bottom: 1px solid #dfb429;
-        box-shadow: 0 1px 0 0 #dfb429;
-   }
-   .input-field input[type=text]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=email]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=password]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=radio]:not(.browser-defaiut):focus:not([readonly])+label,.input-field input[type=tel]:not(.browser-defaiut):focus:not([readonly])+label{
-        color: #dfb429;
-   }
-   [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after{
-       background-color: #dfb429;
-   }
-   [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after{
-    border: 2px solid  #dfb429;
-   }
-[type="checkbox"]:checked+span:not(.lever):before{
-    border-right: 2px solid #dfb429;
-    border-bottom: 2px solid #dfb429;
-	
-}
 
 .row a{
        color: #ff932d;

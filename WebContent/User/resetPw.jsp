@@ -18,6 +18,7 @@
 <meta charset="UTF-8">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>RESET YOUR PASSWORD</title>
 </head>
 <script>

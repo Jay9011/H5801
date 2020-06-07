@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>Insert title here</title>
 </head>
 <script>
@@ -16,8 +17,7 @@
 	var search;
 	var category;
 	function getList() {
-		$
-				.ajax({
+		$.ajax({
 					type : "POST",
 					url : "listAjax.ho",
 					data : {
@@ -59,18 +59,18 @@
 							}
 							$("#postList").html(table);
 
-							var paging = "<ul>";
+							var paging = "<ul class='pagination'>";
 							if (data.page > data.writePages) {
 								paging += "<li><a href='javascript:isPaging("
 										+ (data.blockStartNum - 1)
-										+ ")'>◀</a></li>";
+										+ ")'><i class='material-icons'>chevron_left</i></a></li>";
 							}
 							for (i = data.blockStartNum; i <= data.blockLastNum; i++) {
 								if (i > data.totalPage) {
 									paging += "<li>" + i + "</li>";
 								} else if (i == data.page) {
-									paging += "<li class='selected'>" + i
-											+ "</li>";
+									paging += "<li class='active'><a>" + i
+											+ "</a></li>";
 								} else {
 									paging += "<li><a href='javascript:isPaging("
 											+ i + ")'>" + i + "</a></li>"
@@ -79,7 +79,7 @@
 							if (data.totalPage > data.blockLastNum) {
 								paging += "<li><a href='javascript:isPaging("
 										+ (data.blockLastNum + 1)
-										+ ")'>▶</a></li>";
+										+ ")'><i class='material-icons'>chevron_right</i></a></li>";
 							}
 							paging += "</ul>";
 							$(".pager").html(paging);
@@ -139,7 +139,7 @@
 
 				<div class="pager"></div>
 				<c:if test="${uid != null}">
-					<button class="col m2 offset-m10 btn waves-effect waves-light" onclick="location.href='write.ho'">글쓰기</button>
+					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'">글쓰기</button>
 				</c:if>
 				<c:if test="${uid == null}">
 					<button onclick="location.href='${pageContext.request.contextPath}/User/login.ho'">로그인</button>
@@ -147,8 +147,9 @@
 				<div class="clear"></div>
 				<div id="searchBlock" class="clear">
 					<form id="searchFrm" onsubmit="return false;">
-						<input id="search" class="col m9" name="searchBox" type="text" onKeypress="">
-						<button class="searchbtn col m3 waves-effect waves-light btn" onclick="isSearch()">검색</button>
+					<div class="col m3" ></div>
+						<input id="search" class="col m6" name="searchBox" type="text" onKeypress="">
+						<button class="searchbtn col m3 btn waves-effect" onclick="isSearch()">검색</button>
 					</form>
 				</div>
 			</div>

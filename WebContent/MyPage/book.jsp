@@ -27,20 +27,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
-<link rel="stylesheet" type="text/css" href="../CSS/bp_defualt.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/bp_defualt.css"/>
 <title>MY RESERVATION</title>
-<style> 
-h3 {
-	margin-top: 0;
-	border-bottom: 1px dotted #666;
-	padding: 5px 0;
-}
-table {width: 100%;}
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-</style>
 </head>
 
 <body>
@@ -99,14 +87,12 @@ table, th, td {
 		</c:choose>
 		</table>
 		</form>
-	</div>
+	
 
 <div class="row">
-			<div class="col s12 14 center-align">
+			<div class="col s12 center-align">
 		<div class="pager center">
     <ul class="pagination">
-
-        
         <c:if test="${ curPageNum > 5 }">
             <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'>◀</a></li>
         </c:if>
@@ -145,17 +131,13 @@ table, th, td {
 			</div>
 		</div>--%>
 	
-		<div class="row">
-				<div class="col s8 14 center-align"></div>
-				<div class="col s2 14 center-align">
-	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">결제</button>
-				</div>
-	        
-				<div class="col s2 14 center-align">
-	                <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">취소</button>
-	            </div>
-        </div>
-          	
+		  <div class="row">
+            <div class="col s12 right-align">
+              <button type="button" class="btn waves-effect" style="margin-right: 5px;" onclick="chkEmailSubmit()">결제</button>
+              <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">취소</button>
+            </div>
+            </div>
+          	</div>
 			
 		<div class="col s1 "></div>
 	</div>

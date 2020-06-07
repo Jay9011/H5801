@@ -35,7 +35,7 @@ public class BookCommand3 implements Command {
 		
 		//System.out.println(uid);
 		
-		if(uid != 0 && !(uid<0)){
+		if(uid != 0 && !(uid < 0)){
 			try {
 				//arr1 = dao.selectByUid(uid);
 				//System.out.println(arr.length);

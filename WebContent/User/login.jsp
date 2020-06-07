@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>LOGIN</title>
    </head>
    <body>

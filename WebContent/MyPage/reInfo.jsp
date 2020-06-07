@@ -23,7 +23,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
-<link rel="stylesheet" href="<c:url value='/'/>CSS/loginout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>회원정보 수정</title>
 </head>
 <body>
