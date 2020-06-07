@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class DTOBook {
-
+	private int rnum;
 	private int p_uid; // 테이블명: RESERVE 컬럼명: p_uid
 	private Date b_sdate;// 테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
 	private Time b_stime;//	테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'HH24:MI:SS') AS "b_stime"
@@ -34,10 +34,11 @@ public class DTOBook {
 	}
 	
 	// 매개변수 생성자
-	public DTOBook(int p_uid, Date b_sdate, Time b_stime, Time b_etime, int b_term, int b_duration, int b_refund,
+	public DTOBook(int rnum, int p_uid, Date b_sdate, Time b_stime, Time b_etime, int b_term, int b_duration, int b_refund,
 			float total_amount, Date b_date, int p_cancel, int m_uid, String email, String m_nick, String m_name,
 			int m_grade, String b_seatType, int t_name, float t_pay, int t_maxmun) {
 		super();
+		this.rnum = rnum;
 		this.p_uid = p_uid;
 		this.b_sdate = b_sdate;
 		this.b_stime = b_stime;
@@ -60,9 +61,20 @@ public class DTOBook {
 	}
 	
 	// getter & setter
+	
+	
+	public int getRnum() {
+		return rnum;
+	}
+	
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+	
 	public int getP_uid() {
 		return p_uid;
 	}
+
 
 	public void setP_uid(int p_uid) {
 		this.p_uid = p_uid;

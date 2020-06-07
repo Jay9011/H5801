@@ -54,6 +54,7 @@ table, th, td {
 		<h3 class="center-align pfont">MY RESERVATION</h3>
 		<table>
 			<tr>
+				<th>예약번호</th>
 				<th>결재번호</th>
 				<th>예약내용</th>
 				<th>예약일자</th>
@@ -61,6 +62,7 @@ table, th, td {
 				<th>회원이름</th>
 				<th>결제총액</th>
 				<th>결제현황</th>
+				<th>항목선택</th>
 			</tr>
 			
 		<c:choose>
@@ -71,6 +73,7 @@ table, th, td {
 			<c:forEach var="dto" items="${book }">
 			
 			<tr>
+				<td>${dto.rnum }</td>
 				<td>${dto.p_uid }</td>
 				<td>${dto.b_seatType }</td>
 				<td>${dto.b_sdate }</td>
@@ -78,6 +81,8 @@ table, th, td {
 				<td>${dto.m_nick }</td>
 				<td>${dto.total_amount }</td>
 				<td>${dto.b_refund }</td>
+				<td><form><input type="radio" name="&nbsp;" value="&nbsp;">&nbsp;</form></td>
+				
 			</tr>
 
 			</c:forEach>
@@ -95,7 +100,7 @@ table, th, td {
 
         
         <c:if test="${ curPageNum > 5 }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?menu=1&page=${ blockStartNum - 1 }" class='tooltip-top'>◀</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'>◀</a></li>
         </c:if>
         
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
@@ -108,14 +113,14 @@ table, th, td {
                 </c:when>
                 
                 <c:otherwise>
-                    <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?menu=1&page=${ i }" >${ i }</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ i }" >${ i }</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
 
         
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?menu=1&page=${ blockLastNum + 1 }" class='tooltip-top'>▶</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'>▶</a></li>
         </c:if>
     </ul>
 </div> 

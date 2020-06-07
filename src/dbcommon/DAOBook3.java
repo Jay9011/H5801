@@ -56,6 +56,7 @@ public class DAOBook3 {
 				//getInt(), getString(), getDate(), getTime() : 현재 선택(cursor)된 행의 해당 컬럼(매개변수)에서 값을 검색하여 해당 Java 값(int, String, Date, Time)로 반환해 리턴
 					// 매개변수: 컬럼 라벨
 					// 리턴값: 해당 컬럼 값 (없으면 int -> 0, String, Date, Time -> null)
+				int rnum = rs.getInt("rnum");
 				int p_uid = rs.getInt("p_uid");
 				Date b_sdate = rs.getDate("b_sdate");
 				Time b_stime = rs.getTime("b_stime");
@@ -79,7 +80,8 @@ public class DAOBook3 {
 				// add(): Appends the specified element to the end of this list.
 				// 매개변수: element
 				// 리턴값: true
-				DTOBook dto = new DTOBook(p_uid
+				DTOBook dto = new DTOBook(rnum
+										, p_uid
 										, b_sdate
 										, b_stime
 										, b_etime
