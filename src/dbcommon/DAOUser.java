@@ -218,7 +218,7 @@ public int insert(DTOUser dto) throws SQLException{
 		return chk;
 	}
 	
-	public int update(int uid, String nick, String pw, String phoneNum) throws SQLException{
+	public int update(int uid, String pw, String nick, String phoneNum, String gender, String addressA, String addressB, int smsok) throws SQLException{
 		int cnt = 0;
 		
 		try {
@@ -227,8 +227,12 @@ public int insert(DTOUser dto) throws SQLException{
 			
 			pstmt.setString(1, nick);
 			pstmt.setString(2, pw);
-			pstmt.setString(3, phoneNum);
-			pstmt.setInt(4, uid);
+			pstmt.setString(3, gender);
+			pstmt.setString(4, phoneNum);
+			pstmt.setInt(5, smsok);
+			pstmt.setString(6, addressA);
+			pstmt.setString(7, addressB);
+			pstmt.setInt(8, uid);
 			
 			cnt = pstmt.executeUpdate();
 		} finally {

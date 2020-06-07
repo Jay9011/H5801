@@ -17,12 +17,16 @@ public class ReinfoOkCommand implements Command {
 	
 		HttpSession session = request.getSession();
 		int uid = (Integer)session.getAttribute("uid");
-		String nick = (String) session.getAttribute("nick");
-		String pw = (String) session.getAttribute("pw");
-		String phoneNum = (String) session.getAttribute("phoneNum");
+		String nick = request.getParameter("nick");
+		String pw = request.getParameter("pw");
+		String gender = request.getParameter("gender");
+		String phoneNum = request.getParameter("phoneNum");
+		int smsok = Integer.parseInt(request.getParameter("smsok"));
+		String addressA = request.getParameter("addressA");
+		String addressB = request.getParameter("addressB");
 		
 		try {
-			cnt = udao.update(uid, nick, pw, phoneNum);
+			cnt = udao.update(uid, pw, nick, phoneNum, gender, addressA, addressB, smsok);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -17,6 +17,25 @@ public class LoadCommand implements Command {
 		DTOStudyTable[] stables = null;
 		HttpSession session = request.getSession(true);
 		int uid = (Integer)session.getAttribute("uid");
+		
+		//=================
+		int menu = 1;  // menu parameter 가 없으면 1 page 디폴트 동작
+		
+		String menu_param = request.getParameter("menu");
+		if(menu_param != null){  
+			try{
+				request.setAttribute("menu", menu_param);
+				System.out.println(menu_param);
+			}catch(NumberFormatException e){
+				
+			}
+		}
+		// 1 <= menu <= 3
+		if(menu > 3) menu = 3;
+		if(menu < 1) menu = 1;
+		//============================
+		
+		
 //		System.out.println(uid);
 		//매개변수 받아오기
 		//int uid = Integer.parseInt(request.getParameter("m_uid"));

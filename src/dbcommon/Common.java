@@ -92,7 +92,7 @@ public class Common {
 						"WHERE RNUM >= ? AND RNUM < ?";
 			
 			//==== 정보 수정 ok
-			public static final String SQL_USER_UPDATE =  "UPDATE M_USER SET m_nick = ?, m_pw = ?, m_phoneNum = ? WHERE m_uid = ?";
+			public static final String SQL_USER_UPDATE =  "UPDATE M_USER SET m_nick = ?, m_pw = ?, m_gender = ?, m_phoneNum = ?, m_SMSOk = ?, m_addressA = ?, m_addressB = ? WHERE m_uid = ?";
 	
 	//USER (로그인,회원가입)
 	// 1. 유저 등록하기
