@@ -501,13 +501,10 @@ WHERE RNUM >= 1 AND RNUM < 11
 SELECT MAX(SC_UID ) FROM S_CATEGORY ;
 
 UPDATE M_USER SET m_nick = 'tn44', m_pw = '1313'  WHERE m_uid = 17;
-<<<<<<< HEAD
-UPDATE  m_user SET 
+
 
 SELECT ROWNUM, p_uid FROM v_book WHERE ROWNUM >= 1 AND ROWNUM < 1 + 5;
 SELECT * FROM v_book ORDER BY p_uid DESC;
 SELECT COUNT(*) FROM v_book;
 
-=======
-UPDATE  m_user SET
->>>>>>> branch 'master' of https://github.com/Jay9011/Holic.git
+
