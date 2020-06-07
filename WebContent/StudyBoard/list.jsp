@@ -37,7 +37,7 @@
 									table += "<td>" + row[i].postId + "</td>";
 									table += "<td>" + row[i].categoryName
 											+ "</td>";
-									table += "<td>" + row[i].title + "</td>";
+									table += "<td><a href='view.ho?s_uid=" + row[i].postId + "'>" + row[i].title + "</a></td>";
 									table += "<td>" + row[i].nickname + "</td>";
 									if ((Math
 											.ceil((now - new Date(row[i].date))
