@@ -32,9 +32,8 @@
 					<div class="col s12">
 						<input id="selectDate" type="text" class="datepicker">
 					</div>
-				</div>
-				<div class="row">
-					<div id="rooms" class="col s6">
+<!-- 					<div class="row"> -->
+					<div id="rooms" class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
 						<div>
 							<div class="col s3">
 								<button id="101" class="col btn-large disabled" name="action">1번방</button>
@@ -55,12 +54,22 @@
 								<button id="103" class="col btn-large" name="action">3번방</button>
 							</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col s12 14 right-align">
-						<button type="button" class="btn waves-effect" onclick="location.href='write.ho'">글쓰기</button>
+					
+					<div id="frm" class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
+						
+							<div class ="col s12 center-align">
+								<h3> 1 층</h3>
+								<p> 1 번방을 선택</p>
+								<p> 최대 5 인 가능</p>
+							</div>
+							<div class ="col s12 center-align">
+								<button type="submit" class="btn-large" name="action">예약하기</button>
+							</div>
 					</div>
 				</div>
+<!-- 				</div> -->
+				
+				
 			</div>
 		</div>
 	</section>
@@ -98,5 +107,16 @@ function pickedDate(sdate){
 		}
 	});
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
 </script>
 </html>
