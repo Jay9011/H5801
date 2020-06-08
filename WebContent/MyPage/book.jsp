@@ -63,13 +63,14 @@ function chkPaySubmit(){
 		<thead>
 			<tr>
 				<th>예약번호</th>
-				<th>결재번호</th>
+				<%--<th>결재번호</th>--%>
 				<th>예약내용</th>
 				<th>예약일자</th>
 				<th>예약시간</th>
 				<th>회원이름</th>
 				<th>결제총액</th>
 				<th>결제현황</th>
+				<th>환불여부</th>
 				<th>항목선택</th>
 			</tr>
 				</thead>
@@ -82,7 +83,7 @@ function chkPaySubmit(){
 			
 			<tr>
 				<td>#${dto.rnum }</td>
-				<td>${dto.p_uid }번</td>
+				<%--<td>${dto.p_uid }번</td>--%>
 				<td>
 				${dto.b_seatType } <br>
 				(번호: ${dto.t_name })
@@ -91,6 +92,7 @@ function chkPaySubmit(){
 				<td>${dto.b_term }시간</td>
 				<td>${dto.m_nick }</td>
 				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
+				<td>${dto.p_cancel }</td>
 				<td>${dto.b_refund }</td>
 				<td>
 				    <p>

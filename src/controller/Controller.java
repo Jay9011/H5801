@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import command.BookCommand;
-import command.BookCommand2;
 import command.BookCommand3;
 import command.Command;
 import command.JoinCommand;
@@ -26,6 +24,19 @@ import command.SendCommand;
 import command.UpdateCommand;
 import command.chkMailCommand;
 import command.chkNickCommand;
+import command.faq.FaqDeleteOk;
+import command.faq.FaqLoad;
+import command.faq.FaqUpdate;
+import command.faq.FaqUpdateOk;
+import command.faq.FaqWriteOk;
+import command.intro.IntroLoad;
+import command.notice.NoticeDeleteOk;
+import command.notice.NoticeLoad;
+import command.notice.NoticeUpdate;
+import command.notice.NoticeUpdateOk;
+import command.notice.NoticeView;
+import command.notice.NoticeWriteOk;
+import command.pagenotice.NoticePageingLoad;
 import command.reservation.ReservJsonParse;
 import command.reservation.ReservListCommand;
 import command.studying.ComDeleteOk;
@@ -35,9 +46,9 @@ import command.studying.CommentOk;
 import command.studying.DeleteOk;
 import command.studying.FavorClick;
 import command.studying.FileUploadCommand;
-import command.studying.ResultJsonParse;
 import command.studying.ListCommand;
 import command.studying.ListJSONParse;
+import command.studying.ResultJsonParse;
 import command.studying.Update;
 import command.studying.UpdateOk;
 import command.studying.View;
@@ -279,9 +290,95 @@ public class Controller extends HttpServlet {
 			new UpdateCommand().execute(request, response);
 			viewPage = "resetPwOk.jsp";
 			break;
+			
+		case "/Faq/faq.ho":
+			command = new FaqLoad();
+			command.execute(request, response);
+			command = new NoticeLoad();
+			command.execute(request, response);
+			viewPage = "faq.jsp";
+			break;
+			
+		case "/Faq/write.ho":
+//			command = new FaqWriteTable();
+//			command.execute(request, response);
+			viewPage = "write.jsp";
+			break;
 
+		case "/Faq/writeOk.ho":
+			command = new FaqWriteOk();
+			command.execute(request, response);
+			viewPage = "writeOk.jsp";
+			break;
 
+		case "/Faq/deleteOk.ho":
+			command = new FaqDeleteOk();
+			command.execute(request, response);
+			viewPage = "deleteOk.jsp";
+			break;
+
+		case "/Faq/update.ho":
+			command = new FaqUpdate();
+			command.execute(request, response);
+			viewPage = "update.jsp";
+			break;
+			
+		case "/Faq/FaqUpdateOk.ho":
+			command = new FaqUpdateOk();
+			command.execute(request, response);
+			viewPage = "updateOk.jsp";
+			break;
+			
+		case "/Intro/introduce.ho":
+			command = new IntroLoad();
+			command.execute(request, response);
+			viewPage = "introduce.jsp";
+			break;
+			
+		case "/Notice/notice.ho":
+			command = new NoticePageingLoad();
+			command.execute(request, response);
+			viewPage = "notice.jsp";
+			break;
+			
+		case "Notice/noticeview.ho":
+			command = new NoticeView();
+			command.execute(request, response);
+			viewPage = "noticeview.jsp";
+			break;
+			
+		case "/Notice/deleteOk.ho":
+			command = new NoticeDeleteOk();
+			command.execute(request, response);
+			viewPage = "deleteOk.jsp";
+			break;
+			
+		case "/Notice/update.ho":
+			command = new NoticeUpdate();
+			command.execute(request, response);
+			viewPage = "update.jsp";
+			break;
+			
+		case "/Notice/NoticeUpdateOk.ho":
+			command = new NoticeUpdateOk();
+			command.execute(request, response);
+			viewPage = "updateOk.jsp";
+			break;
+			
+		case "/Notice/write.ho":
+//			command = new NoticeWriteTable();
+//			command.execute(request, response);
+			viewPage = "write.jsp";
+			break;
+			
+		case "/Notice/writeOk.ho":
+			command = new NoticeWriteOk();
+			command.execute(request, response);
+			viewPage = "writeOk.jsp";
+			break;
 		}
+
+
 
 
 		if(viewPage != null) {

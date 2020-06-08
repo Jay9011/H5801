@@ -20,5 +20,10 @@ public class NoticeCommon{
 			"(SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM n_table ORDER BY n_uid DESC) T) " + 
 			"WHERE RNUM >= ? AND RNUM < ?";
 	
+	public static final String SQL_INSERT_NOTICE = "INSERT INTO n_table(n_uid ,n_title, n_content, m_uid) VALUES(SEQ_n_table_n_uid.nextval,?,?,?)";
+	public static final String SQL_DELETE_NTABLE = "DELETE FROM N_TABLE WHERE n_uid = ?";
+	public static final String SQL_SELECT_N_UID = "SELECT * FROM N_TABLE WHERE n_uid = ?";
+	public static final String SQL_UPDATE_NOTICE = "UPDATE N_TABLE SET n_title = ?, n_content = ? WHERE n_uid = ?";
+	
 	
 }

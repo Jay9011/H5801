@@ -1,8 +1,5 @@
 @charset "UTF-8";
-/* 기본 설정 */
-* {
-	box-sizing: border-box !important;
-}
+
 html, body{
     position: relative;
     margin: 0px;
@@ -29,9 +26,6 @@ div{
 
 
 /* introduce.css 공통 */
-*{
-    width: 100%;
-}
 
 .left{
     float: left;
