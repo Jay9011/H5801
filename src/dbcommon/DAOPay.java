@@ -10,21 +10,21 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 
-public class DAOReady {
+public class DAOPay {
 	Connection conn = null; // DB 연결을 위한 받기 객체
 	Statement stmt = null; // SQL 문을 수행하고 그 결과를 리턴하기 위한 객체
 	PreparedStatement pstmt = null; // 강화된 statement(precompiled SQL문, for multiple time)
 	ResultSet rs = null;   // SELECT 결과, executeQuery() // 쿼리 수행결과를 테이블로 담는 객체 (행 단위로 커서 이동)
 	
 	// DAO 객체가 생성될때 Connection 도 생성된다.
-	public DAOReady() {
+	public DAOPay() {
 		
 		try {
 			Class.forName(Common.DRIVER);
 			// DriverManager: JDBC 드라이버를 관리하기 위한 기본 서비스 
 			// getConnection: 해당 DB URL에 연결 시도
 			conn = DriverManager.getConnection(Common.URL, Common.USERID, Common.USERPW);
-			System.out.println("WriteDAO 생성, 데이터 베이스 연결!");
+			System.out.println("DAOReady 생성, 데이터 베이스 연결!");
 		} catch(Exception e) {
 			e.printStackTrace();
 			// throw e;
@@ -42,10 +42,10 @@ public class DAOReady {
 	} // end close()
 	
 	// ResultSet --> DTO 배열로 리턴
-		public DTOBook [] createArray(ResultSet rs) throws SQLException {
-			DTOBook [] arr = null;  // DTO 배열
+		public DTOPay [] createArray(ResultSet rs) throws SQLException {
+			DTOPay [] arr = null;  // DTO 배열
 			
-			ArrayList<DTOBook> list = new ArrayList<DTOBook>();
+			ArrayList<DTOPay> list = new ArrayList<DTOPay>();
 			
 			// next(): 커서를 첫 행부터 다음 행으로 옮김
 				// 리턴값: true - 다음 행이 있음, false - 다음 행이 없음
@@ -53,16 +53,16 @@ public class DAOReady {
 				//getInt(), getString(), getDate(), getTime() : 현재 선택(cursor)된 행의 해당 컬럼(매개변수)에서 값을 검색하여 해당 Java 값(int, String, Date, Time)로 반환해 리턴
 					// 매개변수: 컬럼 라벨
 					// 리턴값: 해당 컬럼 값 (없으면 int -> 0, String, Date, Time -> null)
-				int rnum = rs.getInt("rnum");
+
 				int p_uid = rs.getInt("p_uid");
-				String partner_order_id = rs.getString("partner_order_id");
+				String tid = rs.getString("tid");
 				Date b_sdate = rs.getDate("b_sdate");
 				Time b_stime = rs.getTime("b_stime");
 				Time b_etime = rs.getTime("b_etime");
 				int b_term = rs.getInt("b_term");
 				int b_duration = rs.getInt("b_duration");
 				int b_refund = rs.getInt("b_refund");
-				float total_amount = rs.getFloat("total_amount");
+				int total_amount = rs.getInt("total_amount");
 				Date b_date = rs.getDate("b_date");
 				int p_cancel = rs.getInt("p_cancel");
 				int m_uid = rs.getInt("m_uid");
@@ -78,9 +78,8 @@ public class DAOReady {
 				// add(): Appends the specified element to the end of this list.
 				// 매개변수: element
 				// 리턴값: true
-				DTOBook dto = new DTOBook(rnum
-										, p_uid
-										, partner_order_id
+				DTOPay dto = new DTOPay( p_uid
+										, tid
 										, b_sdate
 										, b_stime
 										, b_etime
@@ -110,7 +109,7 @@ public class DAOReady {
 			// list에 add된 게 없으면 null 리턴
 			if(size == 0) return null;
 			
-			arr = new DTOBook[size];
+			arr = new DTOPay[size];
 			// toArray()
 				// 매개변수: list의 elements를 담을 array
 				// 리턴값: list의 elements를 순서대로 담은 array
@@ -119,8 +118,8 @@ public class DAOReady {
 		} // end createArray()
 		
 		// 전체 SELECT
-		public DTOBook [] selectByUid(int p_uid) throws SQLException {
-			DTOBook [] arr = null;
+		public DTOPay [] selectByUid(int p_uid) throws SQLException {
+			DTOPay [] arr = null;
 			
 			try {
 				// "SELECT * FROM test_write ORDER BY wr_uid DESC"

@@ -22,26 +22,32 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import dbcommon.DAOReady;
+import dbcommon.DAOPay;
 import dbcommon.DTOBook;
+import dbcommon.DTOPay;
 
 
 
-public class ReadyCommand implements Command {
+public class PayCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		HttpURLConnection conn = null;
 		BufferedReader in = null;
-		DAOReady dao = new DAOReady();
-		DTOBook [] arr = null;
+		String url_domain = request.getScheme() + "://" + request.getServerName()+":"+ request.getServerPort();
+		String conPath = request.getContextPath();
+		DAOPay dao = new DAOPay();
+		DTOPay [] arr = null;
 		int p_uid;
 		
-		if(request.getSession().getAttribute("p_uid") != null) {
-			p_uid = (int)(request.getSession().getAttribute("p_uid"));
+		if(request.getParameter("p_uid") != null) {
+			p_uid = Integer.parseInt(request.getParameter("p_uid"));
+			System.out.println(p_uid);
+			
 		} else {
 			p_uid = 0;
+			System.out.println(p_uid);
 			return;
 		}
 		
@@ -60,34 +66,37 @@ public class ReadyCommand implements Command {
 			String cid = "TC0ONETIME";
 			//String partner_order_id = request.getParameter("partner_order_id");
 			//String partner_order_id = "partner_order_id";
-			String partner_order_id = arr[0].getPartner_order_id();
+			int partner_order_id = arr[0].getP_uid();
 			String partner_user_id = arr[0].getEmail();
 			//String partner_user_id = "partner_user_id";
 			String item_name = arr[0].getB_seatType()+ arr[0].getT_name();
 			//String item_name = "seat101";
 			String quantity = "1";
-			String total_amount = "8000";
+			int total_amount = arr[0].getTotal_amount();
 			String tax_free_amount = "1";
+			String approval_url = url_domain+conPath+"/Payment/payOk.ho";
+			String cancel_url = url_domain+conPath+"/MyPage/book.ho";
+			String fail_url =  url_domain+conPath+"/MyPage/book.ho";
 			
 			
-			Map<String, String> params = new HashMap<String, String>();
+			Map<String, Object> params = new HashMap<String, Object>();
 			
-			params.put("cid", "TC0ONETIME");
+			params.put("cid", cid);
 			params.put("partner_order_id", partner_order_id);
 			params.put("partner_user_id", partner_user_id);
 			params.put("item_name", item_name);
 			params.put("quantity", quantity);
 			params.put("total_amount", total_amount);
 			params.put("tax_free_amount", tax_free_amount);
-			params.put("approval_url", "http://localhost:8101/Payment_Test/payRequest.payment");
-			params.put("cancel_url", "http://localhost:8101/Payment_Test/cancel.payment");
-			params.put("fail_url", "http://localhost:8101/Payment_Test/fail.payment");
+			params.put("approval_url", approval_url);
+			params.put("cancel_url", cancel_url);
+			params.put("fail_url", fail_url);
 //			params.put("approval_url", "http://localhost:8101/Payment_Test/approve.payment");
 //			params.put("cancel_url", "http://localhost:8101/Payment_Test/cancle.payment");
 //			params.put("fail_url", "http://localhost:8101/Payment_Test/fail.payment");
 			
 			String string_params = new String();
-			for(Map.Entry<String, String> elem: params.entrySet()) {
+			for(Map.Entry<String, Object> elem: params.entrySet()) {
 				string_params += (elem.getKey() + "=" + elem.getValue() + "&");
 			}
 			
@@ -111,6 +120,7 @@ public class ReadyCommand implements Command {
 			System.out.println((String)obj.get("tid"));
 			session.setAttribute("partner_order_id", partner_order_id);
 			session.setAttribute("partner_user_id", partner_user_id);
+			session.setAttribute("total_amount", total_amount);
 			session.setAttribute("item_name", item_name);
 			
 			

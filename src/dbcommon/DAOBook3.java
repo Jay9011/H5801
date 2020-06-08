@@ -58,14 +58,14 @@ public class DAOBook3 {
 					// 리턴값: 해당 컬럼 값 (없으면 int -> 0, String, Date, Time -> null)
 				int rnum = rs.getInt("rnum");
 				int p_uid = rs.getInt("p_uid");
-				String partner_order_id = rs.getString("partner_order_id");
+				String tid = rs.getString("tid");
 				Date b_sdate = rs.getDate("b_sdate");
 				Time b_stime = rs.getTime("b_stime");
 				Time b_etime = rs.getTime("b_etime");
 				int b_term = rs.getInt("b_term");
 				int b_duration = rs.getInt("b_duration");
 				int b_refund = rs.getInt("b_refund");
-				float total_amount = rs.getFloat("total_amount");
+				int total_amount = rs.getInt("total_amount");
 				Date b_date = rs.getDate("b_date");
 				int p_cancel = rs.getInt("p_cancel");
 				int m_uid = rs.getInt("m_uid");
@@ -83,7 +83,7 @@ public class DAOBook3 {
 				// 리턴값: true
 				DTOBook dto = new DTOBook(rnum
 										, p_uid
-										, partner_order_id
+										, tid
 										, b_sdate
 										, b_stime
 										, b_etime
