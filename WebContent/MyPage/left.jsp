@@ -17,20 +17,17 @@
 %>
 
 <!-- left 사이트 메뉴 시작 -->
-    <div class="col-sm-4">
-      <h3>Side menu</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link <%=(menu == 1)?"active":"" %>" <%=(menu != 1)?"href='list.ho?menu=1'":""%>>page1</a>
+    <div class="col s5 offset-s7 right-align" style="margin-bottom:51px; ">
+      <ul class="tabs">
+        <li class="tab">
+          <a target="_self" class="<%=(menu == 1)?"active":"" %>" <%=(menu != 1)?"href='list.ho?menu=1'":""%>>내가 쓴 게시글</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link <%=(menu == 2)?"active":"" %>" <%=(menu != 2)?"href='list.ho?menu=2'":""%>>page2</a>
+        <li class="tab">
+          <a target="_self" class="<%=(menu == 2)?"active":"" %>" <%=(menu != 2)?"href='list.ho?menu=2'":""%>>댓글 단 게시글</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link <%=(menu == 3)?"active":"" %>" <%=(menu != 3)?"href='list.ho?menu=3'":""%>>page3</a>
+        <li class="tab">
+          <a target="_self" class="<%=(menu == 3)?"active":"" %>" <%=(menu != 3)?"href='list.ho?menu=3'":""%>>좋아요</a>
         </li>
       </ul>
-      <hr class="d-sm-none">
     </div>
     <!-- left 사이트 메뉴 끝 -->

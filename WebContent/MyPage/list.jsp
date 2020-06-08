@@ -7,20 +7,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<jsp:include page="../top.jsp" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>Insert title here</title>
-<style>
-/* table {
-		border: 1px solid #333;
-	} */
-tr, th, td {
-	border-bottom: 1px solid #666;
-}
-</style>
 </head>
 <body>
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
 	<%
 		int menu = 1; // menu parameter 가 없으면 1 page 디폴트 동작
 	String menu_param = request.getParameter("menu");
@@ -37,8 +33,11 @@ tr, th, td {
 	if (menu < 1)
 		menu = 1;
 	%>
-	<div class="container" style="margin-top: 30px">
-		<div class="row">
+	<section class="container section scrollspy" id="intro">
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s10">
+		
 			<jsp:include page="left.jsp">
 				<jsp:param value="<%=menu%>" name="menu" />
 			</jsp:include>
@@ -46,7 +45,11 @@ tr, th, td {
 				String articlepage = "article" + menu + ".jsp";
 			%>
 			<jsp:include page="<%=articlepage%>" />
-		</div>
+		
 	</div>
+		<div class="col s1"></div>
+	</div>
+</section>
+<jsp:include page="../foot.jsp"/>
 </body>
 </html>
