@@ -73,7 +73,7 @@ public class PayCommand implements Command {
 			//String item_name = "seat101";
 			String quantity = "1";
 			int total_amount = arr[0].getTotal_amount();
-			String tax_free_amount = "1";
+			int tax_free_amount = arr[0].getTotal_amount();
 			String approval_url = url_domain+conPath+"/Payment/payOk.ho";
 			String cancel_url = url_domain+conPath+"/MyPage/book.ho";
 			String fail_url =  url_domain+conPath+"/MyPage/book.ho";

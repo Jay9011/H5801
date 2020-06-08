@@ -17,6 +17,7 @@ import command.LoginCommand;
 import command.LogoutCommand;
 import command.PayCommand;
 import command.PayOkCommand;
+import command.RefundCommand;
 import command.ReinfoCommand;
 import command.ReinfoOkCommand;
 import command.SelectCommand;
@@ -177,11 +178,11 @@ public class Controller extends HttpServlet {
 			new FavorClick().execute(request, response);
 			break;
 			
-		case "/StudyBoard/reservation.ho":
+		case "/Reservation/reservation.ho":
 			viewPage = "reservation.jsp";
 			break;
 
-		case "/StudyBoard/reservInfo.ho":
+		case "/Reservation/reservInfo.ho":
 			new ReservListCommand().execute(request, response);
 			new ReservJsonParse().execute(request, response);
 			break;
@@ -227,6 +228,7 @@ public class Controller extends HttpServlet {
 			break;
 
 		case "/Payment/refund.ho":
+			new RefundCommand().execute(request, response);
 			viewPage = "refund.jsp";
 			break;
 

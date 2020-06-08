@@ -6,72 +6,82 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<jsp:include page="../top.jsp" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
+<title>좋아요</title>
 </head>
 <body>
-<table>
+<h3 class="center-align pfont">좋아요</h3>
+	<table id="postList" class="highlight">
+	<thead>
 		<tr>
-			<th>uid</th>
-			<th>제목/내용</th>
-			<th>작성일</th>			
+			<th width="100px">uid</th>
+                <th>제목</th>
+                <th width="150px">작성일</th>		
 		</tr>
+	</thead>
 		<c:choose>
 			<c:when test="${empty like || fn:length(like) == 0}"></c:when>
 			<c:otherwise>
-				<c:forEach var="like" items="${like }">
+				<c:forEach var="like" items="${like }" varStatus="status">
 				<tr>
 					<td>${like.s_uid }</td>
-					<td><a href='view.ho?s_uid=${like.s_uid}'><h2>${like.s_title}</h2><p>${like.s_content }</p></a></td>
-					<td>${like.s_date }</td>
+					<td><a href='${pageContext.request.contextPath}/StudyBoard/view.ho?s_uid=${like.s_uid}'>${like.s_title}</a></td>
+					<td id="tdd${status.index }">
+						<script>
+						if ((Math
+								.ceil((new Date() - new Date('${like.s_date}'))
+										/ (1000 * 3600 * 24)) - 1) == 0) {
+							$("#tdd${status.index}").html('${like.s_date_time}');
+						} else {
+							$("#tdd${status.index}").html('${like.s_date_day}');
+						}
+						</script>
+					</td>
 				</tr>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</table>
-	<div class="pager">
-    <ul>
-        <c:if test="${ bcurPageNum > 5 && !empty kwd }">
-            <li><a href="list.ho?page=${ bblockStartNum - 1 }&kwd=${ kwd }">◀</a></li>
+	<div class="pager center-align">
+    <ul class="pagination">
+        <c:if test="${ curPageNum > 5 && !empty kwd }">
+            <li><a href="list.ho?menu=1&page=${ blockStartNum - 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
         
-        <c:if test="${ bcurPageNum > 5 }">
-            <li><a href="list.ho?page=${ bblockStartNum - 1 }">◀</a></li>
+        <c:if test="${ curPageNum > 5 }">
+            <li><a href="list.ho?menu=1&page=${ blockStartNum - 1 }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
         
-        <c:forEach var="i" begin="${ bblockStartNum }" end="${ bblockLastNum }">
+        <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
-                <c:when test="${ i > blastPageNum }">
-                    <li>${ i }</li>
+                <c:when test="${ i > lastPageNum }">
+                    <li><a>${ i }</a></li>
                 </c:when>
-                <c:when test="${ i == bcurPageNum }">
-                    <li class="selected">${ i }</li>
+                <c:when test="${ i == curPageNum }">
+                    <li class="active"><a>${ i }</a></li>
                 </c:when>
                 <c:when test="${ !empty kwd}">
-                    <li><a href="list.ho?a=search&page=${ i }&kwd=${ kwd }">${ i }</a></li>
+                    <li><a href="list.ho?menu=3&a=search&page=${ i }&kwd=${ kwd }">${ i }</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="list.ho?page=${ i }">${ i }</a></li>
+                    <li><a href="list.ho?menu=3&page=${ i }">${ i }</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
         
-        <c:if test="${ blastPageNum > bblockLastNum && !empty kwd }">
-            <li><a href="list.ho?a=search&page=${ bblockLastNum + 1 }&kwd=${ kwd }">▶</a></li>
+        <c:if test="${ lastPageNum > blockLastNum && !empty kwd }">
+            <li><a href="list.ho?menu=3&a=search&page=${ blockLastNum + 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
         
-        <c:if test="${ blastPageNum > bblockLastNum }">
-            <li><a href="list.ho?page=${ bblockLastNum + 1 }">▶</a></li>
+        <c:if test="${ lastPageNum > blockLastNum }">
+            <li><a href="list.ho?menu=3&page=${ blockLastNum + 1 }"><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
-</div>
-<c:if test="${m_uid != null}">
-		<button onclick="location.href='write.ho'">글쓰기</button>
-	</c:if>
-	<c:if test="${m_uid == null}">
-		<button onclick="location.href='../Login/Login.ho'">로그인</button>
-	</c:if>
+</div> 
 </body>
 </html>
 

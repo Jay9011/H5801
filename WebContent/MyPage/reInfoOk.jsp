@@ -1,20 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+ <head>
+ <jsp:include page="../modal.jsp"/>
 
 <c:choose>
 	<c:when test="${update == 0 }">
-		<script>
-		alert("수정 실패");
-			history.back();   // 브라우저가 기억하는 직전 페이지(입력중 페이지로)
-		</script>
+		<div id="demo-modal" class="modal">
+    <div class="modal-content">
+      <h5>수정 탈락!</h5>
+      <p class="left-align">정보수정에 실패하였습니다.<br>다시시도해 주세요.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+    </div>
+  </div>
 	</c:when>
 	<c:otherwise>
-		<script>
-			alert("수정 성공");
-			/* location.href = "list.do"; */
-			location.href = "reInfo.ho";
-		</script>
+		<div id="demo-modal" class="modal">
+    <div class="modal-content">
+      <h5>수정 성공!</h5>
+      <p class="left-align">정보수정에 통과!</p>
+    </div>
+    <div class="modal-footer">
+      <a href="${pageContext.request.contextPath}/MyPage/reInfo.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+    </div>
+  </div>
 	</c:otherwise>
 </c:choose> 
+<script type="text/javascript" src="../JS/modal.js"></script>
+</body>   
+</html>
