@@ -33,6 +33,7 @@ DROP SEQUENCE SEQ_mf_file_mf_uid;
 DROP SEQUENCE SEQ_m_user_m_uid;
 DROP SEQUENCE SEQ_s_table_s_uid;
 DROP SEQUENCE SEQ_t_detail_t_uid;
+DROP SEQUENCE SEQ_Reserve_p_uid;
 DROP SEQUENCE SEQ_Reserve_partner_order_id;
 DROP SEQUENCE SEQ_n_table_n_uid;
 DROP SEQUENCE SEQ_faq_f_uid;
