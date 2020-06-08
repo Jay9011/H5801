@@ -9,7 +9,7 @@
 		$("ul.Hnav .btnOut").css('display', 'inline-block');
 		$("ul.Hnav .btnOut2").css('display', 'block');
 		$('.loginNN').click(function() {
-			$(this).attr('href', '${pageContext.request.contextPath}/StudyBoard/reservation.ho');
+			$(this).attr('href', '${pageContext.request.contextPath}/Reservation/reservation.ho');
 		});
 		$('.loginNN2').click(function() {
 			$(this).attr('href', '${pageContext.request.contextPath}/StudyBoard/list.ho');

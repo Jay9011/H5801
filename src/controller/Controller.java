@@ -177,11 +177,11 @@ public class Controller extends HttpServlet {
 			new FavorClick().execute(request, response);
 			break;
 			
-		case "/StudyBoard/reservation.ho":
+		case "/Reservation/reservation.ho":
 			viewPage = "reservation.jsp";
 			break;
 
-		case "/StudyBoard/reservInfo.ho":
+		case "/Reservation/reservInfo.ho":
 			new ReservListCommand().execute(request, response);
 			new ReservJsonParse().execute(request, response);
 			break;
