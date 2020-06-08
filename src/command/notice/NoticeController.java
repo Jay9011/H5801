@@ -15,7 +15,7 @@ import command.pagenotice.NoticePageingLoad;
 @WebServlet("*.fc3")
 public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     public NoticeController() {
         super();
     }
@@ -30,7 +30,7 @@ public class NoticeController extends HttpServlet {
 
 	protected void getNotice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String viewPage = null;
 		Command command = null;
 
@@ -42,7 +42,7 @@ public class NoticeController extends HttpServlet {
 		System.out.println("uri: " + uri);
 		System.out.println("conPath: " + conPath);
 		System.out.println("com: " + com);
-		
+
 		switch (com) {
 		case "/Notice/notice.fc3":
 			command = new NoticePageingLoad();
@@ -63,5 +63,5 @@ public class NoticeController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 	}
-	
+
 }

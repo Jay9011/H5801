@@ -1,6 +1,3 @@
-// 작성자: 낙경
-// 2020-06-02  22:00 수정
-
 package dbcommon;
 
 import java.sql.Connection;
@@ -13,21 +10,21 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 
-public class DAOBook3 {
+public class DAOPay {
 	Connection conn = null; // DB 연결을 위한 받기 객체
 	Statement stmt = null; // SQL 문을 수행하고 그 결과를 리턴하기 위한 객체
 	PreparedStatement pstmt = null; // 강화된 statement(precompiled SQL문, for multiple time)
 	ResultSet rs = null;   // SELECT 결과, executeQuery() // 쿼리 수행결과를 테이블로 담는 객체 (행 단위로 커서 이동)
 	
 	// DAO 객체가 생성될때 Connection 도 생성된다.
-	public DAOBook3() {
+	public DAOPay() {
 		
 		try {
 			Class.forName(Common.DRIVER);
 			// DriverManager: JDBC 드라이버를 관리하기 위한 기본 서비스 
 			// getConnection: 해당 DB URL에 연결 시도
 			conn = DriverManager.getConnection(Common.URL, Common.USERID, Common.USERPW);
-			System.out.println("WriteDAO 생성, 데이터 베이스 연결!");
+			System.out.println("DAOReady 생성, 데이터 베이스 연결!");
 		} catch(Exception e) {
 			e.printStackTrace();
 			// throw e;
@@ -45,10 +42,10 @@ public class DAOBook3 {
 	} // end close()
 	
 	// ResultSet --> DTO 배열로 리턴
-		public DTOBook [] createArray(ResultSet rs) throws SQLException {
-			DTOBook [] arr = null;  // DTO 배열
+		public DTOPay [] createArray(ResultSet rs) throws SQLException {
+			DTOPay [] arr = null;  // DTO 배열
 			
-			ArrayList<DTOBook> list = new ArrayList<DTOBook>();
+			ArrayList<DTOPay> list = new ArrayList<DTOPay>();
 			
 			// next(): 커서를 첫 행부터 다음 행으로 옮김
 				// 리턴값: true - 다음 행이 있음, false - 다음 행이 없음
@@ -56,7 +53,7 @@ public class DAOBook3 {
 				//getInt(), getString(), getDate(), getTime() : 현재 선택(cursor)된 행의 해당 컬럼(매개변수)에서 값을 검색하여 해당 Java 값(int, String, Date, Time)로 반환해 리턴
 					// 매개변수: 컬럼 라벨
 					// 리턴값: 해당 컬럼 값 (없으면 int -> 0, String, Date, Time -> null)
-				int rnum = rs.getInt("rnum");
+
 				int p_uid = rs.getInt("p_uid");
 				String tid = rs.getString("tid");
 				Date b_sdate = rs.getDate("b_sdate");
@@ -81,8 +78,7 @@ public class DAOBook3 {
 				// add(): Appends the specified element to the end of this list.
 				// 매개변수: element
 				// 리턴값: true
-				DTOBook dto = new DTOBook(rnum
-										, p_uid
+				DTOPay dto = new DTOPay( p_uid
 										, tid
 										, b_sdate
 										, b_stime
@@ -113,7 +109,7 @@ public class DAOBook3 {
 			// list에 add된 게 없으면 null 리턴
 			if(size == 0) return null;
 			
-			arr = new DTOBook[size];
+			arr = new DTOPay[size];
 			// toArray()
 				// 매개변수: list의 elements를 담을 array
 				// 리턴값: list의 elements를 순서대로 담은 array
@@ -122,13 +118,13 @@ public class DAOBook3 {
 		} // end createArray()
 		
 		// 전체 SELECT
-		public DTOBook [] selectByUid(int uid) throws SQLException {
-			DTOBook [] arr = null;
+		public DTOPay [] selectByUid(int p_uid) throws SQLException {
+			DTOPay [] arr = null;
 			
 			try {
 				// "SELECT * FROM test_write ORDER BY wr_uid DESC"
-				pstmt = conn.prepareStatement("SELECT * FROM v_book WHERE m_uid = ? ORDER BY p_startTime DESC");
-				pstmt.setInt(1, uid);
+				pstmt = conn.prepareStatement("SELECT * FROM v_book WHERE p_uid = ?");
+				pstmt.setInt(1, p_uid);
 				// executeQuery(): 쿼리문 수행
 					// 리턴값: 수행한 결과를 담은 ResultSet
 				rs = pstmt.executeQuery();
@@ -140,40 +136,4 @@ public class DAOBook3 {
 			
 			return arr;
 		} // end select()
-		
-		// 쿼리: 페이지네이션 구현
-		public int getCount(int m_uid) throws SQLException {
-			int count = 0;
-
-			try {
-				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ?");
-				pstmt.setInt(1, m_uid);
-				rs = pstmt.executeQuery();
-				while(rs.next()) {
-					count = rs.getInt(1);
-				}
-			} finally {
-				close();
-			}
-			return count;
-		}
-		// BOARD의 페이징
-		public DTOBook[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
-			DTOBook[] arr = null;
-			
-			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? ORDER BY m_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
-				pstmt.setInt(1, m_uid);
-				pstmt.setInt(2, fromRow);
-				pstmt.setInt(3, toRow);
-				rs = pstmt.executeQuery();
-				arr = createArray(rs);
-			} finally {
-				close();
-			}
-			return arr;
-		}
-		
-		
-	
-} // end class
+}

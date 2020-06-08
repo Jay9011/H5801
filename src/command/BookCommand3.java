@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Pagination;
-import controller.Pagination2;
 import dbcommon.DAOBook;
 import dbcommon.DAOBook2;
 import dbcommon.DAOBook3;
@@ -44,7 +43,7 @@ public class BookCommand3 implements Command {
 				//request.setAttribute("book", arr1);
 				
 				//페이징 바
-				Pagination2 pg = new Pagination2();
+				Pagination pg = new Pagination();
 		    	dao = new DAOBook3();
 				int maxNum = dao.getCount(uid);
 				pg.makeLastPageNum(maxNum);

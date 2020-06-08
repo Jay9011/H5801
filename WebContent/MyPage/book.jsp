@@ -11,6 +11,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 <c:choose>
 
@@ -30,6 +32,22 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/bp_defualt.css"/>
 <title>MY RESERVATION</title>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+function chkPaySubmit(){
+	var frm = document.bookFrm;
+	var p_uid = frm.p_uid.value.trim();
+	if(p_uid == ""){
+		alert("결제할 항목을 선택해주세요")                                   
+	    frm.p_uid.focus();
+        return false;	
+	}
+	
+	frm.submit(); // submit 성공
+}
+
+
+</script>
 
 <body>
 <jsp:include page="../nav.jsp"/>
@@ -40,8 +58,8 @@
 	<div class="col s10">
 
 		<h3 class="center-align pfont">MY RESERVATION</h3>
-		<form action="" method="post">
-		<table class="highlight">
+		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
+		<table class="highlight centered">
 			<tr>
 				<th>예약번호</th>
 				<th>결재번호</th>
@@ -62,18 +80,21 @@
 			<c:forEach var="dto" items="${book }">
 			
 			<tr>
-				<td>${dto.rnum }</td>
-				<td>${dto.p_uid }</td>
-				<td>${dto.b_seatType }</td>
+				<td>#${dto.rnum }</td>
+				<td>${dto.p_uid }번</td>
+				<td>
+				${dto.b_seatType } <br>
+				(번호: ${dto.t_name })
+				</td>
 				<td>${dto.b_sdate }</td>
-				<td>${dto.b_term }</td>
+				<td>${dto.b_term }시간</td>
 				<td>${dto.m_nick }</td>
-				<td>${dto.total_amount }</td>
+				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
 				<td>${dto.b_refund }</td>
 				<td>
 				    <p>
 				      <label>
-				        <input class="with-gap" name="group1" type="radio"  />
+				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" />
 				        <span></span>
 				      </label>
 				    </p>
@@ -133,8 +154,8 @@
 	
 		  <div class="row">
             <div class="col s12 right-align">
-              <button type="button" class="btn waves-effect" style="margin-right: 5px;" onclick="chkEmailSubmit()">결제</button>
-              <button type="button" class="btn waves-effect" onclick="chkEmailSubmit()">취소</button>
+              <button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>
+              <button type="button" id="btn2" class="btn waves-effect" onclick="chkPayCancelSubmit()">취소</button>
             </div>
             </div>
           	</div>

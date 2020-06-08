@@ -45,37 +45,43 @@ if($(window).scrollTop()>= $("#intro").offset().top ){
 });
 $('.collapsible').collapsible();
     //   수정할수 있게 도와주는 서비스탭
-      $('.tabs').tabs(); 
+      $('.tabs').tabs();
       $('.tooltipped').tooltip();
       $('.scrollspy').scrollSpy();
       // 날짜
       var days = 7;
     var date = new Date();
     var res = date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    var date = new Date();
       $('.datepicker').datepicker({
-        
         format:'yyyy-mm-dd',
          minDate: new Date(),
          maxDate: new Date(res),
+         defaultDate: date,
+         setDefaultDate : date,
          i18n:{months:['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
        monthsShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
        weekdaysFull: ['', '월', '화', '수', '목', '금', '토'],
        weekdaysShort:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
        weekdaysAbbrev:['일', '월', '화', '수', '목', '금', '토'],
-       selectMonths: true, 
+       selectMonths: true,
        selectYears: 140,
        showMonthsShort: false,
        showWeekdaysFull: false,
        done:'확인',
        cancel:'취소',
        clear:false}
+      ,onClose: function() {
+    	  var selectedDate = $("#selectDate").val();
+    	  pickedDate(selectedDate);
+      	}
        });
-      
+
     var inputs = $(".progress1-container").find($("label") );
-    
-    
+
+
     for(var i =0 ; i< inputs.length; i ++)
-    { 
+    {
          var index = i +1;
          var time = (i +1) * 100;
         $(".progress1-container label:nth-child("+ index+")").css( "-webkit-animation", "anim 6s "+time+"ms 1 forwards" );

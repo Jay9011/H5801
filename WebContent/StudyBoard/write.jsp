@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <script src="../ckeditor/ckeditor.js"></script>
 </head>
-<body>
 <script>
 	function chkSubmit(){
 		frm = document.forms["writeTable"];
