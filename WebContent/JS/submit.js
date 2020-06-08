@@ -3,8 +3,8 @@
  */
 function joinmit(){
     var frm = document.joinFrm;
-    //아이디 정규식
-    var nickJ = /^[가-힣A-z0-9]{3,12}$/;
+    //닉네임 정규식
+    var nickJ = /^[가-힣A-z0-9]{3,8}$/;
     // 비밀번호 정규식
     var pwJ = /^[A-Za-z0-9]{4,12}$/; 
     // 이름 정규식
@@ -54,7 +54,7 @@ function joinmit(){
 	}
 	
 	if(nick == "" || !nickJ.test(nick)){
-		cNick.innerHTML ="닉네임을 써주세요 닉네임은 한글 숫자 영어만 가능합니다. 4-12 글자";                                    
+		cNick.innerHTML ="닉네임을 써주세요 닉네임은 한글 숫자 영어만 가능합니다. 4-8 글자";                                    
 	    frm.nick.focus();
         return false;	
 	}

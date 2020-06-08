@@ -12,7 +12,7 @@
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body>
 <jsp:include page="../nav.jsp"/>

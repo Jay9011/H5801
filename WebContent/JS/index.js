@@ -46,7 +46,7 @@ if($(window).scrollTop()>= $("#intro").offset().top ){
 $('.collapsible').collapsible();
     //   수정할수 있게 도와주는 서비스탭
       $('.tabs').tabs();
-      $('.tooltipped').tooltip();
+ 
       $('.scrollspy').scrollSpy();
       // 날짜
       var days = 7;
