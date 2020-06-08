@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,12 +19,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import dbcommon.DAOPay;
+import dbcommon.DTOPay;
+
 public class PayOkCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		try {
+			DAOPay dao = new DAOPay();
+			DTOPay [] arr = null;
+			int p_uid;
+			int cnt;
+			int p_cancel = 1;
+			
 			HttpSession session = request.getSession();
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
 			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
@@ -33,8 +43,20 @@ public class PayOkCommand implements Command {
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
 			
+			if(session.getAttribute("partner_order_id") != null) {
+				p_uid = (int) session.getAttribute("partner_order_id");
+				System.out.println(p_uid);
+				
+			} else {
+				p_uid = 0;
+				System.out.println(p_uid);
+				return;
+			}
+			
+			
 			String cid = "TC0ONETIME";
 			String tid = (String)session.getAttribute("tid");
+			
 			//String partner_order_id = request.getParameter("partner_order_id");
 			int partner_order_id = (int) session.getAttribute("partner_order_id");
 			//String partner_user_id = request.getParameter("partner_user_id");
@@ -77,6 +99,11 @@ public class PayOkCommand implements Command {
 			request.setAttribute("item_name", item_name);
 			request.setAttribute("total", total);
 			
+			cnt = dao.updateTid(tid, p_cancel ,p_uid);
+			
+			request.setAttribute("payOk", cnt);
+			System.out.println(cnt);
+			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (ProtocolException e) {
@@ -84,6 +111,8 @@ public class PayOkCommand implements Command {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
