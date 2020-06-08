@@ -407,7 +407,7 @@ INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount
 -- 다량의 데이터 필요
 SELECT * FROM RESERVE ORDER BY p_uid DESC;
 
-INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid) SELECT SEQ_Reserve_p_uid.NEXTVAL, p_startTime, p_endTime, partner_order_id, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid FROM RESERVE ;
+INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid) SELECT SEQ_Reserve_p_uid.NEXTVAL, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid FROM RESERVE ;
 
 DELETE FROM RESERVE WHERE SEQ_Reserve_p_uid.NEXTVAL >10;
 
