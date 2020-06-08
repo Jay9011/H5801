@@ -26,7 +26,7 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
 <section class="container section scrollspy" id="intro">
       <div class="row">
             <div class="col s1"></div>
-          <div class="col s10 14">
+          <div class="col s10">
               <h1 class="center-align pfont">JOIN</h1>
               <form action="joinOk.ho" name="joinFrm" method="post">
                   <div class="row">

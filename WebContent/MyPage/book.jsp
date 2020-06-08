@@ -32,7 +32,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 function chkPaySubmit(){
 	var frm = document.bookFrm;
