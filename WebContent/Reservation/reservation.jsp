@@ -15,7 +15,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
 <title>타이틀 써주기</title>
 </head>
 <body>

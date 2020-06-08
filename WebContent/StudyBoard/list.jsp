@@ -143,7 +143,7 @@
 				<table id="postList" class="highlight ">
 				</table>
 </div>
-				<div class="pager"></div>
+				<div class="pager center-align"></div>
 				<c:if test="${uid != null}">
 					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'">글쓰기</button>
 				</c:if>
