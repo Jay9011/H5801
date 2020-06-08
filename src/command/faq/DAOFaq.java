@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dbcommon.Common;
+import dbcommon.DTOStudyTable;
 
 public class DAOFaq{
 	
@@ -68,6 +69,66 @@ public class DAOFaq{
 			close();
 		}
 		return dtoFaqs;
+	}
+
+	public int insert(String subject, String content) throws SQLException {
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(FaqCommon.SQL_INSERT_FAQ);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			result = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return result;
+	}
+
+	public int deleteByUid(int f_uid) throws SQLException {
+		int cnt = 0;
+		try {
+			pstmt = conn.prepareStatement(FaqCommon.SQL_DELETE_FTABLE);
+			pstmt.setInt(1, f_uid);
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
+	public DTOFaq[] selectByUid(int f_uid) throws SQLException {
+		DTOFaq[] dtoFaq = null;
+
+		try {
+			pstmt = conn.prepareStatement(FaqCommon.SQL_SELECT_F_UID);
+			pstmt.setInt(1, f_uid);
+			rs = pstmt.executeQuery();
+			dtoFaq = createArray(rs);
+		} finally {
+			close();
+		}
+
+		return dtoFaq;
+	}
+
+	public int update(int f_uid, String subject, String content) throws SQLException {
+		int cnt = 0;
+
+		try {
+			pstmt = conn.prepareStatement(FaqCommon.SQL_UPDATE_FAQ);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, f_uid);
+
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+
+		return cnt;
 	}
 
 	

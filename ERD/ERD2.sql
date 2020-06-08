@@ -373,17 +373,17 @@ INSERT INTO T_DETAIL (t_uid, t_name, t_pay, t_maxnum)
 	VALUES (221, '21', 9000, 1);
 
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
-	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-01 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-02 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '01', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 101);
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-09 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-10 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '01', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 101);
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
-	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-01 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-02 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '02', '좌석예약', 17000, 17000, to_date('2020-05-30 18:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 102);
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-09 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-10 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '02', '좌석예약', 17000, 17000, to_date('2020-05-30 18:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 102);
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
-	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-01 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-02 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '03', '좌석예약', 22000, 22000, to_date('2020-05-15 12:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 104);
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-09 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-10 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '03', '좌석예약', 22000, 22000, to_date('2020-05-15 12:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 104);
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
-	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-02 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '04', '좌석예약', 17000, 17000, to_date('2020-05-25 13:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 101);
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-10 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-11 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '04', '좌석예약', 17000, 17000, to_date('2020-05-25 13:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 101);
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
-	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-02 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '05', '좌석예약', 14000, 14000, to_date('2020-05-28 10:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 103);
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-10 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-11 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '05', '좌석예약', 14000, 14000, to_date('2020-05-28 10:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 103);
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
-	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-04 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '06', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 101);
+	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-11 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-12 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '06', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 2, 101);
 /*(낙경) 예약 데이터 추가: 페이징 구현*/
 INSERT INTO RESERVE (p_uid, p_startTime, p_endTime, tid, item_name, total_amount, tax_free_amount, pay_date, p_cancel, m_uid, t_uid)
 	VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date('2020-06-03 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), to_date('2020-06-04 00:00:00', 'yyyy-mm-dd hh24:MI:ss'), '07', '좌석예약', 17000, 17000, to_date('2020-05-29 17:20:10', 'yyyy-mm-dd hh24:MI:ss'), 0, 4, 101);

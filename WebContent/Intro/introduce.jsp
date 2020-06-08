@@ -9,7 +9,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <head>
-<link rel="stylesheet" href="../CSS/introduce.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <link rel="stylesheet" href="../package/css/swiper.min.css">
@@ -21,7 +20,8 @@
 <script src="https://unpkg.com/swiper/js/swiper.js"></script>
 <script src="../package/js/swiper.min.js"></script>
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-
+            <jsp:include page="../top.jsp" />
+<link rel="stylesheet" href="../CSS/introduce.css">
 
 <meta charset="UTF-8">
 <title>Holic</title>
@@ -31,6 +31,8 @@
 </head>
 
 <body>
+		<jsp:include page="../nav.jsp" />
+		<jsp:include page="../header.jsp" />
 
 	<div class="" id="i_intro">
 		<div class="w-12 text_title">
@@ -129,6 +131,11 @@
 				<h4>ST ROOM2 CONTENT</h4>
 			</div>
 		</div>
+		
+					<div class="clear"></div>
+			<div class="hr">
+				<hr>
+			</div>
 		<div class="left w-6">
 			<div class="w-4 left price">
 				<div class="effect-wrap">
@@ -175,9 +182,6 @@
 					</figure>
 				</div>
 			</div>
-			<div class="hr">
-				<hr>
-			</div>
 
 		</div>
 		<div class="left w-6">
@@ -191,7 +195,7 @@
 
 							<div class="w-12 boom">
 								<h5>${introRow[3].t_maxnum }</h5>
-								<h6>${introRow[3].t_pay }Won</h6>
+								<h6>${introRow[3].t_pay*2 }Won</h6>
 							</div>
 						</figcaption>
 					</figure>
@@ -245,10 +249,7 @@
 					</figure>
 				</div>
 			</div>
-			<div class="clear"></div>
-			<div class="hr">
-				<hr>
-			</div>
+
 
 
 
@@ -383,7 +384,7 @@
 
 
 
-
+<jsp:include page="../foot.jsp" />
 </body>
 </html>
 

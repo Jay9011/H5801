@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.faq.DTOFaq;
+import command.faq.FaqCommon;
 import dbcommon.Common;
 
 public class DAONotice{
@@ -151,6 +153,67 @@ public class DAONotice{
 		
 		
 		return ndto;
+	}
+
+	public int deleteByUid(int n_uid) throws SQLException {
+		int cnt = 0;
+		try {
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_DELETE_NTABLE);
+			pstmt.setInt(1, n_uid);
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public DTONotice[] selectByUid(int n_uid) throws SQLException {
+		DTONotice[] dtoFaq = null;
+
+		try {
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_SELECT_N_UID);
+			pstmt.setInt(1, n_uid);
+			rs = pstmt.executeQuery();
+			dtoFaq = createArray(rs);
+		} finally {
+			close();
+		}
+
+		return dtoFaq;
+	}
+
+	public int update(int n_uid, String subject, String content) throws SQLException {
+		int cnt = 0;
+
+		try {
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_UPDATE_NOTICE);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, n_uid);
+
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+
+		return cnt;
+	}
+
+	public int insert(String subject, String content, Integer m_uid) throws SQLException {
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(NoticeCommon.SQL_INSERT_NOTICE);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, m_uid);
+			result = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return result;
 	}
 		
 	

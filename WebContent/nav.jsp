@@ -45,17 +45,17 @@ $(document).ready(function() {
 			<ul class="right hide-on-med-and-down Hnav">
 				<li><a class="dropdown-trigger" data-target="dropdown1">Holic 소개</a>
 					<ul id='dropdown1' class='dropdown-content'>
-						<li><a href="#!">Holic 소개</a></li>
-						<li><a href="#!">스터디룸 소개</a></li>
-						<li><a href="#!">오시는 길</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho">Holic 소개</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho">스터디룸 소개</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho">오시는 길</a></li>
 					</ul></li>
 				<li><a class="loginNN">독서실 예약</a></li>
 				<li><a class="loginNN2">학습 문의</a></li>
 				<li><a class="dropdown-trigger" data-target="dropdown2">고객
 						지원</a>
 					<ul id='dropdown2' class='dropdown-content'>
-						<li><a href="#!">공지사항</a></li>
-						<li><a href="#!">FAQ</a></li>
+						<li><a href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></li>
 					</ul></li>
 				<li><a class="dropdown-trigger btnOut" data-target="dropdown3"
 					style="display: none;">마이페이지</a>
