@@ -116,4 +116,5 @@ public class Common {
 		 * 예약 현황 관련 SQL
 		 */
 		 public static final String SQL_SELECT_RESERV_BY_DATE = "SELECT * FROM RESERVE WHERE TO_CHAR(P_STARTTIME ,'YYYY-MM-DD') = ? AND P_CANCEL = 0";
+		 public static final String SQL_SELECT_ROOM_INFO = "SELECT * FROM T_DETAIL";
 }

@@ -40,6 +40,7 @@ import command.notice.NoticeWriteOk;
 import command.pagenotice.NoticePageingLoad;
 import command.reservation.ReservJsonParse;
 import command.reservation.ReservListCommand;
+import command.reservation.RoomInfoCommand;
 import command.studying.ComDeleteOk;
 import command.studying.CommentJsonParse;
 import command.studying.CommentList;
@@ -177,7 +178,7 @@ public class Controller extends HttpServlet {
 		case "/StudyBoard/favor.ho":
 			new FavorClick().execute(request, response);
 			break;
-			
+
 		case "/Reservation/reservation.ho":
 			viewPage = "reservation.jsp";
 			break;
@@ -185,6 +186,11 @@ public class Controller extends HttpServlet {
 		case "/Reservation/reservInfo.ho":
 			new ReservListCommand().execute(request, response);
 			new ReservJsonParse().execute(request, response);
+			break;
+
+		case "/Reservation/roomInfo.ho":
+			new RoomInfoCommand().execute(request, response);
+			new RoomInfoJsonParse().execute(request, response);
 			break;
 
 //		마이페이지
@@ -215,13 +221,13 @@ public class Controller extends HttpServlet {
 //		case "/MyPage/bookPage.ho":
 //			viewPage = "bookPage.jsp";
 //			break;
-			
+
 		// 예약 결제
 		case "/Payment/pay.ho":
 			new PayCommand().execute(request, response);
 			viewPage = "pay.jsp";
 			break;
-			
+
 		case "/Payment/payOk.ho":
 			new PayOkCommand().execute(request, response);
 			viewPage = "payOk.jsp";
@@ -292,7 +298,7 @@ public class Controller extends HttpServlet {
 			new UpdateCommand().execute(request, response);
 			viewPage = "resetPwOk.jsp";
 			break;
-			
+
 		case "/Faq/faq.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
@@ -300,7 +306,7 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "faq.jsp";
 			break;
-			
+
 		case "/Faq/write.ho":
 //			command = new FaqWriteTable();
 //			command.execute(request, response);
@@ -324,55 +330,55 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "update.jsp";
 			break;
-			
+
 		case "/Faq/FaqUpdateOk.ho":
 			command = new FaqUpdateOk();
 			command.execute(request, response);
 			viewPage = "updateOk.jsp";
 			break;
-			
+
 		case "/Intro/introduce.ho":
 			command = new IntroLoad();
 			command.execute(request, response);
 			viewPage = "introduce.jsp";
 			break;
-			
+
 		case "/Notice/notice.ho":
 			command = new NoticePageingLoad();
 			command.execute(request, response);
 			viewPage = "notice.jsp";
 			break;
-			
+
 		case "Notice/noticeview.ho":
 			command = new NoticeView();
 			command.execute(request, response);
 			viewPage = "noticeview.jsp";
 			break;
-			
+
 		case "/Notice/deleteOk.ho":
 			command = new NoticeDeleteOk();
 			command.execute(request, response);
 			viewPage = "deleteOk.jsp";
 			break;
-			
+
 		case "/Notice/update.ho":
 			command = new NoticeUpdate();
 			command.execute(request, response);
 			viewPage = "update.jsp";
 			break;
-			
+
 		case "/Notice/NoticeUpdateOk.ho":
 			command = new NoticeUpdateOk();
 			command.execute(request, response);
 			viewPage = "updateOk.jsp";
 			break;
-			
+
 		case "/Notice/write.ho":
 //			command = new NoticeWriteTable();
 //			command.execute(request, response);
 			viewPage = "write.jsp";
 			break;
-			
+
 		case "/Notice/writeOk.ho":
 			command = new NoticeWriteOk();
 			command.execute(request, response);
