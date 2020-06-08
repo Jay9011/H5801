@@ -17,6 +17,7 @@ import command.LoginCommand;
 import command.LogoutCommand;
 import command.PayCommand;
 import command.PayOkCommand;
+import command.RefundCommand;
 import command.ReinfoCommand;
 import command.ReinfoOkCommand;
 import command.SelectCommand;
@@ -227,6 +228,7 @@ public class Controller extends HttpServlet {
 			break;
 
 		case "/Payment/refund.ho":
+			new RefundCommand().execute(request, response);
 			viewPage = "refund.jsp";
 			break;
 
