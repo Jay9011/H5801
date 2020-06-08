@@ -67,7 +67,7 @@
 							}
 							for (i = data.blockStartNum; i <= data.blockLastNum; i++) {
 								if (i > data.totalPage) {
-									paging += "<li>" + i + "</li>";
+									paging += "<li><a class='nolink'>" + i + "</a></li>";
 								} else if (i == data.page) {
 									paging += "<li class='active'><a>" + i
 											+ "</a></li>";
