@@ -46,6 +46,18 @@ function chkPaySubmit(){
 	frm.submit(); // submit 성공
 }
 
+function chkPayCancelSubmit(){
+	var frm = document.bookFrm;
+	var p_uid = frm.p_uid.value.trim();
+	if(p_uid == ""){
+		alert("취소할 항목을 선택해주세요")                                   
+	    frm.p_uid.focus();
+        return false;	
+	}
+	
+	frm.submit(); // submit 성공
+}
+
 
 </script>
 
@@ -58,7 +70,8 @@ function chkPaySubmit(){
 	<div class="col s10">
 
 		<h3 class="center-align pfont">MY RESERVATION</h3>
-		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
+		<%-- <form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">--%>
+		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refund.ho" method="post">
 		<table class="highlight centered">
 			<tr>
 				<th>예약번호</th>
@@ -69,7 +82,6 @@ function chkPaySubmit(){
 				<th>회원이름</th>
 				<th>결제총액</th>
 				<th>결제현황</th>
-				<th>환불여부</th>
 				<th>항목선택</th>
 			</tr>
 			
@@ -84,22 +96,42 @@ function chkPaySubmit(){
 				<td>#${dto.rnum }</td>
 				<%--<td>${dto.p_uid }번</td>--%>
 				<td>
-				${dto.b_seatType } <br>
+				${dto.b_seatType }<br>
 				(번호: ${dto.t_name })
 				</td>
 				<td>${dto.b_sdate }</td>
 				<td>${dto.b_term }시간</td>
 				<td>${dto.m_nick }</td>
 				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
-				<td>${dto.p_cancel }</td>
-				<td>${dto.b_refund }</td>
 				<td>
+					<c:if test="${dto.p_cancel==0 }">
+					-
+					</c:if>
+					<c:if test="${dto.p_cancel==1 }">
+					결제완료
+					</c:if>
+					<c:if test="${dto.p_cancel==2 }">
+					결제취소
+					</c:if>
+				</td>
+				
+				<td>
+					<c:if test="${dto.b_refund==0 }">
+				    <p>
+				      <label>
+				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" disabled="disabled"/>
+				        <span></span>
+				      </label>
+				    </p>
+				    </c:if>
+				    <c:if test="${dto.b_refund==1 }">
 				    <p>
 				      <label>
 				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" />
 				        <span></span>
 				      </label>
 				    </p>
+				    </c:if>
 				</td>
 				
 			</tr>

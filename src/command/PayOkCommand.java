@@ -26,15 +26,15 @@ public class PayOkCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		DAOPay dao = new DAOPay();
+		DTOPay [] arr = null;
+		int p_uid;
+		int cnt;
+		int p_cancel = 1;
 		
+		HttpSession session = request.getSession();
 		try {
-			DAOPay dao = new DAOPay();
-			DTOPay [] arr = null;
-			int p_uid;
-			int cnt;
-			int p_cancel = 1;
 			
-			HttpSession session = request.getSession();
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
 			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("POST");
