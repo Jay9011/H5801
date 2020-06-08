@@ -15,7 +15,7 @@
 
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 <c:choose>
-
+ 
 <c:when test="${uid != null }">
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,16 +29,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/bp_defualt.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 function chkPaySubmit(){
 	var frm = document.bookFrm;
 	var p_uid = frm.p_uid.value.trim();
 	if(p_uid == ""){
 		alert("결제할 항목을 선택해주세요")                                   
+	    frm.p_uid.focus();
+        return false;	
+	}
+	
+	frm.submit(); // submit 성공
+}
+
+function chkPayCancelSubmit(){
+	var frm = document.bookFrm;
+	var p_uid = frm.p_uid.value.trim();
+	if(p_uid == ""){
+		alert("취소할 항목을 선택해주세요")                                   
 	    frm.p_uid.focus();
         return false;	
 	}
@@ -58,11 +69,14 @@ function chkPaySubmit(){
 	<div class="col s10">
 
 		<h3 class="center-align pfont">MY RESERVATION</h3>
+		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
+		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
 		<table class="highlight centered">
+		<thead>
 			<tr>
 				<th>예약번호</th>
-				<th>결재번호</th>
+				<%--<th>결재번호</th>--%>
 				<th>예약내용</th>
 				<th>예약일자</th>
 				<th>예약시간</th>
@@ -70,8 +84,10 @@ function chkPaySubmit(){
 				<th>결제총액</th>
 				<th>결제현황</th>
 				<th>항목선택</th>
+
 			</tr>
-			
+		</thead>   
+
 		<c:choose>
 			<c:when test="${empty book || fn:length(book) == 0}">
 			</c:when>
@@ -81,23 +97,44 @@ function chkPaySubmit(){
 			
 			<tr>
 				<td>#${dto.rnum }</td>
-				<td>${dto.p_uid }번</td>
+				<%--<td>${dto.p_uid }번</td>--%>
 				<td>
-				${dto.b_seatType } <br>
+				${dto.b_seatType }<br>
 				(번호: ${dto.t_name })
 				</td>
 				<td>${dto.b_sdate }</td>
 				<td>${dto.b_term }시간</td>
 				<td>${dto.m_nick }</td>
 				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
-				<td>${dto.b_refund }</td>
 				<td>
+					<c:if test="${dto.p_cancel==0 }">
+					-
+					</c:if>
+					<c:if test="${dto.p_cancel==1 }">
+					결제완료
+					</c:if>
+					<c:if test="${dto.p_cancel==2 }">
+					결제취소
+					</c:if>
+				</td>
+				
+				<td>
+					<c:if test="${dto.b_refund==0 }">
+				    <p>
+				      <label>
+				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" disabled="disabled"/>
+				        <span></span>
+				      </label>
+				    </p>
+				    </c:if>
+				    <c:if test="${dto.b_refund==1 }">
 				    <p>
 				      <label>
 				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" />
 				        <span></span>
 				      </label>
 				    </p>
+				    </c:if>
 				</td>
 				
 			</tr>
@@ -115,16 +152,16 @@ function chkPaySubmit(){
 		<div class="pager center">
     <ul class="pagination">
         <c:if test="${ curPageNum > 5 }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'>◀</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
         
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
-                    <li>${ i }</li>
+                    <li><a>${ i }</a></li>
                 </c:when>
                 <c:when test="${ i == curPageNum }">
-                    <li class="selected" class='active tooltip-top'>${ i }</li>
+                    <li  class='active'><a>${ i }</a></li>
                 </c:when>
                 
                 <c:otherwise>
@@ -135,7 +172,7 @@ function chkPaySubmit(){
 
         
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'>▶</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
 </div> 

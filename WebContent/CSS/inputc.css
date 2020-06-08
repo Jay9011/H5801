@@ -33,3 +33,8 @@
 .pagination li.active {
     background-color: #FFC107;
 }
+
+#postList a{
+	color: #ff932d;
+	
+}

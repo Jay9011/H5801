@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import dbcommon.DAOPay;
+import dbcommon.DTOPay;
+
 public class RefundCommand implements Command {
 
 	@Override
@@ -26,7 +30,24 @@ public class RefundCommand implements Command {
 		HttpSession session = request.getSession();
 		HttpURLConnection conn = null;
 		BufferedReader in = null;
+		
+		DAOPay dao = new DAOPay();
+		DTOPay [] arr = null;
+		int p_uid;
+		
+		
+		if(request.getParameter("p_uid") != null) {
+			p_uid = Integer.parseInt(request.getParameter("p_uid"));
+			//System.out.println(p_uid);
+			
+		} else {
+			p_uid = 0;
+			//System.out.println(p_uid);
+			return;
+		}
+		
 		try {
+			arr = dao.selectByUid(p_uid);
 			URL url = new URL("https://kapi.kakao.com/v1/payment/cancel");
 			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("POST");
@@ -36,10 +57,10 @@ public class RefundCommand implements Command {
 			conn.setDoOutput(true);
 			
 			String cid = "TC0ONETIME";
-			String tid = (String)session.getAttribute("tid");
-			System.out.println(session.getAttribute("tid"));
-			int cancel_amount = (int)session.getAttribute("total_amount");
-			int cancel_tax_free_amount = 0;
+			String tid = arr[0].getTid();
+			System.out.println(tid);
+			int cancel_amount = arr[0].getTotal_amount();
+			int cancel_tax_free_amount = arr[0].getTotal_amount();
 			int cancel_vat_amount = 0;
 			
 			Map<String, Object> params = new HashMap<String, Object>();
@@ -69,7 +90,7 @@ public class RefundCommand implements Command {
 			cancel = (String)obj.get("status");
 			System.out.println(obj.get("status"));
 			request.setAttribute("cancel", cancel);
-			
+			session.setAttribute("p_uid", p_uid);
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -79,7 +100,16 @@ public class RefundCommand implements Command {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			e.printStackTrace();
-		} 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(conn != null) conn.disconnect();
+		}
 	}
 
 }

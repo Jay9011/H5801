@@ -1,8 +1,9 @@
 @charset "UTF-8";
-h3 {
+h3 , h6{
 	margin-top: 0;
 	border-bottom: 1px dotted #666;
 	padding: 5px 0;
+	padding-bottom: 15px;
 }
 
 .category-field .dropdown-content {
@@ -21,4 +22,20 @@ h3 {
 
 .searchbtn {
 	height: 3rem;
+}
+
+#likeBtn i{
+	    vertical-align: top;
+	    cursor: pointer;
+}
+
+.btn2{
+	 background-color:white !important;
+	  color: #ad855a !important;
+	  border: 1px solid #ad855a ;
+}
+ .btn3{
+	  background-color:white !important;
+	  color: #f50057 !important;
+	  border: 1px solid #f50057 ;
 }

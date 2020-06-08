@@ -136,4 +136,41 @@ public class DAOPay {
 			
 			return arr;
 		} // end select()
+		
+		
+		public int updateTidByPay(String tid, int p_cancel, int p_uid) throws SQLException {
+			int cnt = 0;
+			
+			try {
+				pstmt= conn.prepareStatement("UPDATE RESERVE SET tid = ?, p_cancel=? WHERE p_uid = ?");
+				pstmt.setString(1, tid);
+				pstmt.setInt(2, p_cancel);
+				pstmt.setInt(3, p_uid);
+				
+				cnt = pstmt.executeUpdate();
+			} finally {
+				close();
+			}
+			
+			return cnt;
+		} // end updateTid()
+		
+		public int updateTidbyRefund(String tid, int p_cancel, int p_uid) throws SQLException {
+			int cnt = 0;
+			
+			try {
+				pstmt= conn.prepareStatement("UPDATE RESERVE SET tid = ?, p_cancel=? WHERE p_uid = ?");
+				pstmt.setString(1, tid);
+				pstmt.setInt(2, p_cancel);
+				pstmt.setInt(3, p_uid);
+				
+				cnt = pstmt.executeUpdate();
+			} finally {
+				close();
+			}
+			
+			return cnt;
+		} // end updateTid()
+		
+
 }

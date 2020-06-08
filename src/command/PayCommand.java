@@ -1,5 +1,5 @@
 // 작성자: 낙경
-// 2020-06-03  15:00 수정
+// 2020-06-08  15:00 수정
 
 package command;
 
@@ -23,10 +23,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import dbcommon.DAOPay;
-import dbcommon.DTOBook;
 import dbcommon.DTOPay;
-
-
 
 public class PayCommand implements Command {
 
@@ -35,6 +32,7 @@ public class PayCommand implements Command {
 		HttpSession session = request.getSession();
 		HttpURLConnection conn = null;
 		BufferedReader in = null;
+		
 		String url_domain = request.getScheme() + "://" + request.getServerName()+":"+ request.getServerPort();
 		String conPath = request.getContextPath();
 		DAOPay dao = new DAOPay();
@@ -51,7 +49,6 @@ public class PayCommand implements Command {
 			return;
 		}
 		
-		
 		try {
 			arr = dao.selectByUid(p_uid);
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
@@ -62,18 +59,13 @@ public class PayCommand implements Command {
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
 			
-			
 			String cid = "TC0ONETIME";
-			//String partner_order_id = request.getParameter("partner_order_id");
-			//String partner_order_id = "partner_order_id";
 			int partner_order_id = arr[0].getP_uid();
 			String partner_user_id = arr[0].getEmail();
-			//String partner_user_id = "partner_user_id";
 			String item_name = arr[0].getB_seatType()+ arr[0].getT_name();
-			//String item_name = "seat101";
 			String quantity = "1";
 			int total_amount = arr[0].getTotal_amount();
-			String tax_free_amount = "1";
+			int tax_free_amount = arr[0].getTotal_amount();
 			String approval_url = url_domain+conPath+"/Payment/payOk.ho";
 			String cancel_url = url_domain+conPath+"/MyPage/book.ho";
 			String fail_url =  url_domain+conPath+"/MyPage/book.ho";
@@ -91,9 +83,6 @@ public class PayCommand implements Command {
 			params.put("approval_url", approval_url);
 			params.put("cancel_url", cancel_url);
 			params.put("fail_url", fail_url);
-//			params.put("approval_url", "http://localhost:8101/Payment_Test/approve.payment");
-//			params.put("cancel_url", "http://localhost:8101/Payment_Test/cancle.payment");
-//			params.put("fail_url", "http://localhost:8101/Payment_Test/fail.payment");
 			
 			String string_params = new String();
 			for(Map.Entry<String, Object> elem: params.entrySet()) {
@@ -123,11 +112,7 @@ public class PayCommand implements Command {
 			session.setAttribute("total_amount", total_amount);
 			session.setAttribute("item_name", item_name);
 			
-			
 			request.setAttribute("successUrl", successUrl);
-			//response.sendRedirect(successUrl);
-			
-			
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -137,7 +122,14 @@ public class PayCommand implements Command {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(conn != null) conn.disconnect();
+		}
 		
 	}
 

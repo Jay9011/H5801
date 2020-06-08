@@ -4,10 +4,10 @@
 
 
 <c:choose>
-	<c:when test="${payOk == 1 }">
+	<c:when test="${refundOk == 1}">
 	
 		<script>
-			alert("${total }원 (${item_name })이 결제 되었습니다. ");
+			alert("${total }원 (${item_name })이 결제 취소되었습니다. ");
 			location.href = "${pageContext.request.contextPath}/MyPage/book.ho";
 		</script>	
 		

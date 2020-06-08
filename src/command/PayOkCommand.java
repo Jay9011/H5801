@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,23 +19,44 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import dbcommon.DAOPay;
+
 public class PayOkCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		HttpURLConnection conn = null;
+		BufferedReader in = null;
+
+		DAOPay dao = new DAOPay();
+		int p_uid;
+		int cnt;
+		int p_cancel = 1;
 		
 		try {
-			HttpSession session = request.getSession();
+			
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
-			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Authorization", "KakaoAK 7498c3868ab21028b64464d2774c74e3");
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
 			
+			if(session.getAttribute("partner_order_id") != null) {
+				p_uid = (int) session.getAttribute("partner_order_id");
+				System.out.println(p_uid);
+				
+			} else {
+				p_uid = 0;
+				System.out.println(p_uid);
+				return;
+			}
+			
 			String cid = "TC0ONETIME";
 			String tid = (String)session.getAttribute("tid");
+			
 			//String partner_order_id = request.getParameter("partner_order_id");
 			int partner_order_id = (int) session.getAttribute("partner_order_id");
 			//String partner_user_id = request.getParameter("partner_user_id");
@@ -49,8 +71,6 @@ public class PayOkCommand implements Command {
 			params.put("partner_user_id", partner_user_id);
 			params.put("pg_token", pg_token);
 			
-			
-			
 			StringBuffer string_params = new StringBuffer();
 			for(Map.Entry<String, Object> elem: params.entrySet()) {
 				string_params.append(elem.getKey()+ "=" + elem.getValue() +"&");
@@ -58,7 +78,7 @@ public class PayOkCommand implements Command {
 			
 			conn.getOutputStream().write(string_params.toString().getBytes());
 			
-			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			
 			JSONParser parser = new JSONParser();
 			JSONObject obj = (JSONObject) parser.parse(in);
@@ -77,6 +97,11 @@ public class PayOkCommand implements Command {
 			request.setAttribute("item_name", item_name);
 			request.setAttribute("total", total);
 			
+			cnt = dao.updateTidByPay(tid, p_cancel ,p_uid);
+			
+			request.setAttribute("payOk", cnt);
+			System.out.println(cnt);
+			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (ProtocolException e) {
@@ -85,6 +110,15 @@ public class PayOkCommand implements Command {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(conn != null) conn.disconnect();
 		}
 	}
 

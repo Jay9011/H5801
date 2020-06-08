@@ -85,4 +85,43 @@ public class DAOReservation {
 
 		return reservations;
 	}
+
+	private DTORoomInfo[] createRoomInfo(ResultSet resultSet) throws SQLException {
+		DTORoomInfo[] rooms = null;
+
+		ArrayList<DTORoomInfo> list = new ArrayList<>();
+
+		while(resultSet.next()) {
+			int t_uid = resultSet.getInt("t_uid");
+			String t_name = resultSet.getString("t_name");
+			int t_pay = resultSet.getInt("t_pay");
+			int t_maxnum = resultSet.getInt("t_maxnum");
+
+			DTORoomInfo dto = new DTORoomInfo(t_uid, t_name, t_pay, t_maxnum);
+			list.add(dto);
+		} // end while
+
+		int size = list.size();
+		if(size == 0) return null;
+
+		rooms = new DTORoomInfo[size];
+		list.toArray(rooms);
+
+		return rooms;
+	}
+
+	public DTORoomInfo[] selectRoomInfo() throws SQLException {
+		DTORoomInfo[] rooms = null;
+
+		try {
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_ROOM_INFO);
+			rs = pstmt.executeQuery();
+			rooms = createRoomInfo(rs);
+		} finally {
+			close();
+		}
+
+		return rooms;
+	}
+
 }
