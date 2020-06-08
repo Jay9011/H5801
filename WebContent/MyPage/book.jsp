@@ -70,8 +70,9 @@ function chkPayCancelSubmit(){
 	<div class="col s10">
 
 		<h3 class="center-align pfont">MY RESERVATION</h3>
-		<%-- <form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">--%>
-		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refund.ho" method="post">
+		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
+		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
+		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
 		<table class="highlight centered">
 		<thead>
 			<tr>
@@ -172,7 +173,7 @@ function chkPayCancelSubmit(){
 
         
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'>▶</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
 </div> 

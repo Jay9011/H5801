@@ -35,13 +35,14 @@ public class RefundCommand implements Command {
 		DTOPay [] arr = null;
 		int p_uid;
 		
+		
 		if(request.getParameter("p_uid") != null) {
 			p_uid = Integer.parseInt(request.getParameter("p_uid"));
-			System.out.println(p_uid);
+			//System.out.println(p_uid);
 			
 		} else {
 			p_uid = 0;
-			System.out.println(p_uid);
+			//System.out.println(p_uid);
 			return;
 		}
 		
@@ -56,7 +57,6 @@ public class RefundCommand implements Command {
 			conn.setDoOutput(true);
 			
 			String cid = "TC0ONETIME";
-			//String tid = (String)session.getAttribute("tid");
 			String tid = arr[0].getTid();
 			System.out.println(tid);
 			int cancel_amount = arr[0].getTotal_amount();
@@ -90,7 +90,7 @@ public class RefundCommand implements Command {
 			cancel = (String)obj.get("status");
 			System.out.println(obj.get("status"));
 			request.setAttribute("cancel", cancel);
-			
+			session.setAttribute("p_uid", p_uid);
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -102,7 +102,14 @@ public class RefundCommand implements Command {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(conn != null) conn.disconnect();
+		}
 	}
 
 }

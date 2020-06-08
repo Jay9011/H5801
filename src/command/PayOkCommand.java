@@ -20,23 +20,24 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import dbcommon.DAOPay;
-import dbcommon.DTOPay;
 
 public class PayOkCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		HttpURLConnection conn = null;
+		BufferedReader in = null;
+
 		DAOPay dao = new DAOPay();
-		DTOPay [] arr = null;
 		int p_uid;
 		int cnt;
 		int p_cancel = 1;
 		
-		HttpSession session = request.getSession();
 		try {
 			
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
-			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("POST");
 			conn.setRequestProperty("Authorization", "KakaoAK 7498c3868ab21028b64464d2774c74e3");
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
@@ -52,7 +53,6 @@ public class PayOkCommand implements Command {
 				System.out.println(p_uid);
 				return;
 			}
-			
 			
 			String cid = "TC0ONETIME";
 			String tid = (String)session.getAttribute("tid");
@@ -71,8 +71,6 @@ public class PayOkCommand implements Command {
 			params.put("partner_user_id", partner_user_id);
 			params.put("pg_token", pg_token);
 			
-			
-			
 			StringBuffer string_params = new StringBuffer();
 			for(Map.Entry<String, Object> elem: params.entrySet()) {
 				string_params.append(elem.getKey()+ "=" + elem.getValue() +"&");
@@ -80,7 +78,7 @@ public class PayOkCommand implements Command {
 			
 			conn.getOutputStream().write(string_params.toString().getBytes());
 			
-			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			
 			JSONParser parser = new JSONParser();
 			JSONObject obj = (JSONObject) parser.parse(in);
@@ -99,7 +97,7 @@ public class PayOkCommand implements Command {
 			request.setAttribute("item_name", item_name);
 			request.setAttribute("total", total);
 			
-			cnt = dao.updateTid(tid, p_cancel ,p_uid);
+			cnt = dao.updateTidByPay(tid, p_cancel ,p_uid);
 			
 			request.setAttribute("payOk", cnt);
 			System.out.println(cnt);
@@ -114,6 +112,13 @@ public class PayOkCommand implements Command {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(conn != null) conn.disconnect();
 		}
 	}
 
