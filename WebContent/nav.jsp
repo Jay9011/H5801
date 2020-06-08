@@ -21,7 +21,7 @@
 		<script>
 $(document).ready(function() {
 	$("[class^='loginNN']").click(function() {
-		var a = confirm("로그인은 필수입니다.\n 로그인하시겠습니까?");
+		var a = confirm("로그인은 필수입니다.\n로그인하시겠습니까?");
 		if(a){
 			location.replace("${pageContext.request.contextPath}/User/login.ho");
 		}
