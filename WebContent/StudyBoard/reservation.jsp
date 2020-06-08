@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <!DOCTYPE html>
+    <c:choose>
+	<c:when test="${email == null}">
+	<script>
+				alert("회원이 아니시면 접근할 수 없습니다.");
+				location.href="${pageContext.request.contextPath}/index.ho";
+			</script>
+	</c:when>
+	</c:choose>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
