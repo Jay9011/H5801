@@ -28,7 +28,7 @@
 					dataType : "json",
 					success : function(data) {
 						if (data.status == "OK") {
-							var table = "<tr><th>NO</th><th>카테고리</th><th>제목</th>\<th>작성자</th><th>작성일</th><th>조회수</th></tr>";
+							var table = "<thead><tr><th>NO</th><th>카테고리</th><th>제목</th>\<th>작성자</th><th>작성일</th><th>조회수</th></tr></thead>";
 							if (data.count > 0) {
 								var row = data.data;
 								var now = new Date();
@@ -67,7 +67,7 @@
 							}
 							for (i = data.blockStartNum; i <= data.blockLastNum; i++) {
 								if (i > data.totalPage) {
-									paging += "<li><a class='nolink'>" + i + "</a></li>";
+									paging += "<li><a class='disabled'>" + i + "</a></li>";
 								} else if (i == data.page) {
 									paging += "<li class='active'><a>" + i
 											+ "</a></li>";
@@ -122,7 +122,7 @@
 			<div class="col s10">
 				<h3 class="center-align pfont">학습 문의 게시판</h3>
 				<p>현재 로그인중인 유저 : ${nick }</p>
-				<div class="category-field input-field col m6">
+				<div class="category-field input-field col s6 offset-s6">
 					<select id="category" class="" name="category">
 						<option value="0" selected="selected">전체</option>
 						<option value="1">중1</option>
@@ -134,9 +134,10 @@
 						<option value="7">대학생</option>
 					</select>
 				</div>
-				<table id="postList" class="highlight">
+				<div style=" overflow-x:scroll; width: 100%">
+				<table id="postList" class="highlight ">
 				</table>
-
+</div>
 				<div class="pager"></div>
 				<c:if test="${uid != null}">
 					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'">글쓰기</button>
