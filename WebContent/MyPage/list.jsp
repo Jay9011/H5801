@@ -37,7 +37,6 @@
 	<div class="row">
 		<div class="col s1 "></div>
 		<div class="col s10">
-		
 			<jsp:include page="left.jsp">
 				<jsp:param value="<%=menu%>" name="menu" />
 			</jsp:include>

@@ -348,13 +348,9 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "notice.jsp";
 			break;
-<<<<<<< HEAD
-			
-		case "/Notice/noticeview.ho":
-=======
+
 
 		case "Notice/noticeview.ho":
->>>>>>> branch 'master' of https://github.com/Jay9011/Holic.git
 			command = new NoticeView();
 			command.execute(request, response);
 			viewPage = "noticeview.jsp";
