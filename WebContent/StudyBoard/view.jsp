@@ -17,25 +17,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
 <title>학습 문의 ${viewInfo[0].s_title}</title>
 <script src="../ckeditor/ckeditor.js"></script>
-<style>
-	.right {
-		float:right;
-	}
-	.left {
-		float:left;
-	}
-	.clear {
-		clear:both;
-	}
-	.depth1 {
-		margin-left: 50px;
-	}
-	.hidden {
-		display: none;
-	}
-</style>
 </head>
 <script>
 function chkDelete(s_uid){
@@ -79,26 +63,26 @@ function chkSubmit(){
 						<c:if test="${uid != null}">
 							<c:choose>
 								<c:when test="${liked > 0 }">
-									<a id="likeBtn"
+									<button id="likeBtn" class="btn waves-effect btn3"
 										onclick="favorite(${uid}, ${viewInfo[0].s_uid})">좋아요 취소 <i
-										class="material-icons dp48">favorite</i></a>
+										class="material-icons dp48">favorite</i></button>
 								</c:when>
 								<c:otherwise>
-									<a id="likeBtn"
+									<button id="likeBtn" class="btn waves-effect btn3"
 										onclick="favorite(${uid}, ${viewInfo[0].s_uid})">좋아요 <i
-										class="material-icons dp48">favorite_border</i></a>
+										class="material-icons dp48">favorite_border</i></button>
 								</c:otherwise>
 							</c:choose>
 						</c:if>
 						<c:if test="${uid == viewInfo[0].m_uid }">
-							<button class="btn waves-effect"
+							<button class="btn waves-effect btn2"
 								onclick="location.href = 'update.ho?s_uid=${viewInfo[0].s_uid}'">수정하기</button>
 						</c:if>
 						<c:if test="${uid == viewInfo[0].m_uid || grade > 8}">
-							<button class="btn waves-effect"
+							<button class="btn waves-effect btn2" 
 								onclick="chkDelete(${viewInfo[0].s_uid})">삭제하기</button>
 						</c:if>
-						<button class="btn waves-effect"
+						<button class="btn waves-effect btn2"
 							onclick="location.href = 'list.ho'">목록보기</button>
 					</div>
 				</div>
@@ -116,13 +100,22 @@ function chkSubmit(){
 
 
 		<%-- 댓글이 --%>
+		<h6 class="left-align pfont">댓글달기</h6>
 <c:if test="${uid != null}">
 	<form id="newComForm${viewInfo[0].s_uid }" name="commentTable" method="POST" enctype="multipart/form-data">
 		<input id="bordUid" type="hidden" name="s_uid" value="${viewInfo[0].s_uid}" />
 		<input id="memberUid" type="hidden" name="m_uid" value="${uid }" />
-		작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br>
-		<br><textarea id="editor1"></textarea>
-		<br><input id="newComFormSubmit" type="button" value="등록" onclick="comSubmit('newComForm${viewInfo[0].s_uid }');"/>
+<%-- 		작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br> --%>
+			<div class="row">
+		<div class="col s1"></div>
+		<div class="col s10 right-align">
+		<textarea id="editor1"></textarea>
+		</div>
+		<div class="col s1"></div>
+		</div>
+		<div class="col s12 right-align">
+		<button id="newComFormSubmit" type="button" class="btn waves-effect btn2"   onclick="comSubmit('newComForm${viewInfo[0].s_uid }');">등록</button>
+		</div>
 	</form>
 </c:if>
 <div id="commentList">
