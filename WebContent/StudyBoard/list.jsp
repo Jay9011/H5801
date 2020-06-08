@@ -10,7 +10,7 @@
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
-<title>Insert title here</title>
+<title>학습 문의 게시판</title>
 </head>
 <script>
 	var page;
@@ -127,7 +127,6 @@
 			<div class="col s1 "></div>
 			<div class="col s10">
 				<h3 class="center-align pfont">학습 문의 게시판</h3>
-				<p>현재 로그인중인 유저 : ${nick }</p>
 				<div class="category-field input-field col s6 offset-s6">
 					<select id="category" class="" name="category">
 						<option value="0" selected="selected">전체</option>
@@ -148,9 +147,7 @@
 				<c:if test="${uid != null}">
 					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'">글쓰기</button>
 				</c:if>
-				<c:if test="${uid == null}">
-					<button onclick="location.href='${pageContext.request.contextPath}/User/login.ho'">로그인</button>
-				</c:if>
+				
 				<div class="clear"></div>
 				<div id="searchBlock" class="clear">
 					<form id="searchFrm" onsubmit="return false;">

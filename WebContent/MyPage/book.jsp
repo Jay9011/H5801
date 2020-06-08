@@ -15,7 +15,7 @@
 
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 <c:choose>
-
+ 
 <c:when test="${uid != null }">
 <!DOCTYPE html>
 <html lang="ko">
@@ -32,7 +32,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 function chkPaySubmit(){
 	var frm = document.bookFrm;
@@ -70,8 +69,9 @@ function chkPayCancelSubmit(){
 	<div class="col s10">
 
 		<h3 class="center-align pfont">MY RESERVATION</h3>
-		<%-- <form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">--%>
-		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refund.ho" method="post">
+		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
+		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
+		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
 		<table class="highlight centered">
 		<thead>
 			<tr>
@@ -172,7 +172,7 @@ function chkPayCancelSubmit(){
 
         
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'>▶</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
 </div> 
