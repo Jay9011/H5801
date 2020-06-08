@@ -84,7 +84,7 @@ function chkPayCancelSubmit(){
 				<th>결제현황</th>
 				<th>항목선택</th>
 			</tr> 
-			
+			 
 		<c:choose>
 			<c:when test="${empty book || fn:length(book) == 0}">
 			</c:when>
