@@ -29,7 +29,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/bp_defualt.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -73,6 +73,7 @@ function chkPayCancelSubmit(){
 		<%-- <form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">--%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refund.ho" method="post">
 		<table class="highlight centered">
+		<thead>
 			<tr>
 				<th>예약번호</th>
 				<%--<th>결재번호</th>--%>
@@ -83,8 +84,10 @@ function chkPayCancelSubmit(){
 				<th>결제총액</th>
 				<th>결제현황</th>
 				<th>항목선택</th>
-			</tr> 
-			 
+
+			</tr>
+		</thead>
+
 		<c:choose>
 			<c:when test="${empty book || fn:length(book) == 0}">
 			</c:when>
@@ -149,16 +152,16 @@ function chkPayCancelSubmit(){
 		<div class="pager center">
     <ul class="pagination">
         <c:if test="${ curPageNum > 5 }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'>◀</a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
         
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
-                    <li>${ i }</li>
+                    <li><a>${ i }</a></li>
                 </c:when>
                 <c:when test="${ i == curPageNum }">
-                    <li class="selected" class='active tooltip-top'>${ i }</li>
+                    <li  class='active'><a>${ i }</a></li>
                 </c:when>
                 
                 <c:otherwise>
