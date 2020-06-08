@@ -19,7 +19,7 @@
       
       <jsp:include page="../top.jsp" />
     <link rel="stylesheet" href="../CSS/faq.css">
-      <title>Holic-FAQ</title>
+      <title>Holic-FAQ</title> 
       
       
       
