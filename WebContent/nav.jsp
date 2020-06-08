@@ -11,9 +11,6 @@
 		$('.loginNN').click(function() {
 			$(this).attr('href', '${pageContext.request.contextPath}/StudyBoard/reservation.ho');
 		});
-		$('.loginNN2').click(function() {
-			$(this).attr('href', '${pageContext.request.contextPath}/StudyBoard/list.ho');
-		});
 	});
 </script>
 	</c:when>
@@ -50,7 +47,7 @@ $(document).ready(function() {
 						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho">오시는 길</a></li>
 					</ul></li>
 				<li><a class="loginNN">독서실 예약</a></li>
-				<li><a class="loginNN2">학습 문의</a></li>
+				<li><a href="${pageContext.request.contextPath}/StudyBoard/list.ho">학습 문의</a></li>
 				<li><a class="dropdown-trigger" data-target="dropdown2">고객
 						지원</a>
 					<ul id='dropdown2' class='dropdown-content'>
@@ -94,7 +91,7 @@ $(document).ready(function() {
 		</ul>
 	</li>
 	<li><a class="loginNN">독서실 예약</a></li>
-	<li><a class="loginNN2">학습 문의</a></li>
+	<li><a href="${pageContext.request.contextPath}/StudyBoard/list.ho">학습 문의</a></li>
 	<li class="no-padding">
 		<ul class="collapsible collapsible-accordion">
 			<li><a class="collapsible-header apad">고객 지원</a>

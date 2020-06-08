@@ -22,3 +22,12 @@ h3 {
 .searchbtn {
 	height: 3rem;
 }
+#likeBtn{
+	color: #f50057;
+	vertical-align: middle;
+}
+
+#likeBtn i{
+	    vertical-align: sub;
+	    cursor: pointer;
+}
