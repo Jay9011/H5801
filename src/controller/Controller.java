@@ -294,8 +294,6 @@ public class Controller extends HttpServlet {
 		case "/Faq/faq.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
-			command = new NoticeLoad();
-			command.execute(request, response);
 			viewPage = "faq.jsp";
 			break;
 			
@@ -341,7 +339,7 @@ public class Controller extends HttpServlet {
 			viewPage = "notice.jsp";
 			break;
 			
-		case "Notice/noticeview.ho":
+		case "/Notice/noticeview.ho":
 			command = new NoticeView();
 			command.execute(request, response);
 			viewPage = "noticeview.jsp";
@@ -376,9 +374,35 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "writeOk.jsp";
 			break;
+			
+		case "/AdminPage/faqControll.ho":
+			command = new FaqLoad();
+			command.execute(request, response);
+			viewPage = "faqControll.jsp";
+			break;
+		
+		case "/AdminPage/noticeControll.ho":
+			command = new NoticePageingLoad();
+			command.execute(request, response);
+			viewPage = "noticeControll.jsp";
+			break;
+			
+		case "/AdminPage/userControll.ho":
+			command = new FaqLoad();
+			command.execute(request, response);
+			viewPage = "userControll.jsp";
+			break;
+
+		case "/AdminPage/stControll.ho":
+			command = new FaqLoad();
+			command.execute(request, response);
+			viewPage = "stControll.jsp";
+			break;
+			
+			
+			
+			
 		}
-
-
 
 
 		if(viewPage != null) {
