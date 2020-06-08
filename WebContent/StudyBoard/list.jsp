@@ -95,8 +95,14 @@
 	}
 	function isSearch() {
 		page = 1;
+		var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 		search = $("#search").val();
+		if(regExp.test(search)){
+			var t = search.replace(regExp, "");
+			search = t;
+		}
 		search = search.trim().replace(/ /g, "|");
+		alert(search);
 		getList();
 	}
 	function isPaging(num) {
