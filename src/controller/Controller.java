@@ -245,6 +245,9 @@ public class Controller extends HttpServlet {
 		case "/User/joinchk.ho":
 			viewPage = "joinchk.jsp";
 			break;
+		case "/User/joinEmail.ho":
+			viewPage = "joinEmail.jsp";
+			break;
 		case "/User/join.ho":
 			viewPage = "join.jsp";
 			break;
