@@ -19,7 +19,7 @@
       <div class="col s1 m1"></div>
           <div class="col s10 m10" >
               <h1 class="center-align pfont">LOGIN</h1>
-              <form action="login.ho" name="loginFrm" method="post">
+              <form action="loginOk.ho" name="loginFrm" method="post">
                   <div class="row">
                          <div class="col m1 "></div>
                         <div class="input-field col m10 s12">
@@ -57,29 +57,3 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 </body>
 </html>
- <c:choose>
-<c:when test="${chk == 0}">
-<div id="demo-modal" class="modal">
-    <div class="modal-content">
-      <h4>로그인 실패</h4>
-      <p>아이디 혹은 패스워드가 틀렸습니다.</p>
-    </div>
-    <div class="modal-footer">
-      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat">확인</a>
-    </div>
-  </div>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var Modalelem = document.querySelector('.modal');
-    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
-    instance.open();
-});
-		</script>
-	</c:when>
-	<c:when test="${chk == 1 }">
-	<script>
-	<% response.sendRedirect("../index.ho");%>
-	</script>
-	</c:when>
-</c:choose>
-

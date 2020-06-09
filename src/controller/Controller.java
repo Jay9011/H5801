@@ -92,16 +92,6 @@ public class Controller extends HttpServlet {
 		System.out.println("com: " + com);
 
 		switch (com) {
-		case "/Login/Login.ho":
-			viewPage = "Login.jsp";
-			break;
-
-		case "/Login/LoginOk.ho":
-			command = new LoginCommand();
-			command.execute(request, response);
-			viewPage = "LoginOk.jsp";
-			break;
-
 		case "/StudyBoard/list.ho":
 			viewPage = "list.jsp";
 			break;
