@@ -42,6 +42,7 @@ import command.pagenotice.NoticePageingLoad;
 import command.reservation.ReservJsonParse;
 import command.reservation.ReservListCommand;
 import command.reservation.RoomInfoCommand;
+import command.reservation.RoomInfoJsonParse;
 import command.studying.ComDeleteOk;
 import command.studying.CommentJsonParse;
 import command.studying.CommentList;

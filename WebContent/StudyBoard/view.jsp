@@ -30,7 +30,7 @@ function chkDelete(s_uid){
 
 	}
 }
-function chkSubmit(){
+/* function chkSubmit(formId){
 	frm = document.forms["commentTable"];
 	var content = frm["content"].value.trim();
 
@@ -40,8 +40,11 @@ function chkSubmit(){
 		frm["content"].focus();
 		return false;
 	}
+
+	comSubmit('newComForm${viewInfo[0].s_uid }');
+
 	return true;
-}
+} */
 </script>
 <body>
 <jsp:include page="../nav.jsp"/>
@@ -51,7 +54,7 @@ function chkSubmit(){
 			<div class="col s1 "></div>
 			<div class="col s10">
 				<h3 class="center-align pfont">${viewInfo[0].s_title}</h3>
-				
+
 				<div class="row">
 					<div class="col s12 pfont right-align">
 						작성자 : ${viewInfo[0].m_nick}<br> ${viewInfo[0].s_date} <br>
@@ -79,7 +82,7 @@ function chkSubmit(){
 								onclick="location.href = 'update.ho?s_uid=${viewInfo[0].s_uid}'">수정하기</button>
 						</c:if>
 						<c:if test="${uid == viewInfo[0].m_uid || grade > 8}">
-							<button class="btn waves-effect btn2" 
+							<button class="btn waves-effect btn2"
 								onclick="chkDelete(${viewInfo[0].s_uid})">삭제하기</button>
 						</c:if>
 						<button class="btn waves-effect btn2"
@@ -94,7 +97,7 @@ function chkSubmit(){
 						</div>
 						<div class="col s1"></div>
 					</div>
-					
+
 
 
 
@@ -105,13 +108,13 @@ function chkSubmit(){
 	<form id="newComForm${viewInfo[0].s_uid }" name="commentTable" method="POST" enctype="multipart/form-data">
 		<input id="bordUid" type="hidden" name="s_uid" value="${viewInfo[0].s_uid}" />
 		<input id="memberUid" type="hidden" name="m_uid" value="${uid }" />
-<%-- 		작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br> --%>
-			<div class="row">
+		<%-- 작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br> --%>
+		<div class="row">
 		<div class="col m10 s12" style="margin-right: auto; float: none;">
 		<textarea id="editor1"></textarea>
 		</div>
 		<div class="col m10 offset-m1 s12 right-align">
-		<button id="newComFormSubmit" type="button" class="btn waves-effect btn2"   onclick="comSubmit('newComForm${viewInfo[0].s_uid }');">등록</button></div>
+		<button id="newComFormSubmit" type="button" class="btn waves-effect btn2" onclick="comSubmit('newComForm${viewInfo[0].s_uid }');">등록</button></div>
 		</div>
 
 	</form>
@@ -143,19 +146,19 @@ function chkSubmit(){
 			var user_id = row[i].m_uid;
 			var user_grade = 1;
 			var logined_id = 0;
-			<c:if test="${uid != null}">
+			if(${uid != null}){
 				var logined_id = ${uid};
-			</c:if>
-			<c:if test="${grade != null}">
+			}
+			if(${grade != null}){
 				var user_grade = ${grade};
-			</c:if>
+			}
 			if(row[i].sr_depth == 0){
 				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>"
 			} else {
 				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>"
 			}
 			commentrow += "<div class='left pfont'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>"
-			
+
 			if(user_id == logined_id || user_grade > 8){
 				commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='삭제' onclick='event.stopPropagation(); deleteComment(" + row[i].sr_numUid + ");'><i class='material-icons dp48' style='vertical-align: middle;'>delete</i></a></div>"
 			}
@@ -194,7 +197,7 @@ function chkSubmit(){
 					commentrow += "</form>";
 					$(this).after(commentrow);
 					CKEDITOR.replace('editor2', {
-						
+
 						allowedContent: true
 						,toolbar: [
 						['Styles','Format','Font','FontSize'],
@@ -234,7 +237,7 @@ function chkSubmit(){
 					createComment(data, prevId);
 					CKEDITOR.instances.editor1.setData('');
 				} else if(data.status == "FAIL"){
-					alert("등록 실패");
+					alert("등록 실패 : " + data.message);
 				}
 			}
 			,error: function(e){

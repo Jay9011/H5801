@@ -55,19 +55,14 @@
 					</div>
 
 					<div id="frm" class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
-						<div class="col s12 center-align">
-							<h3>1 층</h3>
-							<p>1 번방을 선택</p>
-							<p>최대 5 인 가능</p>
+						<div id="RoomInfo" class="col s12 center-align">
+							<h5>방을 선택해 주세요</h5>
 						</div>
 						<div class="col s12 center-align">
 							<button type="submit" class="btn-large" name="action">예약하기</button>
 						</div>
 					</div>
 				</div>
-				<!-- </div> -->
-
-
 			</div>
 		</div>
 	</section>
@@ -107,16 +102,27 @@
 	}
 
 	function selectRoom(roomId){
-		alert("Id : " + roomId);
-	// TODO
+		$.ajax({
+			type : "POST",
+			url : "roomInfo.ho",
+			data : {
+				'roomId' : roomId
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data.status == "OK") {
+					var info = data.data[0];
+					$("#RoomInfo").html("<h3>" + info.t_name + " 번방<span style='font-size:0.5em'>을 선택</span></h3><p>최대 " + info.t_maxnum + " 인 가능</p>");
+				} else if (data.status == "FAIL") {
+					alert(data.message);
+				}
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+				alert("서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.");
+			}
+		});
 	}
-
-	document.addEventListener('DOMContentLoaded', function() {
-		var elems = document.querySelectorAll('.modal');
-		var instances = M.Modal.init(elems, options);
-	});
-
-	// Or with jQuery
 
 	$(document).ready(function() {
 		$('.modal').modal();
