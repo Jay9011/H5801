@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
- <title>타이틀 써주기</title>
+ <title>FAQ</title>
    </head>
    <body>
 <jsp:include page="../nav.jsp"/>

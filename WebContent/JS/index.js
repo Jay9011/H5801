@@ -46,7 +46,7 @@ if($(window).scrollTop()>= $("#intro").offset().top ){
 $('.collapsible').collapsible();
     //   수정할수 있게 도와주는 서비스탭
       $('.tabs').tabs();
-      $('.tooltipped').tooltip();
+
       $('.scrollspy').scrollSpy();
       // 날짜
       var days = 7;
@@ -61,7 +61,7 @@ $('.collapsible').collapsible();
          setDefaultDate : date,
          i18n:{months:['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
        monthsShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-       weekdaysFull: ['', '월', '화', '수', '목', '금', '토'],
+       weekdaysFull: ['일', '월', '화', '수', '목', '금', '토'],
        weekdaysShort:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
        weekdaysAbbrev:['일', '월', '화', '수', '목', '금', '토'],
        selectMonths: true,

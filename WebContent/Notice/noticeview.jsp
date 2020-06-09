@@ -35,7 +35,7 @@ ${nListView[0].n_content }
 </div>
 <hr>
 <br>
-<button onclick="location.href = 'notice.fc3'">목록보기</button>
+<button onclick="location.href = 'notice.ho'">목록보기</button>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

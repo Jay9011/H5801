@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <!DOCTYPE html>
@@ -9,10 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
-<link rel="stylesheet" href="../CSS/faq.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
- <title>Notice</title>
+ <title>타이틀 써주기</title>
    </head>
    <body>
 <jsp:include page="../nav.jsp"/>
@@ -23,23 +18,7 @@
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		      <script type="text/javascript" src="js/materialize.min.js"></script>
-      <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
-  <div class="text_title left-1">
-  <span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
-  </div>
-  
-  <br>
-  <div>
-  <div class="clear"></div>
-    <div class="hr"><hr class="hr2"></div>
-
-
-<br>
-<div class="FAQ">
-  <div class="ac">
+		<div class="ac">
         <!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
           <div class="header">
           <div class="w-1 left-1">Number</div>
@@ -55,7 +34,7 @@
     		<c:forEach var="notice" items="${npagetable }">
         <div class="menu">
           <div class="w-1 left-1">${notice.n_uid }</div>
-          <div class="w-7 left-1"><a class="acol" href="noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></div>
+          <div class="w-7 left-1"><a class="acol" href="${pageContext.request.contextPath}/Notice/noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></div>
           <div class="w-2 left-1">${notice.n_viewCnt }</div>
           <div class="w-2 left-1">${notice.n_date }</div>
           <div class="clear"></div>
@@ -65,41 +44,48 @@
     </c:choose>
         </div>
       <br><br><br>
-      <div class="hr"><hr class="hr2"></div>
       
       <!--  -->
-	<div class="pager center-align">
-    <ul class="pagination">
+      
+      <div class="pager">
+    <ul>
         <c:if test="${ curPageNum > 5 && !empty kwd }">
-            <li><a href="notice.ho?page=${ blockStartNum - 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_left</i></a></li>
+            <li><a href="noticeControll.ho?page=${ blockStartNum - 1 }&kwd=${ kwd }">◀</a></li>
         </c:if>
         
         <c:if test="${ curPageNum > 5 }">
-            <li><a href="notice.ho?page=${ blockStartNum - 1 }"><i class='material-icons'>chevron_left</i></a></li>
+            <li><a href="noticeControll.ho?page=${ blockStartNum - 1 }">◀</a></li>
         </c:if>
         
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
-                    <li><a>${ i }</a></li>
+                    <li>${ i }</li>
                 </c:when>
                 <c:when test="${ i == curPageNum }">
-                    <li class="active"><a>${ i }</a></li>
+                    <li class="selected">${ i }</li>
+                </c:when>
+                <c:when test="${ !empty kwd}">
+                    <li><a href="noticeControll.ho?page=${ i }&kwd=${ kwd }">${ i }</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="notice.ho?page=${ i }">${ i }</a></li>
+                    <li><a href="noticeControll.ho?page=${ i }">${ i }</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
+        
+        <c:if test="${ lastPageNum > blockLastNum && !empty kwd }">
+            <li><a href="noticeControll.ho?page=${ blockLastNum + 1 }&kwd=${ kwd }">▶</a></li>
+        </c:if>
+        
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="notice.ho?page=${ blockLastNum + 1 }"><i class='material-icons'>chevron_right</i></a></li>
+            <li><a href="noticeControll.ho?page=${ blockLastNum + 1 }">▶</a></li>
         </c:if>
     </ul>
 </div> 
-      </div>
+      
       <!--  -->
   </div>  <!-- END -->
-		
 		
 		
 		
@@ -111,6 +97,5 @@
 
 	<jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->
-<script src="../JS/faq.js"></script>
 </body>
 </html>

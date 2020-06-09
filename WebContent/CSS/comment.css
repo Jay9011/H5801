@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.right {
+	float:right;
+}
+.left {
+	float:left;
+}
+.clear {
+	clear:both;
+}
+.depth1 {
+	margin-left: 8%;
+}
+.hidden {
+	display: none;
+}
+.depth0 div.left.pfont > i{
+ 	color:#ff5722 ;
+ 	}
+.depth1 div.left.pfont > i{
+	color:#ffc107;
+}

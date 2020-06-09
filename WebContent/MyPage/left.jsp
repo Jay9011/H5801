@@ -17,15 +17,15 @@
 %>
 
 <!-- left 사이트 메뉴 시작 -->
-    <div class="col s5 offset-s7 right-align" style="margin-bottom:51px; ">
+    <div class="col m7 offset-m5 s12  right-align" style="margin-bottom:51px; ">
       <ul class="tabs">
-        <li class="tab">
+        <li class="tab col s4 m4">
           <a target="_self" class="<%=(menu == 1)?"active":"" %>" <%=(menu != 1)?"href='list.ho?menu=1'":""%>>내가 쓴 게시글</a>
         </li>
-        <li class="tab">
+        <li class="tab col s4 m4">
           <a target="_self" class="<%=(menu == 2)?"active":"" %>" <%=(menu != 2)?"href='list.ho?menu=2'":""%>>댓글 단 게시글</a>
         </li>
-        <li class="tab">
+        <li class="tab col s2 m4">
           <a target="_self" class="<%=(menu == 3)?"active":"" %>" <%=(menu != 3)?"href='list.ho?menu=3'":""%>>좋아요</a>
         </li>
       </ul>

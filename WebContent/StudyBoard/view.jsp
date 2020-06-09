@@ -17,25 +17,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
 <title>학습 문의 ${viewInfo[0].s_title}</title>
 <script src="../ckeditor/ckeditor.js"></script>
-<style>
-	.right {
-		float:right;
-	}
-	.left {
-		float:left;
-	}
-	.clear {
-		clear:both;
-	}
-	.depth1 {
-		margin-left: 50px;
-	}
-	.hidden {
-		display: none;
-	}
-</style>
 </head>
 <script>
 function chkDelete(s_uid){
@@ -79,26 +63,26 @@ function chkSubmit(){
 						<c:if test="${uid != null}">
 							<c:choose>
 								<c:when test="${liked > 0 }">
-									<a id="likeBtn"
+									<button id="likeBtn" class="btn waves-effect btn3"
 										onclick="favorite(${uid}, ${viewInfo[0].s_uid})">좋아요 취소 <i
-										class="material-icons dp48">favorite</i></a>
+										class="material-icons dp48">favorite</i></button>
 								</c:when>
 								<c:otherwise>
-									<a id="likeBtn"
+									<button id="likeBtn" class="btn waves-effect btn3"
 										onclick="favorite(${uid}, ${viewInfo[0].s_uid})">좋아요 <i
-										class="material-icons dp48">favorite_border</i></a>
+										class="material-icons dp48">favorite_border</i></button>
 								</c:otherwise>
 							</c:choose>
 						</c:if>
 						<c:if test="${uid == viewInfo[0].m_uid }">
-							<button class="btn waves-effect"
+							<button class="btn waves-effect btn2"
 								onclick="location.href = 'update.ho?s_uid=${viewInfo[0].s_uid}'">수정하기</button>
 						</c:if>
 						<c:if test="${uid == viewInfo[0].m_uid || grade > 8}">
-							<button class="btn waves-effect"
+							<button class="btn waves-effect btn2" 
 								onclick="chkDelete(${viewInfo[0].s_uid})">삭제하기</button>
 						</c:if>
-						<button class="btn waves-effect"
+						<button class="btn waves-effect btn2"
 							onclick="location.href = 'list.ho'">목록보기</button>
 					</div>
 				</div>
@@ -116,13 +100,20 @@ function chkSubmit(){
 
 
 		<%-- 댓글이 --%>
+		<h6 class="left-align pfont">댓글달기</h6>
 <c:if test="${uid != null}">
 	<form id="newComForm${viewInfo[0].s_uid }" name="commentTable" method="POST" enctype="multipart/form-data">
 		<input id="bordUid" type="hidden" name="s_uid" value="${viewInfo[0].s_uid}" />
 		<input id="memberUid" type="hidden" name="m_uid" value="${uid }" />
-		작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br>
-		<br><textarea id="editor1"></textarea>
-		<br><input id="newComFormSubmit" type="button" value="등록" onclick="comSubmit('newComForm${viewInfo[0].s_uid }');"/>
+<%-- 		작성자: <input type="text" name="m_nick" value="${nick }" disabled="disabled"/><br> --%>
+			<div class="row">
+		<div class="col m10 s12" style="margin-right: auto; float: none;">
+		<textarea id="editor1"></textarea>
+		</div>
+		<div class="col m10 offset-m1 s12 right-align">
+		<button id="newComFormSubmit" type="button" class="btn waves-effect btn2"   onclick="comSubmit('newComForm${viewInfo[0].s_uid }');">등록</button></div>
+		</div>
+
 	</form>
 </c:if>
 <div id="commentList">
@@ -159,27 +150,31 @@ function chkSubmit(){
 				var user_grade = ${grade};
 			</c:if>
 			if(row[i].sr_depth == 0){
-				commentrow += "<div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>"
+				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>"
 			} else {
-				commentrow += "<div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>"
+				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>"
 			}
-			commentrow += "<div class='left'>" + row[i].m_nick + "</div>"
+			commentrow += "<div class='left pfont'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>"
+			
 			if(user_id == logined_id || user_grade > 8){
-				commentrow += "<div class='right'><button onclick='event.stopPropagation(); deleteComment(" + row[i].sr_numUid + ");'>삭제</button></div>"
+				commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='삭제' onclick='event.stopPropagation(); deleteComment(" + row[i].sr_numUid + ");'><i class='material-icons dp48' style='vertical-align: middle;'>delete</i></a></div>"
 			}
 			if(user_id == logined_id){
-				commentrow += "<div class='right'><button onclick='event.stopPropagation(); alterComment(" + row[i].sr_numUid + ")'>수정</button></div>"
+				commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='수정'  style='border: none; width:' onclick='event.stopPropagation(); alterComment(" + row[i].sr_numUid + ")'><i class='material-icons dp48' style='vertical-align: middle;'>mode_edit</i></a></div>"
 			}
-			commentrow += "<div class='right'>" + row[i].sr_date + "</div>"
+			commentrow += "<div class='right pfont' style='margin-right: 3%;'>" + row[i].sr_date + " </div>"
 			commentrow += "<div class='clear'></div>"
-			commentrow += "<div>" + row[i].sr_com + "</div>"
-			commentrow += "</div>"
+			commentrow += "<div style='margin-left: 5px; border-radius: 5px; border: 1px solid #ff8e04; padding: 0 4%;'>" + row[i].sr_com + "</div>"
+			commentrow += "</div></div>"
 		}
 		if(typeof prevId == "undefined"){
 			$("#commentList").prepend(commentrow);
 		} else {
 			$("#" + prevId).after(commentrow);
 		}
+	     $('.tooltipped').tooltip({
+	    	 margin:3
+	     });
 		$(".replyOn").unbind('click').bind('click', function(){
 			if($(this).next().attr("id") == "addReply" && replyClick == false){
 				initPage();
@@ -189,16 +184,17 @@ function chkSubmit(){
 				$(".cke_editor_editor2").remove();
 				if(${uid != null}){
 					var commentrow = "";
-					commentrow += "<form id='addReply' name='commentTable' method='POST' enctype='multipart/form-data'>";
+					commentrow += "<form id='addReply' class='col s12 m10' name='commentTable' method='POST' enctype='multipart/form-data' style='margin-right: auto; float: none;'>";
 					commentrow += "<input id='parent' type='hidden' name='parent_uid' value='" + $(this).attr('id') + "' />";
 					commentrow += "<input id='bordUid' type='hidden' name='s_uid' value='${viewInfo[0].s_uid}' />";
 					commentrow += "<input id='memberUid' type='hidden' name='m_uid' value='${uid }' />";
-					commentrow += "작성자: <input type='text' name='m_nick' value='${nick }' disabled='disabled'/><br>";
-					commentrow += "<br><textarea id='editor2'></textarea>";
-					commentrow += "<br><input id='addReplySubmit' type='button' value='등록' onclick='comSubmit(\"addReply\");'/>";
+// 					commentrow += "작성자: <input type='text' name='m_nick' value='${nick }' disabled='disabled'/><br>";
+					commentrow += "<textarea id='editor2'></textarea>";
+					commentrow += "<div class='col s12 right-align'><button class='btn waves-effect btn2' id='addReplySubmit' type='button' onclick='comSubmit(\"addReply\");'>댓글 달기</button></div> ";
 					commentrow += "</form>";
 					$(this).after(commentrow);
 					CKEDITOR.replace('editor2', {
+						
 						allowedContent: true
 						,toolbar: [
 						['Styles','Format','Font','FontSize'],
@@ -288,10 +284,10 @@ function chkSubmit(){
 					commentrow += "<form id='addReply' name='commentTable' method='POST' enctype='multipart/form-data'>";
 					commentrow += "<input id='commentUid' type='hidden' name='sr_uid' value='" + data[0].sr_numUid + "' />";
 					commentrow += "<input id='memberUid' type='hidden' name='m_uid' value='" + data[0].m_uid + "' />";
-					commentrow += "작성자: <input type='text' name='m_nick' value='" + data[0].m_nick + "' disabled='disabled'/><br>";
-					commentrow += "<br><textarea id='editor2'>" + data[0].sr_com +"</textarea>";
-					commentrow += "<br><input id='addReplySubmit' type='button' value='수정' onclick='alterCommentOk(\"addReply\", " + data[0].sr_numUid + ")'/>";
-					commentrow += "<br><input id='addReplySubmit' type='button' value='취소' onclick='initPage();'/>";
+// 					commentrow += "작성자: <input type='text' name='m_nick' value='" + data[0].m_nick + "' disabled='disabled'/><br>";
+					commentrow += "<textarea id='editor2'>" + data[0].sr_com +"</textarea>";
+					commentrow += "<button id='addReplySubmit' class='btn waves-effect btn2' type='button' onclick='alterCommentOk(\"addReply\", " + data[0].sr_numUid + ")'>수정</button>";
+					commentrow += "<button id='addReplySubmit' class='btn waves-effect btn2' type='button' onclick='initPage();'>취소</button>";
 					commentrow += "</form>";
 					$("#" + sr_uid).addClass('hidden')
 					$("#" + sr_uid).after(commentrow);

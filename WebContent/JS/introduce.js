@@ -11,7 +11,7 @@ function initMap() {
         map : map,
         draggable: true,
         animation: google.maps.Animation.BOUNCE,
-        position: { lat: 37.6267711, lng: 127.0759383 }
+        position: { lat: 37.500905, lng: 127.035858 }
     });
     marker.addListener("click", toggleBounce);
 }
@@ -23,3 +23,30 @@ function toggleBounce(){
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 }
+
+//=======================
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.carousel');
+  var instances = M.Carousel.init(elems, options);
+});
+
+
+// Or with jQuery
+
+$(document).ready(function(){
+  $('.carousel').carousel();
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.scrollspy');
+  var instances = M.ScrollSpy.init(elems, options);
+});
+
+// Or with jQuery
+
+$(document).ready(function(){
+  $('.scrollspy').scrollSpy();
+});
+     

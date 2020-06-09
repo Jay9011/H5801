@@ -1,308 +1,189 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ko">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <head>
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-<link rel="stylesheet" href="../package/css/swiper.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="../JS/introduce.js"></script>
-<script src="https://unpkg.com/swiper/js/swiper.js"></script>
-<script src="../package/js/swiper.min.js"></script>
-<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-            <jsp:include page="../top.jsp" />
-<link rel="stylesheet" href="../CSS/introduce.css">
-
 <meta charset="UTF-8">
-<title>Holic</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="../top.jsp"/>
+       	<link rel="stylesheet" href="../CSS/introduce.css">
+ <title>FAQ</title>
+   </head>
+   <body>
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
+ <!-- 페이지에 해당하는 내용 적기  -->
+     <div class="parallax-container" style="width: 100%">
+      <div class="parallax"><img src="../IMAGES/intro1.jpeg"></div>
+    </div>
+<section class="container section scrollspy" id="intro">
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s10">
+		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
+		
 
-
-
-</head>
-
-<body>
-		<jsp:include page="../nav.jsp" />
-		<jsp:include page="../header.jsp" />
-
-	<div class="" id="i_intro">
-		<div class="w-12 text_title">
+		
+		
+		
+			<div id="i_intro" class="section scrollspy">
+		<div class="w-12 center-align">
 			<h1>Introdus Holic Reading Room</h1>
 		</div>
-		<div class="left w-8 i_half">
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro1.jpeg">
-					</div>
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro2.jpeg">
-					</div>
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro3.jpg">
-					</div>
-				</div>
-				<div class="swiper-pagination"></div>
-			</div>
+		<div class="hr">
+			<hr style="border: 2px solid black;">
 		</div>
-		<div class="left w-4 i_half">
-			<h2 class="text">Holic</h2>
-			<h4 class="text">Hi! It's a reading room for your comfortable
-				reading!</h4>
-			<h4 class="text">I'll do my best for the user thank.</h4>
-
+		<div class="clear"></div>
+		<div>
+		<div class="center-align" style="font-size: 40px">안녕하세요 Holic 독서실입니다</div>
+		<div class="center-align" style="font-size: 30px">
+		<br>쾌적한 환경과 간단한 편의시설이 구비되어있습니다
+		<br>웹사이트를 통해 이용해주시는분들의 일정예약을 하실수있으니
+		<br>시간에 쫒기지않고 편안한 마음으로 공부하실수 있습니다.
+		<br><br><br>
 		</div>
+		<img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg">
+		</div>
+	<div class="carousel w-12 center-align">
+    	<a class="carousel-item duration" href="#one!"><img src="../IMAGES/intro1.jpeg"></a>
+    	<a class="carousel-item duration" href="#two!"><img src="../IMAGES/intro2.jpeg"></a>
+    	<a class="carousel-item duration" href="#three!"><img src="../IMAGES/intro3.jpg"></a>
+    	<a class="carousel-item duration" href="#four!"><img src="../IMAGES/intro1.jpeg"></a>
+    	<a class="carousel-item duration" href="#five!"><img src="../IMAGES/intro1.jpeg"></a>
+    </div>
+    
+		</div><!-- END I_INTRO -->
+		
+		
+		
+		
 	</div>
-	<script>
-		var swiper = new Swiper('.swiper-container', {
-			pagination : {
-				el : '.swiper-pagination',
-				dynamicBullets : true,
-			},
-		});
-	</script>
+	</div>
+	</section>
+	
+    <div class="parallax-container" style="width: 100%">
+      <div class="parallax"><img src="../IMAGES/intro1.jpeg"></div>
+    </div>
+
+	<section class="container section scrollspy" id="intro">
+	<div class="row">
+	<div class="col s1 "></div>
+		<div class="col s10">
 
 
 
 
 
-
-
-
-	<div id="i_room">
-		<div class="w-12 text_title">
+	<div id="i_room" class="section scrollspy">
+		<div class="w-12 center-align">
 			<h1>Study Room Introduction</h1>
 		</div>
-		<div class="left w-6 r_half">
-
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro1.jpeg">
-					</div>
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro2.jpeg">
-					</div>
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro3.jpg">
-					</div>
-				</div>
-
-				<div class="swiper-pagination"></div>
-			</div>
-			<div>
-				<h2>ST ROOM</h2>
-			</div>
-			<div>
-				<h4>ST ROOM CONTENT</h4>
-			</div>
+		<div class="hr">
+			<hr style="border: 2px solid black;">
 		</div>
-
-		<div class="left w-6 r_half">
-
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro1.jpeg">
-					</div>
-					<div class="swiper-slide r_size">
-						<img src="../IMAGES/intro2.jpeg">
-					</div>
-					<div class="swiper-slide r_size">
-						<img src="...IMAGES/intro3.jpg">
-					</div>
-				</div>
-
-				<div class="swiper-pagination"></div>
-			</div>
-			<div>
-				<h2>ST ROOM2</h2>
-			</div>
-			<div>
-				<h4>ST ROOM2 CONTENT</h4>
-			</div>
+		<div class="clear"></div>
+		
+		
+		<div class="center-align" style="font-size: 40px">좋은 독서실이 좋은 성적으로!</div>
+		<div class="center-align" style="font-size: 30px">
+		<br>집중해서 혼자 공부할수있는 개인실과
+		<br>팀프로젝트, 토론, 스터디모임등 단체로 모일수있는 다인실이 준비되어있습니다.
+		<br>공부하다 모르는건 언제든지 Holic 속의 학습문의 게시판에 남겨주세요 많은사람들이 도와줄거에요!
+		<br><br><br>
 		</div>
 		
-					<div class="clear"></div>
-			<div class="hr">
-				<hr>
-			</div>
-		<div class="left w-6">
-			<div class="w-4 left price">
-				<div class="effect-wrap">
-					<figure class="effect7 test">
-						<div class="w-12 boom">
-							<h4 class="center">${introRow[0].t_name }</h4>
-						</div>
-						<figcaption>
-							<div class="w-12 boom">
-								<h5>${introRow[0].t_maxnum }</h5>
-								<h6>${introRow[0].t_pay }Won</h6>
-							</div>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
-			<div class="w-4 left price">
-				<div class="effect-wrap">
-					<figure class="effect7 test">
-						<div class="w-12 boom">
-							<h4 class="center">${introRow[1].t_name }</h4>
-						</div>
-						<figcaption>
-							<div class="w-12 boom">
-								<h5>${introRow[1].t_maxnum }</h5>
-								<h6>${introRow[1].t_pay }Won</h6>
-							</div>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
-			<div class="w-4 left price">
-				<div class="effect-wrap">
-					<figure class="effect7 test">
-						<div class="w-12 boom">
-							<h4 class="center">${introRow[2].t_name }</h4>
-						</div>
-						<figcaption>
-							<div class="w-12 boom">
-								<h5>${introRow[2].t_maxnum }</h5>
-								<h6>${introRow[2].t_pay }Won</h6>
-							</div>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
+		
+		
+	<div class="card w-4 left">
+    	<div class="card-image waves-effect waves-block waves-light">
+		<img class="activator" src="../IMAGES/intro1.jpeg">
+	</div>
+    <div class="card-content">
+    	<span class="card-title activator grey-text text-darken-4">Room(다인실)<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+    	<span class="card-title grey-text text-darken-4">Room(다인실)<i class="material-icons right">close</i></span>
+    	<p>다인실입니다 1일 단위로 빌릴수있으며 인원수에따른 가격이다릅니다
+    	<br>
+    	<br>${ introRow[0].t_name} ${ introRow[0].t_pay} Won
+    	<br>${ introRow[1].t_name} ${ introRow[1].t_pay} Won
+    	<br>${ introRow[2].t_name} ${ introRow[2].t_pay} Won
+    	</p>
+  	</div>
+  	</div>
 
-		</div>
-		<div class="left w-6">
-			<div class="w-3 left price">
-				<div class="effect-wrap">
-					<figure class="effect7 test">
-						<div class="w-12 boom">
-							<h4>2${introRow[3].t_name }</h4>
-						</div>
-						<figcaption>
+	<div class="card w-4 left">
+    	<div class="card-image waves-effect waves-block waves-light">
+		<img class="activator" src="../IMAGES/intro1.jpeg">
+	</div>
+    <div class="card-content">
+    	<span class="card-title activator grey-text text-darken-4">Learning Inquiry(문의)<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+    	<span class="card-title grey-text text-darken-4">Learning Inquiry(문의)<i class="material-icons right">close</i></span>
+    	<p>여러분들의 고민이나 질문들을 다같이 공유할수있습니다
+    	<br>마음 맞는 사람들끼리 스터디룸을 잡아보는건 어떨까요?
+    	</p>
+    	<p><a href="${pageContext.request.contextPath}/StudyBoard/list.ho">물어볼게 생겼나요? Click!</a></p>
+  	</div>
+  	</div>
 
-							<div class="w-12 boom">
-								<h5>${introRow[3].t_maxnum }</h5>
-								<h6>${introRow[3].t_pay*2 }Won</h6>
-							</div>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
-			<div class="w-3 left price">
-				<div class="effect-wrap">
-					<figure class="effect7 test">
-						<div class="w-12 boom">
-							<h4>4${introRow[3].t_name }</h4>
-						</div>
-						<figcaption>
-
-							<div class="w-12 boom">
-								<h5>${introRow[3].t_maxnum }</h5>
-								<h6>${introRow[3].t_pay}Won</h6>
-							</div>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
-			<div class="w-3 left price">
-				<div class="effect-wrap">
-					<figure class="effect7 test">
-						<div class="w-12 boom">
-							<h4>6${introRow[3].t_name }</h4>
-						</div>
-						<figcaption>
-
-							<div class="w-12 boom">
-								<h5>${introRow[3].t_maxnum }</h5>
-								<h6>${introRow[3].t_pay }Won</h6>
-							</div>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
-			<div class="w-3 left price">
-				<div class="effect-wrap">
-					<figure class="effect7 test">
-						<div class="w-12 boom">
-							<h4>8${introRow[3].t_name }</h4>
-						</div>
-						<figcaption>
-
-							<div class="w-12 boom">
-								<h5>${introRow[3].t_maxnum }</h5>
-								<h6>${introRow[3].t_pay }Won</h6>
-							</div>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		</div>
-
+	<div class="card w-4 left">
+    	<div class="card-image waves-effect waves-block waves-light">
+		<img class="activator" src="../IMAGES/intro1.jpeg">
+	</div>
+    <div class="card-content">
+    	<span class="card-title activator grey-text text-darken-4">Private room(개인실)<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+    	<span class="card-title grey-text text-darken-4">Private room(개인실)<i class="material-icons right">close</i></span>
+    	<p>개인실입니다 2시간 단위로 빌릴수있으며 시간에따른 가격이다릅니다
+    	<br>
+    	<br>${ introRow[3].t_name} ${ introRow[3].t_pay} Won
+    	<br>${ introRow[3].t_name} ${ introRow[3].t_pay*2} Won
+    	<br>${ introRow[3].t_name} ${ introRow[3].t_pay*3} Won
+    	<br>${ introRow[3].t_name} ${ introRow[3].t_pay*4} Won
+    	</p>
+  	</div>
+  	</div>		
+		
+		
+		</div><!-- END I_ROOM -->
+		
+		
+		
+		
+		
 
 	</div>
+	</div>
+	</section>
+	
+    <div class="parallax-container" style="width: 100%">
+      <div class="parallax"><img src="../IMAGES/intro1.jpeg"></div>
+    </div>
+    
+    
+    
+    
+    
 
-
-	<script>
-		var swiper = new Swiper('.swiper-container', {
-			pagination : {
-				el : '.swiper-pagination',
-				dynamicBullets : true,
-			},
-		});
-	</script>
-
-
-
-
-
-
-
-
-	<div id="i_map">
+	<section class="container section scrollspy" id="intro">
+	<div class="row">
+	<div class="col s1 "></div>
+		
+	
+	<div id="i_map" class="section scrollspy">
 		<div class="w-12 text_title">
 			<h1>Way to come</h1>
 		</div>
 		<div class="map map2 w-8 left">
 			<div id="map" style="height: 700px;"></div>
-			<script
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpXCUpAbetxI0sTqAX8IgAJ3UG8zGLn2E&callback=initMap"
-				async defer>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpXCUpAbetxI0sTqAX8IgAJ3UG8zGLn2E&callback=initMap" async defer>
 				
 			</script>
 		</div>
@@ -321,70 +202,23 @@
 		<div class="hr">
 			<hr>
 		</div>
+	
+			
 
 
 
-
-	</div>
-
-
-	<!-- ******************************************************************************************************************* -->
-
-
-
-	<ul>
-		<li><input id="rad1" type="radio" name="rad" checked="checked" />
-			<label for="rad1">
-				<div>Just keep going with longer text</div>
-		</label>
-			<div class="accslide">
-				<div class="content">
-					<h1>Just keep going with longer text</h1>
-					<p>Lorem ipsum...</p>
-				</div>
-			</div></li>
-		<li>
-			<input id="rad2" type="radio" name="rad" />
-			 <label for="rad2">
-			<div>dasd</div>
-			</label>
-			<div class="accslide">
-				<div class="content">
-					<h1>Second panel</h1>
-					<p>Lorem ipsum...</p>
-				</div>
+		
+		
 			</div>
-		</li>
-		<li><input id="rad3" type="radio" name="rad" /> <label for="rad3">
-				<div>Third panel</div>
-		</label>
-			<div class="accslide">
-				<div class="content">
-					<h1>Third panel</h1>
-					<p>Lorem ipsum...</p>
-				</div>
-			</div></li>
-		<li><input id="rad4" type="radio" name="rad" /> <label for="rad4">
-				<div>Fourth panel</div>
-		</label>
-			<div class="accslide">
-				<div class="content">
-					<h1>Fourth panel</h1>
-					<p>Lorem ipsum...</p>
-				</div>
-			</div></li>
-	</ul>
+		<div class="col s1"></div>
+	</div>
+</section>
+    <div class="parallax-container">
+      <div class="parallax"><img src="../IMAGES/intro1.jpeg"></div>
+    </div>
 
-
-	<!-- ******************************************************************************************************************* -->
-
-
-
-
-
-
-
-<jsp:include page="../foot.jsp" />
+	<jsp:include page="../foot.jsp"/>
+<!--  js 추가는 여기에 -->
+<script src="../JS/introduce.js"></script>
 </body>
 </html>
-
