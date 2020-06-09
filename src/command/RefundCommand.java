@@ -56,6 +56,7 @@ public class RefundCommand implements Command {
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
 			
+			
 			String cid = "TC0ONETIME";
 			String tid = arr[0].getTid();
 			System.out.println(tid);
@@ -91,6 +92,7 @@ public class RefundCommand implements Command {
 			System.out.println(obj.get("status"));
 			request.setAttribute("cancel", cancel);
 			session.setAttribute("p_uid", p_uid);
+			session.setAttribute("p_cancel", arr[0].getP_cancel());
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -98,13 +100,15 @@ public class RefundCommand implements Command {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+			session.setAttribute("p_uid", 0);
+			session.setAttribute("p_cancel", 2);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				in.close();
+				if(in != null)in.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
