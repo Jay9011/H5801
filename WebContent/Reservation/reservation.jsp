@@ -29,12 +29,12 @@
 				<div class="row" style="border-radius: 5px; border: 1px solid #ffa537;">
 					<!-- <h3 class="center-align pfont">2020.05.27(여기다 날짜 나오게 하고싶다 소근소근)</h3> -->
 					<div class="col s12">
-						<form id="frm" action="index.ho">
-							<input id="selectDate" type="text" class="datepicker pfont" readonly="readonly">
-							<input id="item_name" name="item_name" type="text">
-							<input id="total_amount" name="total_amount" type="text">
-							<input id="m_uid" name="m_uid" type="text">
-							<input id="t_uid" name="t_uid" type="text">
+						<form id="frm" action="${pageContext.request.contextPath}/Payment/pay.ho">
+							<input id="selectDate" name="selectDate" type="text" class="datepicker pfont" readonly="readonly">
+							<input id="item_name" name="item_name" type="text" hidden="hidden">
+							<input id="total_amount" name="total_amount" type="text" hidden="hidden">
+							<input id="m_uid" name="m_uid" type="text" value="${uid }" hidden="hidden">
+							<input id="t_uid" name="t_uid" type="text" hidden="hidden">
 						</form>
 					</div>
 					<!-- 					<div class="row"> -->
@@ -96,8 +96,11 @@
 					var row = data.data;
 					for (var i = 0; i < row.length; i++) {
 						$("#" + row[i].t_uid).addClass("disabled");
+						$("#RoomInfo").html("<h5>방을 선택해 주세요</h5>");
+						$("#item_name").val("");
+						$("#total_amount").val("");
+						$("#t_uid").val("");
 					} // end for
-					$("#RoomInfo").html("<h5>방을 선택해 주세요</h5>");
 				} else if (data.status == "FAIL") {
 				} // end if
 			},
@@ -119,7 +122,10 @@
 			success : function(data) {
 				if (data.status == "OK") {
 					var info = data.data[0];
-					$("#RoomInfo").html("<h3>" + info.t_name + " 번방<span style='font-size:0.5em'>을 선택</span></h3><p>최대 " + info.t_maxnum + " 인 가능</p>");
+					$("#RoomInfo").html("<h3>" + info.t_name + " 번방<span style='font-size:0.5em'>을 선택</span></h3><p>" + info.t_pay + "원</p><p>최대 " + info.t_maxnum + " 인 가능</p>");
+					$("#item_name").val(info.t_name + "번 방");
+					$("#total_amount").val(info.t_pay);
+					$("#t_uid").val(info.t_uid);
 				} else if (data.status == "FAIL") {
 					alert(data.message);
 				}

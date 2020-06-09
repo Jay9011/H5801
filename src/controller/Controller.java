@@ -17,6 +17,7 @@ import command.LoginCommand;
 import command.LogoutCommand;
 import command.PayCommand;
 import command.PayOkCommand;
+import command.PrePayCommand;
 import command.RefundCommand;
 import command.RefundOkCommand;
 import command.ReinfoCommand;
@@ -189,10 +190,6 @@ public class Controller extends HttpServlet {
 			new RoomInfoJsonParse().execute(request, response);
 			break;
 
-		case "/Reservation/Booking.ho":
-			
-			break;
-
 //		마이페이지
 		case "/MyPage/list.ho":
 			command = new LoadCommand();
@@ -224,6 +221,7 @@ public class Controller extends HttpServlet {
 
 		// 예약 결제
 		case "/Payment/pay.ho":
+			new PrePayCommand().execute(request, response);;
 			new PayCommand().execute(request, response);
 			viewPage = "pay.jsp";
 			break;

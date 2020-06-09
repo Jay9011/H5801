@@ -32,23 +32,23 @@ public class PayCommand implements Command {
 		HttpSession session = request.getSession();
 		HttpURLConnection conn = null;
 		BufferedReader in = null;
-		
+
 		String url_domain = request.getScheme() + "://" + request.getServerName()+":"+ request.getServerPort();
 		String conPath = request.getContextPath();
 		DAOPay dao = new DAOPay();
 		DTOPay [] arr = null;
 		int p_uid;
-		
-		if(request.getParameter("p_uid") != null) {
-			p_uid = Integer.parseInt(request.getParameter("p_uid"));
+
+		if(request.getAttribute("p_uid") != null) {
+			p_uid = (Integer)request.getAttribute("p_uid");
 			System.out.println(p_uid);
-			
+
 		} else {
 			p_uid = 0;
 			System.out.println(p_uid);
 			return;
 		}
-		
+
 		try {
 			arr = dao.selectByUid(p_uid);
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
@@ -58,7 +58,7 @@ public class PayCommand implements Command {
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
-			
+
 			String cid = "TC0ONETIME";
 			int partner_order_id = arr[0].getP_uid();
 			String partner_user_id = arr[0].getEmail();
@@ -69,10 +69,10 @@ public class PayCommand implements Command {
 			String approval_url = url_domain+conPath+"/Payment/payOk.ho";
 			String cancel_url = url_domain+conPath+"/MyPage/book.ho";
 			String fail_url =  url_domain+conPath+"/MyPage/book.ho";
-			
-			
+
+
 			Map<String, Object> params = new HashMap<String, Object>();
-			
+
 			params.put("cid", cid);
 			params.put("partner_order_id", partner_order_id);
 			params.put("partner_user_id", partner_user_id);
@@ -83,27 +83,27 @@ public class PayCommand implements Command {
 			params.put("approval_url", approval_url);
 			params.put("cancel_url", cancel_url);
 			params.put("fail_url", fail_url);
-			
+
 			String string_params = new String();
 			for(Map.Entry<String, Object> elem: params.entrySet()) {
 				string_params += (elem.getKey() + "=" + elem.getValue() + "&");
 			}
-			
+
 			System.out.println(string_params);
-			
+
 			OutputStream out = conn.getOutputStream();
 			out.write(string_params.getBytes());
 			out.flush();
 			out.close();
-			
+
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String successUrl = null;
-			
+
 			JSONParser parser = new JSONParser();
 			JSONObject obj = (JSONObject)parser.parse(in);
-			
+
 			successUrl = (String)obj.get("next_redirect_pc_url");
-			
+
 
 			session.setAttribute("tid", (String)obj.get("tid"));
 			System.out.println((String)obj.get("tid"));
@@ -111,9 +111,9 @@ public class PayCommand implements Command {
 			session.setAttribute("partner_user_id", partner_user_id);
 			session.setAttribute("total_amount", total_amount);
 			session.setAttribute("item_name", item_name);
-			
+
 			request.setAttribute("successUrl", successUrl);
-			
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -130,7 +130,7 @@ public class PayCommand implements Command {
 			}
 			if(conn != null) conn.disconnect();
 		}
-		
+
 	}
 
 }
