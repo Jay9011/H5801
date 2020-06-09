@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+ <head>
+ <jsp:include page="../modal.jsp"/>
 <c:choose>
 	<c:when test="${email != null }">
 		<script>
@@ -18,10 +22,10 @@
 		<script>
 $(document).ready(function() {
 	$("[class^='loginNN']").click(function() {
-		var a = confirm("로그인은 필수입니다.\n로그인하시겠습니까?");
+		/* var a = confirm("로그인은 필수입니다.\n로그인하시겠습니까?");
 		if(a){
 			location.replace("${pageContext.request.contextPath}/User/login.ho");
-		}
+		} */
 	});
 
 });
@@ -125,3 +129,6 @@ $(document).ready(function() {
 	</li>
 </ul>
 <!--  여기 realHeader end (뺴야되요 부분 삭제후 가져가기 -->
+<script type="text/javascript" src="../JS/modal.js"></script>
+</body>   
+</html>
