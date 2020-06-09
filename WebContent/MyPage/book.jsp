@@ -226,12 +226,6 @@ function chkPayCancelSubmit(){
 </section>
 
 <jsp:include page="../foot.jsp"/>	
-</body>
-</html>
-
-
-	
->>>>>>> branch 'master' of https://github.com/Jay9011/Holic.git
 	</c:when>
 	
 	<c:otherwise>
