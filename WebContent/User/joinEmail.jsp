@@ -29,11 +29,11 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
 		<div class="input-field col m10 s12">
 			<h1 class="center-align pfont">이메일 인증 하기</h1>
 			<h6 class="center-align pfont">회원가입을 위해서는 이메일 인증은 필수 입니다.</h6>
-            <form name="joinEmailFrm" action="${pageContext.request.contextPath}/User/joinEmailOk.ho" method="post" >
+            <form name="joinEmailFrm" action="${pageContext.request.contextPath}/User/joinEchk.ho" method="post" >
             	<div class="row">
 				  <div class="col m1 "></div>
                         <div class="input-field col m10 s12">
-                    	<input id="email_inline" type="email" name="email" class= "validate"/>
+                    	<input id="email_inline" type="email" name="email" class= "validate" onkeyup="chkemail(email.value);"/>
             			<label for="email_inline">이메일(아이디)</label>
                  		<span id="chkEmail" class="helper-text"></span>
                  	</div>
@@ -51,6 +51,7 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
 </section>
 <%} %>
 <jsp:include page="../foot.jsp"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/chkInform.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 </body>
 </html>

@@ -115,6 +115,7 @@ public class Common {
 		/**
 		 * 예약 현황 관련 SQL
 		 */
-		 public static final String SQL_SELECT_RESERV_BY_DATE = "SELECT * FROM RESERVE WHERE TO_CHAR(P_STARTTIME ,'YYYY-MM-DD') = ? AND P_CANCEL = 0";
+		 public static final String SQL_SELECT_RESERV_BY_DATE = "SELECT * FROM RESERVE WHERE TO_CHAR(P_STARTTIME ,'YYYY-MM-DD') = ? AND P_CANCEL = 1";
 		 public static final String SQL_SELECT_ROOM_INFO = "SELECT * FROM T_DETAIL WHERE t_uid = ?";
+		 public static final String SQL_INSERT_ORDER_RESERVE = "INSERT INTO RESERVE (p_uid, P_STARTTIME , P_ENDTIME , ITEM_NAME , TOTAL_AMOUNT , PAY_DATE , P_CANCEL , M_UID , T_UID ) VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date(?, 'yyyy-mm-dd'), to_date(?, 'yyyy-mm-dd'), ?, ?, SYSDATE, 0, ?, ?)";
 }

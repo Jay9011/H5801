@@ -18,6 +18,7 @@ import command.LoginCommand;
 import command.LogoutCommand;
 import command.PayCommand;
 import command.PayOkCommand;
+import command.PrePayCommand;
 import command.RefundCommand;
 import command.RefundOkCommand;
 import command.ReinfoCommand;
@@ -27,6 +28,7 @@ import command.SendCommand;
 import command.UpdateCommand;
 import command.chkMailCommand;
 import command.chkNickCommand;
+import command.joinEmailCommand;
 import command.faq.FaqDeleteOk;
 import command.faq.FaqLoad;
 import command.faq.FaqUpdate;
@@ -85,6 +87,7 @@ public class Controller extends HttpServlet {
 		Command command = null;
 
 		String uri = request.getRequestURI();
+		StringBuffer url = request.getRequestURL();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 
@@ -92,6 +95,7 @@ public class Controller extends HttpServlet {
 		System.out.println("uri: " + uri);
 		System.out.println("conPath: " + conPath);
 		System.out.println("com: " + com);
+		System.out.println("url: " + url.toString());
 
 		switch (com) {
 		case "/StudyBoard/list.ho":
@@ -224,6 +228,7 @@ public class Controller extends HttpServlet {
 
 		// 예약 결제
 		case "/Payment/pay.ho":
+			new PrePayCommand().execute(request, response);;
 			new PayCommand().execute(request, response);
 			viewPage = "pay.jsp";
 			break;
@@ -253,6 +258,10 @@ public class Controller extends HttpServlet {
 			viewPage = "joinchk.jsp";
 			break;
 		case "/User/joinEmail.ho":
+			viewPage = "joinEmail.jsp";
+			break;
+		case "/User/joinEchk.ho":
+			new joinEmailCommand().execute(request, response);
 			viewPage = "joinEmail.jsp";
 			break;
 		case "/User/join.ho":
@@ -387,19 +396,19 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "writeOk.jsp";
 			break;
-			
+
 		case "/AdminPage/faqControll.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
 			viewPage = "faqControll.jsp";
 			break;
-		
+
 		case "/AdminPage/noticeControll.ho":
 			command = new NoticePageingLoad();
 			command.execute(request, response);
 			viewPage = "noticeControll.jsp";
 			break;
-			
+
 		case "/AdminPage/userControll.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
@@ -411,10 +420,10 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "stControll.jsp";
 			break;
-			
-			
-			
-			
+
+
+
+
 		}
 
 

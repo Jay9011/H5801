@@ -26,14 +26,17 @@ function toggleBounce(){
 
 //=======================
 
+
 document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.carousel');
-  var instances = M.Carousel.init(elems, options);
-});
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, options);
+  });
 
+  // Or with jQuery
 
-// Or with jQuery
-
-$(document).ready(function(){
-  $('.carousel').carousel;
-});
+  $(document).ready(function(){
+    $('.carousel').carousel({
+    	dist : -20,
+    	duration : 100
+    });
+  });

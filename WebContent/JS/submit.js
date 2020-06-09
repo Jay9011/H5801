@@ -9,15 +9,12 @@ function joinmit(){
     var pwJ = /^[A-Za-z0-9]{4,12}$/; 
     // 이름 정규식
     var nameJ = /^[가-힣]{2,9}$/;
-   // 이메일 검사 정규식
-    var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     // 휴대폰 번호 정규식
     var phoneJ = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
     // 생년월일
     var birthJ = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
     var name = frm.name.value.trim();
     var nick = frm.nick.value.trim();
-	var email = frm.email.value.trim();
 	var pw = frm.pw.value.trim();
 	var pwchk = frm.pwchk.value.trim();
 	var birth = frm.birth.value.trim();
@@ -28,7 +25,6 @@ function joinmit(){
 	
 	var cName = document.getElementById("chkName");    
 	var cNick = document.getElementById("chkNick");  
-	var cEmail = document.getElementById("chkEmail");
 	var cPw = document.getElementById("chkPW");
 	var cBrith = document.getElementById("chkBirth");
 	var cPhone = document.getElementById("chkPhone");
@@ -36,7 +32,6 @@ function joinmit(){
 	
 	cName.innerHTML = "";
 	cNick.innerHTML = "";
-	cEmail.innerHTML = "";
 	cPw.innerHTML = "";
 	cBrith.innerHTML = "";
 	cPhone.innerHTML = "";
@@ -56,16 +51,6 @@ function joinmit(){
 	if(nick == "" || !nickJ.test(nick)){
 		cNick.innerHTML ="닉네임을 써주세요 닉네임은 한글 숫자 영어만 가능합니다. 4-8 글자";                                    
 	    frm.nick.focus();
-        return false;	
-	}
-	if(email == ""){
-		cEmail.innerHTML = "이메일을 써주세요";                                    
-	    frm.email.focus();
-        return false;	
-	}
-	if(!mailJ.test(email)){
-		cEmail.innerHTML = "올바른 이메일이 아닙니다.";                                    
-	    frm.email.focus();
         return false;	
 	}
 	if(pw == ""){
@@ -112,7 +97,8 @@ function chkSubmit() {
 	
 	var email = frm.email.value.trim();
 	var pw = frm.pw.value.trim();
-	var emailPat = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	 // 이메일 검사 정규식
+    var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	 document.getElementById("chkid").innerHTML = "";
      document.getElementById("chkpw").innerHTML = "";
      
@@ -122,7 +108,7 @@ function chkSubmit() {
         return false;
 	}
 	
-	if(!emailPat.test(email)){
+	if(!mailJ.test(email)){
 		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";                         
 		   frm.email.focus();
            return false;
@@ -195,12 +181,12 @@ function reInfomit(){
 		   return false;	
 	}
 	if(pwchk == ""){
-		cPw.innerHTML = "비밀번호 확인을 해주세요";
+		cPw.innerHTML = "비밀번호 확인을 해주세요 ᕦ(ò_óˇ)ᕤ";
 		   frm.pw.focus();
 		   return false;	
 	}
 	if(pw != pwchk){
-		cPw.innerHTML = "기존 비밀번호와 다름니다";
+		cPw.innerHTML = "기존 비밀번호와 다름니다 ";
 		   frm.pwchk.focus();
 		   return false;	
 	}
@@ -223,17 +209,19 @@ function chkEmailSubmit() {
 	var frm = document.findPwFrm;
 	
 	var email = frm.email.value.trim();
-	var emailPat = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	 document.getElementById("chkid").innerHTML = "";
      
 	if(email == ""){
-		document.getElementById("chkid").innerHTML = "이메일을 써주세요";                                    
+		document.getElementById("chkid").innerHTML = "이메일을 써주세요";                
+		document.getElementById('chkid').style.color = "#f44336";
 	    frm.email.focus();
         return false;
 	}
 	
-	if(!emailPat.test(email)){
-		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";                         
+	if(!mailJ.test(email)){
+		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";     
+		   document.getElementById('chkid').style.color = "#f44336";                   
 		   frm.email.focus();
            return false;
 	}
@@ -244,17 +232,19 @@ function joinEmailSubmit() {
 	var frm = document.joinEmailFrm;
 	
 	var email = frm.email.value.trim();
-	var emailPat = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	 document.getElementById("chkid").innerHTML = "";
+	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	 document.getElementById("chkEmail").innerHTML = "";
      
 	if(email == ""){
-		document.getElementById("chkid").innerHTML = "이메일을 써주세요";                                    
+		document.getElementById("chkEmail").innerHTML = "이메일을 써주세요";
+		document.getElementById('chkEmail').style.color = "#f44336";
 	    frm.email.focus();
         return false;
 	}
 	
-	if(!emailPat.test(email)){
-		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";                         
+	if(!mailJ.test(email)){
+		   document.getElementById("chkEmail").innerHTML = "잘못된 email 입니다";      
+		   document.getElementById('chkEmail').style.color = "#f44336";
 		   frm.email.focus();
            return false;
 	}

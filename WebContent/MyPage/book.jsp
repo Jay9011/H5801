@@ -1,5 +1,5 @@
-<%-- 예약현황 --%>
-<%-- 
+<%-- 비밀번호 변경 --%>
+<%--
   작성자: 낙경
  2020-06-05  16:00 수정
  --%>
@@ -7,16 +7,16 @@
 <%--contentType="charset=UTF-8": (결과) 웹 브라우저가 받아볼 페이지의 인코딩 방식 --%>
 <%--pageEncoding="UTF-8": (작업) JSP파일(페이지)에 기록된 소스코드 자체의 인코딩 방식 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>   
+    pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 <jsp:include page="../modal.jsp"/>
 <c:choose>
- 
+
 <c:when test="${uid != null }">
 <!DOCTYPE html>
 <html lang="ko">
@@ -32,39 +32,17 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
-<style>
-.lightcyan {
-    background-color: lightcyan;
-}
-.important {
-    font-weight: bold;
-}
-
-</style>
 </head>
-
 <script>
-$(document).ready(function(){
-	$(":input:radio").click(function(){
-		$("tr").removeClass("lightcyan");
-		$("tr").removeClass("important");
-		$(this).parents("tr").addClass("lightcyan");
-		$(this).parents("tr").addClass("important");
-	});
-});
-
-
-
-
 function chkPaySubmit(){
 	var frm = document.bookFrm;
 	var p_uid = frm.p_uid.value.trim();
 	if(p_uid == ""){
-		alert("결제할 항목을 선택해주세요")                                   
+		alert("결제할 항목을 선택해주세요")
 	    frm.p_uid.focus();
-        return false;	
+        return false;
 	}
-	
+
 	frm.submit(); // submit 성공
 }
 
@@ -72,11 +50,11 @@ function chkPayCancelSubmit(){
 	var frm = document.bookFrm;
 	var p_uid = frm.p_uid.value.trim();
 	if(p_uid == ""){
-		alert("취소할 항목을 선택해주세요")                                   
+		alert("취소할 항목을 선택해주세요")
 	    frm.p_uid.focus();
-        return false;	
+        return false;
 	}
-	
+
 	frm.submit(); // submit 성공
 }
 
@@ -92,15 +70,17 @@ function chkPayCancelSubmit(){
 	<div class="col s10">
 
 		<h3 class="center-align pfont">나의 예약현황</h3>
+
 			<c:if test="${empty book || fn:length(book) == 0}">
 				<p style="text-align: center">예약된 내용이 없습니다.</p>
 			</c:if>
 			<c:if test="${!empty book && fn:length(book) != 0}">
+
+
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
-		<table class="highlight centered" id="table">
-
+		<table class="highlight centered">
 		<thead>
 			<tr>
 				<th>예약번호</th>
@@ -114,12 +94,16 @@ function chkPayCancelSubmit(){
 				<th>항목선택</th>
 
 			</tr>
-		</thead>   
+		</thead>
 
-			
+		<c:choose>
+			<c:when test="${empty book || fn:length(book) == 0}">
+			</c:when>
+			<c:otherwise>
+
 			<c:forEach var="dto" items="${book }">
-			
-			<tr id="tr">
+
+			<tr>
 				<td>#${dto.rnum }</td>
 				<%--<td>${dto.p_uid }번</td>--%>
 				<td>
@@ -141,9 +125,9 @@ function chkPayCancelSubmit(){
 					결제취소
 					</c:if>
 				</td>
-				
+
 				<td>
-					<c:if test="${dto.b_refund==0 } ">
+					<c:if test="${dto.b_refund==0 || dto.b_refund==null} ">
 				    <p>
 				      <label>
 				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" disabled="disabled"/>
@@ -160,15 +144,16 @@ function chkPayCancelSubmit(){
 				    </p>
 				    </c:if>
 				</td>
-				
+
 			</tr>
 
 			</c:forEach>
-			
-		
+
+			</c:otherwise>
+		</c:choose>
 		</table>
 		</form>
-	
+
 
 <div class="row">
 			<div class="col s12 center-align">
@@ -177,7 +162,7 @@ function chkPayCancelSubmit(){
         <c:if test="${ curPageNum > 5 }">
             <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
-        
+
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
@@ -186,19 +171,19 @@ function chkPayCancelSubmit(){
                 <c:when test="${ i == curPageNum }">
                     <li  class='active'><a>${ i }</a></li>
                 </c:when>
-                
+
                 <c:otherwise>
                     <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ i }" >${ i }</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
 
-        
+
         <c:if test="${ lastPageNum > blockLastNum }">
             <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
-</div> 
+</div>
 	</div>
 		</div>
 		<%--<div class="row">
@@ -211,8 +196,7 @@ function chkPayCancelSubmit(){
 				</jsp:include>
 			</div>
 		</div>--%>
-			</c:if>
-	
+</c:if>
 		  <div class="row">
             <div class="col s12 right-align">
               <button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>
@@ -220,15 +204,13 @@ function chkPayCancelSubmit(){
             </div>
             </div>
           	</div>
-			
+
 		<div class="col s1 "></div>
 	</div>
 </section>
 
-<jsp:include page="../foot.jsp"/>	
-
 	</c:when>
-	
+
 	<c:otherwise>
 
 	<div id="demo-modal" class="modal">
@@ -243,7 +225,7 @@ function chkPayCancelSubmit(){
 
 	</c:otherwise>
 </c:choose>
-
+<jsp:include page="../foot.jsp"/>
 <script type="text/javascript" src="../JS/modal.js"></script>
 </body>
 </html>

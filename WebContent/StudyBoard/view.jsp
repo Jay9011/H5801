@@ -51,8 +51,8 @@ function chkDelete(s_uid){
 <jsp:include page="../header.jsp"/>
 <section class="container section scrollspy" id="intro">
 		<div class="row">
-			<div class="col s1 "></div>
-			<div class="col s10">
+			<div class="col m1 "></div>
+			<div class="col s12 m10">
 				<h3 class="center-align pfont">${viewInfo[0].s_title}</h3>
 
 				<div class="row">
@@ -129,10 +129,10 @@ function chkDelete(s_uid){
 	});
 
 	$.ajax({
-		url:"commentJSON.ho?s_uid=" + ${viewInfo[0].s_uid}
-		, type:"GET"
-		, cache: false
-		, success: function (data, status){
+		url: "commentJSON.ho?s_uid=" + ${viewInfo[0].s_uid}
+		,type: "GET"
+		,cache: false
+		,success: function (data, status){
 			if(status == "success") createComment(data);
 		}
 	});
@@ -153,22 +153,22 @@ function chkDelete(s_uid){
 				var user_grade = ${grade};
 			}
 			if(row[i].sr_depth == 0){
-				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>"
+				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>";
 			} else {
-				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>"
+				commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>";
 			}
-			commentrow += "<div class='left pfont'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>"
+			commentrow += "<div class='left pfont'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>";
 
 			if(user_id == logined_id || user_grade > 8){
-				commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='삭제' onclick='event.stopPropagation(); deleteComment(" + row[i].sr_numUid + ");'><i class='material-icons dp48' style='vertical-align: middle;'>delete</i></a></div>"
+				commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='삭제' onclick='event.stopPropagation(); deleteComment(" + row[i].sr_numUid + ");'><i class='material-icons dp48' style='vertical-align: middle;'>delete</i></a></div>";
 			}
 			if(user_id == logined_id){
-				commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='수정'  style='border: none; width:' onclick='event.stopPropagation(); alterComment(" + row[i].sr_numUid + ")'><i class='material-icons dp48' style='vertical-align: middle;'>mode_edit</i></a></div>"
+				commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='수정'  style='border: none; width:' onclick='event.stopPropagation(); alterComment(" + row[i].sr_numUid + ")'><i class='material-icons dp48' style='vertical-align: middle;'>mode_edit</i></a></div>";
 			}
-			commentrow += "<div class='right pfont' style='margin-right: 3%;'>" + row[i].sr_date + " </div>"
-			commentrow += "<div class='clear'></div>"
-			commentrow += "<div style='margin-left: 5px; border-radius: 5px; border: 1px solid #ff8e04; padding: 0 4%;'>" + row[i].sr_com + "</div>"
-			commentrow += "</div></div>"
+			commentrow += "<div class='right pfont' style='margin-right: 3%;'>" + row[i].sr_date + " </div>";
+			commentrow += "<div class='clear'></div>";
+			commentrow += "<div style='margin-left: 5px; border-radius: 5px; border: 1px solid #ff8e04; padding: 0 4%;'>" + row[i].sr_com + "</div>";
+			commentrow += "</div></div>";
 		}
 		if(typeof prevId == "undefined"){
 			$("#commentList").prepend(commentrow);
@@ -211,7 +211,8 @@ function chkDelete(s_uid){
 				replyClick = false;
 			}
 		});
-	
+	}
+
 
 	function comSubmit(frmid){
 		var form = $('#' + frmid)[0];
@@ -384,7 +385,7 @@ function chkDelete(s_uid){
 	}
 </script>
 </div>
-			<div class="col s1"></div>
+			<div class="col m1"></div>
 		</div>
 
 </section>
