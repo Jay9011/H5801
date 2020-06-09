@@ -42,7 +42,7 @@
 
 </style>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <script>
 $(document).ready(function(){
 	$(":input:radio").click(function(){
@@ -225,13 +225,6 @@ function chkPayCancelSubmit(){
 	</div>
 </section>
 
-<jsp:include page="../foot.jsp"/>	
-</body>
-</html>
-
-
-	
->>>>>>> branch 'master' of https://github.com/Jay9011/Holic.git
 	</c:when>
 	
 	<c:otherwise>
@@ -248,6 +241,7 @@ function chkPayCancelSubmit(){
 
 	</c:otherwise>
 </c:choose>
+<jsp:include page="../foot.jsp"/>
 <script type="text/javascript" src="../JS/modal.js"></script>
 </body>
 </html>
