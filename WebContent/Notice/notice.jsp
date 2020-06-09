@@ -9,9 +9,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
-       <link rel="stylesheet" href="../CSS/faq.css">
-       <script src="../JS/notice.js"></script>
- <title>FAQ</title>
+<link rel="stylesheet" href="../CSS/faq.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
+ <title>Notice</title>
    </head>
    <body>
 <jsp:include page="../nav.jsp"/>
@@ -24,8 +25,11 @@
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 		      <script type="text/javascript" src="js/materialize.min.js"></script>
       <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
-  <div class="text_title left-1"><span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Gong</a></span></div>
+  <div class="text_title left-1">
+  <span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
+  </div>
   
   <br>
   <div>
@@ -61,55 +65,40 @@
     </c:choose>
         </div>
       <br><br><br>
+      <div class="hr"><hr class="hr2"></div>
       
       <!--  -->
-      
-      <div class="pager">
-    <ul>
+	<div class="pager center-align">
+    <ul class="pagination">
         <c:if test="${ curPageNum > 5 && !empty kwd }">
-            <li><a href="notice.ho?page=${ blockStartNum - 1 }&kwd=${ kwd }">◀</a></li>
+            <li><a href="notice.ho?page=${ blockStartNum - 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
         
         <c:if test="${ curPageNum > 5 }">
-            <li><a href="notice.ho?page=${ blockStartNum - 1 }">◀</a></li>
+            <li><a href="notice.ho?page=${ blockStartNum - 1 }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
         
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
-                    <li>${ i }</li>
+                    <li><a>${ i }</a></li>
                 </c:when>
                 <c:when test="${ i == curPageNum }">
-                    <li class="selected">${ i }</li>
-                </c:when>
-                <c:when test="${ !empty kwd}">
-                    <li><a href="notice.ho?page=${ i }&kwd=${ kwd }">${ i }</a></li>
+                    <li class="active"><a>${ i }</a></li>
                 </c:when>
                 <c:otherwise>
                     <li><a href="notice.ho?page=${ i }">${ i }</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
-        
-        <c:if test="${ lastPageNum > blockLastNum && !empty kwd }">
-            <li><a href="notice.ho?page=${ blockLastNum + 1 }&kwd=${ kwd }">▶</a></li>
-        </c:if>
-        
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="notice.ho?page=${ blockLastNum + 1 }">▶</a></li>
+            <li><a href="notice.ho?page=${ blockLastNum + 1 }"><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
 </div> 
-      
+      </div>
       <!--  -->
   </div>  <!-- END -->
-</div>
-
-
-<div class="hr"><hr class="hr2"></div>
-<div><h5>If you have more questions, click the button to go</h5></div>
-<br>
-<div class="bt-1"><a class="waves-effect waves-light btn bt-2" href="${pageContext.request.contextPath}/StudyBoard/list.ho">Ask a question</a></div>
 		
 		
 		
@@ -122,5 +111,6 @@
 
 	<jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->
+<script src="../JS/faq.js"></script>
 </body>
 </html>

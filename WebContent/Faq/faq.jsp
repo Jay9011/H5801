@@ -23,8 +23,11 @@
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
-  <div class="text_title left-1"><span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Gong</a></span></div>
+  <div class="text_title left-1">
+  <span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice</a></span>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
+  </div>
   
   <br>
   <div>
@@ -33,7 +36,7 @@
       <div class="FAQ">
 
     <div class="ac">
-    <ul class="collapsible">
+      <ul class="collapsible popout">
     <c:choose>
     	<c:when test="${empty listRow || fn:length(listRow) == 0 }"></c:when>
     	<c:otherwise>
@@ -70,5 +73,6 @@
 
 	<jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->
+<script src="../JS/faq.js"></script>
 </body>
 </html>

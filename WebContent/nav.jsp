@@ -42,9 +42,9 @@ $(document).ready(function() {
 			<ul class="right hide-on-med-and-down Hnav">
 				<li><a class="dropdown-trigger" data-target="dropdown1">Holic 소개</a>
 					<ul id='dropdown1' class='dropdown-content'>
-						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho">Holic 소개</a></li>
-						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho">스터디룸 소개</a></li>
-						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho">오시는 길</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_intro">Holic 소개</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_room">스터디룸 소개</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_map">오시는 길</a></li>
 					</ul></li>
 				<li><a class="loginNN">독서실 예약</a></li>
 				<li><a href="${pageContext.request.contextPath}/StudyBoard/list.ho">학습 문의</a></li>

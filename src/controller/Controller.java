@@ -350,7 +350,7 @@ public class Controller extends HttpServlet {
 			break;
 
 
-		case "Notice/noticeview.ho":
+		case "/Notice/noticeview.ho":
 			command = new NoticeView();
 			command.execute(request, response);
 			viewPage = "noticeview.jsp";
