@@ -80,7 +80,7 @@ function blockBack(){window.history.forward();}
 	</c:when>
 	<c:when test="${empty select_arr || fn:length(select_arr) ==0 }">
 
-	
+	 
 
 		<div id="demo-modal" class="modal">
 	    	<div class="modal-content">
