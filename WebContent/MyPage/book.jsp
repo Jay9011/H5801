@@ -224,10 +224,14 @@ function chkPayCancelSubmit(){
 		<div class="col s1 "></div>
 	</div>
 </section>
+
 <jsp:include page="../foot.jsp"/>	
 </body>
 </html>
 
+
+	
+>>>>>>> branch 'master' of https://github.com/Jay9011/Holic.git
 	</c:when>
 	
 	<c:otherwise>
@@ -245,3 +249,5 @@ function chkPayCancelSubmit(){
 	</c:otherwise>
 </c:choose>
 <script type="text/javascript" src="../JS/modal.js"></script>
+</body>
+</html>
