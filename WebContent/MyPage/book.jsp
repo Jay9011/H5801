@@ -1,4 +1,4 @@
-<%-- 비밀번호 변경 --%>
+<%-- 예약현황 --%>
 <%-- 
   작성자: 낙경
  2020-06-05  16:00 수정
@@ -32,8 +32,30 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
+<style>
+.lightcyan {
+    background-color: lightcyan;
+}
+.important {
+    font-weight: bold;
+}
+
+</style>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+$(document).ready(function(){
+	$(":input:radio").click(function(){
+		$("tr").removeClass("lightcyan");
+		$("tr").removeClass("important");
+		$(this).parents("tr").addClass("lightcyan");
+		$(this).parents("tr").addClass("important");
+	});
+});
+
+
+
+
 function chkPaySubmit(){
 	var frm = document.bookFrm;
 	var p_uid = frm.p_uid.value.trim();
@@ -70,10 +92,15 @@ function chkPayCancelSubmit(){
 	<div class="col s10">
 
 		<h3 class="center-align pfont">나의 예약현황</h3>
+			<c:if test="${empty book || fn:length(book) == 0}">
+				<p>예약된 내용이 없습니다.</p>
+			</c:if>
+			<c:if test="${!empty book && fn:length(book) != 0}">
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
-		<table class="highlight centered">
+		<table class="highlight centered" id="table">
+
 		<thead>
 			<tr>
 				<th>예약번호</th>
@@ -89,14 +116,10 @@ function chkPayCancelSubmit(){
 			</tr>
 		</thead>   
 
-		<c:choose>
-			<c:when test="${empty book || fn:length(book) == 0}">
-			</c:when>
-			<c:otherwise>
 			
 			<c:forEach var="dto" items="${book }">
 			
-			<tr>
+			<tr id="tr">
 				<td>#${dto.rnum }</td>
 				<%--<td>${dto.p_uid }번</td>--%>
 				<td>
@@ -142,8 +165,7 @@ function chkPayCancelSubmit(){
 
 			</c:forEach>
 			
-			</c:otherwise>
-		</c:choose>
+		
 		</table>
 		</form>
 	
@@ -189,6 +211,7 @@ function chkPayCancelSubmit(){
 				</jsp:include>
 			</div>
 		</div>--%>
+			</c:if>
 	
 		  <div class="row">
             <div class="col s12 right-align">
