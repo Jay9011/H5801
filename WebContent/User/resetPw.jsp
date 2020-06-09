@@ -8,6 +8,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:include page="../modal.jsp"/>
 <c:choose>
 	<c:when	test="${keyCode != null && uid != 0 }">
 <!DOCTYPE html>
@@ -78,19 +79,35 @@ function blockBack(){window.history.forward();}
 </html>
 	</c:when>
 	<c:when test="${empty select_arr || fn:length(select_arr) ==0 }">
+
 	
-		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
-			location.href = "${pageContext.request.contextPath}/User/findPw.ho";
-		</script>
-	
-	</c:when>
-	<c:otherwise>
-	
-		<script>
-			alert("잘못된 접근입니다. 이메일을 입력해주세요.")
-			location.href = "${pageContext.request.contextPath}/User/findPw.ho";
-		</script>
+
+		<div id="demo-modal" class="modal">
+	    	<div class="modal-content">
+	      		<h5 style='color:red'>※정보 오류!</h5>
+	      			<p class="left-align">해당 정보가 삭제되거나 없습니다</p>
+			</div>
+	    	<div class="modal-footer">
+	      		<a href="${pageContext.request.contextPath}/User/findPw.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+	    	</div>
+    	</div>
+
+		</c:when>
+		
+		<c:otherwise>
+
+		
+		<div id="demo-modal" class="modal">
+	    	<div class="modal-content">
+	      		<h5 style='color:red'>※접근 오류!</h5>
+	      			<p class="left-align">잘못된 접근입니다. 이메일을 입력해주세요.</p>
+			</div>
+	    	<div class="modal-footer">
+	      		<a href="${pageContext.request.contextPath}/User/findPw.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+	    	</div>
+    	</div>
+
 		
 	</c:otherwise>
 </c:choose>
+<script type="text/javascript" src="../JS/modal.js"></script>

@@ -15,7 +15,7 @@
 	<c:when test="${send_result ==  1}">
 	<div id="demo-modal" class="modal">
     <div class="modal-content">
-      <h5>비밀번호 찾기</h5>
+      <h5 style='color:blue'>※인증번호 전송</h5>
       <p class="left-align">인증번호가 이메일로 전송되었습니다.</p>
     </div>
     <div class="modal-footer">
@@ -24,15 +24,15 @@
   </div>
 	</c:when>
 	<c:otherwise>
-			<div id="demo-modal" class="modal">
-    <div class="modal-content">
-      <h5>비밀번호 찾기</h5>
-      <p class="left-align">존재하지 않는 이메일 입니다. 다시 한번 시도해 주세요.</p>
+	<div id="demo-modal" class="modal">
+    	<div class="modal-content">
+      		<h5 style='color:red'>※이메일 입력 오류!</h5>
+      		<p class="left-align">존재하지 않는 이메일 입니다.</p>
+		</div>
+    	<div class="modal-footer">
+      		<a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+    	</div>
     </div>
-    <div class="modal-footer">
-      <a href="javascript:window.history.back();" class="modal-close waves-effect waves-green btn-flat amber">다시 인증 하기</a>
-    </div>
-  </div>
 	</c:otherwise>
 </c:choose>
 <script type="text/javascript" src="../JS/modal.js"></script>

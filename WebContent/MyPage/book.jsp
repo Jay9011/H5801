@@ -14,6 +14,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
+<jsp:include page="../modal.jsp"/>
 <c:choose>
  
 <c:when test="${uid != null }">
@@ -68,7 +69,7 @@ function chkPayCancelSubmit(){
 	<div class="col s1 "></div>
 	<div class="col s10">
 
-		<h3 class="center-align pfont">MY RESERVATION</h3>
+		<h3 class="center-align pfont">나의 예약현황</h3>
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
@@ -119,7 +120,7 @@ function chkPayCancelSubmit(){
 				</td>
 				
 				<td>
-					<c:if test="${dto.b_refund==0 }">
+					<c:if test="${dto.b_refund==0 } ">
 				    <p>
 				      <label>
 				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" disabled="disabled"/>
@@ -203,12 +204,21 @@ function chkPayCancelSubmit(){
 	
 </body>
 </html>
-<jsp:include page="../foot.jsp"/>
+
 	</c:when>
+	
 	<c:otherwise>
-		<script>
-			alert("잘못된 접근입니다. 로그인 해주세요.")
-			location.href = "${pageContext.request.contextPath}/User/login.ho";
-		</script>
+
+	<div id="demo-modal" class="modal">
+		<div class="modal-content">
+			<h5 style='color:red'>※접근 오류!</h5>
+				<p class="left-align">잘못된 접근입니다. 로그인 해주세요.</p>
+		</div>
+		<div class="modal-footer">
+			<a href="${pageContext.request.contextPath}/User/login.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+		</div>
+	</div>
+
 	</c:otherwise>
 </c:choose>
+<script type="text/javascript" src="../JS/modal.js"></script>

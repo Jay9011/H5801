@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import command.BookCommand3;
+import command.BookCommand;
 import command.Command;
 import command.JoinCommand;
 import command.LoadCommand;
@@ -215,7 +215,7 @@ public class Controller extends HttpServlet {
 
 			// 예약현황 목록
 		case "/MyPage/book.ho":
-			new BookCommand3().execute(request, response);
+			new BookCommand().execute(request, response);
 			//new BookCommand2().execute(request, response);
 			viewPage = "book.jsp";
 			break;
