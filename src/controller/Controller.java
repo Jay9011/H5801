@@ -181,6 +181,7 @@ public class Controller extends HttpServlet {
 			break;
 
 		case "/Reservation/reservation.ho":
+			new RoomInfoCommand().execute(request, response);
 			viewPage = "reservation.jsp";
 			break;
 

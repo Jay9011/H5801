@@ -21,7 +21,8 @@ h3 , h6{
 }
 
 .searchbtn {
-	height: 3rem;
+	height: 3rem !important;
+	width: 9% !important;
 }
 
 #likeBtn i{
