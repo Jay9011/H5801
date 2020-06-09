@@ -29,5 +29,7 @@ public class RoomInfoCommand implements Command {
 		request.setAttribute("RoomsInfo", rooms);
 		request.setAttribute("message", message);
 
+//		request.setAttribute("rooms", rooms);
+
 	} // end execute();
 } // end Class
