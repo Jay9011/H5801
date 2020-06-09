@@ -84,6 +84,7 @@ public class Controller extends HttpServlet {
 		Command command = null;
 
 		String uri = request.getRequestURI();
+		StringBuffer url = request.getRequestURL();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 
@@ -91,6 +92,7 @@ public class Controller extends HttpServlet {
 		System.out.println("uri: " + uri);
 		System.out.println("conPath: " + conPath);
 		System.out.println("com: " + com);
+		System.out.println("url: " + url.toString());
 
 		switch (com) {
 		case "/StudyBoard/list.ho":
@@ -184,6 +186,10 @@ public class Controller extends HttpServlet {
 		case "/Reservation/roomInfo.ho":
 			new RoomInfoCommand().execute(request, response);
 			new RoomInfoJsonParse().execute(request, response);
+			break;
+
+		case "/Reservation/Booking.ho":
+			
 			break;
 
 //		마이페이지
@@ -380,19 +386,19 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "writeOk.jsp";
 			break;
-			
+
 		case "/AdminPage/faqControll.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
 			viewPage = "faqControll.jsp";
 			break;
-		
+
 		case "/AdminPage/noticeControll.ho":
 			command = new NoticePageingLoad();
 			command.execute(request, response);
 			viewPage = "noticeControll.jsp";
 			break;
-			
+
 		case "/AdminPage/userControll.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
@@ -404,10 +410,10 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "stControll.jsp";
 			break;
-			
-			
-			
-			
+
+
+
+
 		}
 
 

@@ -29,7 +29,7 @@
 				<div class="row" style="border-radius: 5px; border: 1px solid #ffa537;">
 					<!-- <h3 class="center-align pfont">2020.05.27(여기다 날짜 나오게 하고싶다 소근소근)</h3> -->
 					<div class="col s12">
-						<form id="frm" action="">
+						<form id="frm" action="index.ho">
 							<input id="selectDate" type="text" class="datepicker pfont" readonly="readonly">
 							<input id="item_name" name="item_name" type="text">
 							<input id="total_amount" name="total_amount" type="text">
@@ -65,7 +65,7 @@
 							<h5>방을 선택해 주세요</h5>
 						</div>
 						<div class="col s12 center-align">
-							<button type="submit" class="btn-large" name="action">예약하기</button>
+							<button type="submit" class="btn-large" name="action" onclick="$('#frm').submit();">예약하기</button>
 						</div>
 					</div>
 				</div>
