@@ -44,7 +44,7 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
                       </div>
                        <div class="input-field col s12 m6">
                           <input type="email" name="email" id="email" class="validate"
-                              onkeyup="chkemail(email.value);"><label for="email">이메일</label>
+                              onkeyup="chkemail(email.value);"><label for="email">이메일(아이디)</label>
                           <span id="chkEmail" class="helper-text">유효한 이메일을 써주셔야 비밀번호 찾기가 가능합니다.</span>
                       </div>
                   </div>

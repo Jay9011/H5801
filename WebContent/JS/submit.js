@@ -240,6 +240,27 @@ function chkEmailSubmit() {
 	
 	frm.submit();
 }  
+function joinEmailSubmit() {
+	var frm = document.joinEmailFrm;
+	
+	var email = frm.email.value.trim();
+	var emailPat = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	 document.getElementById("chkid").innerHTML = "";
+     
+	if(email == ""){
+		document.getElementById("chkid").innerHTML = "이메일을 써주세요";                                    
+	    frm.email.focus();
+        return false;
+	}
+	
+	if(!emailPat.test(email)){
+		   document.getElementById("chkid").innerHTML = "잘못된 email 입니다";                         
+		   frm.email.focus();
+           return false;
+	}
+	
+	frm.submit();
+}  
 //비밀번호 변경
 function chkKeyCodeSubmit(){
 	var frm = document.resetPwFrm;
