@@ -145,7 +145,7 @@
 </div>
 				<div class="pager center-align"></div>
 				<c:if test="${uid != null}">
-					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'">글쓰기</button>
+					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'" style="margin-bottom:30px">글쓰기</button>
 				</c:if>
 				
 				<div class="clear"></div>
@@ -153,7 +153,7 @@
 					<form id="searchFrm" onsubmit="return false;">
 					<div class="col m3" ></div>
 						<input id="search" class="col m6" name="searchBox" type="text" onKeypress="">
-						<button class="searchbtn col m3 btn waves-effect" onclick="isSearch()">검색</button>
+						<button class="searchbtn col m3 btn waves-effect btn2" onclick="isSearch()">검색</button>
 					</form>
 				</div>
 			</div>
