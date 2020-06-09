@@ -224,7 +224,7 @@ function chkPayCancelSubmit(){
 		<div class="col s1 "></div>
 	</div>
 </section>
-	
+<jsp:include page="../foot.jsp"/>	
 </body>
 </html>
 
