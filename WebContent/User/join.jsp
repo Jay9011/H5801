@@ -43,9 +43,9 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
                           <span id="chkNick" class="helper-text"></span>
                       </div>
                        <div class="input-field col s12 m6">
-                          <input type="email" name="email" id="email" class="validate"
-                              onkeyup="chkemail(email.value);"><label for="email">이메일(아이디)</label>
-                          <span id="chkEmail" class="helper-text">유효한 이메일을 써주셔야 비밀번호 찾기가 가능합니다.</span>
+                          <input type="email" name="email" id="email" class="validate">
+                          <label for="email">이메일(아이디)</label>
+<!--                           <span id="chkEmail" class="helper-text">유효한 이메일을 써주셔야 비밀번호 찾기가 가능합니다.</span> -->
                       </div>
                   </div>
                   <div class="row">
@@ -124,8 +124,8 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
 <jsp:include page="../foot.jsp"/>
 <!-- 주소 API  -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="../JS/submit.js"></script> <!--  로그인 유효성 검사 -->
-<script type="text/javascript" src="../JS/chkInform.js"></script> 
-<script type="text/javascript" src="../JS/addrAPI.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/chkInform.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/addrAPI.js"></script>
 </body>
 </html>

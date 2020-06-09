@@ -19,16 +19,12 @@ body {
     text-align: center;
 }
 
-.acol{
-	color: black !important;
-}
-
 .hr1{
     margin: 0;
-    border: 1px solid
+    border: 1px dotted 
 }
 .hr2{
-    border: 2px solid
+    border: 1px dotted 
 }
 
 .text_title{
@@ -37,7 +33,7 @@ body {
 }
 
 .hr{
-    padding: 0px 60px 10px 60px;
+    padding: 0px 0px 10px 0px;
 }
 
 .ac{
@@ -58,11 +54,11 @@ body {
 }
 
 .right-1{
-    float: right;
+    float: right;z
 }
 
 .menu{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
     padding-top: 10px;
 }
 

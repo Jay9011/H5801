@@ -26,6 +26,7 @@ import command.SendCommand;
 import command.UpdateCommand;
 import command.chkMailCommand;
 import command.chkNickCommand;
+import command.joinEmailCommand;
 import command.faq.FaqDeleteOk;
 import command.faq.FaqLoad;
 import command.faq.FaqUpdate;
@@ -252,6 +253,10 @@ public class Controller extends HttpServlet {
 			viewPage = "joinchk.jsp";
 			break;
 		case "/User/joinEmail.ho":
+			viewPage = "joinEmail.jsp";
+			break;
+		case "/User/joinEchk.ho":
+			new joinEmailCommand().execute(request, response);
 			viewPage = "joinEmail.jsp";
 			break;
 		case "/User/join.ho":

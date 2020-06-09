@@ -24,14 +24,25 @@
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
-      <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
+      
+      
+    <div class="col m7 offset-m5 s12  right-align" style="margin-bottom:51px; ">
+      <ul class="tabs">
+        <li class="tab col s6 m6">
+          <a target="_self" class="" href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a>
+        </li>
+        <li class="tab col s6 m6">
+          <a target="_self" class="" href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a>
+        </li>
+      <li class="indicator" style="left: 0px; right: 284px;"></li></ul>
+    </div>
+      
+      
+      <div class="w-12 text_title FAQ pfont"><h1>자주하는 질문</h1></div>
   <div class="text_title left-1" style="width: 100%">
-  <span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
     <c:choose>
 	<c:when test="${grade > 8 }">
-	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho?f_uid=${faq.f_uid }'">추가</button>
+	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho'">추가</button>
 	</c:when>
 	</c:choose>	
 
@@ -44,15 +55,15 @@
     <div class="hr"><hr class="hr2"></div>
       <div class="FAQ">
 
-    <div class="ac">
-      <ul class="collapsible popout">
+    <div>
+      <ul class="collapsible popout s12">
     <c:choose>
     	<c:when test="${empty listRow || fn:length(listRow) == 0 }"></c:when>
     	<c:otherwise>
     		<c:forEach var="faq" items="${listRow }">
     	<li>
-      		<div class="collapsible-header"><i class="material-icons">live_help</i>${faq.f_title }</div>
-      		<div class="collapsible-body" id="test"><span>${faq.f_content }</span>
+      		<div class="collapsible-header s12"><i class="material-icons">live_help</i>${faq.f_title }</div>
+      		<div class="collapsible-body s12" id="test"><span>${faq.f_content }</span>
       		 <c:choose>
 				<c:when test="${grade > 8 }">
 					<button class="btn waves-effect btn2 right-1" onclick="location.href = 'update.ho?f_uid=${faq.f_uid }'">수정</button>
