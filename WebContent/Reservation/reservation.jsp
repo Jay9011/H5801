@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -15,7 +14,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/reserve.css">
 <title>에약하기</title>
 </head>
 <body>
@@ -28,9 +27,9 @@
 				<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 				<h3 class="center-align pfont">독서실 예약하기</h3>
 				<div class="row" style="border-radius: 5px; border: 1px solid #ffa537;">
-					<h3 class="center-align pfont">2020.05.27(여기다 날짜 나오게 하고싶다 소근소근)</h3>
+					<!-- <h3 class="center-align pfont">2020.05.27(여기다 날짜 나오게 하고싶다 소근소근)</h3> -->
 					<div class="col s12">
-						<input id="selectDate" type="text" class="datepicker">
+						<input id="selectDate" type="text" class="datepicker pfont" readonly="readonly">
 					</div>
 					<!-- 					<div class="row"> -->
 					<div id="rooms" class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
@@ -122,5 +121,6 @@
 	$(document).ready(function() {
 		$('.modal').modal();
 	});
+
 </script>
 </html>
