@@ -54,16 +54,16 @@ public class DAONotice{
 			String n_content = resultSet.getString("n_content");	
 			int n_viewCnt = resultSet.getInt("n_viewCnt");
 			Date n_day = resultSet.getDate("n_date");
-			Time n_time = resultSet.getTime("n_date");
+//			Time n_time = resultSet.getTime("n_date");
 			int m_uid = resultSet.getInt("m_uid");
-			String n_date_time = "";
+//			String n_date_time = "";
 			String n_date_day = "";
 			
 			if(n_day != null) {
 				n_date_day = new SimpleDateFormat("yyyy-MM-dd").format(n_day);
-				n_date_time = new SimpleDateFormat("HH:mm:ss").format(n_time);
+//				n_date_time = new SimpleDateFormat("HH:mm:ss").format(n_time);
 			} // end if
-			String n_date = n_date_day + " " + n_date_time;
+			String n_date = n_date_day;
 			
 			DTONotice ndto = new DTONotice(n_uid, n_title, n_content, n_viewCnt, n_date, m_uid);
 			list.add(ndto);

@@ -33,7 +33,7 @@ body {
 
 .text_title{
 	text-align: left;
-	padding: 20px 0px 0px 60px;
+	padding: 20px 60px 0px 60px;
 }
 
 .hr{
@@ -77,7 +77,6 @@ body {
 .menu:hover{
     background-color: rgba(0,0,0,0.2);
 }
-
 
 
 
