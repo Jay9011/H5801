@@ -56,14 +56,16 @@ public class DAOBook {
 				//getInt(), getString(), getDate(), getTime() : 현재 선택(cursor)된 행의 해당 컬럼(매개변수)에서 값을 검색하여 해당 Java 값(int, String, Date, Time)로 반환해 리턴
 					// 매개변수: 컬럼 라벨
 					// 리턴값: 해당 컬럼 값 (없으면 int -> 0, String, Date, Time -> null)
+				int rnum = rs.getInt("rnum");
 				int p_uid = rs.getInt("p_uid");
+				String tid = rs.getString("tid");
 				Date b_sdate = rs.getDate("b_sdate");
 				Time b_stime = rs.getTime("b_stime");
 				Time b_etime = rs.getTime("b_etime");
 				int b_term = rs.getInt("b_term");
 				int b_duration = rs.getInt("b_duration");
 				int b_refund = rs.getInt("b_refund");
-				float total_amount = rs.getFloat("total_amount");
+				int total_amount = rs.getInt("total_amount");
 				Date b_date = rs.getDate("b_date");
 				int p_cancel = rs.getInt("p_cancel");
 				int m_uid = rs.getInt("m_uid");
@@ -79,7 +81,9 @@ public class DAOBook {
 				// add(): Appends the specified element to the end of this list.
 				// 매개변수: element
 				// 리턴값: true
-				DTOBook dto = new DTOBook(p_uid
+				DTOBook dto = new DTOBook(rnum
+										, p_uid
+										, tid
 										, b_sdate
 										, b_stime
 										, b_etime
@@ -136,5 +140,40 @@ public class DAOBook {
 			
 			return arr;
 		} // end select()
+		
+		// 쿼리: 페이지네이션 구현
+		public int getCount(int m_uid) throws SQLException {
+			int count = 0;
+
+			try {
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ?");
+				pstmt.setInt(1, m_uid);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					count = rs.getInt(1);
+				}
+			} finally {
+				close();
+			}
+			return count;
+		}
+		// BOARD의 페이징
+		public DTOBook[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
+			DTOBook[] arr = null;
+			
+			try {
+				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? ORDER BY m_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt.setInt(1, m_uid);
+				pstmt.setInt(2, fromRow);
+				pstmt.setInt(3, toRow);
+				rs = pstmt.executeQuery();
+				arr = createArray(rs);
+			} finally {
+				close();
+			}
+			return arr;
+		}
+		
+		
 	
 } // end class

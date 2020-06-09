@@ -211,7 +211,7 @@ function chkDelete(s_uid){
 				replyClick = false;
 			}
 		});
-	}
+	
 
 	function comSubmit(frmid){
 		var form = $('#' + frmid)[0];

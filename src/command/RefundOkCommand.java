@@ -20,13 +20,15 @@ public class RefundOkCommand implements Command {
 		
 		try {
 			
-			if(session.getAttribute("p_uid") != null) {
-				p_uid = (int) session.getAttribute("p_uid");
+			if(session.getAttribute("p_uid") != null && (Integer)session.getAttribute("p_cancel") == 1) {
+				p_uid = (Integer) session.getAttribute("p_uid");
 				System.out.println(p_uid);
 				
 			} else {
 				p_uid = 0;
 				System.out.println(p_uid);
+				cnt = 0;
+				request.setAttribute("refundOk", cnt);
 				return;
 			}
 			
