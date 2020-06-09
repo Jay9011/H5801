@@ -208,7 +208,7 @@ function chkSubmit(){
 				replyClick = false;
 			}
 		});
-	}
+	
 
 	function comSubmit(frmid){
 		var form = $('#' + frmid)[0];

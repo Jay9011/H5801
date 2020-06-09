@@ -25,10 +25,15 @@
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 		      <script type="text/javascript" src="js/materialize.min.js"></script>
       <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
-  <div class="text_title left-1">
+  <div class="text_title left-1" style="width: 100%">
   <span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice</a></span>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
+      <c:choose>
+	<c:when test="${grade > 8 }">
+	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho?n_uid=${nListView.n_uid }'">추가</button>
+	</c:when>
+	</c:choose>	
   </div>
   
   <br>
@@ -42,8 +47,7 @@
   <div class="ac">
         <!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
           <div class="header">
-          <div class="w-1 left-1">Number</div>
-          <div class="w-7 left-1">Title</div>
+          <div class="w-8 left-1">Title</div>
           <div class="w-2 left-1">View Count</div>
           <div class="w-2 left-1">Creation time</div>
           </div>
@@ -54,8 +58,7 @@
     	<c:otherwise>
     		<c:forEach var="notice" items="${npagetable }">
         <div class="menu">
-          <div class="w-1 left-1">${notice.n_uid }</div>
-          <div class="w-7 left-1"><a class="acol" href="noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></div>
+          <div class="w-8 left-1"><a class="acol" href="noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></div>
           <div class="w-2 left-1">${notice.n_viewCnt }</div>
           <div class="w-2 left-1">${notice.n_date }</div>
           <div class="clear"></div>

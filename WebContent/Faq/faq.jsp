@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
    <link rel="stylesheet" href="../CSS/faq.css">
  <title>타이틀 써주기</title>
    </head>
@@ -23,11 +25,18 @@
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
-  <div class="text_title left-1">
+  <div class="text_title left-1" style="width: 100%">
   <span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice</a></span>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
+    <c:choose>
+	<c:when test="${grade > 8 }">
+	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho?f_uid=${faq.f_uid }'">추가</button>
+	</c:when>
+	</c:choose>	
+
   </div>
+  
   
   <br>
   <div>
@@ -43,7 +52,14 @@
     		<c:forEach var="faq" items="${listRow }">
     	<li>
       		<div class="collapsible-header"><i class="material-icons">live_help</i>${faq.f_title }</div>
-      		<div class="collapsible-body" id="test"><span>${faq.f_content }</span></div>
+      		<div class="collapsible-body" id="test"><span>${faq.f_content }</span>
+      		 <c:choose>
+				<c:when test="${grade > 8 }">
+					<button class="btn waves-effect btn2 right-1" onclick="location.href = 'update.ho?f_uid=${faq.f_uid }'">수정</button>
+					<button class="btn waves-effect btn2 right-1" onclick="location.href = 'deleteOk.ho?f_uid=${faq.f_uid }'">삭제</button>
+				</c:when>
+			</c:choose>	
+      		</div>
     	</li>
     		</c:forEach>
     	</c:otherwise>
@@ -58,12 +74,8 @@
 
 <br>
 <div class="hr"><hr class="hr2"></div>
-<div class="div1"><h5>If you have more questions, click the button to go</h5></div>
-<br>
-<div class="bt-1 div1"><a class="waves-effect waves-light btn bt-2" href="${pageContext.request.contextPath}/StudyBoard/list.ho">Ask a question</a></div>
-		
-		
-		
+<div class="div1"><h5>여러분들의 공부를 항상 응원합니다.</h5></div>
+
 		
 		
 		</div>

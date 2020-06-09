@@ -9,8 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
- <title>FAQ</title>
+ <title>타이틀을 적어주세요</title>
    </head>
    <body>
 <jsp:include page="../nav.jsp"/>

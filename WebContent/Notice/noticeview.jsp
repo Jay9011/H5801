@@ -11,18 +11,34 @@
 		</script>
 	</c:when>
 <c:otherwise>
-
-
-
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="../top.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>읽기 ${nListView[0].n_title }</title> <!-- title에 글제목 넣기 -->
-</head>
-<body>
-<h2>읽기 ${nListView[0].n_title }</h2>
+<title> ${nListView[0].n_title }</title> <!-- title에 글제목 넣기 -->
+   </head>
+   <body>
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
+ <!-- 페이지에 해당하는 내용 적기  -->
+<section class="container section scrollspy" id="intro">
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s10">
+		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
+		
+		
+		
+
+
+
+<h2>${nListView[0].n_title }</h2>
 <br>
 UID : ${nListView[0].n_uid }<br>
 제목 : ${nListView[0].n_title }<br>
@@ -35,11 +51,28 @@ ${nListView[0].n_content }
 </div>
 <hr>
 <br>
-<button onclick="location.href = 'notice.ho'">목록보기</button>
+<div class="col s12 right-align">
+<button class="btn waves-effect btn2" onclick="location.href = 'notice.ho'">목록보기</button>
+	<c:choose>
+	<c:when test="${grade > 8 }">
+	<button class="btn waves-effect btn2" onclick="location.href = 'update.ho?n_uid=${nListView[0].n_uid }'">수정</button>
+	<button class="btn waves-effect btn2" onclick="location.href = 'deleteOk.ho?n_uid=${nListView[0].n_uid }'">삭제</button>
+	</c:when>
+	</c:choose>
+</div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		
+		
+		
+		
+		</div>
+		<div class="col s1"></div>
+	</div>
+</section>
+
+	<jsp:include page="../foot.jsp"/>
+<!--  js 추가는 여기에 -->
 </body>
 </html>
-
-
 </c:otherwise>
 </c:choose>

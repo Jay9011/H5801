@@ -59,7 +59,7 @@
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
-                    <li><a>${ i }</a></li>
+                    <li><a class='disabled'>${ i }</a></li>
                 </c:when>
                 <c:when test="${ i == curPageNum }">
                     <li class="active"><a>${ i }</a></li>
