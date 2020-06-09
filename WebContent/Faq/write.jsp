@@ -4,9 +4,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<jsp:include page="../top.jsp"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <script src="../ckeditor/ckeditor.js"></script>
 </head>
 <script>
@@ -29,25 +32,48 @@
 	}
 </script>
 <body>
+<jsp:include page="../nav.jsp"/>
+<jsp:include page="../header.jsp"/>
 <c:choose>
 	<c:when test="${grade > 8 }">
-	<h1>Write</h1>
+<section class="container section scrollspy" id="intro">
+	<div class="row">
+		<div class="col s1 "></div>
+		<div class="col s10">
+		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
+		<h1 class="center-align pfont">Write</h1>
 	<form name="writeTable" action="writeOk.ho" method="post" onsubmit="return chkSubmit()">
-
-		<br>
-		제목: <input type="text" name="subject" /><br>
+        <div class="row">
+		<div class="input-field col s12">
+		<input type="text" id="subject" name="subject" class="validate"/>
+		<label for="subject">
+		제목
+		</label>
+		</div>
+		</div>
 		내용:
 		<br><textarea id="editor1" name="content"></textarea><br>
-		<br> <input type="submit" value="등록" />
+		<br>
+		<div class="col s12 right-align" style="margin-bottom: 50px;">
+			<button type="submit" class="btn waves-effect btn2" style="margin:0 10px;">등록</button>
+			<button class="btn waves-effect btn2" type="button" onclick="location.href = 'faq.ho'">목록으로</button>
+		</div>
 	</form>
-	<br>
-	<button type="button" onclick="location.href='faq.fc'">목록으로</button>
+	
+		
+		</div>
+		<div class="col s1"></div>
+	</div>
+</section>
+	
 	<script>
 		CKEDITOR.replace('editor1', {
 			allowedContent: true	// HTML 태그 자동 삭제 방지 설정
 			,filebrowserUploadUrl: '${pageContext.request.contextPath}/StudyBoard/fileUpload.ho'
 		});
 	</script>
+<jsp:include page="../foot.jsp"/>
+<!--  js 추가는 여기에 -->
 		</c:when>
 		<c:otherwise>관리자가 아닙니다.</c:otherwise>
 	</c:choose>

@@ -49,13 +49,13 @@
 		<img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg">
 		</div>
 	<div class="carousel w-12 center-align">
-    	<a class="carousel-item duration" href="#one!"><img src="../IMAGES/intro1.jpeg"></a>
-    	<a class="carousel-item duration" href="#two!"><img src="../IMAGES/intro2.jpeg"></a>
-    	<a class="carousel-item duration" href="#three!"><img src="../IMAGES/intro3.jpg"></a>
-    	<a class="carousel-item duration" href="#four!"><img src="../IMAGES/intro1.jpeg"></a>
-    	<a class="carousel-item duration" href="#five!"><img src="../IMAGES/intro1.jpeg"></a>
+    	<a class="carousel-item duration" href="#one!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
+    	<a class="carousel-item duration" href="#two!"><img class="materialboxed" width="100%" src="../IMAGES/intro2.jpeg"></a>
+    	<a class="carousel-item duration" href="#three!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
+    	<a class="carousel-item duration" href="#four!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
+    	<a class="carousel-item duration" href="#five!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
     </div>
-    
+    <div class="center-align" style="font-size: 30px"> 위의 사진을 클릭하시면 큰화면으로 보실 수 있습니다.</div>
 		</div><!-- END I_INTRO -->
 		
 		

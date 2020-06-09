@@ -24,14 +24,30 @@
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 		      <script type="text/javascript" src="js/materialize.min.js"></script>
-      <div class="w-12 text_title FAQ"><h1>Introdus Holic Reading Room</h1></div>
+		      
+		      
+	<div class="col m7 offset-m5 s12  right-align" style="margin-bottom:51px; ">
+      <ul class="tabs">
+        <li class="tab col s6 m6">
+          <a target="_self" class="" href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a>
+        </li>
+        <li class="tab col s6 m6">
+          <a target="_self" class="" href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a>
+        </li>
+      <li class="indicator" style="left: 0px; right: 284px;"></li></ul>
+    </div>
+		      
+		      
+      <div class="w-12 text_title FAQ pfont"><h1>공지사항</h1></div>
   <div class="text_title left-1" style="width: 100%">
-  <span class="ButtomBtn2 colorsel" id="GONGBTN"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice</a></span>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <span class="ButtomBtn1 colorsel" id="FAQBTN"><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></span>
+  
+  
+  
+  
+  
       <c:choose>
 	<c:when test="${grade > 8 }">
-	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho?n_uid=${nListView.n_uid }'">추가</button>
+	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho'">추가</button>
 	</c:when>
 	</c:choose>	
   </div>
@@ -44,33 +60,31 @@
 
 <br>
 <div class="FAQ">
-  <div class="ac">
+  	<table id="postList">
         <!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
-          <div class="header">
-          <div class="w-8 left-1">Title</div>
-          <div class="w-2 left-1">View Count</div>
-          <div class="w-2 left-1">Creation time</div>
-          </div>
-          <br>
-          <div class="w-12"><hr class="hr1"></div>
+          <tr class="header">
+          <td class="w-8 left-1">Title</td>
+          <td class="w-2 left-1 firstSet-1">View Count</td>
+          <td class="w-2 left-1 firstSet-1">Creation time</td>
+          </tr>
 	    <c:choose>
     	<c:when test="${empty npagetable || fn:length(npagetable) == 0 }"></c:when>
     	<c:otherwise>
     		<c:forEach var="notice" items="${npagetable }">
-        <div class="menu">
-          <div class="w-8 left-1"><a class="acol" href="noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></div>
-          <div class="w-2 left-1">${notice.n_viewCnt }</div>
-          <div class="w-2 left-1">${notice.n_date }</div>
-          <div class="clear"></div>
-        </div>
+        <tr class="menu s10 " id="postList ">
+          <td class="w-8 left-1 s4 firstSet-3 " id="postList "><a class="firstSet-3" href="noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></td>
+          <td class="w-2 left-1 s4 firstSet-1">${notice.n_viewCnt }</td>
+          <td class="w-2 left-1 s4 right-align firstSet-2">${notice.n_date }</td>
+          <td class="clear">
+        </tr>
            </c:forEach>
     	</c:otherwise>
     </c:choose>
-        </div>
+        </table>
       <br><br><br>
       <div class="hr"><hr class="hr2"></div>
       
-      <!--  -->
+      <!-- ===========================================페이징============================================= -->
 	<div class="pager center-align">
     <ul class="pagination">
         <c:if test="${ curPageNum > 5 && !empty kwd }">
@@ -117,3 +131,34 @@
 <script src="../JS/faq.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
