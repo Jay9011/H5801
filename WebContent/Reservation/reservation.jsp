@@ -29,7 +29,13 @@
 				<div class="row" style="border-radius: 5px; border: 1px solid #ffa537;">
 					<!-- <h3 class="center-align pfont">2020.05.27(여기다 날짜 나오게 하고싶다 소근소근)</h3> -->
 					<div class="col s12">
-						<input id="selectDate" type="text" class="datepicker pfont" readonly="readonly">
+						<form id="frm" action="">
+							<input id="selectDate" type="text" class="datepicker pfont" readonly="readonly">
+							<input id="item_name" name="item_name" type="text">
+							<input id="total_amount" name="total_amount" type="text">
+							<input id="m_uid" name="m_uid" type="text">
+							<input id="t_uid" name="t_uid" type="text">
+						</form>
 					</div>
 					<!-- 					<div class="row"> -->
 					<div id="rooms" class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
@@ -54,7 +60,7 @@
 						</div>
 					</div>
 
-					<div id="frm" class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
+					<div class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
 						<div id="RoomInfo" class="col s12 center-align">
 							<h5>방을 선택해 주세요</h5>
 						</div>
@@ -90,9 +96,10 @@
 					var row = data.data;
 					for (var i = 0; i < row.length; i++) {
 						$("#" + row[i].t_uid).addClass("disabled");
-					}
+					} // end for
+					$("#RoomInfo").html("<h5>방을 선택해 주세요</h5>");
 				} else if (data.status == "FAIL") {
-				}
+				} // end if
 			},
 			error : function(e) {
 				console.log("ERROR : ", e);
