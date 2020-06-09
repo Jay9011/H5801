@@ -15,9 +15,7 @@
 
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 <jsp:include page="../modal.jsp"/>
-<c:choose>
- 
-<c:when test="${uid != null }">
+
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head: 현재 문서의 정보를 제공하는 역할 -->
@@ -31,6 +29,9 @@
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="${pageContext.request.contextPath }/JS/book.js"></script>
 <title>MY RESERVATION</title>
 <style>
 .lightcyan {
@@ -92,17 +93,20 @@ function chkPayCancelSubmit(){
 	<div class="col s10">
 
 		<h3 class="center-align pfont">나의 예약현황</h3>
-			<c:if test="${empty book || fn:length(book) == 0}">
-				<p style="text-align: center">예약된 내용이 없습니다.</p>
-			</c:if>
-			<c:if test="${!empty book && fn:length(book) != 0}">
+		<div id = "list">
+			<div>
+				<div id="pageinfo"></div>
+				<div id="pageRows"></div>
+			</div>
+			<div class="clear"></div>
+
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
 		<table class="highlight centered" id="table">
 
 		<thead>
-			<tr>
+	
 				<th>예약번호</th>
 				<%--<th>결재번호</th>--%>
 				<th>예약내용</th>
@@ -113,105 +117,30 @@ function chkPayCancelSubmit(){
 				<th>결제현황</th>
 				<th>항목선택</th>
 
-			</tr>
+			
 		</thead>   
 
+		<tbody>
+		
+		</tbody>
 			
-			<c:forEach var="dto" items="${book }">
-			
-			<tr id="tr">
-				<td>#${dto.rnum }</td>
-				<%--<td>${dto.p_uid }번</td>--%>
-				<td>
-				${dto.b_seatType }<br>
-				(번호: ${dto.t_name })
-				</td>
-				<td>${dto.b_sdate }</td>
-				<td>${dto.b_term }시간</td>
-				<td>${dto.m_nick }</td>
-				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
-				<td>
-					<c:if test="${dto.p_cancel==0 }">
-					-
-					</c:if>
-					<c:if test="${dto.p_cancel==1 }">
-					결제완료
-					</c:if>
-					<c:if test="${dto.p_cancel==2 }">
-					결제취소
-					</c:if>
-				</td>
-				
-				<td>
-					<c:if test="${dto.b_refund==0 } ">
-				    <p>
-				      <label>
-				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" disabled="disabled"/>
-				        <span></span>
-				      </label>
-				    </p>
-				    </c:if>
-				    <c:if test="${dto.b_refund==1 }">
-				    <p>
-				      <label>
-				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" />
-				        <span></span>
-				      </label>
-				    </p>
-				    </c:if>
-				</td>
-				
-			</tr>
-
-			</c:forEach>
 			
 		
 		</table>
 		</form>
 	
+</div>
 
-<div class="row">
-			<div class="col s12 center-align">
-		<div class="pager center">
-    <ul class="pagination">
-        <c:if test="${ curPageNum > 5 }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'><i class='material-icons'>chevron_left</i></a></li>
-        </c:if>
-        
-        <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
-            <c:choose>
-                <c:when test="${ i > lastPageNum }">
-                    <li><a class='disabled'>${ i }</a></li>
-                </c:when>
-                <c:when test="${ i == curPageNum }">
-                    <li  class='active'><a>${ i }</a></li>
-                </c:when>
-                
-                <c:otherwise>
-                    <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ i }" >${ i }</a></li>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
+<%-- 페이징 --%>
 
-        
-        <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'><i class='material-icons'>chevron_right</i></a></li>
-        </c:if>
-    </ul>
-</div> 
-	</div>
-		</div>
-		<%--<div class="row">
-			<div class="col s12 14 center-align">
-				<jsp:include page="bookPage.jsp">
-				<jsp:param value="${curPageNum }" name="curPageNum"/>
-				<jsp:param value="${blockStartNum }" name="blockStartNum"/>
-				<jsp:param value="${lastPageNum }" name="lastPageNum"/>
-				<jsp:param value="${kwd }" name="kwd"/>
-				</jsp:include>
-			</div>
-		</div>--%>
-			</c:if>
+<div class="center">
+	<ul class="pagination" id="pagination">
+	
+	</ul>
+
+</div>
+
+
 	
 		  <div class="row">
             <div class="col s12 right-align">
@@ -227,22 +156,7 @@ function chkPayCancelSubmit(){
 
 <jsp:include page="../foot.jsp"/>	
 
-	</c:when>
 	
-	<c:otherwise>
-
-	<div id="demo-modal" class="modal">
-		<div class="modal-content">
-			<h5 style='color:red'>※접근 오류!</h5>
-				<p class="left-align">잘못된 접근입니다. 로그인 해주세요.</p>
-		</div>
-		<div class="modal-footer">
-			<a href="${pageContext.request.contextPath}/User/login.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
-		</div>
-	</div>
-
-	</c:otherwise>
-</c:choose>
 
 <script type="text/javascript" src="../JS/modal.js"></script>
 </body>

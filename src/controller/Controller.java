@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.BookCommand;
+import command.BookCommand2;
 import command.Command;
 import command.JoinCommand;
 import command.LoadCommand;
@@ -210,6 +211,12 @@ public class Controller extends HttpServlet {
 			new BookCommand().execute(request, response);
 			//new BookCommand2().execute(request, response);
 			viewPage = "book.jsp";
+			break;
+		
+		case "/MyPage/book2.ho":
+			new BookCommand2().execute(request, response);
+			//new BookCommand2().execute(request, response);
+			viewPage = "book2.jsp";
 			break;
 //		case "/MyPage/bookPage.ho":
 //			viewPage = "bookPage.jsp";
