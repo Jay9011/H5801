@@ -77,7 +77,7 @@ $(document).ready(function() {
 	</nav>
 </div>
 <!-- 모바일 메뉴로 표시해줄 수 있게 -->
-<ul class="sidenav deep-orange lighten-2 Hnav" id="mobile-menu">
+<ul class="sidenav  amber lighten-5 Hnav" id="mobile-menu">
 	<li class="no-padding">
 		<ul class="collapsible collapsible-accordion">
 			<li><a class="collapsible-header apad">Holic 소개</a>
