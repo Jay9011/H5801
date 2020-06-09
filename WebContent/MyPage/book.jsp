@@ -225,6 +225,8 @@ function chkPayCancelSubmit(){
 	</div>
 </section>
 
+<jsp:include page="../foot.jsp"/>	
+
 	</c:when>
 	
 	<c:otherwise>
@@ -241,7 +243,7 @@ function chkPayCancelSubmit(){
 
 	</c:otherwise>
 </c:choose>
-<jsp:include page="../foot.jsp"/>
+
 <script type="text/javascript" src="../JS/modal.js"></script>
 </body>
 </html>

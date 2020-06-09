@@ -35,7 +35,7 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
                         <div class="input-field col m10 s12">
                     	<input id="email_inline" type="email" name="email" class= "validate"/>
             			<label for="email_inline">이메일(아이디)</label>
-                 		<span id="chkid" class="helper-text"></span>
+                 		<span id="chkEmail" class="helper-text"></span>
                  	</div>
                  	 <div class="col s1 m1"></div>
                  </div>
