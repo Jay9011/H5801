@@ -21,6 +21,8 @@ public class CommentOk implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		DTOComment[] dtoComments = null;
 		DAOStudy dao = new DAOStudy();
+		String message = "";
+		String status = "";
 
 		ServletContext context = request.getServletContext();
 		String saveDirectory = context.getRealPath("upload");
@@ -39,17 +41,34 @@ public class CommentOk implements Command {
 		String content = multi.getParameter("content");
 		String parent_uid = multi.getParameter("parent_uid");
 
-		if(content != null && content.trim().length() > 0 && s_uid != null && m_uid != null) {
-			try {
-				dtoComments = dao.insertComment(s_uid, m_uid, content, parent_uid);
-				if(dtoComments != null && dtoComments.length > 0) {
-					request.setAttribute("CommentList", dtoComments);
-					new CommentJsonParse().execute(request, response);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+		if(content != null && content.trim().length() > 0) {
+			if(s_uid != null) {
+				if(m_uid != null) {
+					try {
+						dtoComments = dao.insertComment(s_uid, m_uid, content, parent_uid);
+						if(dtoComments != null && dtoComments.length > 0) {
+							request.setAttribute("CommentList", dtoComments);
+						}
+					} catch (SQLException e) {
+						message = "접근 오류 : " + e.getMessage();
+						status = "FAIL";
+					} // try
+				} else {
+					message = "잘못된 접근입니다.";
+					status = "FAIL";
+				} // end if(m_uid)
+			} else {
+				message = "잘못된 접근입니다. 로그인 후 다시 시도해주세요.";
+				status = "FAIL";
+			} // end if(s_uid)
+		} else {
+			message = "내용이 없습니다.";
+			status = "FAIL";
+		} // end if(content)
 
-}
+		request.setAttribute("message", message);
+		request.setAttribute("status", status);
+
+		new CommentJsonParse().execute(request, response);
+	} // end execute()
+} // end Class

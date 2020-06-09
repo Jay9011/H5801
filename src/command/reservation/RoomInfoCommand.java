@@ -13,17 +13,25 @@ public class RoomInfoCommand implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		DAOReservation dao = new DAOReservation();
 		DTORoomInfo[] rooms = null;
-
 		String status = "";
 		String message = "";
 
-		try {
-			rooms = dao.selectRoomInfo();
-			status = "OK";
-		} catch (Exception e) {
+		String roomIdS = request.getParameter("roomId");
+		int roomId = 0;
+		if(roomIdS == null || roomIdS.trim().equals("") || roomIdS.length() < 1) {
+			message = "[잘못된 접근입니다]";
 			status = "FAIL";
-			message = "[정보를 가져오는 중 에러 : " + e.getMessage() + "]";
-		}
+		} else {
+			try {
+				roomId = Integer.parseInt(roomIdS);
+				rooms = dao.selectRoomInfo(roomId);
+				status = "OK";
+			} catch (Exception e) {
+				status = "FAIL";
+				message = "[정보를 가져오는 중 에러 : " + e.getMessage() + "]";
+			} // end try
+		} // end if
+
 
 		request.setAttribute("status", status);
 		request.setAttribute("RoomsInfo", rooms);

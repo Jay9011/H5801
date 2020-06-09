@@ -19,6 +19,9 @@ public class CommentJsonParse implements Command {
 		DTOComment[] comments = (DTOComment[]) request.getAttribute("CommentList");
 		CommentJSON commentJSON = new CommentJSON();
 
+		commentJSON.setStatus((String) request.getAttribute("status"));
+		commentJSON.setMessage((String) request.getAttribute("message"));
+
 		if(comments == null) {
 			commentJSON.setStatus("FAIL");
 		} else {

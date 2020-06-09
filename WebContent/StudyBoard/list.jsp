@@ -102,7 +102,6 @@
 			search = t;
 		}
 		search = search.trim().replace(/ /g, "|");
-		alert(search);
 		getList();
 	}
 	function isPaging(num) {
@@ -124,8 +123,8 @@
 	<jsp:include page="../header.jsp" />
 	<section class="container section scrollspy" id="intro">
 		<div class="row">
-			<div class="col s1 "></div>
-			<div class="col s10">
+			<div class="col m1"></div>
+			<div class="col s12 m10">
 				<h3 class="center-align pfont">학습 문의 게시판</h3>
 				<div class="category-field input-field col s6 offset-s6">
 					<select id="category" class="" name="category">
@@ -147,7 +146,7 @@
 				<c:if test="${uid != null}">
 					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'" style="margin-bottom:30px">글쓰기</button>
 				</c:if>
-				
+
 				<div class="clear"></div>
 				<div id="searchBlock" class="clear">
 					<form id="searchFrm" onsubmit="return false;">
@@ -157,7 +156,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="col s1"></div>
+			<div class="col m1"></div>
 		</div>
 	</section>
 	<jsp:include page="../foot.jsp" />

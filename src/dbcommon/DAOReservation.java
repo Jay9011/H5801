@@ -110,11 +110,12 @@ public class DAOReservation {
 		return rooms;
 	}
 
-	public DTORoomInfo[] selectRoomInfo() throws SQLException {
+	public DTORoomInfo[] selectRoomInfo(int t_uid) throws SQLException {
 		DTORoomInfo[] rooms = null;
 
 		try {
 			pstmt = conn.prepareStatement(Common.SQL_SELECT_ROOM_INFO);
+			pstmt.setInt(1, t_uid);
 			rs = pstmt.executeQuery();
 			rooms = createRoomInfo(rs);
 		} finally {
