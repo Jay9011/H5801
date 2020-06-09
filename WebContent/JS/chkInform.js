@@ -14,11 +14,11 @@ function chknick(nick) {
 	httpRequest.onreadystatechange = function() {
 		if(httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200){
 			if(httpRequest.responseText == 0){
-				document.getElementById("chkNick").innerHTML = "사용할 수 있는 닉네임 입니다.";
-				document.getElementById('chkNick').style.color = "blue";
+				document.getElementById("chkNick").innerHTML = "사용할 수 있는 닉네임 입니다. ٩( ᐛ )و";
+				document.getElementById('chkNick').style.color = "#66bb6a";
 			}else{
-				document.getElementById("chkNick").innerHTML = "사용할 수 없는 닉네임 입니다.";
-				document.getElementById('chkNick').style.color = "red";
+				document.getElementById("chkNick").innerHTML = "이미 사용되고 있는 닉네임 입니다. ᕦ(ò_óˇ)ᕤ";
+				document.getElementById('chkNick').style.color = "#f44336";
 			}
 		}
 	}
@@ -31,11 +31,11 @@ function chkemail(email) {
 	httpRequest.onreadystatechange = function() {
 		if(httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200){
 			if(httpRequest.responseText == 0){
-				document.getElementById("chkEmail").innerHTML = "사용할 수 있는 이메일 입니다.";
-				document.getElementById('chkEmail').style.color = "blue";
+				document.getElementById("chkEmail").innerHTML = "사용할 수 있는 이메일 입니다. ٩( ᐛ )و";
+				document.getElementById('chkEmail').style.color = "#66bb6a";
 			}else{
-				document.getElementById("chkEmail").innerHTML = "사용할 수 없는 이메일 입니다.";
-				document.getElementById('chkEmail').style.color = "red";
+				document.getElementById("chkEmail").innerHTML = "사용할 수 없는 이메일 입니다. ᕦ(ò_óˇ)ᕤ";
+				document.getElementById('chkEmail').style.color = "#f44336";
 			}
 		}
 	}
@@ -49,11 +49,11 @@ function chkPwd(){
 	var pw1 = frm.pw.value;
 	var pw2 = frm.pwchk.value;
 	if(pw1 != pw2){
-		document.getElementById('chkPW').style.color = "red";
-		document.getElementById('chkPW').innerHTML = "동일한 암호를 입력하세요.";
+		document.getElementById('chkPW').style.color = "#f44336";
+		document.getElementById('chkPW').innerHTML = "동일한 암호를 입력하세요. ᕦ(ò_óˇ)ᕤ";
 	}else{
-		   document.getElementById('chkPW').style.color = "blue";
-		   document.getElementById('chkPW').innerHTML = "암호가 확인 되었습니다.";
+		   document.getElementById('chkPW').style.color = "#66bb6a";
+		   document.getElementById('chkPW').innerHTML = "암호가 확인 되었습니다. ٩( ᐛ )و";
 	 }
 }
 
@@ -63,10 +63,10 @@ function chkPwd2(){
 	var pw1 = frm.pw.value;
 	var pw2 = frm.pwchk.value;
 	if(pw1 != pw2){
-		document.getElementById('chkPW').style.color = "red";
-		document.getElementById('chkPW').innerHTML = "동일한 암호를 입력하세요.";
+		document.getElementById('chkPW').style.color = "#f44336";
+		document.getElementById('chkPW').innerHTML = "동일한 암호를 입력하세요. ᕦ(ò_óˇ)ᕤ";
 	}else{
-		   document.getElementById('chkPW').style.color = "blue";
-		   document.getElementById('chkPW').innerHTML = "암호가 확인 되었습니다.";
+		   document.getElementById('chkPW').style.color = "#66bb6a";
+		   document.getElementById('chkPW').innerHTML = "암호가 확인 되었습니다. ٩( ᐛ )و";
 	 }
 }
