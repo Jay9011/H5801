@@ -43,3 +43,11 @@ h3 , h6{
 .material-tooltip {
   transform: translateY(0px) translateX(-5px) !important;
 }
+
+.pagination li i {
+	vertical-align: middle;
+}
+
+.pagination a.disabled {
+	color: #AAA !important;
+}

@@ -118,7 +118,6 @@ public int insert(DTOUser dto) throws SQLException{
 			pstmt = conn.prepareStatement(Common.SQL_USER_SELECT);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			
 			// 아이디 있는지 없는지 체크
 			if(rs.next()) {
 				 if(rs.getString("m_pw").equals(pw) && rs.getString("m_email").equals(email)) {

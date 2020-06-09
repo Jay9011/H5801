@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
- <head>
- <jsp:include page="../modal.jsp"/>
-<c:choose>
-	<c:when test="${email != null }">
+	<c:if test="${email != null }">
 		<script>
 	$(document).ready(function() {
 		$("ul.Hnav li button.btnIn ").css('display', 'none');
@@ -17,21 +12,7 @@
 		});
 	});
 </script>
-	</c:when>
-	<c:otherwise>
-		<script>
-$(document).ready(function() {
-	$("[class^='loginNN']").click(function() {
-		/* var a = confirm("로그인은 필수입니다.\n로그인하시겠습니까?");
-		if(a){
-			location.replace("${pageContext.request.contextPath}/User/login.ho");
-		} */
-	});
-
-});
-</script>
-	</c:otherwise>
-</c:choose>
+	</c:if>
 <!-- navbar -->
 <!--  여기 realnavbar -->
 <div class="navbar-fixed">
@@ -50,7 +31,7 @@ $(document).ready(function() {
 						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_room">스터디룸 소개</a></li>
 						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_map">오시는 길</a></li>
 					</ul></li>
-				<li><a class="loginNN">독서실 예약</a></li>
+				<li><a class="loginNN modal-trigger" href="#modal1">독서실 예약</a></li>
 				<li><a href="${pageContext.request.contextPath}/StudyBoard/list.ho">학습 문의</a></li>
 				<li><a class="dropdown-trigger" data-target="dropdown2">고객
 						지원</a>
@@ -94,7 +75,7 @@ $(document).ready(function() {
 				</div></li>
 		</ul>
 	</li>
-	<li><a class="loginNN">독서실 예약</a></li>
+	<li><a  class="loginNN modal-trigger" href="#modal1">독서실 예약</a></li>
 	<li><a href="${pageContext.request.contextPath}/StudyBoard/list.ho">학습 문의</a></li>
 	<li class="no-padding">
 		<ul class="collapsible collapsible-accordion">
@@ -128,7 +109,19 @@ $(document).ready(function() {
 			onclick="location.href='${pageContext.request.contextPath}/User/logout.ho'">로그아웃</button>
 	</li>
 </ul>
-<!--  여기 realHeader end (뺴야되요 부분 삭제후 가져가기 -->
-<script type="text/javascript" src="../JS/modal.js"></script>
-</body>   
-</html>
+
+ <div id="modal1" class="modal modal1">
+    <div class="modal-content">
+      <h5>로그인이 필요한 서비스</h5>
+      <p class="left-align">로그인이 필요한 서비스 입니다.<br>로그인 창으로 이동하시겠습니까?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="${pageContext.request.contextPath}/User/login.ho"  class="modal-close waves-effect  btn-flat amber">로그인</a>
+      <a href="#!" class="modal-close waves-effect btn-flat lime lighten-5">취소</a>
+    </div>
+  </div>
+  <script>
+  $(document).ready(function(){
+	    $('.modal1').modal();
+	  });
+  </script>

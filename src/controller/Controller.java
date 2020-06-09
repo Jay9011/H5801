@@ -42,6 +42,7 @@ import command.pagenotice.NoticePageingLoad;
 import command.reservation.ReservJsonParse;
 import command.reservation.ReservListCommand;
 import command.reservation.RoomInfoCommand;
+import command.reservation.RoomInfoJsonParse;
 import command.studying.ComDeleteOk;
 import command.studying.CommentJsonParse;
 import command.studying.CommentList;
@@ -92,16 +93,6 @@ public class Controller extends HttpServlet {
 		System.out.println("com: " + com);
 
 		switch (com) {
-		case "/Login/Login.ho":
-			viewPage = "Login.jsp";
-			break;
-
-		case "/Login/LoginOk.ho":
-			command = new LoginCommand();
-			command.execute(request, response);
-			viewPage = "LoginOk.jsp";
-			break;
-
 		case "/StudyBoard/list.ho":
 			viewPage = "list.jsp";
 			break;

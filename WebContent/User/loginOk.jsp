@@ -13,7 +13,7 @@
       <p class="left-align">아이디 혹은 패스워드가 틀렸습니다.</p>
     </div>
     <div class="modal-footer">
-      <a href="javascript:window.history.back();" class="modal-action modal-close waves-effect waves-red btn red lighten-1">되돌아가기</a>
+      <a href="javascript:window.history.back();"  class="modal-close waves-effect  btn-flat amber">되돌아가기</a>
     </div>
   </div>
 
