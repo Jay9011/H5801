@@ -21,13 +21,13 @@
                   <ul>
                       <!-- <li><a href="#" class="grey-text text-lighten-3">Thanks</a></li -->
               <li><a href="#" class="tooltipped btn-floating btn-medium indigo darken-4" style="margin-bottom:10px;">
-              <i class="fab fa-instagram"></i></a>
+              <i class="fab fa-instagram" style="background: chocolate;"></i></a>
               <span>&nbsp&nbspInstagram</span>
               <li><a href="#" class="tooltipped btn-floating btn-medium indigo darken-4" style="margin-bottom:10px;">
-              <i class="fab fa-facebook"></i></a>
+              <i class="fab fa-facebook" style="background: chocolate;"></i></a>
               <span>&nbsp&nbspFacebook</span>
               <li><a href="#" class="tooltipped btn-floating btn-medium indigo darken-4">
-              <i class="fab fa-twitter"></i></a>
+              <i class="fab fa-twitter" style="background: chocolate;"></i></a>
               <span>&nbsp&nbspTwitter</span>
                   </ul>
               </div>

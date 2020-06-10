@@ -65,8 +65,8 @@ public class DAOBook {
 				int p_uid = rs.getInt("p_uid");
 				String tid = rs.getString("tid");
 				Date b_sdate = rs.getDate("b_sdate");
-				Time b_stime = rs.getTime("b_stime");
-				Time b_etime = rs.getTime("b_etime");
+				String b_stime = rs.getString("b_stime");
+				String b_etime = rs.getString("b_etime");
 				int b_term = rs.getInt("b_term");
 				int b_duration = rs.getInt("b_duration");
 				int b_refund = rs.getInt("b_refund");
@@ -151,7 +151,7 @@ public class DAOBook {
 			int cnt = 0;
 
 			try {
-				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ?");
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2)");
 				pstmt.setInt(1, m_uid);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
@@ -163,6 +163,23 @@ public class DAOBook {
 			return cnt;
 		}
 		
+		// 관리자 페이지용
+		public int countAllAdmin() throws SQLException {
+			int cnt = 0;
+
+			try {
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE p_cancel IN (1, 2)");
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					cnt = rs.getInt(1);
+				}
+			} finally {
+				closeWithoutConn();
+			}
+			return cnt;
+		}
+		
+		// Ajax 테스트용
 		public int countAll() throws SQLException {
 			int cnt = 0;
 
@@ -177,15 +194,31 @@ public class DAOBook {
 			}
 			return cnt;
 		}
+		
 		// BOARD의 페이징
 		public DTOBook[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
 			DTOBook[] arr = null;
 			
 			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? ORDER BY m_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
 				pstmt.setInt(1, m_uid);
 				pstmt.setInt(2, fromRow);
 				pstmt.setInt(3, toRow);
+				rs = pstmt.executeQuery();
+				arr = createArray(rs);
+			} finally {
+				close();
+			}
+			return arr;
+		}
+		
+		public DTOBook[] selectPaging_stAdmin(int fromRow, int toRow) throws SQLException {
+			DTOBook[] arr = null;
+			
+			try {
+				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt.setInt(1, fromRow);
+				pstmt.setInt(2, toRow);
 				rs = pstmt.executeQuery();
 				arr = createArray(rs);
 			} finally {

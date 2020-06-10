@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.BookAdminCommand;
 import command.BookCommand;
 import command.BookCommand2;
 import command.Command;
@@ -222,9 +223,11 @@ public class Controller extends HttpServlet {
 			//new BookCommand2().execute(request, response);
 			viewPage = "book2.jsp";
 			break;
-//		case "/MyPage/bookPage.ho":
-//			viewPage = "bookPage.jsp";
-//			break;
+		
+		case "/MyPage/bookAdmin.ho":
+			new BookAdminCommand().execute(request, response);
+			viewPage = "bookAdmin.jsp";
+			break;
 
 		// 예약 결제
 		case "/Payment/pay.ho":
@@ -243,7 +246,7 @@ public class Controller extends HttpServlet {
 			new RefundOkCommand().execute(request, response);
 			viewPage = "refundOk.jsp";
 			break;
-
+// user
 		case "/User/login.ho":
 			command = new LoginCommand();
 			command.execute(request, response);
@@ -266,6 +269,10 @@ public class Controller extends HttpServlet {
 		case "/User/joinEchk.ho":
 			new joinEmailCommand().execute(request, response);
 			viewPage = "joinEchk.jsp";
+			break;
+			
+		case "/User/joinLchk.ho":
+			viewPage = "joinLchk.jsp";
 			break;
 			
 		case "/User/join.ho":

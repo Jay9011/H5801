@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.writedate,
+.writer {
+	display: none;
+}
+.viewcount {
+	text-align: center;
+}
+
+.searchbtn {
+	min-width:53px;
+}
+
+@media screen and (min-width: 716px) {
+	.writedate {
+		display: none;
+	}
+	.writer {
+		display: table-cell;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.writedate ,
+	.writer {
+		display: table-cell;
+	}
+}
