@@ -249,16 +249,20 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
 			break;
+			
 		case "/User/joinchk.ho":
 			viewPage = "joinchk.jsp";
 			break;
+			
 		case "/User/joinEmail.ho":
 			viewPage = "joinEmail.jsp";
 			break;
+			
 		case "/User/joinEchk.ho":
 			new joinEmailCommand().execute(request, response);
-			viewPage = "joinEmail.jsp";
+			viewPage = "joinEchk.jsp";
 			break;
+			
 		case "/User/join.ho":
 			viewPage = "join.jsp";
 			break;
