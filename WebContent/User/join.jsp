@@ -1,3 +1,4 @@
+<%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,18 +12,24 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>JOIN</title>
 </head>
-<body>
+<body> 
+<%
+String chk = (String)session.getAttribute("chk");
+String email_chk =(String)session.getAttribute("email_chk"); 
+ if(chk == null ||chk.equals("NO") || email_chk == null){%>
+<div id="demo-modal" class="modal">
+	    	<div class="modal-content">
+	      		<h5 style='color:olive'>유효하지 않은 경로입니다.</h5>
+	      			<p class="left-align">이메일 인증 시간이 지났거나 잘못된 경로로 들어왔습니다.</p>
+			</div>
+	    	<div class="modal-footer">
+	      		<a href="${pageContext.request.contextPath}/User/joinchk.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+	    	</div>
+    	</div>
+<%} else{%>
 <jsp:include page="../nav.jsp"/>
 <jsp:include page="../header.jsp"/>
-<%
-String agree1 = request.getParameter("agree1");
-String agree2 = request.getParameter("agree2");
 
-if(agree1 == null || agree2 == null){%>
-<script>
-location.href="${pageContext.request.contextPath}/User/joinchk.ho";
-</script>
-<%} else{%>
 <section class="container section scrollspy" id="intro">
       <div class="row">
             <div class="col s1"></div>
@@ -43,7 +50,7 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
                           <span id="chkNick" class="helper-text"></span>
                       </div>
                        <div class="input-field col s12 m6">
-                          <input type="email" name="email" id="email" class="validate">
+                          <input type="email" name="email" id="email" class="validate" value="<%=email_chk %>">
                           <label for="email">이메일(아이디)</label>
 <!--                           <span id="chkEmail" class="helper-text">유효한 이메일을 써주셔야 비밀번호 찾기가 가능합니다.</span> -->
                       </div>
@@ -120,12 +127,13 @@ location.href="${pageContext.request.contextPath}/User/joinchk.ho";
                 <div class="col s1"></div>
       </div>
   </section>
-<%} %>
 <jsp:include page="../foot.jsp"/>
 <!-- 주소 API  -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/chkInform.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/addrAPI.js"></script>
+<%} %>
+<script type="text/javascript" src="../JS/modal.js"></script>
 </body>
 </html>

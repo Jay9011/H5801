@@ -53,7 +53,7 @@ public class joinEmailCommand implements Command, Email{
 			String to = email;
 			// 제목, 내용
 			String subject = "HOLIC 스터디 카페 회원가입 이메일 인증입니다.";
-			String content = "다음 링크에 접속하여 이메일 확인을 진행하세요"+"<a href='"+local+"/joinLchk.ho?email="+to+"'>이메일 인증하기</a>";
+			String content = "다음 링크에 접속하여 이메일 확인을 진행하세요"+"<a href='"+local+"/User/joinLchk.ho?email="+to+"'>이메일 인증하기</a>";
 			
 			//SMTP 에 접속하기 위한 정보 기입
 			Properties props = new Properties();
@@ -82,7 +82,7 @@ public class joinEmailCommand implements Command, Email{
 				e.printStackTrace();
 			}
 			cnt = 1;
-			String chk ="OK";
+			String chk ="NO";
 			HttpSession sess = request.getSession();
 			request.setAttribute("emailcnt", cnt);
 			

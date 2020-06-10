@@ -6,51 +6,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="top.jsp" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/CSS/indexmain.css">
-<title>HolicStudy</title>
-</head>
-<body>
-	<jsp:include page="nav.jsp" />
-	<header>
-		<!-- 이부분은 뺴고 가져올것 -->
-		<div class="progress1">
-			<div class="progress1-container">
-				<label> H</label> <label> o</label> <label> l</label> <label>
-					i</label> <label> c</label>
-			</div>
-		</div>
-		<!-- 이부분은 뺴고 가져올것 -->
-	</header>
-	<!-- photo / grid -->
-	<!-- 3개의 행으로 한 행마다 왼쪽에 이미지 약간의 내용 -->
-	<!-- 반응형을 주고  materialboxed로 그림확대기능 -->
-	<section class="container section scrollspy" id="intro">
-		<div class="row">
-			<div class="col s12 14">
-				<img src="IMAGES/book-1210027_1920.jpg" alt=""
-					class="responsive-img materialboxed">
-			</div>
-			<div class="col s12 16">
-				<h2 class="pfont amber-text text-darken-3 textdarken-4 ">Study
-					Room</h2>
-				<p class="pfont">저희 스터디룸은 4인, 6인, 8인이 이용할 수 있으며, 하루동안 사용할 수
-					있습니다.</p>
-			</div>
-			<div class="col s6">
-				<img src="IMAGES/book-2020460_1920.jpg" alt=""
-					class="responsive-img materialboxed">
-			</div>
-			<div class="col s6">
-				<h2 class="pfont amber-text text-darken-3 textdarken-4 ">Study</h2>
-				<p class="pfont">공부할 수 있는 최적의 환경, 코로나를 방지하기 위해 매일매일 소독을 진행했습니다.</p>
-			</div>
-			<div class="col s6">
-				<img src="IMAGES/books-2596809_1920.jpg" alt=""
-					class="responsive-img materialboxed">
-			</div>
-			<!-- <div class="col s6">
+<jsp:include page="top.jsp"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
+ <title>HolicStudy</title>
+ </head>
+   <body>
+<jsp:include page="nav.jsp"/>
+  <header>
+<!-- 이부분은 뺴고 가져올것 -->
+  <div class="progress1">
+    <div class="progress1-container">
+      <label> H</label>
+      <label> o</label>
+      <label> l</label>
+      <label> i</label>
+      <label> c</label>
+    </div>
+    </div>
+    <!-- 이부분은 뺴고 가져올것 -->
+  </header>
+<!-- photo / grid -->
+  <!-- 3개의 행으로 한 행마다 왼쪽에 이미지 약간의 내용 -->
+  <!-- 반응형을 주고  materialboxed로 그림확대기능 -->
+  <section class="container section scrollspy" id="intro">
+    <div class="row">
+        <div class="col s12 14">
+            <img src="IMAGES/book-1210027_1920.jpg" alt="" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 16">
+            <h2 class="pfont amber-text text-darken-3 textdarken-4 ">Study Room</h2>
+            <p class="pfont">저희 스터디룸은 4인, 6인, 8인이 이용할 수 있으며, 하루동안 사용할 수 있습니다.</p>
+        </div>
+        <div class="col s6">
+            <img src="IMAGES/book-2020460_1920.jpg" alt="" class="responsive-img materialboxed">
+        </div>
+        <div class="col s6">
+            <h2 class="pfont amber-text text-darken-3 textdarken-4 ">Study</h2>
+            <p class="pfont">공부할 수 있는 최적의 환경, 코로나를 방지하기 위해 매일매일 소독을 진행했습니다.</p>
+        </div>
+        <div class="col s6">
+            <img src="IMAGES/books-2596809_1920.jpg" alt="" class="responsive-img materialboxed">
+        </div>
+        <!-- <div class="col s6">
             <h2 class="pfont amber-text text-darken-3 textdarken-4" >Portraits</h2>
             
         </div> -->
