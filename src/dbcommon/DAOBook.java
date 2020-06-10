@@ -151,7 +151,7 @@ public class DAOBook {
 			int cnt = 0;
 
 			try {
-				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ?");
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2)");
 				pstmt.setInt(1, m_uid);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
@@ -182,7 +182,7 @@ public class DAOBook {
 			DTOBook[] arr = null;
 			
 			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? ORDER BY m_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
 				pstmt.setInt(1, m_uid);
 				pstmt.setInt(2, fromRow);
 				pstmt.setInt(3, toRow);

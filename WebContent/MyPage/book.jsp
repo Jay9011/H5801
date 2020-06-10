@@ -52,7 +52,7 @@ $(document).ready(function(){
 		$(this).parents("tr").addClass("important");
 	});
 });
-function chkPaySubmit(){
+<%--function chkPaySubmit(){
 	var frm = document.bookFrm;
 	var p_uid = frm.p_uid.value.trim();
 	if(p_uid == ""){
@@ -62,7 +62,7 @@ function chkPaySubmit(){
 	}
 
 	frm.submit(); // submit 성공
-}
+}--%>
 
 function chkPayCancelSubmit(){
 	var frm = document.bookFrm;
@@ -89,24 +89,23 @@ function chkPayCancelSubmit(){
 
 		<h3 class="center-align pfont">나의 예약현황</h3>
 
-			<c:if test="${empty book || fn:length(book) == 0}">
-				<p style="text-align: center">예약된 내용이 없습니다.</p>
-			</c:if>
-			<c:if test="${!empty book && fn:length(book) != 0}">
+		<c:if test="${empty book || fn:length(book) == 0}">
+			<p style="text-align: center">예약된 내용이 없습니다.</p>
+		</c:if>
+		<c:if test="${!empty book && fn:length(book) != 0}">
 
 
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
-		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
-		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
+		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">
 		<table class="highlight centered">
 		<thead>
 			<tr>
-				<th>예약번호</th>
+				<th>NO</th>
 				<%--<th>결재번호</th>--%>
 				<th>예약내용</th>
 				<th>예약일자</th>
 				<th>예약시간</th>
-				<th>회원이름</th>
+				<%--<th>회원이름</th>--%>
 				<th>결제총액</th>
 				<th>결제현황</th>
 				<th>항목선택</th>
@@ -114,11 +113,7 @@ function chkPayCancelSubmit(){
 			</tr>
 		</thead>
 
-		<c:choose>
-			<c:when test="${empty book || fn:length(book) == 0}">
-			</c:when>
-			<c:otherwise>
-
+	
 			<c:forEach var="dto" items="${book }">
 
 			<tr>
@@ -126,11 +121,12 @@ function chkPayCancelSubmit(){
 				<%--<td>${dto.p_uid }번</td>--%>
 				<td>
 				${dto.b_seatType }<br>
-				(번호: ${dto.t_name })
+				(${dto.t_name })
 				</td>
 				<td>${dto.b_sdate }</td>
-				<td>${dto.b_term }시간</td>
-				<td>${dto.m_nick }</td>
+				<td>${dto.b_stime }~${dto.b_etime }<br>
+				(${dto.b_term }시간)</td>
+				<%--<td>${dto.m_nick }</td>--%>
 				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
 				<td>
 					<c:if test="${dto.p_cancel==0 }">
@@ -145,10 +141,10 @@ function chkPayCancelSubmit(){
 				</td>
 
 				<td>
-					<c:if test="${dto.b_refund==0 || dto.b_refund==null} ">
+					<c:if test="${dto.b_refund==0 || dto.b_refund==null || dto.p_uid == 2}">
 				    <p>
 				      <label>
-				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" disabled="disabled"/>
+				        <input class="with-gap" id="p_uid" name="p_uid" type="radio" value="${dto.p_uid }" disabled/>
 				        <span></span>
 				      </label>
 				    </p>
@@ -167,8 +163,7 @@ function chkPayCancelSubmit(){
 
 			</c:forEach>
 
-			</c:otherwise>
-		</c:choose>
+		
 		</table>
 		</form>
 
@@ -204,20 +199,11 @@ function chkPayCancelSubmit(){
 </div>
 	</div>
 		</div>
-		<%--<div class="row">
-			<div class="col s12 14 center-align">
-				<jsp:include page="bookPage.jsp">
-				<jsp:param value="${curPageNum }" name="curPageNum"/>
-				<jsp:param value="${blockStartNum }" name="blockStartNum"/>
-				<jsp:param value="${lastPageNum }" name="lastPageNum"/>
-				<jsp:param value="${kwd }" name="kwd"/>
-				</jsp:include>
-			</div>
-		</div>--%>
+
 </c:if>
 		  <div class="row">
             <div class="col s12 right-align">
-              <button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>
+             <%-- <button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>--%>
               <button type="button" id="btn2" class="btn waves-effect" onclick="chkPayCancelSubmit()">취소</button>
             </div>
             </div>
