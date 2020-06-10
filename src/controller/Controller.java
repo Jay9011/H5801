@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.BookAdminCommand;
 import command.BookCommand;
 import command.BookCommand2;
 import command.Command;
@@ -222,9 +223,11 @@ public class Controller extends HttpServlet {
 			//new BookCommand2().execute(request, response);
 			viewPage = "book2.jsp";
 			break;
-//		case "/MyPage/bookPage.ho":
-//			viewPage = "bookPage.jsp";
-//			break;
+		
+		case "/MyPage/bookAdmin.ho":
+			new BookAdminCommand().execute(request, response);
+			viewPage = "bookAdmin.jsp";
+			break;
 
 		// 예약 결제
 		case "/Payment/pay.ho":
@@ -320,40 +323,13 @@ public class Controller extends HttpServlet {
 			viewPage = "resetPwOk.jsp";
 			break;
 
+
+			
+			// JaeHyen Controller FAQ/Notice/Introduce User
 		case "/Faq/faq.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
 			viewPage = "faq.jsp";
-			break;
-
-		case "/Faq/write.ho":
-//			command = new FaqWriteTable();
-//			command.execute(request, response);
-			viewPage = "write.jsp";
-			break;
-
-		case "/Faq/writeOk.ho":
-			command = new FaqWriteOk();
-			command.execute(request, response);
-			viewPage = "writeOk.jsp";
-			break;
-
-		case "/Faq/deleteOk.ho":
-			command = new FaqDeleteOk();
-			command.execute(request, response);
-			viewPage = "deleteOk.jsp";
-			break;
-
-		case "/Faq/update.ho":
-			command = new FaqUpdate();
-			command.execute(request, response);
-			viewPage = "update.jsp";
-			break;
-
-		case "/Faq/FaqUpdateOk.ho":
-			command = new FaqUpdateOk();
-			command.execute(request, response);
-			viewPage = "updateOk.jsp";
 			break;
 
 		case "/Intro/introduce.ho":
@@ -375,58 +351,90 @@ public class Controller extends HttpServlet {
 			viewPage = "noticeview.jsp";
 			break;
 
-		case "/Notice/deleteOk.ho":
+
+
+			// AdminController
+			
+			// AdminPage Notice Controller	
+			
+		case "/AdminPage/Notice/noticeControll.ho":
+			command = new NoticePageingLoad();
+			command.execute(request, response);
+			viewPage = "noticeControll.jsp";
+			break;
+			
+		case "/AdminPage/Notice/noticeview.ho":
+			command = new NoticeView();
+			command.execute(request, response);
+			viewPage = "noticeview.jsp";
+			break;
+			
+		case "/AdminPage/Notice/write.ho":
+			viewPage = "write.jsp";
+			break;
+
+		case "/AdminPage/Notice/writeOk.ho":
+			command = new NoticeWriteOk();
+			command.execute(request, response);
+			viewPage = "writeOk.jsp";
+			break;
+			
+		case "/AdminPage/Notice/deleteOk.ho":
 			command = new NoticeDeleteOk();
 			command.execute(request, response);
 			viewPage = "deleteOk.jsp";
 			break;
 
-		case "/Notice/update.ho":
+		case "/AdminPage/Notice/update.ho":
 			command = new NoticeUpdate();
 			command.execute(request, response);
 			viewPage = "update.jsp";
 			break;
 
-		case "/Notice/NoticeUpdateOk.ho":
+		case "/AdminPage/Notice/NoticeUpdateOk.ho":
 			command = new NoticeUpdateOk();
 			command.execute(request, response);
 			viewPage = "updateOk.jsp";
 			break;
+			
+			
 
-		case "/Notice/write.ho":
-//			command = new NoticeWriteTable();
-//			command.execute(request, response);
-			viewPage = "write.jsp";
-			break;
 
-		case "/Notice/writeOk.ho":
-			command = new NoticeWriteOk();
-			command.execute(request, response);
-			viewPage = "writeOk.jsp";
-			break;
-
-		case "/AdminPage/faqControll.ho":
+			
+		// AdminPage Faq Controller	
+			
+		case "/AdminPage/Faq/faqControll.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
 			viewPage = "faqControll.jsp";
 			break;
-
-		case "/AdminPage/noticeControll.ho":
-			command = new NoticePageingLoad();
-			command.execute(request, response);
-			viewPage = "noticeControll.jsp";
+			
+		case "/AdminPage/Faq/write.ho":
+			viewPage = "write.jsp";
 			break;
 
-		case "/AdminPage/userControll.ho":
-			command = new FaqLoad();
+		case "/AdminPage/Faq/writeOk.ho":
+			command = new FaqWriteOk();
 			command.execute(request, response);
-			viewPage = "userControll.jsp";
+			viewPage = "writeOk.jsp";
 			break;
 
-		case "/AdminPage/stControll.ho":
-			command = new FaqLoad();
+		case "/AdminPage/Faq/deleteOk.ho":
+			command = new FaqDeleteOk();
 			command.execute(request, response);
-			viewPage = "stControll.jsp";
+			viewPage = "deleteOk.jsp";
+			break;
+
+		case "/AdminPage/Faq/update.ho":
+			command = new FaqUpdate();
+			command.execute(request, response);
+			viewPage = "update.jsp";
+			break;
+
+		case "/AdminPage/Faq/FaqUpdateOk.ho":
+			command = new FaqUpdateOk();
+			command.execute(request, response);
+			viewPage = "updateOk.jsp";
 			break;
 
 

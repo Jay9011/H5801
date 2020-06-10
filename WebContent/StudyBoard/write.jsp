@@ -35,7 +35,7 @@
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		<h1 class="center-align pfont">Write</h1>
+		<h1 class="center-align pfont">새로운 글</h1>
 	<form name="writeTable" action="writeOk.ho" method="post" onsubmit="return chkSubmit()">
 		<input type="hidden" name="m_uid" value="${uid }" />
 		<div>
@@ -85,19 +85,19 @@
 			<button class="btn waves-effect btn2" type="button" onclick="location.href = 'list.ho'">목록으로</button>
 		</div>
 	</form>
-	
-		
+
+
 		</div>
 		<div class="col s1"></div>
 	</div>
 </section>
-	
+
 	<script>
 		CKEDITOR.replace('editor1', {
 			allowedContent: true	// HTML 태그 자동 삭제 방지 설정
 			,filebrowserUploadUrl: '${pageContext.request.contextPath}/StudyBoard/fileUpload.ho'
 		});
-		
+
 		$(document).ready(function() {
 		    $('#subject').characterCounter();
 		  });

@@ -8,15 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="../top.jsp"/>
-<link rel="stylesheet" href="../CSS/faq.css">
+<jsp:include page="../../top.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/faq.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
  <title>Notice</title>
    </head>
    <body>
-<jsp:include page="../nav.jsp"/>
-<jsp:include page="../header.jsp"/>
+<jsp:include page="../../nav.jsp"/>
+<jsp:include page="../../header.jsp"/>
  <!-- 페이지에 해당하는 내용 적기  -->
 <section class="container section scrollspy" id="intro">
 	<div class="row">
@@ -24,27 +24,20 @@
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 		      <script type="text/javascript" src="js/materialize.min.js"></script>
+		     
 		      
 		      
-	<div class="col m7 offset-m5 s12  right-align" style="margin-bottom:51px; ">
-      <ul class="tabs">
-        <li class="tab col s6 m6">
-          <a target="_self" class="" href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a>
-        </li>
-        <li class="tab col s6 m6">
-          <a target="_self" class="" href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a>
-        </li>
-      <li class="indicator" style="left: 0px; right: 284px;"></li></ul>
-    </div>
-		      
-		      
-      <div class="w-12 text_title FAQ pfont"><h1>공지사항</h1></div>
+      <c:choose>
+	<c:when test="${grade > 8 }">
+      <div class="w-12 text_title FAQ pfont"><h1>공지사항<br>Admin Controll Page</h1></div>
   <div class="text_title left-1" style="width: 100%">
   
   
   
   
-  
+
+	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho'">추가</button>
+
 
   </div>
   
@@ -68,7 +61,7 @@
     	<c:otherwise>
     		<c:forEach var="notice" items="${npagetable }">
         <tr class="menu s10 " id="postList ">
-          <td class="w-8 left-1 s4 firstSet-3 " id="postList "><a class="firstSet-3" href="noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></td>
+          <td class="w-8 left-1 s4 firstSet-3 " id="postList "><a class="firstSet-3" href="noticeview.ho?uid=${notice.n_uid}">UID : ${notice.n_uid }&nbsp;&nbsp;Title : ${notice.n_title }</a></td>
           <td class="w-2 left-1 s4 firstSet-1">${notice.n_viewCnt }</td>
           <td class="w-2 left-1 s4 right-align firstSet-2">${notice.n_date }</td>
           <td class="clear">
@@ -116,13 +109,18 @@
 		
 		
 		
-		
+		</c:when>
+	<c:otherwise>
+	<div style="font-size: 50px;" class="chenter-aline">잘못된 접근입니다.</div>
+<div style="font-size: 30px; height: 400px;" class="chenter-aline"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice/공지사항 바로가기</a></div>
+	</c:otherwise>
+	</c:choose>		
 		</div>
 		<div class="col s1"></div>
 	</div>
 </section>
 
-	<jsp:include page="../foot.jsp"/>
+	<jsp:include page="../../foot.jsp"/>
 <!--  js 추가는 여기에 -->
 <script src="${pageContext.request.contextPath}/JS/faq.js"></script>
 </body>

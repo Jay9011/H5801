@@ -10,7 +10,7 @@
 	<c:otherwise>
 		<script>
 			alert("수정 성공.");
-			location.href = 'notice.ho';
+			location.href = 'faqControll.ho';
 		</script>
 	</c:otherwise>
 </c:choose>

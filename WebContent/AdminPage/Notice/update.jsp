@@ -14,8 +14,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>수정 ${selected[0].f_title}</title>
-<script src="../ckeditor/ckeditor.js"></script>
+<title>수정 ${selected[0].n_title}</title>
+<script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
 </head>
 <script>
 function chkSubmit(){
@@ -37,16 +37,16 @@ function chkSubmit(){
 </script>
 <body>
 <h2>수정</h2>
-<form action="FaqUpdateOk.ho" name="frm" method="post" onsubmit="return chkSubmit()">
-<input type="hidden" name="f_uid" value="${selected[0].f_uid}"/>
-제목 : <input type="text" name="subject" value="${selected[0].f_title}" /><br>
+<form action="NoticeUpdateOk.ho" name="frm" method="post" onsubmit="return chkSubmit()">
+<input type="hidden" name="n_uid" value="${selected[0].n_uid}"/>
+제목 : <input type="text" name="subject" value="${selected[0].n_title}" /><br>
 <hr>
 내용 :
-<br><textarea id="editor1" name="content">${selected[0].f_content}</textarea><br>
+<br><textarea id="editor1" name="content">${selected[0].n_content}</textarea><br>
 <br> <input type="submit" value="수정" />
 </form>
 <br>
-<button type="button" onclick="location.href='faq.ho'">목록으로</button>
+<button type="button" onclick="location.href='notice.ho'">목록으로</button>
 <script>
 	CKEDITOR.replace('editor1', {
 		allowedContent: true	// HTML 태그 자동 삭제 방지 설정
