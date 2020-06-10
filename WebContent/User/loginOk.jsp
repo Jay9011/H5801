@@ -16,7 +16,6 @@
       <a href="javascript:window.history.back();"  class="modal-close waves-effect  btn-flat amber">되돌아가기</a>
     </div>
   </div>
-
 	</c:when>
 	<c:when test="${chk == 1 }">
 	<script>
