@@ -5,6 +5,8 @@
 <html>
  <head>
  <jsp:include page="../modal.jsp"/>
+ </head>
+ <body>
 <c:choose>
 <c:when test="${cnt == 1}">
 <div id="demo-modal" class="modal">

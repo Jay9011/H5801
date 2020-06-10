@@ -5,14 +5,19 @@ import java.sql.SQLException;
 import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dbcommon.DAOUser;
+import oracle.net.aso.s;
 
 public class JoinCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int cnt = 0;
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
 		
 		DAOUser dao = new DAOUser();
 		

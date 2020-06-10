@@ -1,17 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <jsp:include page="../modal.jsp"/>
-<c:choose>
-	<c:when test="${email_chk != null && chk == 'OK' }">
-<!DOCTYPE html>>
+ <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-</head>
-<body>
+ <jsp:include page="../modal.jsp"/>
+ </head>
+ <body>
+<c:choose>
+	<c:when test="${email_chk == param.email}">
+    	<% session.setAttribute("chk", "OK"); %>
+    	
+<div id="demo-modal" class="modal">
+	    	<div class="modal-content">
+	      		<h5 style='color:olive'>회원가입 이메일 인증 성공</h5>
+	      			<p class="left-align">이메일 인증이 되었습니다.<br></p>
+			</div>
+	    	<div class="modal-footer">
+	      		<a href="${pageContext.request.contextPath}/User/join.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+	    	</div>
+    	</div>
 	</c:when>
 <c:otherwise>
 <div id="demo-modal" class="modal">

@@ -243,7 +243,7 @@ public class Controller extends HttpServlet {
 			new RefundOkCommand().execute(request, response);
 			viewPage = "refundOk.jsp";
 			break;
-
+// user
 		case "/User/login.ho":
 			command = new LoginCommand();
 			command.execute(request, response);
@@ -266,6 +266,10 @@ public class Controller extends HttpServlet {
 		case "/User/joinEchk.ho":
 			new joinEmailCommand().execute(request, response);
 			viewPage = "joinEchk.jsp";
+			break;
+			
+		case "/User/joinLchk.ho":
+			viewPage = "joinLchk.jsp";
 			break;
 			
 		case "/User/join.ho":

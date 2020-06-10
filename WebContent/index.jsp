@@ -9,7 +9,7 @@
 <jsp:include page="top.jsp"/>
    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/indexmain.css">
  <title>HolicStudy</title>
-   </head>
+ </head>
    <body>
 <jsp:include page="nav.jsp"/>
   <header>
