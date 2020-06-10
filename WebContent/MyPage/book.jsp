@@ -32,8 +32,26 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
+<style>
+.lightcyan {
+    background-color: lightcyan;
+}
+.important {
+    font-weight: bold;
+}
+
+</style>
 </head>
+
 <script>
+$(document).ready(function(){
+	$(":input:radio").click(function(){
+		$("tr").removeClass("lightcyan");
+		$("tr").removeClass("important");
+		$(this).parents("tr").addClass("lightcyan");
+		$(this).parents("tr").addClass("important");
+	});
+});
 function chkPaySubmit(){
 	var frm = document.bookFrm;
 	var p_uid = frm.p_uid.value.trim();
@@ -208,6 +226,7 @@ function chkPayCancelSubmit(){
 		<div class="col s1 "></div>
 	</div>
 </section>
+<jsp:include page="../foot.jsp"/>
 
 	</c:when>
 
@@ -225,7 +244,6 @@ function chkPayCancelSubmit(){
 
 	</c:otherwise>
 </c:choose>
-<jsp:include page="../foot.jsp"/>
 <script type="text/javascript" src="../JS/modal.js"></script>
 </body>
 </html>
