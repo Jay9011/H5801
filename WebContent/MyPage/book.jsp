@@ -171,7 +171,7 @@ function chkPayCancelSubmit(){
 		</table>
 		</form>
 		<div>
-		<p style="font-size:13px; color:grey">※ 예약하신 이용시간 2시간 전에는 결제 취소(환불)가 불가능합니다.</p>
+		<p style="font-size:13px; color:grey">※ 예약한 이용시간 2시간 전 환불 불가</p>
 		</div>		
 
 <div class="row">

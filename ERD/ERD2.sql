@@ -469,8 +469,8 @@ a.p_uid
 , a.p_endTime
 , a.tid
 , TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
-, TO_CHAR(a.p_startTime, 'HH24:MI:SS') AS "b_stime"
-, TO_CHAR(a.p_endTime, 'HH24:MI:SS') AS "b_etime"
+, TO_CHAR(a.p_startTime, 'HH24:MI') AS "b_stime"
+, TO_CHAR(a.p_endTime, 'HH24:MI') AS "b_etime"
 , ROUND((a.p_endTime-a.p_startTime)*24) AS "b_term"
 , ROUND((a.p_startTime-SYSDATE)*24) AS "b_duration"
 , CASE WHEN ROUND((a.p_startTime-SYSDATE)*24) >= 2 THEN '1' ELSE '0' END AS "b_refund"

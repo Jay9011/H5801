@@ -43,6 +43,19 @@
     font-weight: bold;
 }
 
+@media screen and (max-width: 765px) and (min-width: 300px){
+
+.table-container{
+	 width:100%;	
+	 overflow-x:auto;
+     white-space: nowrap;
+	}
+   
+ table{
+    width:auto;
+ } 
+ 
+ }
 </style>
 </head>
 
@@ -88,7 +101,7 @@ function chkPayCancelSubmit(){
 <section class="container section scrollspy" id="intro">
 	<div class="row">
 	<div class="col s1 "></div>
-	<div class="col s10">
+	<div class="col s10 table-container">
 
 		<h3 class="center-align pfont">나의 예약현황</h3>
 
@@ -97,9 +110,9 @@ function chkPayCancelSubmit(){
 		</c:if>
 		<c:if test="${!empty book && fn:length(book) != 0}">
 
-
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">
+		<div class="table-container">
 		<table class="highlight centered">
 		<thead>
 			<tr>
@@ -116,7 +129,7 @@ function chkPayCancelSubmit(){
 			</tr>
 		</thead>
 
-	
+		
 			<c:forEach var="dto" items="${book }">
 
 			<tr>
@@ -168,11 +181,11 @@ function chkPayCancelSubmit(){
 
 		
 		</table>
+		</div>
 		</form>
 		<div>
-		<p style="font-size:13px; color:grey">※ 예약하신 이용시간 2시간 전에는 결제 취소(환불)가 불가능합니다.</p>
+		<p style="font-size:13px; color:grey">※ 예약한 이용시간 2시간 전 환불 불가</p>
 		</div>		
-
 <div class="row">
 			<div class="col s12 center-align">
 		<div class="pager center">
