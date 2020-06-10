@@ -3,7 +3,7 @@
 <html lang="ko">
 <head>
 <jsp:include page="../top.jsp"/>
- <title>타이틀 써주기</title>
+ <title>글 쓰기</title>
 <script src="../ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
@@ -71,7 +71,7 @@
         </div>
         <div class="row">
 		<div class="input-field col s12">
-		<input type="text" id="subject" name="subject" class="validate"/>
+		<input type="text" id="subject" name="subject" class="validate" data-length="50"/>
 		<label for="subject">
 		제목
 		</label>
@@ -97,6 +97,10 @@
 			allowedContent: true	// HTML 태그 자동 삭제 방지 설정
 			,filebrowserUploadUrl: '${pageContext.request.contextPath}/StudyBoard/fileUpload.ho'
 		});
+		
+		$(document).ready(function() {
+		    $('#subject').characterCounter();
+		  });
 	</script>
 <jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->

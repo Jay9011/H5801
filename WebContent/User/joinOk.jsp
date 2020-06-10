@@ -5,6 +5,8 @@
 <html>
  <head>
  <jsp:include page="../modal.jsp"/>
+ </head>
+ <body>
 <c:choose>
 <c:when test="${cnt == 1}">
 <div id="demo-modal" class="modal">
@@ -29,6 +31,6 @@
   </div>
 	</c:otherwise>
 </c:choose>
-<script type="text/javascript" src="../JS/modal.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/modal.js"></script>
 </body>   
 </html>
