@@ -5,19 +5,30 @@
       <div class="container">
           <div class="row">
               <div class="col s8">
-                  <h5>About Me</h5>
-                  <p>Your courses have been extremely helpful and a real time saver.
-                    I've been banging my head on this little bit for </p>
-                    <p>Your courses have been extremely helpful and a real time saver.
-                        I've been banging my head on this little bit for </p>
+                  <h4>Team 5801</h4>
+                  <h5>Made By</h5>
+                    <p>Captain Jongsub Yoon</p>
+                    <p>
+                    	Jiwoo Yoon,
+                    	Nakkyeong Ju,
+                    	Jaehyeon Kim,
+                    	Subin Han
+                    </p>
               </div>
+              
               <div class="col s4">
                   <h5>Connect</h5>
                   <ul>
-                      <li><a href="#" class="grey-text text-lighten-3">Facebook</a></li>
-                      <li><a href="#" class="grey-text text-lighten-3">Twiter</a></li>
-                      <li><a href="#" class="grey-text text-lighten-3">Linked In</a></li>
-                      <li><a href="#" class="grey-text text-lighten-3">Thanks</a></li>
+                      <!-- <li><a href="#" class="grey-text text-lighten-3">Thanks</a></li -->
+              <li><a href="#" class="tooltipped btn-floating btn-medium indigo darken-4" style="margin-bottom:10px;">
+              <i class="fab fa-instagram"></i></a>
+              <span>&nbsp&nbspInstagram</span>
+              <li><a href="#" class="tooltipped btn-floating btn-medium indigo darken-4" style="margin-bottom:10px;">
+              <i class="fab fa-facebook"></i></a>
+              <span>&nbsp&nbspFacebook</span>
+              <li><a href="#" class="tooltipped btn-floating btn-medium indigo darken-4">
+              <i class="fab fa-twitter"></i></a>
+              <span>&nbsp&nbspTwitter</span>
                   </ul>
               </div>
           </div>

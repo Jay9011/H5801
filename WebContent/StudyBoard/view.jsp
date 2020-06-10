@@ -249,7 +249,7 @@ function chkDelete(s_uid){
 	}
 
 	function deleteComment(sr_uid){
-		$.ajax({
+		if(confirm("지금 바로 삭제할래?")){$.ajax({
 			type:"POST"
 			,url:"comDeleteOk.ho?sr_uid=" + sr_uid
 			,dataType:"json"
@@ -269,7 +269,10 @@ function chkDelete(s_uid){
 				console.log("ERROR : ", e);
                 alert("서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.");
 			}
-		});
+		});}
+		else{
+			return false;
+		}
 	}
 
 	function alterComment(sr_uid){
