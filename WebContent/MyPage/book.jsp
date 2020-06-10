@@ -212,7 +212,7 @@ function chkPayCancelSubmit(){
              <%-- <button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>--%>
               <button type="button" id="btn2" class="btn waves-effect" onclick="chkPayCancelSubmit()">취소</button>
             </div>
-            </div>
+            </div> 
           	</div>
 
 		<div class="col s1 "></div>
