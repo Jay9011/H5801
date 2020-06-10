@@ -163,6 +163,23 @@ public class DAOBook {
 			return cnt;
 		}
 		
+		// 관리자 페이지용
+		public int countAllAdmin() throws SQLException {
+			int cnt = 0;
+
+			try {
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE p_cancel IN (1, 2)");
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					cnt = rs.getInt(1);
+				}
+			} finally {
+				closeWithoutConn();
+			}
+			return cnt;
+		}
+		
+		// Ajax 테스트용
 		public int countAll() throws SQLException {
 			int cnt = 0;
 
@@ -177,6 +194,7 @@ public class DAOBook {
 			}
 			return cnt;
 		}
+		
 		// BOARD의 페이징
 		public DTOBook[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
 			DTOBook[] arr = null;
@@ -186,6 +204,21 @@ public class DAOBook {
 				pstmt.setInt(1, m_uid);
 				pstmt.setInt(2, fromRow);
 				pstmt.setInt(3, toRow);
+				rs = pstmt.executeQuery();
+				arr = createArray(rs);
+			} finally {
+				close();
+			}
+			return arr;
+		}
+		
+		public DTOBook[] selectPaging_stAdmin(int fromRow, int toRow) throws SQLException {
+			DTOBook[] arr = null;
+			
+			try {
+				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt.setInt(1, fromRow);
+				pstmt.setInt(2, toRow);
 				rs = pstmt.executeQuery();
 				arr = createArray(rs);
 			} finally {

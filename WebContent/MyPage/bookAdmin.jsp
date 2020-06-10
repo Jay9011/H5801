@@ -1,4 +1,4 @@
-<%-- 예약 현황 --%>
+<%-- 예약현황 관리자 페이지--%>
 <%--
   작성자: 낙경
  2020-06-10  16:00 수정
@@ -17,7 +17,6 @@
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 <jsp:include page="../modal.jsp"/>
 
-   <c:if test="${grade <= 8 }">
 
 <c:choose>
 
@@ -109,10 +108,10 @@ function chkPayCancelSubmit(){
 				<th>예약내용</th>
 				<th>예약일자</th>
 				<th>예약시간</th>
-				<%--<th>회원이름</th>--%>
+				<th>회원이름</th>
 				<th>결제총액</th>
 				<th>결제현황</th>
-				<th>항목선택</th>
+				<%--<th>항목선택</th>--%>
 
 			</tr>
 		</thead>
@@ -130,7 +129,7 @@ function chkPayCancelSubmit(){
 				<td>${dto.b_sdate }</td>
 				<td>${dto.b_stime }~${dto.b_etime }<br>
 				(${dto.b_term }시간)</td>
-				<%--<td>${dto.m_nick }</td>--%>
+				<td>${dto.m_nick }</td>
 				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
 				<td>
 					<c:if test="${dto.p_cancel==0 }">
@@ -144,7 +143,7 @@ function chkPayCancelSubmit(){
 					</c:if>
 				</td>
 
-				<td>
+				<%-- <td>
 					<c:if test="${dto.b_refund==0 || dto.b_refund==null || dto.p_uid == 2}">
 				    <p>
 				      <label>
@@ -161,7 +160,7 @@ function chkPayCancelSubmit(){
 				      </label>
 				    </p>
 				    </c:if>
-				</td>
+				</td>--%>
 
 			</tr>
 
@@ -179,7 +178,7 @@ function chkPayCancelSubmit(){
 		<div class="pager center">
     <ul class="pagination">
         <c:if test="${ curPageNum > 5 }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockStartNum - 1 }" class='tooltip-top'><i class='material-icons'>chevron_left</i></a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/bookAdmin.ho?page=${ blockStartNum - 1 }" class='tooltip-top'><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
 
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
@@ -192,14 +191,14 @@ function chkPayCancelSubmit(){
                 </c:when>
 
                 <c:otherwise>
-                    <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ i }" >${ i }</a></li>
+                    <li><a href="${pageContext.request.contextPath}/MyPage/bookAdmin.ho?page=${ i }" >${ i }</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
 
 
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="${pageContext.request.contextPath}/MyPage/book.ho?page=${ blockLastNum + 1 }" class='tooltip-top'><i class='material-icons'>chevron_right</i></a></li>
+            <li><a href="${pageContext.request.contextPath}/MyPage/bookAdmin.ho?page=${ blockLastNum + 1 }" class='tooltip-top'><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
 </div>
@@ -209,8 +208,8 @@ function chkPayCancelSubmit(){
 </c:if>
 		  <div class="row">
             <div class="col s12 right-align">
-             <%-- <button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>--%>
-              <button type="button" id="btn2" class="btn waves-effect" onclick="chkPayCancelSubmit()">취소</button>
+             <%-- <button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>
+              <button type="button" id="btn2" class="btn waves-effect" onclick="chkPayCancelSubmit()">취소</button>--%>
             </div>
             </div>
           	</div>
@@ -239,11 +238,3 @@ function chkPayCancelSubmit(){
 <script type="text/javascript" src="../JS/modal.js"></script>
 </body>
 </html>
-      </c:if>
-      <c:if test="${grade > 8 }">
-
-      	<script>
-			location.href = "${pageContext.request.contextPath}/MyPage/bookAdmin.ho";      	
-      	</script>
-      </c:if>
-
