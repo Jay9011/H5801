@@ -29,6 +29,6 @@
   </div>
 	</c:otherwise>
 </c:choose>
-<script type="text/javascript" src="../JS/modal.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/modal.js"></script>
 </body>   
 </html>

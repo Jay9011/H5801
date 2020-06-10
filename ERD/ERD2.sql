@@ -175,7 +175,7 @@ CREATE TABLE s_favor
 CREATE TABLE s_table
 (
 	s_uid number NOT NULL,
-	s_title varchar2(60) NOT NULL,
+	s_title varchar2(150) NOT NULL,
 	s_content clob NOT NULL,
 	s_date date DEFAULT SYSDATE,
 	s_udate date DEFAULT SYSDATE,
