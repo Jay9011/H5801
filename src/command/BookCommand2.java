@@ -18,16 +18,16 @@ public class BookCommand2 implements Command {
 		DAOBook dao = new DAOBook();  // DAO 객체 생성
 		DTOBook [] arr = null;
 
-		HttpSession session = request.getSession(true);
-		int m_uid;
-		
-		// 매개변수 받아오기
-		if(request.getSession().getAttribute("uid") != null) {
-			m_uid = (Integer)(request.getSession().getAttribute("uid"));
-		} else {
-			m_uid = 0;
-			return;
-		}
+//		HttpSession session = request.getSession(true);
+//		int m_uid;
+//		
+//		// 매개변수 받아오기
+//		if(request.getSession().getAttribute("uid") != null) {
+//			m_uid = (Integer)(request.getSession().getAttribute("uid"));
+//		} else {
+//			m_uid = 0;
+//			return;
+//		}
 		
 		
 		// ajax response 에 필요한 값들
@@ -64,7 +64,7 @@ public class BookCommand2 implements Command {
 			}
 		}
 		
-		if(m_uid != 0 && !(m_uid < 0)){
+
 			try {
 				// 글 전체 개수 구하기
 				//totalCnt = dao.countAll(m_uid);
@@ -91,8 +91,7 @@ public class BookCommand2 implements Command {
 			} catch(SQLException e) {
 				message.append("[트랜잭션 에러:" + e.getMessage()+ "]");
 			}
-			
-		}
+	
 		
 		request.setAttribute("status", status);
 		request.setAttribute("message", message.toString());

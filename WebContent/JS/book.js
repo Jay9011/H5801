@@ -11,12 +11,12 @@ $(document).ready(function(){
 function loadPage(page){
 	
 	$.ajax({
-		url : "book2.ajax?uid="+uid +"&page=" + page + "&pageRows=" + pageRows
+		url : "book2.ajax?page=" + page + "&pageRows=" + pageRows
 		, type : "GET"
 		, cache : false
 		, success : function(data, status){
 			if(status == "success"){
-				//alert("AJAX 성공: 받아쮸~");
+				alert("AJAX 성공: 받아쮸~");
 				updateList(data);
 			}			
 		}
@@ -33,7 +33,7 @@ function updateList(jsonObj){
 		
 		// 전역변수 업데이트!
 		window.page = jsonObj.page;
-		window.pageRows = jsonObj.pageRows;
+		window.pageRows = jsonObj.pagerows;
 		
 		var i;
 		var items = jsonObj.data;   // 배열
@@ -52,7 +52,7 @@ function updateList(jsonObj){
 		$("#list tbody").html(result);  // 테이블 업데이트!
 		
 		// 페이지 정보 업데이트
-		$("#pageinfo").text(jsonObj.page + "/" + jsonObj.totalPage + "페이지, " + jsonObj.totalCnt + "개의 글");
+		$("#pageinfo").text(jsonObj.page + "/" + jsonObj.totalpage + "페이지, " + jsonObj.totalcnt + "개의 글");
 		
 		// pageRows
 		var txt = "<select id='rows' onchange='changePageRows()'>\n";
@@ -65,7 +65,7 @@ function updateList(jsonObj){
 		
 		
 		// 페이징 업데이트
-		var pagination = buildPagination(jsonObj.writePages, jsonObj.totalPage, jsonObj.page, jsonObj.pageRows);
+		var pagination = buildPagination(jsonObj.writepages, jsonObj.totalpage, jsonObj.page, jsonObj.pagerows);
 		$("#pagination").html(pagination);
 		
 		return true;

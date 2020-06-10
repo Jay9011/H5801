@@ -17,11 +17,16 @@
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
 <jsp:include page="../modal.jsp"/>
 
-   <c:if test="${grade <= 8 }">
 
 <c:choose>
 
-<c:when test="${uid != null }">
+<c:when test="${uid != null}">
+   <c:if test="${grade > 8 }">
+   
+         <script>
+			location.href = "${pageContext.request.contextPath}/MyPage/bookAdmin.ho";      	
+      	</script>
+    </c:if>
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head: 현재 문서의 정보를 제공하는 역할 -->
@@ -44,17 +49,23 @@
     font-weight: bold;
 }
 
-@media screen and (max-width: 765px) and (min-width: 300px){
+@media screen and (max-width: 670px){
+
+body {
+max-width: 100%;
+overflow-x: hidden;
+}
 
 .table-container{
-	 width:100%;	
-	 overflow-x:auto;
-	}
+    width:100%;   
+    overflow-x:auto;
+   }
    
  table{
     width:auto;
     white-space: nowrap;
  } 
+
  
  }
 
@@ -236,7 +247,6 @@ function chkPayCancelSubmit(){
 	</div>
 </section>
 <jsp:include page="../foot.jsp"/>
-
 	</c:when>
 
 	<c:otherwise>
@@ -244,23 +254,17 @@ function chkPayCancelSubmit(){
 	<div id="demo-modal" class="modal">
 		<div class="modal-content">
 			<h5 style='color:red'>※접근 오류!</h5>
-				<p class="left-align">잘못된 접근입니다. 로그인 해주세요.</p>
+				<p class="left-align">잘못된 접근입니다.로그인해주세요</p>
 		</div>
 		<div class="modal-footer">
 			<a href="${pageContext.request.contextPath}/User/login.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 		</div>
 	</div>
+     
 
 	</c:otherwise>
 </c:choose>
 <script type="text/javascript" src="../JS/modal.js"></script>
 </body>
 </html>
-      </c:if>
-      <c:if test="${grade > 8 }">
-
-      	<script>
-			location.href = "${pageContext.request.contextPath}/MyPage/bookAdmin.ho";      	
-      	</script>
-      </c:if>
 

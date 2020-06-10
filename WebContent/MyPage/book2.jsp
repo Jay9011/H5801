@@ -102,6 +102,7 @@ function chkPayCancelSubmit(){
 
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post">
+		
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">--%>
 		<table class="highlight centered" id="table">
 

@@ -20,7 +20,7 @@
 
 <c:choose>
 
-<c:when test="${uid != null }">
+<c:when test="${uid != null && grade > 8 }">
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head: 현재 문서의 정보를 제공하는 역할 -->
@@ -43,19 +43,26 @@
     font-weight: bold;
 }
 
-@media screen and (max-width: 765px) and (min-width: 300px){
+@media screen and (max-width: 670px){
+
+body {
+max-width: 100%;
+overflow-x: hidden;
+}
 
 .table-container{
-	 width:100%;	
-	 overflow-x:auto;
-	}
+    width:100%;   
+    overflow-x:auto;
+   }
    
  table{
     width:auto;
     white-space: nowrap;
  } 
+
  
  }
+
 </style>
 </head>
 
@@ -239,10 +246,10 @@ function chkPayCancelSubmit(){
 	<div id="demo-modal" class="modal">
 		<div class="modal-content">
 			<h5 style='color:red'>※접근 오류!</h5>
-				<p class="left-align">잘못된 접근입니다. 로그인 해주세요.</p>
+				<p class="left-align">잘못된 접근입니다.</p>
 		</div>
 		<div class="modal-footer">
-			<a href="${pageContext.request.contextPath}/User/login.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+			<a href="${pageContext.request.contextPath}/index.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 		</div>
 	</div>
 
