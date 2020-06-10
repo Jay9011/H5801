@@ -44,6 +44,21 @@
     font-weight: bold;
 }
 
+@media screen and (max-width: 765px) and (min-width: 300px){
+
+.table-container{
+	 width:100%;	
+	 overflow-x:auto;
+	}
+   
+ table{
+    width:auto;
+    white-space: nowrap;
+ } 
+ 
+ }
+
+
 </style>
 </head>
 
@@ -101,6 +116,7 @@ function chkPayCancelSubmit(){
 
 		<%--<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/pay.ho" method="post"> --%>
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">
+		<div class="table-container">
 		<table class="highlight centered">
 		<thead>
 			<tr>
@@ -169,6 +185,7 @@ function chkPayCancelSubmit(){
 
 		
 		</table>
+		</div>
 		</form>
 		<div>
 		<p style="font-size:13px; color:grey">※ 예약한 이용시간 2시간 전 환불 불가</p>
