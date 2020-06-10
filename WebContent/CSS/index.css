@@ -4,7 +4,7 @@
 font-family: 'Do Hyeon', sans-serif;
 font-family: 'Great Vibes', cursive;
 font-family: 'Nanum Gothic', sans-serif;
-font-family: 'Sunflower', sans-serif; 
+font-family: 'Sunflower', sans-serif;
 */
 body,html{
 	height: 100%;
@@ -15,7 +15,7 @@ body,html{
  div .alogo{
       font-family:'Berkshire Swash', cursive;
       font-size: 3em;
-    
+
     }
     .afont{
       font-family:'Berkshire Swash', cursive;
@@ -24,7 +24,7 @@ body,html{
     background: rgba(0, 0, 0, 0.2);
     height: 70px;
     line-height: 70px;
-    transition: all 0.5s; 
+    transition: all 0.5s;
 
   }
 .sidenav{
@@ -33,7 +33,7 @@ body,html{
 
 .dropdown-content>li>a{
   color: white !important;
- 
+
 }
 .dropdown-content{
   background-color: #00000042;
@@ -53,7 +53,7 @@ body,html{
   nav .sidenav-trigger i {
     height: 65px;
     line-height: 65px;
-} 
+}
 .sidenav .collapsible-header:hover, .sidenav.fixed .collapsible-header:hover {
   background-color: #ffc380b6;
 }
@@ -88,8 +88,8 @@ header{
     line-height: 0px;
 }
 .pfont{
-  font-family: 'Sunflower', sans-serif; 
-  
+  font-family: 'Sunflower', sans-serif;
+
 }
 h2.pfont{
   font-weight: bold;
@@ -98,7 +98,7 @@ h2.pfont{
        color: #ff932d;
        font-weight: 700;
    }
-   
+
    #topBtn {
   position: fixed;
   right: 2%;
@@ -123,14 +123,16 @@ h2.pfont{
 	 background: #000;
   color: #FFC107;
 }
+.sidenav-trigger {
+			top: 5px;
+		}
     @media screen and (max-width: 670px){
-     h2{
-     	margin-top:1rem;
-     }
+	     h2{
+	     	margin-top:1rem;
+	     }
     }
     @media only screen and (min-width: 1200px){
     html {
     font-size: 16px;
 }
     }
-  

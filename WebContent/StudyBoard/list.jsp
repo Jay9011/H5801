@@ -14,9 +14,6 @@
 <title>학습 문의 게시판</title>
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/studylist.js"></script>
-<script>
-	getList();
-</script>
 <body>
 	<jsp:include page="../nav.jsp" />
 	<jsp:include page="../header.jsp" />
@@ -39,8 +36,57 @@
 				</div>
 				<div style="/* overflow-x:scroll;  */width: 100%">
 				<table id="postList" class="highlight ">
-				</table>
-</div>
+						<div class="preloader-wrapper big active" style="left:50%;">
+							<div class="spinner-layer spinner-blue">
+								<div class="circle-clipper left">
+									<div class="circle"></div>
+								</div>
+								<div class="gap-patch">
+									<div class="circle"></div>
+								</div>
+								<div class="circle-clipper right">
+									<div class="circle"></div>
+								</div>
+							</div>
+
+							<div class="spinner-layer spinner-red">
+								<div class="circle-clipper left">
+									<div class="circle"></div>
+								</div>
+								<div class="gap-patch">
+									<div class="circle"></div>
+								</div>
+								<div class="circle-clipper right">
+									<div class="circle"></div>
+								</div>
+							</div>
+
+							<div class="spinner-layer spinner-yellow">
+								<div class="circle-clipper left">
+									<div class="circle"></div>
+								</div>
+								<div class="gap-patch">
+									<div class="circle"></div>
+								</div>
+								<div class="circle-clipper right">
+									<div class="circle"></div>
+								</div>
+							</div>
+
+							<div class="spinner-layer spinner-green">
+								<div class="circle-clipper left">
+									<div class="circle"></div>
+								</div>
+								<div class="gap-patch">
+									<div class="circle"></div>
+								</div>
+								<div class="circle-clipper right">
+									<div class="circle"></div>
+								</div>
+							</div>
+						</div>
+					</table>
+				</div>
 				<div class="pager center-align"></div>
 				<c:if test="${uid != null}">
 					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'" style="margin-bottom:30px">글쓰기</button>
@@ -58,6 +104,9 @@
 			<div class="col m1"></div>
 		</div>
 	</section>
+	<script>
+		getList();
+	</script>
 	<jsp:include page="../foot.jsp" />
 </body>
 </html>
