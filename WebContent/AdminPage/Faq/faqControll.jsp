@@ -11,12 +11,12 @@
 <jsp:include page="../../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
-   <link rel="stylesheet" href="../CSS/faq.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/faq.css">
  <title>자주하는 질문</title>
    </head>
    <body>
-<jsp:include page="../../nav.jsp"/>
-<jsp:include page="../../header.jsp"/>
+<jsp:include page="${pageContext.request.contextPath}/nav.jsp"/>
+<jsp:include page="${pageContext.request.contextPath}/header.jsp"/>
  <!-- 페이지에 해당하는 내용 적기  -->
 <section class="container section scrollspy" id="intro">
 	<div class="row">
@@ -81,6 +81,6 @@
 
 	<jsp:include page="../../foot.jsp"/>
 <!--  js 추가는 여기에 -->
-<script src="../JS/faq.js"></script>
+<script src="${pageContext.request.contextPath}/JS/faq.js"></script>
 </body>
 </html>

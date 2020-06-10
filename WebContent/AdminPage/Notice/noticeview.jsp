@@ -53,12 +53,12 @@ ${nListView[0].n_content }
 <hr>
 <br>
 <div class="col s12 right-align">
-<button class="btn waves-effect btn2" onclick="location.href = 'notice.ho'">목록보기</button>
+<button class="btn waves-effect btn2" onclick="location.href = 'noticeControll.ho'">목록보기</button>
 	<button class="btn waves-effect btn2" onclick="location.href = 'update.ho?n_uid=${nListView[0].n_uid }'">수정</button>
 	<button class="btn waves-effect btn2" onclick="location.href = 'deleteOk.ho?n_uid=${nListView[0].n_uid }'">삭제</button>
+</div>
 	</c:when>
 	</c:choose>
-</div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		
 		

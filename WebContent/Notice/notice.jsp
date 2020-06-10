@@ -124,7 +124,7 @@
 
 	<jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->
-<script src="../JS/faq.js"></script>
+<script src="${pageContext.request.contextPath}/JS/faq.js"></script>
 </body>
 </html>
 

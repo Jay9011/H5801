@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../../top.jsp"/>
-<link rel="stylesheet" href="../../CSS/faq.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/faq.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
  <title>Notice</title>
@@ -122,7 +122,7 @@
 
 	<jsp:include page="../../foot.jsp"/>
 <!--  js 추가는 여기에 -->
-<script src="../../JS/faq.js"></script>
+<script src="${pageContext.request.contextPath}/JS/faq.js"></script>
 </body>
 </html>
 

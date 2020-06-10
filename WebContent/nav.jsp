@@ -47,7 +47,11 @@
 						<li><a href="${pageContext.request.contextPath}/MyPage/book.ho">예약현황</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/list.ho">게시물 조회</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/reInfo.ho">정보수정</a></li>
-
+						    <c:choose>
+						    <c:when test="${grade > 8 }">
+								<li><a href="${pageContext.request.contextPath}/AdminPage/MasterControll.ho">관리페이지</a></li>
+							</c:when>
+							</c:choose>						
 					</ul></li>
 				<li>
 					<button class="btn waves-effect waves-red btnIn"

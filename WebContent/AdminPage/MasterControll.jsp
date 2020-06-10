@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
- <title>PageControll</title>
+ <title>타이틀을 적어주세요</title>
    </head>
    <body>
 <jsp:include page="../nav.jsp"/>
@@ -21,24 +21,6 @@
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 		
-		
-<c:choose>
-	<c:when test="${grade > 8 }">
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	</c:when>
-	<c:otherwise>
-		<div style="font-size: 50px;" class="chenter-aline">잘못된 접근입니다.</div>
-	</c:otherwise>
-</c:choose>		
 		
 		
 		
