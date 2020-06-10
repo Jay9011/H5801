@@ -228,6 +228,7 @@ function chkEmailSubmit() {
 	
 	frm.submit();
 }  
+
 function joinEmailSubmit() {
 	var frm = document.joinEmailFrm;
 	
@@ -248,7 +249,6 @@ function joinEmailSubmit() {
 		   frm.email.focus();
            return false;
 	}
-	
 	frm.submit();
 }  
 //비밀번호 변경

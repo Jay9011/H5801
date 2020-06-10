@@ -20,7 +20,7 @@ public class BookCommand implements Command {
 
 		HttpSession session = request.getSession(true);
 		int uid;
-		
+
 		// 매개변수 받아오기
 		if(request.getSession().getAttribute("uid") != null) {
 			uid = (Integer)(request.getSession().getAttribute("uid"));
@@ -43,7 +43,7 @@ public class BookCommand implements Command {
 				//페이징 바
 				Pagination pg = new Pagination();
 		    	dao = new DAOBook();
-				int maxNum = dao.getCount(uid);
+				int maxNum = dao.countAll(uid);
 				pg.makeLastPageNum(maxNum);
 				
 				int curPage = 0;

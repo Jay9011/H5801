@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.BookCommand;
+import command.BookCommand2;
 import command.Command;
 import command.JoinCommand;
 import command.LoadCommand;
@@ -215,6 +216,12 @@ public class Controller extends HttpServlet {
 			//new BookCommand2().execute(request, response);
 			viewPage = "book.jsp";
 			break;
+		
+		case "/MyPage/book2.ho":
+			new BookCommand2().execute(request, response);
+			//new BookCommand2().execute(request, response);
+			viewPage = "book2.jsp";
+			break;
 //		case "/MyPage/bookPage.ho":
 //			viewPage = "bookPage.jsp";
 //			break;
@@ -247,16 +254,20 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
 			break;
+			
 		case "/User/joinchk.ho":
 			viewPage = "joinchk.jsp";
 			break;
+			
 		case "/User/joinEmail.ho":
 			viewPage = "joinEmail.jsp";
 			break;
+			
 		case "/User/joinEchk.ho":
 			new joinEmailCommand().execute(request, response);
-			viewPage = "joinEmail.jsp";
+			viewPage = "joinEchk.jsp";
 			break;
+			
 		case "/User/join.ho":
 			viewPage = "join.jsp";
 			break;

@@ -44,6 +44,11 @@ public class DAOBook {
 		if(conn != null) conn.close();
 	} // end close()
 	
+	public void closeWithoutConn() throws SQLException{
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+	} // end closeWithoutConn()
+	
 	// ResultSet --> DTO 배열로 리턴
 		public DTOBook [] createArray(ResultSet rs) throws SQLException {
 			DTOBook [] arr = null;  // DTO 배열
@@ -142,20 +147,35 @@ public class DAOBook {
 		} // end select()
 		
 		// 쿼리: 페이지네이션 구현
-		public int getCount(int m_uid) throws SQLException {
-			int count = 0;
+		public int countAll(int m_uid) throws SQLException {
+			int cnt = 0;
 
 			try {
 				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ?");
 				pstmt.setInt(1, m_uid);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
-					count = rs.getInt(1);
+					cnt = rs.getInt(1);
 				}
 			} finally {
-				close();
+				closeWithoutConn();
 			}
-			return count;
+			return cnt;
+		}
+		
+		public int countAll() throws SQLException {
+			int cnt = 0;
+
+			try {
+				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book");
+				rs = pstmt.executeQuery();
+				rs.next();
+				cnt = rs.getInt(1);
+			
+			} finally {
+				closeWithoutConn();
+			}
+			return cnt;
 		}
 		// BOARD의 페이징
 		public DTOBook[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
@@ -174,6 +194,37 @@ public class DAOBook {
 			return arr;
 		}
 		
+		public DTOBook[] selectFromRow(int m_uid, int from, int rows) throws SQLException {
+			DTOBook[] arr = null;
+			
+			try {
+				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? ORDER BY m_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt.setInt(1, m_uid);
+				pstmt.setInt(2, from);
+				pstmt.setInt(3, from+rows);
+				rs = pstmt.executeQuery();
+				arr = createArray(rs);
+			} finally {
+				close();
+			}
+			return arr;
+		}
 		
+		public DTOBook[] selectFromRow(int from, int rows) throws SQLException{
+			DTOBook[] arr =null;
+			
+		try {
+			pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+			pstmt.setInt(1, from);
+			pstmt.setInt(2, from+rows);
+			rs= pstmt.executeQuery();
+			arr = createArray(rs);
+		} finally {
+			close();
+		}
+		return arr;
+	}
+		
+
 	
 } // end class
