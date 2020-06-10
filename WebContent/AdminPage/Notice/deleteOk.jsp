@@ -4,7 +4,7 @@
 <c:if test="${result != 0}">
 	<script>
 		alert("삭제 성공.");
-		location.href = "faq.ho";
+		location.href = "noticeControll.ho";
 	</script>
 </c:if>
 	<script>

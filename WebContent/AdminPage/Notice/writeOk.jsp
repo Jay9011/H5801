@@ -10,7 +10,7 @@
 	<c:otherwise>
 		<script>
 			alert("등록 성공, 리스트를 출력합니다.");
-			location.href = "notice.ho";
+			location.href = "noticeControll.ho";
 		</script>
 	</c:otherwise>
 </c:choose>
