@@ -52,22 +52,3 @@ h3 , h6{
 	color: #AAA !important;
 }
 
-@media screen and (max-width: 670px){
-
-body {
-max-width: 100%;
-overflow-x: hidden;
-}
-
-.table-container{
-    width:100%;  
-    
-   }
-   
-table{
-	font-size: 11px;
-    width:auto;
-    white-space: nowrap;
-} 
- 
-}
