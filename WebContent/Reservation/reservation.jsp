@@ -3,12 +3,28 @@
 <!DOCTYPE html>
 <c:choose>
 	<c:when test="${email == null}">
-		<script>
-			alert("회원이 아니시면 접근할 수 없습니다.");
-			location.href = "${pageContext.request.contextPath}/index.ho";
+	 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+ <jsp:include page="../modal.jsp"/>
+		<div id="demo-modal" class="modal">
+			<div class="modal-content">
+				<h5>접근 실패</h5>
+				<p class="left-align">회원이 아니시면 접근할 수 없습니다.</p>
+			</div>
+			<div class="modal-footer">
+				<a href="${pageContext.request.contextPath}/index.ho"
+					class="modal-close waves-effect  btn-flat amber">확인</a>
+			</div>
+		</div>
+		<script>	
+document.addEventListener('DOMContentLoaded', function () {	
+    var Modalelem = document.querySelector('.modal');	
+    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});	
+    instance.open();	
+});	
 		</script>
 	</c:when>
-</c:choose>
+	<c:otherwise>
+
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -172,3 +188,5 @@
 
 </script>
 </html>
+	</c:otherwise>
+</c:choose>
