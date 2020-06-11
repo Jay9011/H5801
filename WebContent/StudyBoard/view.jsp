@@ -152,9 +152,9 @@
 				}
 				commentrow += "<div style='clear:both;'></div>";
 				if(row[i].sr_depth == 0){
-					commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>";
+					commentrow += "<div class='row showOnOff' style='display:none;'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>";
 				} else {
-					commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>";
+					commentrow += "<div class='row showOnOff' style='display:none;'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>";
 				}
 				commentrow += "<div class='left pfont'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>";
 
@@ -172,8 +172,9 @@
 			if(typeof prevId == "undefined"){
 				$("#commentList").prepend(commentrow);
 			} else {
-				$("#" + prevId).after(commentrow);
+				$("#" + prevId).parent().after(commentrow);
 			}
+			$('.showOnOff').show('slow');
 		     $('.tooltipped').tooltip({
 		    	 margin:3
 		     });
@@ -264,8 +265,24 @@
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					openModal1("삭제 성공", "정상적으로 삭제되었습니다.");
-					/* $("#" + sr_uid).remove(); */
+					openModal2("삭제 성공", "정상적으로 삭제되었습니다.");
+					var curRp = $("#" + sr_uid);
+					var tempRp = curRp;
+					curRp.hide('slow', function(){
+						var nextRp = curRp.parent().next().next().children('div');
+						while(true){
+							var nextId = nextRp.attr('id');
+							var nextDepth = nextRp.attr('class');
+							tempRp = nextRp.parent().next().next().children('div');
+							if(nextDepth == 'depth1'){
+								nextRp.parent().remove();
+								nextRp = tempRp;
+							} else {
+								break;
+							}
+						}
+						curRp.parent().remove();
+					});
 					/* location.reload(); */
 				} else if(data.status == "FAIL"){
 					openModal2("삭제 실패", "삭제를 실패했습니다. 잠시 후 다시 시도해 주세요.");
