@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:choose>
+	<c:when test="${grade > 8 }">
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <jsp:include page="../../top.jsp"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>공지사항 쓰기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
@@ -35,8 +37,6 @@
 <body>
 <jsp:include page="../../nav.jsp"/>
 <jsp:include page="../../header.jsp"/>
-<c:choose>
-	<c:when test="${grade > 8 }">
 <section class="container section scrollspy" id="intro">
 	<div class="row">
 		<div class="col s1 "></div>
@@ -52,7 +52,7 @@
 		</label>
 		</div>
 		</div>
-		내용:
+		내용
 		<br><textarea id="editor1" name="content"></textarea><br>
 		<br>
 		<div class="col s12 right-align" style="margin-bottom: 50px;">
@@ -76,7 +76,33 @@
 <jsp:include page="../../foot.jsp"/>
 <!--  js 추가는 여기에 -->
 		</c:when>
-		<c:otherwise>관리자가 아닙니다.</c:otherwise>
+		<c:otherwise>
+			<link
+			href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap"
+			rel="stylesheet">
+		<jsp:include page="../../modal.jsp" />
+		<div id="demo-modal" class="modal">
+			<div class="modal-content">
+				<h5>관리자 접근 실패</h5>
+				<p class="left-align">관리자가 아닙니다.</p>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:window.history.back();"
+					class="modal-close waves-effect  btn-flat amber">확인</a>
+			</div>
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var Modalelem = document.querySelector('.modal');
+				var instance = M.Modal.init(Modalelem, {
+					dismissible : false,
+					preventScrolling : false
+				});
+				instance.open();
+			});
+		</script>
+		
+		</c:otherwise>
 	</c:choose>
 </body>
 

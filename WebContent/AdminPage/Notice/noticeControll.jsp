@@ -37,6 +37,7 @@
         <!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
         <thead>
           <tr class="header">
+          <th width="100px">UID</th>
           <th>Title</th>
           <th width="150px">View Count</th>
           <th  width="150px">Creation time</th>
@@ -47,7 +48,8 @@
     	<c:otherwise>
     		<c:forEach var="notice" items="${npagetable }">
         <tr >
-          <td ><a class="firstSet-3" href="noticeview.ho?uid=${notice.n_uid}">UID : ${notice.n_uid }&nbsp;&nbsp;Title : ${notice.n_title }</a></td>
+        <td>${notice.n_uid }</td>
+          <td ><a class="firstSet-3" href="noticeview.ho?uid=${notice.n_uid}"> ${notice.n_title }</a></td>
           <td>${notice.n_viewCnt }</td>
           <td>${notice.n_date }</td>
         </tr>
