@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp" />
-<link rel="stylesheet"vhref="${pageContext.request.contextPath}/CSS/board.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
 <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/faq.css"> --%>
 <title>FAQ</title>
@@ -37,13 +37,9 @@
 
 				<h3 class="left-align pfont">자주하는 질문</h3>
 
-
-				<div>
-
-					<div class="FAQ">
-
+					<div class=" FAQ">
 						<div>
-							<ul class="collapsible popout  offset-s1 s9 ">
+							<ul class="collapsible popout col offset-s1 s10 pfont">
 								<c:choose>
 									<c:when test="${empty listRow || fn:length(listRow) == 0 }"></c:when>
 									<c:otherwise>
@@ -60,22 +56,13 @@
 								</c:choose>
 							</ul>
 						</div>
-
 					</div>
 					<!-- END -->
-				</div>
+	
 				<!-- END -->
-
-				<br>
-				<div class="hr">
-					<hr class="hr2">
-				</div>
-				<div class="div1">
-					<h5>여러분들의 공부를 항상 응원합니다.</h5>
-				</div>
-
-
-
+				<div class="pfont col s12 center-align">
+					<h5 class="light-green-text text-darken-3">여러분들의 공부를 항상 응원합니다. ٩( 'ω' )و</h5>
+</div>
 			</div>
 			<div class="col s1"></div>
 		</div>
