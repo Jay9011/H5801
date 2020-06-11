@@ -72,9 +72,9 @@
 			<li><a class="collapsible-header apad">Holic 소개</a>
 				<div class="collapsible-body">
 					<ul>
-						<li><a href="#!">Holic 소개</a></li>
-						<li><a href="#!">스터디룸 소개</a></li>
-						<li><a href="#!">오시는 길</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_intro">Holic 소개</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_room">스터디룸 소개</a></li>
+						<li><a href="${pageContext.request.contextPath}/Intro/introduce.ho#i_map">오시는 길</a></li>
 					</ul>
 				</div></li>
 		</ul>
@@ -101,6 +101,11 @@
 						<li><a href="${pageContext.request.contextPath}/MyPage/book.ho">예약현황</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/list.ho">게시물 조회</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/reInfo.ho">정보수정</a></li>
+						<c:choose>
+						    <c:when test="${grade > 8 }">
+								<li><a href="${pageContext.request.contextPath}/AdminPage/MasterControll.ho">관리페이지</a></li>
+							</c:when>
+						</c:choose>	
 					</ul>
 				</div></li>
 		</ul>
@@ -113,6 +118,27 @@
 			onclick="location.href='${pageContext.request.contextPath}/User/logout.ho'">로그아웃</button>
 	</li>
 </ul>
+
+			<table id="tbody1">
+				<tbody id="tbody">
+					<tr>
+					<th id="top"></th>
+					</tr>
+					<tr>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}AdminPage/MyPage/bookAdmin">예약현황<br>관리하기</a></th>
+					</tr>
+					<tr>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/faqControll.ho">FAQ<br>관리하기</a></th>
+					</tr>
+					<tr>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/faqControll.ho">Notice<br>관리하기</a></th>
+					</tr>
+					<tr>
+					<th id="buttom"></th>
+					</tr>
+				</tbody>
+			</table>
+
 
 <div id="topBtn" class="z-depth-2" onclick=" $('html, body').stop().animate({scrollTop: 0});">
 <i class="material-icons dp48 center-align">keyboard_tab</i>

@@ -20,11 +20,26 @@
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		
-		
-		
-		
-		
+			<c:choose>
+				<c:when test="${grade > 8 }">
+				<li><a href="${pageContext.request.contextPath}/AdminPage/MasterControll.ho">관리페이지</a></li>
+			<!-- 네비겡션 헤더 우측상단에 존재 메뉴 확장성 -->
+			<table>
+				<tbody>
+					<tr>
+						<th style="color: red"><h1>1taget</h1></th>
+						<th>2taget</th>
+					</tr>
+				</tbody>
+			</table>
+			
+				</c:when>
+			<c:otherwise>
+				<div style="font-size: 50px;" class="chenter-aline">잘못된 접근입니다.</div>
+				<div style="font-size: 30px; height: 400px;" class="chenter-aline"><a href="${pageContext.request.contextPath}/index.ho">메인화면으로 바로가기</a></div>
+			</c:otherwise>
+			</c:choose>	
+			
 		</div>
 		<div class="col s1"></div>
 	</div>

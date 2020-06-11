@@ -1,0 +1,47 @@
+#top, #midle, #buttom #tbody #tbody1{
+    margin: 0px !important;
+    padding: 0px !important;
+    display: table-cell !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+#tbody1{
+    width: 100px;
+    height: 200px;
+    z-index: 1;
+    position: fixed;
+    top: 20vh;
+    right: 5vw;
+}
+
+#top{
+    width: 100%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 10px 10px 0px 0px;	
+}
+
+#midle{
+    width: 100%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#midle:hover{
+background-color: #dddddd;
+}
+
+#link{
+    color: #ff932d;
+    text-decoration: none;
+}
+
+#buttom{
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 0px 0px 10px 10px;	
+    }
