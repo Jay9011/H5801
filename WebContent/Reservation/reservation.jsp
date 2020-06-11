@@ -32,9 +32,49 @@ document.addEventListener('DOMContentLoaded', function () {
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/reserve.css">
 <title>에약하기</title>
+<style>
+.box1{
+	max-width: 150px;
+	width: 100%;
+    height: 110px;
+	margin: 20% 5% 3% 30%;
+	border-radius: 10px;
+	background-color: #ffb300;
+}
+.box2{
+	max-width: 150px;
+	width: 100%;
+    height: 110px;
+    margin: 20% 5% 3% 10%;
+	border-radius: 10px;
+	background-color: #ffb300;
+}
+.box4{
+    max-width: 150px;
+    width: 100%;
+    height: 200px;
+    margin: 8% 5% 3% 10%;
+    border-radius: 10px;
+    background-color: #ff9800;
+
+}
+.box3{
+    max-width: 150px;
+    width: 100%;
+    height: 90px;
+    margin: 8% 5% 3% 30%;
+    border-radius: 10px;
+    background-color: #fdd835;
+}
+</style>
+<script>
+	window.history.forward();
+	function blockBack(){window.history.forward();}
+</script>
+
 </head>
 
-<body>
+<body onload="blockBack()" onpageshow="if(event.persisted) blockBack();" onunload="">
 	<jsp:include page="../nav.jsp" />
 	<jsp:include page="../header.jsp" />
 	<!-- 페이지에 해당하는 내용 적기  -->
@@ -43,61 +83,39 @@ document.addEventListener('DOMContentLoaded', function () {
 			<div class="col m12">
 				<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 				<h3 class="center-align pfont">독서실 예약하기</h3>
-				<div class="row" style="border-radius: 5px; border: 1px solid #ffa537;">
+				<div class="row" style="height: 500px;">
 					<div class="col s12">
 						<form id="frm" action="${pageContext.request.contextPath}/Payment/pay.ho">
 							<input id="selectDate" name="selectDate" type="text" class="datepicker pfont " readonly="readonly">
-							<input id="item_name" name="item_name" type="text" hidden="hidden">
-							<input id="total_amount" name="total_amount" type="text" hidden="hidden">
-							<input id="m_uid" name="m_uid" type="text" value="${uid }" hidden="hidden">
-							<input id="t_uid" name="t_uid" type="text" hidden="hidden">
+							<input id="item_name" name="item_name" type="hidden">
+							<input id="total_amount" name="total_amount" type="hidden">
+							<input id="m_uid" name="m_uid" type="hidden" value="${uid }">
+							<input id="t_uid" name="t_uid" type="hidden">
 						</form>
 					</div>
 					<!--<div class="row"> -->
-            <div id="rooms" class="col m6 s12" style="margin-bottom: 10px;">
-              <div class="col s12 center-align"style="border-radius: 5px;  border: 1px solid #ffa537;
-             ">
+            <div id="rooms" class="col m6 s12" style="margin-bottom: 10px; height: 100%;">
+              <div class="col s12 center-align"style="border-radius: 5px;  border: 1px solid #ffa537 ;   height: 100%;">
             <div style="width: 100%;">
-                <button id="101" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-                  max-width: 150px;
-                  width: 35%;
-                  height: 15%;
-    margin: 8% 5% 3% 10%;
-            ">1번방</button>
-                <button id="102" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-          max-width: 150px;
-          width: 35%;
-          height: 15%;
-    margin: 8% 5% 3% 5%;">2번방</button>
-
+            	<div style="float: left; width: 50%;">
+                <button id="101" class="col btn-large amber darken-1 box1" name="action" onclick="selectRoom($(this).attr('id'))">1번방</button>
+                </div>
+                <div style="float: left; width: 50%;">
+                <button id="102" class="col btn-large amber darken-1 box2" name="action" onclick="selectRoom($(this).attr('id'))">2번방</button>
+				</div>
           </div>
 
           <div style="width: 100%; float: left;">
-
-            <button id="103" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-              max-width: 150px;
-              width: 35%;
-              height: 15%;
-    margin: 3% 5% 3% 10%;
-     ">3번방</button>
-
-            <button id="104" class="col btn-large amber darken-3 " name="action" onclick="selectRoom($(this).attr('id'))" style="
-            max-width: 150px;
-            width: 35%;
-            height: 15%;
-    margin: 3% 5% 3% 5%;
-     ">4번방</button>
+	<div style="float: left; width: 50%;">
+            <button id="103" class="col btn-large yellow darken-1 box3" name="action" onclick="selectRoom($(this).attr('id'))">3번방</button>
+            <div style="clear: both;"></div>
+          <button id="105" class="col btn-large yellow darken-1 box3" style="float: left;" name="action" onclick="selectRoom($(this).attr('id'))">5번방</button>
+</div>
+<div style="float: left; width: 50%;">
+            <button id="104" class="col btn-large orange box4" name="action" onclick="selectRoom($(this).attr('id'))">4번방</button>
           </div>
-
-          <div style="width: 100%; float: left;">
-          <button id="105" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-           max-width: 150px;
-           width: 35%;
-           height: 15%;
-    margin: 3% 5% 3% 10%;
-   ">5번방</button>
-            </div>
-
+</div>
+     
             </div>
         </div>
 
@@ -109,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 							<h5 class="pfont">방을 선택해 주세요</h5>
 						</div>
 						<div class="col s12 center-align" style="margin-bottom: 10px;">
-							<button type="submit" class="btn-large amber grey-text text-darken-4" name="action" onclick="$('#frm').submit();">예약하기</button>
+							<button id="submitBtn" type="submit" class="btn-large amber grey-text text-darken-4 disabled" name="action" onclick="$('#frm').submit();">예약하기</button>
 						</div>
           </div>
           </div>
@@ -122,12 +140,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	<!--  js 추가는 여기에 -->
 </body>
 <script>
-	$(function() {
-		var selectedDate = $("#selectDate").val();
-		pickedDate(selectedDate);
-	});
+
+	function initInput(){
+		$("#RoomInfo").html("<h5 class='pfont'>방을 선택해 주세요</h5>");
+		$("#item_name").val("");
+		$("#total_amount").val("");
+		$("#t_uid").val("");
+	}
 
 	function pickedDate(sdate) {
+		initInput();
 		$.ajax({
 			type : "POST",
 			url : "reservInfo.ho",
@@ -141,10 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
 					var row = data.data;
 					for (var i = 0; i < row.length; i++) {
 						$("#" + row[i].t_uid).addClass("disabled");
-						$("#RoomInfo").html("<h5 class='pfont'>방을 선택해 주세요</h5>");
-						$("#item_name").val("");
-						$("#total_amount").val("");
-						$("#t_uid").val("");
 					} // end for
 				} else if (data.status == "FAIL") {
 				} // end if
@@ -157,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function selectRoom(roomId){
+		initInput();
 		$.ajax({
 			type : "POST",
 			url : "roomInfo.ho",
@@ -167,10 +186,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			success : function(data) {
 				if (data.status == "OK") {
 					var info = data.data[0];
+					initInput();
 					$("#RoomInfo").html("<h3 class='pfont orange-text text-darken-2'>" + info.t_name + " 번방<span class='grey-text text-darken-4' style='font-size:0.5em'>을 선택</span></h3><p class='pfont orange-text text-darken-4' style='font-size:24px;'>" + info.t_pay + "원</p><p class='pfont orange-text text-darken-4'>최대 " + info.t_maxnum + " 인 가능</p>");
 					$("#item_name").val(info.t_name + "번 방");
 					$("#total_amount").val(info.t_pay);
 					$("#t_uid").val(info.t_uid);
+					$("#submitBtn").removeClass("disabled");
 				} else if (data.status == "FAIL") {
 					alert(data.message);
 				}
@@ -182,8 +203,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+	/* function payGo(){
+		var frm = $("#frm");
+		var tuid = $("#t_uid").val();
+		if(tuid == null || tuid.trim().equals("")){
+			alert("방 선택");
+		}
+	} */
+
 	$(document).ready(function() {
 		$('.modal').modal();
+		var selectedDate = $("#selectDate").val();
+		pickedDate(selectedDate);
 	});
 
 </script>

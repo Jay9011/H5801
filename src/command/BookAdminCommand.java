@@ -33,15 +33,9 @@ public class BookAdminCommand implements Command {
 		
 		if(uid != 0 && !(uid < 0)){
 			try {
-				//arr1 = dao.selectByUid(uid);
-				//System.out.println(arr.length);
-			
-				
-				//request.setAttribute("book", arr1);
-				
+
 				//페이징 바
 				Pagination pg = new Pagination();
-		    	dao = new DAOBook();
 				int maxNum = dao.countAllAdmin();
 				pg.makeLastPageNum(maxNum);
 				
@@ -65,7 +59,7 @@ public class BookAdminCommand implements Command {
 				int toRow = fromRow + pg.getListCnt();
 				
 				dao = new DAOBook();
-				arr = dao.selectPaging_stAdmin(fromRow, toRow);
+				arr = dao.selectFromRowAdmin(fromRow, toRow);
 				request.setAttribute("book", arr);
 				
 				//================================================================================================================

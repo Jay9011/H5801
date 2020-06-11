@@ -16,6 +16,7 @@ $(document).ready(function(){
 	// 예약 결제 취소 버튼 누르면
 	$("#btnCancel").click(function(){
 		chkPayCancelSubmit();
+		
 	});
 	
 	
@@ -57,9 +58,8 @@ function updateList(jsonObj){
 		for(i = 0; i < count; i++){
 			result += "<tr onclick='select()'>\n";
 			result += "<td>" + items[i].rnum +"</td>\n";
-			result += "<td>" + items[i].b_seatType+"<br>"+"("+items[i].t_name+")"+ "</td>\n";
+			result += "<td>" + items[i].b_seatType+"("+"Room"+items[i].t_name+")"+ "</td>\n";
 			result += "<td>" + items[i].b_sdate + "</td>\n";
-			result += "<td>" + items[i].b_stime+"~"+items[i].b_etime+"<br>"+"("+items[i].b_term+"시간)"+"</td>\n";
 			result += "<td>" + numberWithCommas(items[i].total_amount)+"원"+ "</td>\n";
 			if(items[i].p_cancel== 1){
 				result += "<td>결제 완료</td>\n";
@@ -68,6 +68,7 @@ function updateList(jsonObj){
 				} // end if		
 			result += "<td>";
 			result += "<label><p>";
+			
 			if(items[i].b_refund == 1 && items[i].p_cancel != 2 ){
 				result += "<input type='radio' id='p_uid' class='with-gap' name='p_uid' value='" + items[i].p_uid + "'>\n";
 			} else{
@@ -177,8 +178,7 @@ function chkPayCancelSubmit(){
 	var frm = document.bookFrm;
 	var p_uid = frm.p_uid.value.trim();
 	if(p_uid == ""){
-		alert("취소할 항목을 선택해주세요")
-	    frm.p_uid.focus();
+		location.href="book_modal.ho";
         return false;
 	}
 	//alert(p_uid);

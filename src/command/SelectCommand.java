@@ -1,13 +1,15 @@
 package command;
 
-// 작성자: 낙경
-// 2020-06-01  23:00 수정
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dbcommon.DAOPassword;
 import dbcommon.DTOPassword;
 
+/**
+ * 작성자: 낙경
+ * 수정일: 200611
+ */
 public class SelectCommand implements Command {
 
 	@Override

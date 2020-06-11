@@ -30,6 +30,7 @@ ul.pagination a {
 ul.pagination a.active {
     background-color: #FFC107;
     color: white;
+
  
 
 }
@@ -37,7 +38,8 @@ ul.pagination a.active {
 ul.pagination a:hover:not(.active) {background-color: #ddd;}
 
 div#pageinfo{
-	text-decoration: underline;
+	font-style: italic;
+	font-weight: bold;
 	float: right;
 }
 
@@ -61,11 +63,12 @@ overflow-x: hidden;
 }
 
 .table-container{
-    width:100%;   
-    overflow-x:auto;
+    width:100%;  
+    
    }
    
 table{
+	font-size: 11px;
     width:auto;
     white-space: nowrap;
 } 

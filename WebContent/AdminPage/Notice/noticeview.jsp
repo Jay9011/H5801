@@ -5,9 +5,24 @@
 
 <c:choose>
 	<c:when test="${empty nListView || fn:length(nListView) == 0 }">
-		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
-			history.back();
+			<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+ <jsp:include page="../../modal.jsp"/>
+		<div id="demo-modal" class="modal">
+			<div class="modal-content">
+				<h5>접근 실패</h5>
+				<p class="left-align">해당 정보가 삭제되었거나 존재하지 않습니다.</p>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:window.history.back();"
+					class="modal-close waves-effect  btn-flat amber">확인</a>
+			</div>
+		</div>
+		<script>	
+document.addEventListener('DOMContentLoaded', function () {	
+    var Modalelem = document.querySelector('.modal');	
+    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});	
+    instance.open();	
+});	
 		</script>
 	</c:when>
 <c:otherwise>
@@ -29,29 +44,27 @@
  <!-- 페이지에 해당하는 내용 적기  -->
 <section class="container section scrollspy" id="intro">
 	<div class="row">
-		<div class="col s1 "></div>
-		<div class="col s10">
+		<div class="col m1 "></div>
+		<div class="col s12 m10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		
-		
-		
 
 	<c:choose>
 	<c:when test="${grade > 8 }">
-
-<h2>${nListView[0].n_title }</h2>
-<br>
-UID : ${nListView[0].n_uid }<br>
-제목 : ${nListView[0].n_title }<br>
+	<h3 class="center-align pfont">${nListView[0].n_title }</h3>
+	<div class="row">
+					<div class="col s12 pfont right-align">
+					UID : ${nListView[0].n_uid }<br>
 등록일 : ${nListView[0].n_date }<br>
 조회수 : ${nListView[0].n_viewCnt }<br>
-내용: <br>
-<hr>
-<div>
-${nListView[0].n_content }
-</div>
-<hr>
-<br>
+					</div>
+				</div>
+						<div class="row">
+							<div class="col s12"
+								style="margin-left: 5px; border-radius: 5px; border: 1px solid #ffa537;">
+								<div style="padding: 5% 4%">${nListView[0].n_content }</div>
+							</div>
+							<div class="col s1"></div>
+						</div>
 <div class="col s12 right-align">
 <button class="btn waves-effect btn2" onclick="location.href = 'noticeControll.ho'">목록보기</button>
 	<button class="btn waves-effect btn2" onclick="location.href = 'update.ho?n_uid=${nListView[0].n_uid }'">수정</button>
@@ -59,11 +72,7 @@ ${nListView[0].n_content }
 </div>
 	</c:when>
 	</c:choose>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		
-		
-		
-		
+
 		</div>
 		<div class="col s1"></div>
 	</div>

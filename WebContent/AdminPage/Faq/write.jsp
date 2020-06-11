@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="${pageContext.request.contextPath}/top.jsp"/>
+<jsp:include page="../../top.jsp"/>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>FAQ 쓰기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
@@ -51,7 +51,7 @@
 		</label>
 		</div>
 		</div>
-		내용:
+		내용
 		<br><textarea id="editor1" name="content"></textarea><br>
 		<br>
 		<div class="col s12 right-align" style="margin-bottom: 50px;">
