@@ -23,16 +23,13 @@
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		      <script type="text/javascript" src="js/materialize.min.js"></script>
-		      
-		      
 	<div class="col m7 offset-m5 s12  right-align" style="margin-bottom:51px; ">
       <ul class="tabs">
         <li class="tab col s6 m6">
-          <a target="_self" class="" href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a>
+          <a target="_self" class="active" href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a>
         </li>
         <li class="tab col s6 m6">
-          <a target="_self" class="" href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a>
+          <a target="_self" href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a>
         </li>
       <li class="indicator" style="left: 0px; right: 284px;"></li></ul>
     </div>

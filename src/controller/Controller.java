@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.BookAdminCommand;
 import command.BookCommand2;
+import command.CancelCommand;
 import command.Command;
 import command.JoinCommand;
 import command.LoadCommand;
@@ -214,7 +215,7 @@ public class Controller extends HttpServlet {
 			new BookCommand2().execute(request, response);
 			viewPage = "book2.jsp";
 			break;
-		
+
 		case "/MyPage/bookAdmin.ho":
 			new BookAdminCommand().execute(request, response);
 			viewPage = "bookAdmin.jsp";
@@ -230,7 +231,13 @@ public class Controller extends HttpServlet {
 			new PayCommand().execute(request, response);
 			viewPage = "pay.jsp";
 			break;
-		
+
+		case "/Payment/cancel.ho":
+			new CancelCommand().execute(request, response);;
+			viewPage = "cancel.jsp";
+			break;
+
+
 		// 예약 결제 승인
 		case "/Payment/payOk.ho":
 			new PayOkCommand().execute(request, response);
@@ -254,24 +261,24 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "loginOk.jsp";
 			break;
-			
+
 		case "/User/joinchk.ho":
 			viewPage = "joinchk.jsp";
 			break;
-			
+
 		case "/User/joinEmail.ho":
 			viewPage = "joinEmail.jsp";
 			break;
-			
+
 		case "/User/joinEchk.ho":
 			new joinEmailCommand().execute(request, response);
 			viewPage = "joinEchk.jsp";
 			break;
-			
+
 		case "/User/joinLchk.ho":
 			viewPage = "joinLchk.jsp";
 			break;
-			
+
 		case "/User/join.ho":
 			viewPage = "join.jsp";
 			break;
@@ -321,7 +328,7 @@ public class Controller extends HttpServlet {
 			break;
 
 
-			
+
 			// JaeHyen Controller FAQ/Notice/Introduce User
 		case "/Faq/faq.ho":
 			command = new FaqLoad();
@@ -351,21 +358,21 @@ public class Controller extends HttpServlet {
 
 
 			// AdminController
-			
-			// AdminPage Notice Controller	
-			
+
+			// AdminPage Notice Controller
+
 		case "/AdminPage/Notice/noticeControll.ho":
 			command = new NoticePageingLoad();
 			command.execute(request, response);
 			viewPage = "noticeControll.jsp";
 			break;
-			
+
 		case "/AdminPage/Notice/noticeview.ho":
 			command = new NoticeView();
 			command.execute(request, response);
 			viewPage = "noticeview.jsp";
 			break;
-			
+
 		case "/AdminPage/Notice/write.ho":
 			viewPage = "write.jsp";
 			break;
@@ -375,7 +382,7 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "writeOk.jsp";
 			break;
-			
+
 		case "/AdminPage/Notice/deleteOk.ho":
 			command = new NoticeDeleteOk();
 			command.execute(request, response);
@@ -393,19 +400,19 @@ public class Controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "updateOk.jsp";
 			break;
-			
-			
 
 
-			
-		// AdminPage Faq Controller	
-			
+
+
+
+		// AdminPage Faq Controller
+
 		case "/AdminPage/Faq/faqControll.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
 			viewPage = "faqControll.jsp";
 			break;
-			
+
 		case "/AdminPage/Faq/write.ho":
 			viewPage = "write.jsp";
 			break;

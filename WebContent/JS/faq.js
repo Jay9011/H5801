@@ -28,12 +28,6 @@ $(document).ready(function(){
 	
 });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems);
-  });
-
-
   $(window).resize(function() { if($(window).width() < 895) {
 	  $(".firstSet-1").hide();
 } });

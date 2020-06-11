@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -67,9 +68,12 @@ public class PayCommand implements Command {
 			int total_amount = arr[0].getTotal_amount();
 			int tax_free_amount = arr[0].getTotal_amount();
 			String approval_url = url_domain+conPath+"/Payment/payOk.ho";
-			String cancel_url = url_domain+conPath+"/MyPage/book.ho";
-			String fail_url =  url_domain+conPath+"/MyPage/book.ho";
+			String cancel_url = url_domain+conPath+"/Payment/cancel.ho";
+			String fail_url =  url_domain+conPath+"/Payment/cancel.ho";
 
+			Cookie cookie = new Cookie("puid", "" + p_uid);
+			cookie.setMaxAge(60 * 60 * 22);
+			response.addCookie(cookie);
 
 			Map<String, Object> params = new HashMap<String, Object>();
 

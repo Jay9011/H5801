@@ -198,4 +198,18 @@ public class DAOPay {
 			}
 			return cnt;
 		} // end createOrder()
+
+		public int deleteOrder(int p_uid) throws SQLException {
+			int cnt = 0;
+
+			try {
+				pstmt = conn.prepareStatement(Common.SQL_DELETE_ORDER_RESERVE);
+				pstmt.setInt(1, p_uid);
+				cnt = pstmt.executeUpdate();
+			} finally {
+				close();
+			}
+
+			return cnt;
+		} // end deleteOrder()
 }
