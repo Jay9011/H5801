@@ -132,6 +132,7 @@
 </c:if>
 <div class="col s1 "></div>
 </div>
+</div>
 </section>
 <jsp:include page="../foot.jsp"/>
 		</c:when>

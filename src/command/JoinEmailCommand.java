@@ -19,7 +19,7 @@ import dbcommon.Email;
 
 import java.util.Properties;
 
-public class joinEmailCommand implements Command, Email{
+public class JoinEmailCommand implements Command, Email{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

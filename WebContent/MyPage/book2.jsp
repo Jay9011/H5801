@@ -33,8 +33,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/CSS/book2.css"/>
-<script src="${pageContext.request.contextPath }/JS/book.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/CSS/book.css"/>
+<script src="${pageContext.request.contextPath }/JS/book2.js"></script>
 <title>MY RESERVATION</title>
 </head>
 <body>
@@ -153,6 +153,7 @@
      </div>
 </div>
 <div class="col s1 "></div>
+</div>
 </div>
 </section>
 <jsp:include page="../foot.jsp"/>
