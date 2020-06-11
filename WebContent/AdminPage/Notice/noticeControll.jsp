@@ -23,7 +23,7 @@
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		     	      
+
       <c:choose>
 	<c:when test="${grade > 8 }">
   <div class="col s12 text_title FAQ pfont"><h2>공지사항 <br>Admin Controll Page</h2></div>
@@ -45,6 +45,8 @@
 	    <c:choose>
     	<c:when test="${empty npagetable || fn:length(npagetable) == 0 }"></c:when>
     	<c:otherwise>
+
+
     		<c:forEach var="notice" items="${npagetable }">
         <tr >
         <td>${notice.n_uid }</td>
@@ -52,23 +54,27 @@
           <td>${notice.n_viewCnt }</td>
           <td>${notice.n_date }</td>
         </tr>
+
+
+
+
            </c:forEach>
     	</c:otherwise>
     </c:choose>
         </table>
 
-      
+
       <!-- ===========================================페이징============================================= -->
 	<div class="pager center-align">
     <ul class="pagination">
         <c:if test="${ curPageNum > 5 && !empty kwd }">
-            <li><a href="notice.ho?page=${ blockStartNum - 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_left</i></a></li>
+            <li><a href="noticeControll.ho?page=${ blockStartNum - 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
-        
+
         <c:if test="${ curPageNum > 5 }">
-            <li><a href="notice.ho?page=${ blockStartNum - 1 }"><i class='material-icons'>chevron_left</i></a></li>
+            <li><a href="noticeControll.ho?page=${ blockStartNum - 1 }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
-        
+
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
@@ -78,27 +84,27 @@
                     <li class="active"><a>${ i }</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="notice.ho?page=${ i }">${ i }</a></li>
+                    <li><a href="noticeControll.ho?page=${ i }">${ i }</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
         <c:if test="${ lastPageNum > blockLastNum }">
-            <li><a href="notice.ho?page=${ blockLastNum + 1 }"><i class='material-icons'>chevron_right</i></a></li>
+            <li><a href="noticeControll.ho?page=${ blockLastNum + 1 }"><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
-</div> 
+</div>
       </div>
       <!--  -->
   </div>  <!-- END -->
-		
-		
+
+
 
 		</c:when>
 	<c:otherwise>
 	<div style="font-size: 50px;" class="chenter-aline">잘못된 접근입니다.</div>
 <div style="font-size: 30px; height: 400px;" class="chenter-aline"><a href="${pageContext.request.contextPath}/Notice/notice.ho">Notice/공지사항 바로가기</a></div>
 	</c:otherwise>
-	</c:choose>		
+	</c:choose>
 		</div>
 		<div class="col s1"></div>
 	</div>

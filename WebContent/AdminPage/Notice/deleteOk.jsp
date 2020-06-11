@@ -5,6 +5,9 @@
  <head>
  <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
  <jsp:include page="../../modal.jsp"/>
+ 
+ 
+ 
 <c:if test="${result != 0}">
 				<div id="demo-modal" class="modal">
     <div class="modal-content">
@@ -16,6 +19,8 @@
     </div>
   </div>
 </c:if>
+
+
 	<div id="demo-modal" class="modal">
     <div class="modal-content">
       <h5>삭제 실패</h5>

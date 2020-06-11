@@ -20,6 +20,7 @@ public class comUpdateOk implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		DAOStudy daoStudy = new DAOStudy();
+		DTOComment[] comment = null;
 		int result = 0;
 
 		ServletContext context = request.getServletContext();
@@ -39,7 +40,10 @@ public class comUpdateOk implements Command {
 
 		try {
 			result = daoStudy.updateComment(content, sr_uid);
+			daoStudy = new DAOStudy();
+			comment = daoStudy.selectCommentBySRuid(sr_uid);
 			request.setAttribute("result", result);
+			request.setAttribute("list", comment);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		$("#item_name").val("");
 		$("#total_amount").val("");
 		$("#t_uid").val("");
+		$("#submitBtn").addClass("disabled");
 	}
 
 	function pickedDate(sdate) {
