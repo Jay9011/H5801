@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/customModal.css">
 <title>학습 문의 ${viewInfo[0].s_title}</title>
 <script src="../ckeditor/ckeditor.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <jsp:include page="../nav.jsp"/>
@@ -166,7 +167,7 @@
 				}
 				commentrow += "<div class='right pfont' style='margin-right: 3%;'>" + row[i].sr_date + " </div>";
 				commentrow += "<div class='clear'></div>";
-				commentrow += "<div style='margin-left: 5px; border-radius: 5px; border: 1px solid #ff8e04; padding: 0 4%;'>" + row[i].sr_com + "</div>";
+				commentrow += "<div class='RPContext' style='margin-left: 5px; border-radius: 5px; border: 1px solid #ff8e04; padding: 0 4%;'>" + row[i].sr_com + "</div>";
 				commentrow += "</div></div>";
 			}
 			if(typeof prevId == "undefined"){
@@ -237,6 +238,8 @@
 				if(data.status == "OK"){
 					createComment(data, prevId);
 					CKEDITOR.instances.editor1.setData('');
+					var RPoffset = $("#" + data.data[0].sr_numUid).offset().top - ($(window).height() / 2);
+					$('html, body').animate({scrollTop : RPoffset}, 100);
 				} else if(data.status == "FAIL"){
 					openModal2("등록 실패", "등록 실패 : " + data.message);
 				}
@@ -265,7 +268,7 @@
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					openModal2("삭제 성공", "정상적으로 삭제되었습니다.");
+					/*openModal2("삭제 성공", "정상적으로 삭제되었습니다.");*/
 					var curRp = $("#" + sr_uid);
 					var tempRp = curRp;
 					curRp.hide('slow', function(){
@@ -361,7 +364,13 @@
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					openModal1("수정 성공", "정상적으로 수정되었습니다.");
+					/*openModal1("수정 성공", "정상적으로 수정되었습니다.");*/
+					var modiRP = $("#" + sr_uid + " .RPContext");
+					modiRP.html(data.data[0].sr_com);
+					initPage();
+					var RPoffset = $("#" + sr_uid).offset().top - ($(window).height() / 2);
+					$('html, body').animate({scrollTop : RPoffset}, 100);
+					modiRP.animate({backgroundColor : "#ff8e04"}, 100).animate({backgroundColor : "#FFF"}, 100).animate({backgroundColor : "#ff8e04"}, 100).animate({backgroundColor : "#FFF"}, 100);
 				} else if(data.status == "FAIL"){
 					openModal2("수정 실패", "수정을 실패했습니다.");
 				}

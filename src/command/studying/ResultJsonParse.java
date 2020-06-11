@@ -1,6 +1,7 @@
 package command.studying;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,18 +10,21 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import command.Command;
+import dbcommon.DTOComment;
 
 public class ResultJsonParse implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int result = (Integer) request.getAttribute("result");
-		ResultJSON resultJSON = new ResultJSON();
+		DTOComment[] comments = (DTOComment[]) request.getAttribute("list");
+		CommentJSON resultJSON = new CommentJSON();
 
 		if(result < 1) {
 			resultJSON.setStatus("FAIL");
 		} else {
 			resultJSON.setStatus("OK");
+			resultJSON.setList(Arrays.asList(comments));
 		}
 
 		ObjectMapper mapper = new ObjectMapper();
