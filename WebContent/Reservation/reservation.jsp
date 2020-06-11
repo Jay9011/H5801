@@ -16,20 +16,6 @@
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/reserve.css">
 <title>에약하기</title>
-<style>
-p{
-margin:10px;
-}
-.datepicker-date-display, .datepicker-table td.is-selected {
-background-color: #dfb429;
-}
-.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done,.datepicker-table td.is-today{
- color: #dfb429;
-}
-.datepicker-table td.is-selected {
-    color: #fff;
-}
-</style>
 </head>
 
 <body>
