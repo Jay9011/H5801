@@ -1,9 +1,12 @@
-#top, #midle, #buttom #tbody #tbody1{
-    margin: 0px !important;
-    padding: 0px !important;
-    display: table-cell !important;
-    text-align: center !important;
-    vertical-align: middle !important;
+
+#top, #midle, #buttom, #tbody, #tbody1{
+    padding: 0px 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#tbody1{
+	border-collapse: inherit;
 }
 
 #tbody1{
@@ -11,8 +14,12 @@
     height: 200px;
     z-index: 1;
     position: fixed;
-    top: 20vh;
+    top: 30vh;
     right: 5vw;
+}
+
+#tbody{
+	background-color: rgba(255,255,255,0.9);
 }
 
 #top{
@@ -30,7 +37,7 @@
 }
 
 #midle:hover{
-background-color: #dddddd;
+background-color: rgba(153,102,051,0.8);
 }
 
 #link{

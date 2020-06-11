@@ -22,22 +22,15 @@
 	<div class="row">
 		<div class="col s1 "></div>
 		<div class="col s10">
-		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
             
     <c:choose>
 	<c:when test="${grade > 8 }">
-      <div class="w-12 text_title FAQ pfont"><h1>자주하는 질문 <br>Admin Controll Page</h1></div>
-  <div class="text_title right-align " style="width: 100%">
-	<button class="btn waves-effect btn2" onclick="location.href = 'write.ho'">추가</button>
 
-  </div>
-  
-  
-  <br>
+      <div class="col s12 text_title FAQ pfont"><h2>자주하는 질문 <br>Admin Controll Page</h2></div>
+      <div class="col s10"></div>
+	<button class="s2 btn waves-effect btn2 right-align" onclick="location.href='write.ho'">추가</button>
   <div>
-  <div class="clear"></div>
-    <div class="hr"><hr class="hr2"></div>
+
       <div class="FAQ">
 
     <div>
@@ -50,8 +43,8 @@
       		<div class="collapsible-header s12"><i class="material-icons">live_help</i>UID : ${faq.f_uid }&nbsp;&nbsp;Title : ${faq.f_title }</div>
       		<div class="collapsible-body s12" id="test"><span>Content : <br>${faq.f_content }</span>
       		<div class="right-align">
-      		<button class="btn waves-effect btn2" onclick="location.href = 'update.ho?f_uid=${faq.f_uid }'">수정</button>
-			<button class="btn waves-effect btn2" onclick="location.href = 'deleteOk.ho?f_uid=${faq.f_uid }'">삭제</button>
+      		<button class="btn waves-effect btn2" onclick="location.href='update.ho?f_uid=${faq.f_uid }'">수정</button>
+			<button class="btn waves-effect btn2" onclick="location.href='deleteOk.ho?f_uid=${faq.f_uid }'">삭제</button>
 			</div>
     		</div>
     	</li>
