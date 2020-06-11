@@ -16,58 +16,100 @@
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/reserve.css">
 <title>에약하기</title>
+<style>
+p{
+margin:10px;
+}
+.datepicker-date-display, .datepicker-table td.is-selected {
+background-color: #dfb429;
+}
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done,.datepicker-table td.is-today{
+ color: #dfb429;
+}
+.datepicker-table td.is-selected {
+    color: #fff;
+}
+</style>
 </head>
+
 <body>
 	<jsp:include page="../nav.jsp" />
 	<jsp:include page="../header.jsp" />
 	<!-- 페이지에 해당하는 내용 적기  -->
-	<section class="container section scrollspy" id="intro">
+	  <section class="container section scrollspy" id="intro">
 		<div class="row">
 			<div class="col m12">
 				<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 				<h3 class="center-align pfont">독서실 예약하기</h3>
 				<div class="row" style="border-radius: 5px; border: 1px solid #ffa537;">
-					<!-- <h3 class="center-align pfont">2020.05.27(여기다 날짜 나오게 하고싶다 소근소근)</h3> -->
 					<div class="col s12">
 						<form id="frm" action="${pageContext.request.contextPath}/Payment/pay.ho">
-							<input id="selectDate" name="selectDate" type="text" class="datepicker pfont" readonly="readonly">
-							<input id="item_name" name="item_name" type="text" hidden="hidden">
-							<input id="total_amount" name="total_amount" type="text" hidden="hidden">
+							<input id="selectDate" name="selectDate" type="text" class="datepicker pfont " readonly="readonly">
+							<input id="item_name" name="item_n al_amount" type="text" hidden="hidden">
 							<input id="m_uid" name="m_uid" type="text" value="${uid }" hidden="hidden">
 							<input id="t_uid" name="t_uid" type="text" hidden="hidden">
 						</form>
 					</div>
-					<!-- 					<div class="row"> -->
-					<div id="rooms" class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
-						<div>
-							<div class="col s3">
-								<button id="101" class="col btn-large disabled" name="action" onclick="selectRoom($(this).attr('id'))">1번방</button>
-							</div>
-							<div class="col s3 offset-s6">
-								<button id="104" class="col btn-large" name="action" onclick="selectRoom($(this).attr('id'))">4번방</button>
-							</div>
-						</div>
-						<div>
-							<div class="col s3">
-								<button id="102" class="col btn-large" name="action" onclick="selectRoom($(this).attr('id'))">2번방</button>
-							</div>
-							<div class="col s3 offset-s6">
-								<button id="105" class="col btn-large" name="action" onclick="selectRoom($(this).attr('id'))">5번방</button>
-							</div>
-						</div>
-						<div class="col s3">
-							<button id="103" class="col btn-large" name="action" onclick="selectRoom($(this).attr('id'))">3번방</button>
-						</div>
-					</div>
+					<!--<div class="row"> -->
+            <div id="rooms" class="col m6 s12" style="margin-bottom: 10px;">
+              <div class="col s12 center-align"style="border-radius: 5px;  border: 1px solid #ffa537;
+             ">
+            <div style="width: 100%;">
+                <button id="101" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
+                  max-width: 150px;
+                  width: 35%;
+                  height: 15%;
+    margin: 8% 5% 3% 10%;
+            ">1번방</button>
+                <button id="102" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
+          max-width: 150px;
+          width: 35%;
+          height: 15%;
+    margin: 8% 5% 3% 5%;">2번방</button>
 
-					<div class="col s6" style="border-radius: 5px; border: 1px solid #ffa537;">
+          </div>
+
+          <div style="width: 100%; float: left;">
+
+            <button id="103" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
+              max-width: 150px;
+              width: 35%;
+              height: 15%;
+    margin: 3% 5% 3% 10%;
+     ">3번방</button>
+
+            <button id="104" class="col btn-large amber darken-3 " name="action" onclick="selectRoom($(this).attr('id'))" style="
+            max-width: 150px;
+            width: 35%;
+            height: 15%;
+    margin: 3% 5% 3% 5%;
+     ">4번방</button>
+          </div>
+
+          <div style="width: 100%; float: left;">
+          <button id="105" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
+           max-width: 150px;
+           width: 35%;
+           height: 15%;
+    margin: 3% 5% 3% 10%;
+   ">5번방</button>
+            </div>
+
+            </div>
+        </div>
+
+
+          <div class="col m6 s12" style="margin-bottom: 10px;">
+            <div class="col s12 center-align"style="border-radius: 5px; border: 1px solid #ffa537;
+            ">
 						<div id="RoomInfo" class="col s12 center-align">
-							<h5>방을 선택해 주세요</h5>
+							<h5 class="pfont">방을 선택해 주세요</h5>
 						</div>
-						<div class="col s12 center-align">
-							<button type="submit" class="btn-large" name="action" onclick="$('#frm').submit();">예약하기</button>
+						<div class="col s12 center-align" style="margin-bottom: 10px;">
+							<button type="submit" class="btn-large amber grey-text text-darken-4" name="action" onclick="$('#frm').submit();">예약하기</button>
 						</div>
-					</div>
+          </div>
+          </div>
 				</div>
 			</div>
 		</div>
@@ -96,7 +138,7 @@
 					var row = data.data;
 					for (var i = 0; i < row.length; i++) {
 						$("#" + row[i].t_uid).addClass("disabled");
-						$("#RoomInfo").html("<h5>방을 선택해 주세요</h5>");
+						$("#RoomInfo").html("<h5 class='pfont'>방을 선택해 주세요</h5>");
 						$("#item_name").val("");
 						$("#total_amount").val("");
 						$("#t_uid").val("");
@@ -122,7 +164,7 @@
 			success : function(data) {
 				if (data.status == "OK") {
 					var info = data.data[0];
-					$("#RoomInfo").html("<h3>" + info.t_name + " 번방<span style='font-size:0.5em'>을 선택</span></h3><p>" + info.t_pay + "원</p><p>최대 " + info.t_maxnum + " 인 가능</p>");
+					$("#RoomInfo").html("<h3 class='pfont orange-text text-darken-2'>" + info.t_name + " 번방<span class='grey-text text-darken-4' style='font-size:0.5em'>을 선택</span></h3><p class='pfont orange-text text-darken-4' style='font-size:24px;'>" + info.t_pay + "원</p><p class='pfont orange-text text-darken-4'>최대 " + info.t_maxnum + " 인 가능</p>");
 					$("#item_name").val(info.t_name + "번 방");
 					$("#total_amount").val(info.t_pay);
 					$("#t_uid").val(info.t_uid);
