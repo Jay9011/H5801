@@ -8,7 +8,7 @@
 	
 		<div id="demo-modal" class="modal">
 	    	<div class="modal-content">
-	      		<h5 style='color:red'>※결제 취소 성공</h5>
+	      		<h5 style='color:blue'>※결제 취소 성공</h5>
 	      			<p class="left-align">"${total }원 (${item_name })이 결제 취소되었습니다. "</p>
 			</div>
 	    	<div class="modal-footer">
