@@ -93,8 +93,7 @@
   </div>  <!-- END -->
 		
 		
-		
-		
+
 		</c:when>
 	<c:otherwise>
 	<div style="font-size: 50px;" class="chenter-aline">잘못된 접근입니다.</div>
