@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/faq.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/customModal.css">
  <title>자주하는 질문</title>
    </head>
    <body>
@@ -38,17 +39,47 @@
     <c:choose>
     	<c:when test="${empty listRow || fn:length(listRow) == 0 }"></c:when>
     	<c:otherwise>
+    	<script>
+    	function chkDelete(f_uid){
+    		$("#DeletePost").css({"display": "block"});
+    		$("#DeletePost #s_uid").val(f_uid);
+    	}
+
+    	function chkDeleteOk(){
+    		var s_uid = $("#DeletePost #s_uid").val();
+    		location.href = "deleteOk.ho?f_uid="+s_uid;
+    	}
+    	function closeModal(messenger){
+    		$(messenger).parents(".ModalForm").css({"display": "none"});
+    	}
+    	</script>
+    	
     		<c:forEach var="faq" items="${listRow }">
     	<li>
       		<div class="collapsible-header s12"><i class="material-icons">live_help</i>UID : ${faq.f_uid }&nbsp;&nbsp;Title : ${faq.f_title }</div>
       		<div class="collapsible-body s12" id="test"><span>Content : <br>${faq.f_content }</span>
       		<div class="right-align">
       		<button class="btn waves-effect btn2" onclick="location.href='update.ho?f_uid=${faq.f_uid }'">수정</button>
-			<button class="btn waves-effect btn2" onclick="location.href='deleteOk.ho?f_uid=${faq.f_uid }'">삭제</button>
+			<button class="btn waves-effect btn2" onclick="chkDelete(${faq.f_uid });">삭제</button>
 			</div>
     		</div>
     	</li>
     		</c:forEach>
+    		
+    		<div id="DeletePost" class="ModalForm" style="display:none;">
+	<input id="s_uid" name="s_uid">
+	<div class="CustomModal">
+		<div class="modalTitle">
+			<h5 class="Title">정말로 삭제하시겠습니까?</h5>
+			<p class="Context" class="left-align">한 번 삭제하면 되돌릴 수 없습니다.<br>정말로 삭제하시겠습니까?</p>
+		</div>
+		<div class="modalFooter">
+			<a onclick="chkDeleteOk(); return false;" class="waves-effect btn-flat amber">삭제</a>
+			<a onclick="closeModal(this); return false;" class="waves-effect btn-flat amber">취소</a>
+		</div>
+	</div>
+	<div class="modal-overlay" style="z-index: 1002; display: block; opacity: 0.5;"></div>
+</div>
     	</c:otherwise>
     </c:choose>
     
@@ -71,6 +102,9 @@
 		<div class="col s1"></div>
 	</div>
 </section>
+
+
+
 
 	<jsp:include page="../../foot.jsp"/>
 <!--  js 추가는 여기에 -->

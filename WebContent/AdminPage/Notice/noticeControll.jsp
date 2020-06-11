@@ -46,6 +46,8 @@
 	    <c:choose>
     	<c:when test="${empty npagetable || fn:length(npagetable) == 0 }"></c:when>
     	<c:otherwise>
+    	
+    	
     		<c:forEach var="notice" items="${npagetable }">
         <tr >
         <td>${notice.n_uid }</td>
@@ -53,6 +55,10 @@
           <td>${notice.n_viewCnt }</td>
           <td>${notice.n_date }</td>
         </tr>
+        
+       
+
+
            </c:forEach>
     	</c:otherwise>
     </c:choose>

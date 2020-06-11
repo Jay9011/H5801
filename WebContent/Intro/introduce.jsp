@@ -43,11 +43,11 @@
       <br>시간에 쫒기지않고 편안한 마음으로 공부하실수 있습니다.
       <br><br><br>
    <div class="carousel w-12 center-align">
-       <a class="carousel-item duration" href="#one!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
-       <a class="carousel-item duration" href="#two!"><img class="materialboxed" width="100%" src="../IMAGES/intro2.jpeg"></a>
-       <a class="carousel-item duration" href="#three!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
-       <a class="carousel-item duration" href="#four!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
-       <a class="carousel-item duration" href="#five!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpeg"></a>
+       <a class="carousel-item duration" href="#one!"><img class="materialboxed" width="100%" src="../IMAGES/intro1.jpg"></a>
+       <a class="carousel-item duration" href="#two!"><img class="materialboxed" width="100%" src="../IMAGES/intro2.jpg"></a>
+       <a class="carousel-item duration" href="#three!"><img class="materialboxed" width="100%" src="../IMAGES/intro3.jpg"></a>
+       <a class="carousel-item duration" href="#four!"><img class="materialboxed" width="100%" src="../IMAGES/roll1.jpg"></a>
+       <a class="carousel-item duration" href="#five!"><img class="materialboxed" width="100%" src="../IMAGES/roll2.jpg"></a>
     </div>
     <div class="center-align firstSet-1" style="font-size: 30px"> 위의 사진을 클릭하시면 큰화면으로 보실 수 있습니다.</div>
       </div><!-- END I_INTRO -->
@@ -60,7 +60,7 @@
    </section>
    
     <div class="parallax-container firstSet-1" style="width: 100%">
-      <div class="parallax"><img src="../IMAGES/intro1.jpeg"></div>
+      <div class="parallax"><img src="../IMAGES/roll1.jpg"></div>
     </div>
 
    <section class="container section scrollspy" id="intro">
@@ -94,7 +94,7 @@
       
    <div class="card w-4 left">
        <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="../IMAGES/intro1.jpeg">
+      <img class="activator" src="../IMAGES/room1.jpg">
    </div>
     <div class="card-content">
        <span class="card-title activator grey-text text-darken-4">Room(다인실)</span>
@@ -112,7 +112,7 @@
 
    <div class="card w-4 left">
        <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="../IMAGES/intro1.jpeg">
+      <img class="activator" src="../IMAGES/QA.jpg">
    </div>
     <div class="card-content">
        <span class="card-title activator grey-text text-darken-4">Learning Inquiry(문의)</span>
@@ -128,7 +128,7 @@
 
    <div class="card w-4 left">
        <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="../IMAGES/intro1.jpeg">
+      <img class="activator" src="../IMAGES/solo.jpg">
    </div>
     <div class="card-content t3">
        <span class="card-title activator grey-text text-darken-4">Private room(개인실)</span>
@@ -153,7 +153,7 @@
    </section>
    
     <div class="parallax-container firstSet-1" style="width: 100%">
-      <div class="parallax"><img src="../IMAGES/intro1.jpeg"></div>
+      <div class="parallax"><img src="../IMAGES/roll2.jpg"></div>
     </div>
     
     

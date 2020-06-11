@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <jsp:include page="../../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/customModal.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> ${nListView[0].n_title }</title> <!-- title에 글제목 넣기 -->
@@ -48,8 +49,33 @@ document.addEventListener('DOMContentLoaded', function () {
 		<div class="col s12 m10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 
+    	
+    	
+    	
+    	
 	<c:choose>
 	<c:when test="${grade > 8 }">
+
+
+    	<script>
+    	function chkDelete(n_uid){
+    		$("#DeletePost").css({"display": "block"});
+    		$("#DeletePost #s_uid").val(n_uid);
+    	}
+
+    	function chkDeleteOk(){
+    		var s_uid = $("#DeletePost #s_uid").val();
+    		location.href = "deleteOk.ho?n_uid="+s_uid;
+    	}
+    	
+    	function closeModal(messenger){
+    		$(messenger).parents(".ModalForm").css({"display": "none"});
+    	}
+    	</script>
+    	
+
+
+	
 	<h3 class="center-align pfont">${nListView[0].n_title }</h3>
 	<div class="row">
 					<div class="col s12 pfont right-align">
@@ -66,10 +92,31 @@ document.addEventListener('DOMContentLoaded', function () {
 							<div class="col s1"></div>
 						</div>
 <div class="col s12 right-align">
+
 <button class="btn waves-effect btn2" onclick="location.href = 'noticeControll.ho'">목록보기</button>
 	<button class="btn waves-effect btn2" onclick="location.href = 'update.ho?n_uid=${nListView[0].n_uid }'">수정</button>
-	<button class="btn waves-effect btn2" onclick="location.href = 'deleteOk.ho?n_uid=${nListView[0].n_uid }'">삭제</button>
+	<button class="btn waves-effect btn2" onclick='chkDelete(${nListView[0].n_uid });'>삭제</button>
 </div>
+
+
+        <div id="DeletePost" class="ModalForm" style="display:none;">
+	<input id="s_uid" name="s_uid">
+	<div class="CustomModal">
+		<div class="modalTitle">
+			<h5 class="Title">정말로 삭제하시겠습니까?</h5>
+			<p class="Context" class="left-align">한 번 삭제하면 되돌릴 수 없습니다.<br>정말로 삭제하시겠습니까?</p>
+		</div>
+		<div class="modalFooter">
+			<a onclick="chkDeleteOk(); return false;" class="waves-effect btn-flat amber">삭제</a>
+			<a onclick="closeModal(this); return false;" class="waves-effect btn-flat amber">취소</a>
+		</div>
+	</div>
+	<div class="modal-overlay" style="z-index: 1002; display: block; opacity: 0.5;"></div>
+</div>
+
+
+
+
 	</c:when>
 	</c:choose>
 
