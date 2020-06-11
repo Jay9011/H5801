@@ -84,9 +84,6 @@ function chkDelete(s_uid){
 					</div>
 
 
-
-
-
 		<%-- 댓글이 --%>
 		<h6 class="left-align pfont">댓글달기</h6>
 <c:if test="${uid != null}">
