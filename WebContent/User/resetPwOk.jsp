@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <jsp:include page="../modal.jsp"/>
 <c:choose>
 	<c:when test="${reset_result == -2}">
@@ -30,7 +30,7 @@
     			<p class="left-align">인증번호가 일치하지 않습니다.</p>
 			</div>
 			<div class="modal-footer">
-      			<a href="${pageContext.request.contextPath}/User/findPw.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+      			<a href="${pageContext.request.contextPath}/User/resetPw.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 			</div>
 		</div>
 	
@@ -48,7 +48,7 @@
 		    			<p class="left-align">비밀번호 업데이트에 실패하였습니다.</p>
 					</div>
 					<div class="modal-footer">
-		      			<a href="${pageContext.request.contextPath}/User/findPw.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+		      			<a href="${pageContext.request.contextPath}/User/resetPw.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 					</div>
 				</div>
 				
@@ -58,7 +58,7 @@
 			
 				<div id="demo-modal" class="modal">
 		    		<div class="modal-content">
-		    			<h5 style='color:blue'>※비밀번호 변경!</h5>
+		    			<h5 style='color:blue'>※비밀번호 변경 성공</h5>
 		    			<p class="left-align">비밀번호 업데이트에 성공하였습니다.</p>
 					</div>
 					<div class="modal-footer">

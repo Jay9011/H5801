@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../modal.jsp"/>
 <c:choose>
 	<c:when test="${successUrl != null}">
@@ -23,20 +23,20 @@
 	      		<a href="${successUrl }" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 	    	</div>
     	</div>
-		
+
 		<body>
 		<form name="frm" action="approval.payment" method="post">
 			<input type="hidden" name="pg_token" value="${param.pg_token }"/> <!-- parameter 넘길 때 자주 사용 -->
 		</form>
 		</body>
 		</html>
-	
-	
+
+
 	</c:when>
-	
-	
+
+
 	<c:otherwise>
-				
+
 		<div id="demo-modal" class="modal">
 	    	<div class="modal-content">
 	      		<h5 style='color:red'>※접근 오류!</h5>
@@ -46,8 +46,8 @@
 	      		<a href="${pageContext.request.contextPath}/User/login.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 	    	</div>
     	</div>
-			
+
 	</c:otherwise>
-	
+
 </c:choose>
-<script type="text/javascript" src="../JS/modal.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/modal.js"></script>

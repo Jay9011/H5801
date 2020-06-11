@@ -57,8 +57,8 @@ public class DAOPay {
 				int p_uid = rs.getInt("p_uid");
 				String tid = rs.getString("tid");
 				Date b_sdate = rs.getDate("b_sdate");
-				Time b_stime = rs.getTime("b_stime");
-				Time b_etime = rs.getTime("b_etime");
+				String b_stime = rs.getString("b_stime");
+				String b_etime = rs.getString("b_etime");
 				int b_term = rs.getInt("b_term");
 				int b_duration = rs.getInt("b_duration");
 				int b_refund = rs.getInt("b_refund");

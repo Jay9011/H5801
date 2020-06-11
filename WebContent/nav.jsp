@@ -44,7 +44,7 @@
 					<ul id='dropdown3' class='dropdown-content'>
 
 
-						<li><a href="${pageContext.request.contextPath}/MyPage/book.ho">예약현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/MyPage/book2.ho">예약현황</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/list.ho">게시물 조회</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/reInfo.ho">정보수정</a></li>
 						    <c:choose>
@@ -98,7 +98,7 @@
 				class="collapsible-header apad btnOut2">마이페이지</a>
 				<div class="collapsible-body">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/MyPage/book.ho">예약현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/MyPage/book2.ho">예약현황</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/list.ho">게시물 조회</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/reInfo.ho">정보수정</a></li>
 						<c:choose>
@@ -125,13 +125,13 @@
 					<th id="top"></th>
 					</tr>
 					<tr>
-						<th id="midle"><a id="link" href="${pageContext.request.contextPath}AdminPage/MyPage/bookAdmin">예약현황<br>관리하기</a></th>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/MyPage/bookAdmin.ho">예약현황<br>관리하기</a></th>
 					</tr>
 					<tr>
 						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/faqControll.ho">FAQ<br>관리하기</a></th>
 					</tr>
 					<tr>
-						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/faqControll.ho">Notice<br>관리하기</a></th>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/noticeControll.ho">Notice<br>관리하기</a></th>
 					</tr>
 					<tr>
 					<th id="buttom"></th>

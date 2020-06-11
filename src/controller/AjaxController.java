@@ -24,9 +24,11 @@ public class AjaxController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ajaxAction(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ajaxAction(request, response);
 	}
 	
 	protected void ajaxAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +49,7 @@ public class AjaxController extends HttpServlet {
 		
 		
 		switch(com) {
-		case "/book2.ajax":
+		case "/MyPage/book2.ajax":
 			new BookCommand2().execute(request, response);
 			new AjaxBookCommand().execute(request, response);
 			break;

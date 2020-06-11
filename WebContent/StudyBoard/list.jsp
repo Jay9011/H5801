@@ -89,7 +89,7 @@
 				</div>
 				<div class="pager center-align"></div>
 				<c:if test="${uid != null}">
-					<button class="col m2 offset-m10 btn waves-effect" onclick="location.href='write.ho'" style="margin-bottom:30px">글쓰기</button>
+					<button class="col s2 offset-s10 btn waves-effect" onclick="location.href='write.ho'" style="margin-bottom:30px">글쓰기</button>
 				</c:if>
 
 				<div class="clear"></div>

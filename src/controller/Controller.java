@@ -212,12 +212,7 @@ public class Controller extends HttpServlet {
 			break;
 
 			// 예약현황 목록
-		case "/MyPage/book.ho":
-			new BookCommand().execute(request, response);
-			//new BookCommand2().execute(request, response);
-			viewPage = "book.jsp";
-			break;
-		
+			
 		case "/MyPage/book2.ho":
 			new BookCommand2().execute(request, response);
 			//new BookCommand2().execute(request, response);

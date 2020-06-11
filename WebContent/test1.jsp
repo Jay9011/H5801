@@ -18,7 +18,7 @@
 					<th id="top"></th>
 					</tr>
 					<tr>
-						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/MyPage/bookAdmin.ho">예약현황<br>관리하기</a></th>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/MyPage/bookAdmin.ho">예약현황<br>관리하기</a></th>
 					</tr>
 					<tr>
 						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/faqControll.ho">FAQ<br>관리하기</a></th>

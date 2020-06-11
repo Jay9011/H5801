@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
  <head>
+ <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
  <jsp:include page="../modal.jsp"/>
  <c:choose>
 	<c:when test="${send_result ==  1}">

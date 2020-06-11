@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
  <jsp:include page="../modal.jsp"/>
 <c:choose>
 	<c:when test="${emailcnt == 1 }">
@@ -30,10 +31,6 @@
     </div>
 	</c:otherwise>
 </c:choose>
- 
- 
- 
- 
  
  <script type="text/javascript" src="../JS/modal.js"></script>
 </body>   

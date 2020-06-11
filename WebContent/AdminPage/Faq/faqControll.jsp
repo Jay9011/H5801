@@ -15,8 +15,8 @@
  <title>자주하는 질문</title>
    </head>
    <body>
-<jsp:include page="${pageContext.request.contextPath}/nav.jsp"/>
-<jsp:include page="${pageContext.request.contextPath}/header.jsp"/>
+<jsp:include page="../../nav.jsp"/>
+<jsp:include page="../../header.jsp"/>
  <!-- 페이지에 해당하는 내용 적기  -->
 <section class="container section scrollspy" id="intro">
 	<div class="row">

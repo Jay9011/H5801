@@ -8,3 +8,15 @@
 	padding: 25px 0 10px 0;
 }
 
+p{
+margin:10px;
+}
+.datepicker-date-display, .datepicker-table td.is-selected {
+background-color: #dfb429;
+}
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done,.datepicker-table td.is-today{
+ color: #dfb429;
+}
+.datepicker-table td.is-selected {
+    color: #fff;
+}
