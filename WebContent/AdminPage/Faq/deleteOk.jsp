@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript" src="../../JS/modal.js"></script>
-</body>   
-</html>
+<!DOCTYPE html>
+<html>
+ <head>
+ <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+ <jsp:include page="../../modal.jsp"/>
 <c:if test="${result != 0}">
 				<div id="demo-modal" class="modal">
     <div class="modal-content">

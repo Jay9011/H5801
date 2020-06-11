@@ -57,7 +57,7 @@
 		<br>
 		<div class="col s12 right-align" style="margin-bottom: 50px;">
 			<button type="submit" class="btn waves-effect btn2" style="margin:0 10px;">등록</button>
-			<button class="btn waves-effect btn2" type="button" onclick="location.href = 'notice.ho'">목록으로</button>
+			<button class="btn waves-effect btn2" type="button" onclick="location.href = 'noticeControll.ho'">목록으로</button>
 		</div>
 	</form>
 	
