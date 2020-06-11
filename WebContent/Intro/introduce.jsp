@@ -36,8 +36,8 @@
       </div>
       <div class="clear"></div>
       <div>
-      <div class="center-align t2" style="font-size: 40px">안녕하세요 Holic 독서실입니다</div>
-      <div class="center-align firstSet-2" style="font-size: 30px">
+      <div class="left-align t2" style="font-size: 40px">안녕하세요 Holic 독서실입니다</div>
+      <div class="left-align firstSet-2" style="font-size: 30px">
       <br>쾌적한 환경과 간단한 편의시설이 구비되어있습니다
       <br>웹사이트를 통해 이용해주시는분들의 일정예약을 하실수있으니
       <br>시간에 쫒기지않고 편안한 마음으로 공부하실수 있습니다.
@@ -82,8 +82,8 @@
       <div class="clear"></div>
       
       
-      <div class="center-align t2" style="font-size: 40px">좋은 독서실이 좋은 성적으로!</div>
-      <div class="center-align firstSet-2" style="font-size: 30px">
+      <div class="left-align t2" style="font-size: 40px">좋은 독서실이 좋은 성적으로!</div>
+      <div class="left-align firstSet-2" style="font-size: 30px">
       <br>집중해서 혼자 공부할수있는 개인실과
       <br>팀프로젝트, 토론, 스터디모임등 단체로 모일수있는 다인실이 준비되어있습니다.
       <br>공부하다 모르는건 언제든지 Holic 속의 학습문의 게시판에 남겨주세요 많은사람들이 도와줄거에요!
@@ -97,7 +97,7 @@
       <img class="activator" src="../IMAGES/room1.jpg">
    </div>
     <div class="card-content">
-       <span class="card-title activator grey-text text-darken-4">Room(다인실)</span>
+       <span class="card-title activator grey-text text-darken-4 center-align">Room(다인실)</span>
     </div>
     <div class="card-reveal">
        <span class="card-title grey-text text-darken-4">Room(다인실)<i class="material-icons right">close</i></span>
@@ -115,7 +115,7 @@
       <img class="activator" src="../IMAGES/QA.jpg">
    </div>
     <div class="card-content">
-       <span class="card-title activator grey-text text-darken-4">Learning Inquiry(문의)</span>
+       <span class="card-title activator grey-text text-darken-4 center-align">Learning Inquiry(문의)</span>
     </div>
     <div class="card-reveal">
        <span class="card-title grey-text text-darken-4">Learning Inquiry(문의)<i class="material-icons right">close</i></span>
@@ -131,11 +131,11 @@
       <img class="activator" src="../IMAGES/solo.jpg">
    </div>
     <div class="card-content t3">
-       <span class="card-title activator grey-text text-darken-4">Private room(개인실)</span>
+       <span class="card-title activator grey-text text-darken-4 center-align">Private room(개인실/예정)</span>
     </div>
     <div class="card-reveal">
-       <span class="card-title grey-text text-darken-4">Private room(개인실)<i class="material-icons right">close</i></span>
-       <p>개인실입니다 2시간 단위로 빌릴수있으며 시간에따른 가격이다릅니다
+       <span class="card-title grey-text text-darken-4 ">Private room(개인실)<i class="material-icons right">close</i></span>
+       <p>개인실입니다 2시간 단위로 빌릴수있으며 시간에따른 가격이다릅니다 증축 하고있습니다
        <br>
        <br>&nbsp;&nbsp;2H Reservation ${ introRow[3].t_pay} Won
        <br>&nbsp;&nbsp;4H Reservation ${ introRow[3].t_pay*2} Won
