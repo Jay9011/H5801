@@ -15,8 +15,9 @@
 </head>
 <body>
 <h3 class="center-align pfont">댓글 단 게시글</h3>
+ <div style="padding: 20px 0;"></div>
 	<table id="postList" class="highlight">
-	<thead>
+	<thead class="amber lighten-5">
 		<tr>
 			<th width="100px">NO</th>
                 <th>제목</th>

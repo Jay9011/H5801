@@ -20,14 +20,14 @@
 	<!-- 페이지에 해당하는 내용 적기  -->
 	<section class="container section scrollspy" id="intro">
 		<div class="row">
-			<div class="col s1 "></div>
-			<div class="col s10">
+			<div class="col m1 "></div>
+			<div class="col m10 s12">
 
 				<h3 class="left-align pfont">자주하는 질문</h3>
 
 					<div class=" FAQ">
 						<div>
-							<ul class="collapsible popout col offset-s1 s10 pfont">
+							<ul class="collapsible popout col offset-m1 m10 s12 pfont">
 								<c:choose>
 									<c:when test="${empty listRow || fn:length(listRow) == 0 }"></c:when>
 									<c:otherwise>
@@ -49,10 +49,10 @@
 	
 				<!-- END -->
 				<div class="pfont col s12 center-align">
-					<h5 class="light-green-text text-darken-3">여러분들의 공부를 항상 응원합니다. ٩( 'ω' )و</h5>
+					<h5 class="light-green-text text-darken-3">여러분들의 공부를 항상 응원합니다.<br>٩( 'ω' )و</h5>
 </div>
 			</div>
-			<div class="col s1"></div>
+			<div class="col m1"></div>
 		</div>
 	</section>
 
