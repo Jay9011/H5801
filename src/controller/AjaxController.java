@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.AjaxBookCommand;
+import command.BookAdminCommand2;
 import command.BookCommand2;
 import command.Command;
 
@@ -51,6 +52,11 @@ public class AjaxController extends HttpServlet {
 		switch(com) {
 		case "/MyPage/book2.ajax":
 			new BookCommand2().execute(request, response);
+			new AjaxBookCommand().execute(request, response);
+			break;
+			
+		case "/MyPage/bookAdmin2.ajax":
+			new BookAdminCommand2().execute(request, response);
 			new AjaxBookCommand().execute(request, response);
 			break;
 		}

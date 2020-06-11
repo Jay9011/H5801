@@ -177,13 +177,13 @@ public class DAOBook {
 		}
 		
 		// 페이지 조회(관리자 페이지용)
-		public DTOBook[] selectFromRowAdmin(int fromRow, int toRow) throws SQLException {
+		public DTOBook[] selectFromRowAdmin(int from, int rows) throws SQLException {
 			DTOBook[] arr = null;
 			
 			try {
 				pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_ROW_BY_ADMIN);
-				pstmt.setInt(1, fromRow);
-				pstmt.setInt(2, toRow);
+				pstmt.setInt(1, from);
+				pstmt.setInt(2, from+rows);
 				rs = pstmt.executeQuery();
 				arr = createArray(rs);
 			} finally {

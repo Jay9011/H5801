@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import command.BookAdminCommand;
+import command.BookAdminCommand2;
+import command.BookAdminCommand2;
 import command.BookCommand2;
 import command.CancelCommand;
 import command.Command;
@@ -215,10 +216,10 @@ public class Controller extends HttpServlet {
 			new BookCommand2().execute(request, response);
 			viewPage = "book2.jsp";
 			break;
-
-		case "/MyPage/bookAdmin.ho":
-			new BookAdminCommand().execute(request, response);
-			viewPage = "bookAdmin.jsp";
+			
+		case "/MyPage/bookAdmin2.ho":
+			new BookAdminCommand2().execute(request, response);
+			viewPage = "bookAdmin2.jsp";
 			break;
 		
 		case "/MyPage/book_modal.ho":
