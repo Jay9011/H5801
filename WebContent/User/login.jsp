@@ -9,6 +9,7 @@
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <title>LOGIN</title>
    </head>
    <body>
@@ -55,5 +56,8 @@
   </section>
 <jsp:include page="../foot.jsp"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
+<script>
+	$("#email_inline").focus();
+</script>
 </body>
 </html>
