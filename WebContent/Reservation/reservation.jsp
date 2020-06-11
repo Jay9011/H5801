@@ -16,9 +16,13 @@
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/reserve.css">
 <title>에약하기</title>
+<script>
+	window.history.forward();
+	function blockBack(){window.history.forward();}
+</script>
 </head>
 
-<body>
+<body onload="blockBack()" onpageshow="if(event.persisted) blockBack();" onunload="">
 	<jsp:include page="../nav.jsp" />
 	<jsp:include page="../header.jsp" />
 	<!-- 페이지에 해당하는 내용 적기  -->
@@ -31,10 +35,10 @@
 					<div class="col s12">
 						<form id="frm" action="${pageContext.request.contextPath}/Payment/pay.ho">
 							<input id="selectDate" name="selectDate" type="text" class="datepicker pfont " readonly="readonly">
-							<input id="item_name" name="item_name" type="text" hidden="hidden">
-							<input id="total_amount" name="total_amount" type="text" hidden="hidden">
-							<input id="m_uid" name="m_uid" type="text" value="${uid }" hidden="hidden">
-							<input id="t_uid" name="t_uid" type="text" hidden="hidden">
+							<input id="item_name" name="item_name" type="hidden">
+							<input id="total_amount" name="total_amount" type="hidden">
+							<input id="m_uid" name="m_uid" type="hidden" value="${uid }">
+							<input id="t_uid" name="t_uid" type="hidden">
 						</form>
 					</div>
 					<!--<div class="row"> -->
@@ -93,7 +97,7 @@
 							<h5 class="pfont">방을 선택해 주세요</h5>
 						</div>
 						<div class="col s12 center-align" style="margin-bottom: 10px;">
-							<button type="submit" class="btn-large amber grey-text text-darken-4" name="action" onclick="$('#frm').submit();">예약하기</button>
+							<button id="submitBtn" type="submit" class="btn-large amber grey-text text-darken-4 disabled" name="action" onclick="$('#frm').submit();">예약하기</button>
 						</div>
           </div>
           </div>
@@ -106,12 +110,16 @@
 	<!--  js 추가는 여기에 -->
 </body>
 <script>
-	$(function() {
-		var selectedDate = $("#selectDate").val();
-		pickedDate(selectedDate);
-	});
+
+	function initInput(){
+		$("#RoomInfo").html("<h5 class='pfont'>방을 선택해 주세요</h5>");
+		$("#item_name").val("");
+		$("#total_amount").val("");
+		$("#t_uid").val("");
+	}
 
 	function pickedDate(sdate) {
+		initInput();
 		$.ajax({
 			type : "POST",
 			url : "reservInfo.ho",
@@ -125,10 +133,6 @@
 					var row = data.data;
 					for (var i = 0; i < row.length; i++) {
 						$("#" + row[i].t_uid).addClass("disabled");
-						$("#RoomInfo").html("<h5 class='pfont'>방을 선택해 주세요</h5>");
-						$("#item_name").val("");
-						$("#total_amount").val("");
-						$("#t_uid").val("");
 					} // end for
 				} else if (data.status == "FAIL") {
 				} // end if
@@ -141,6 +145,7 @@
 	}
 
 	function selectRoom(roomId){
+		initInput();
 		$.ajax({
 			type : "POST",
 			url : "roomInfo.ho",
@@ -151,10 +156,12 @@
 			success : function(data) {
 				if (data.status == "OK") {
 					var info = data.data[0];
+					initInput();
 					$("#RoomInfo").html("<h3 class='pfont orange-text text-darken-2'>" + info.t_name + " 번방<span class='grey-text text-darken-4' style='font-size:0.5em'>을 선택</span></h3><p class='pfont orange-text text-darken-4' style='font-size:24px;'>" + info.t_pay + "원</p><p class='pfont orange-text text-darken-4'>최대 " + info.t_maxnum + " 인 가능</p>");
 					$("#item_name").val(info.t_name + "번 방");
 					$("#total_amount").val(info.t_pay);
 					$("#t_uid").val(info.t_uid);
+					$("#submitBtn").removeClass("disabled");
 				} else if (data.status == "FAIL") {
 					alert(data.message);
 				}
@@ -166,8 +173,18 @@
 		});
 	}
 
+	/* function payGo(){
+		var frm = $("#frm");
+		var tuid = $("#t_uid").val();
+		if(tuid == null || tuid.trim().equals("")){
+			alert("방 선택");
+		}
+	} */
+
 	$(document).ready(function() {
 		$('.modal').modal();
+		var selectedDate = $("#selectDate").val();
+		pickedDate(selectedDate);
 	});
 
 </script>

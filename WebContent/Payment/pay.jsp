@@ -4,6 +4,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../modal.jsp"/>
+<script>
+	window.history.forward();
+	function blockBack(){window.history.forward();}
+</script>
 <c:choose>
 	<c:when test="${successUrl != null}">
 	<!DOCTYPE html>
@@ -24,7 +28,7 @@
 	    	</div>
     	</div>
 
-		<body>
+		<body onload="blockBack()" onpageshow="if(event.persisted) blockBack();" onunload="">
 		<form name="frm" action="approval.payment" method="post">
 			<input type="hidden" name="pg_token" value="${param.pg_token }"/> <!-- parameter 넘길 때 자주 사용 -->
 		</form>
