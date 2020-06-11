@@ -26,8 +26,30 @@ function toggleBounce(){
 
 //=======================
   $(document).ready(function(){
+  
+	  if($(window).width() < 590) {
+		  $(".firstSet-1").hide();
+		  $(".firstSet-2").addClass('set-1');
+	  }
+	  
+	  if($(window).width() > 591) {
+		  $(".firstSet-1").show();
+		  $(".firstSet-2").removeClass('set-1');
+	  }
+	  
     $('.carousel').carousel({
        dist : -20,
        duration : 100
     });
+    
   });
+  
+  $(window).resize(function() {if($(window).width() < 590) {
+	  $(".firstSet-1").hide();
+	  $(".firstSet-2").addClass('set-1');
+} });
+
+  $(window).resize(function() {	  if($(window).width() > 591) {
+	  $(".firstSet-1").show();
+	  $(".firstSet-2").removeClass('set-1');
+} });

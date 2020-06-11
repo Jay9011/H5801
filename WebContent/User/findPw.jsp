@@ -26,6 +26,7 @@
 	    <div class="col m1 "></div>
 		<div class="input-field col m10 s12">
 			<h1 class="center-align pfont">FIND YOUR PASSWORD</h1>
+			<div style="padding: 30px;"></div>
             <form name="findPwFrm" action="${pageContext.request.contextPath}/User/findPwOk.ho" method="post" >
             	<div class="row">
 				  <div class="col m1 "></div>

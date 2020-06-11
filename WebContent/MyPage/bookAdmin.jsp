@@ -111,7 +111,8 @@ function chkPayCancelSubmit(){
 	<div class="col s10 table-container">
 
 		<h3 class="center-align pfont">나의 예약현황</h3>
-
+		
+		<div style="padding: 30px;"></div>
 		<c:if test="${empty book || fn:length(book) == 0}">
 			<p style="text-align: center">예약된 내용이 없습니다.</p>
 		</c:if>
@@ -121,16 +122,16 @@ function chkPayCancelSubmit(){
 		<form name="bookFrm" action="${pageContext.request.contextPath}/Payment/refundOk.ho" method="post">
 		<div class="table-container">
 		<table class="highlight centered">
-		<thead>
+		<thead style="border-top: 1px solid grey">
 			<tr>
 				<th>NO</th>
 				<%--<th>결재번호</th>--%>
 				<th>예약내용</th>
 				<th>예약일자</th>
-				<th>예약시간</th>
-				<th>회원이름</th>
+				<%--<th>예약시간</th>--%>
 				<th>결제총액</th>
 				<th>결제현황</th>
+				<th>회원이름</th>
 				<%--<th>항목선택</th>--%>
 
 			</tr>
@@ -143,13 +144,11 @@ function chkPayCancelSubmit(){
 				<td>#${dto.rnum }</td>
 				<%--<td>${dto.p_uid }번</td>--%>
 				<td>
-				${dto.b_seatType }<br>
-				(${dto.t_name })
+				${dto.b_seatType } (room ${dto.t_name })
 				</td>
 				<td>${dto.b_sdate }</td>
-				<td>${dto.b_stime }~${dto.b_etime }<br>
-				(${dto.b_term }시간)</td>
-				<td>${dto.m_nick }</td>
+				<%-- <td>${dto.b_stime }~${dto.b_etime }<br>
+				(${dto.b_term }시간)</td>--%>
 				<td><fmt:formatNumber value="${dto.total_amount }" pattern="#,###"/>원</td>
 				<td>
 					<c:if test="${dto.p_cancel==0 }">
@@ -162,6 +161,7 @@ function chkPayCancelSubmit(){
 					결제취소
 					</c:if>
 				</td>
+				<td>${dto.m_nick }</td>
 
 				<%-- <td>
 					<c:if test="${dto.b_refund==0 || dto.b_refund==null || dto.p_uid == 2}">

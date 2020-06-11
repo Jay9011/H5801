@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.AjaxBookCommand;
-import command.BookCommand;
 import command.BookCommand2;
 import command.Command;
 
 /**
- * Servlet implementation class AjaxController
+ * 작성자: 낙경
+ * 수정일: 200611
  */
 @WebServlet("*.ajax")
 public class AjaxController extends HttpServlet {

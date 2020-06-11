@@ -32,10 +32,46 @@ document.addEventListener('DOMContentLoaded', function () {
 <jsp:include page="../top.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/reserve.css">
 <title>에약하기</title>
+<style>
+.box1{
+	max-width: 150px;
+	width: 100%;
+    height: 110px;
+	margin: 20% 5% 3% 30%;
+	border-radius: 10px;
+	background-color: #ffb300;
+}
+.box2{
+	max-width: 150px;
+	width: 100%;
+    height: 110px;
+    margin: 20% 5% 3% 10%;
+	border-radius: 10px;
+	background-color: #ffb300;
+}
+.box4{
+    max-width: 150px;
+    width: 100%;
+    height: 200px;
+    margin: 8% 5% 3% 10%;
+    border-radius: 10px;
+    background-color: #ff9800;
+
+}
+.box3{
+    max-width: 150px;
+    width: 100%;
+    height: 90px;
+    margin: 8% 5% 3% 30%;
+    border-radius: 10px;
+    background-color: #fdd835;
+}
+</style>
 <script>
 	window.history.forward();
 	function blockBack(){window.history.forward();}
 </script>
+
 </head>
 
 <body onload="blockBack()" onpageshow="if(event.persisted) blockBack();" onunload="">
@@ -47,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			<div class="col m12">
 				<!--  여기에다가 적어주기 (반응형은 필수이다. -->
 				<h3 class="center-align pfont">독서실 예약하기</h3>
-				<div class="row" style="border-radius: 5px; border: 1px solid #ffa537;">
+				<div class="row" style="height: 500px;">
 					<div class="col s12">
 						<form id="frm" action="${pageContext.request.contextPath}/Payment/pay.ho">
 							<input id="selectDate" name="selectDate" type="text" class="datepicker pfont " readonly="readonly">
@@ -58,50 +94,28 @@ document.addEventListener('DOMContentLoaded', function () {
 						</form>
 					</div>
 					<!--<div class="row"> -->
-            <div id="rooms" class="col m6 s12" style="margin-bottom: 10px;">
-              <div class="col s12 center-align"style="border-radius: 5px;  border: 1px solid #ffa537;
-             ">
+            <div id="rooms" class="col m6 s12" style="margin-bottom: 10px; height: 100%;">
+              <div class="col s12 center-align"style="border-radius: 5px;  border: 1px solid #ffa537 ;   height: 100%;">
             <div style="width: 100%;">
-                <button id="101" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-                  max-width: 150px;
-                  width: 35%;
-                  height: 15%;
-    margin: 8% 5% 3% 10%;
-            ">1번방</button>
-                <button id="102" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-          max-width: 150px;
-          width: 35%;
-          height: 15%;
-    margin: 8% 5% 3% 5%;">2번방</button>
-
+            	<div style="float: left; width: 50%;">
+                <button id="101" class="col btn-large amber darken-1 box1" name="action" onclick="selectRoom($(this).attr('id'))">1번방</button>
+                </div>
+                <div style="float: left; width: 50%;">
+                <button id="102" class="col btn-large amber darken-1 box2" name="action" onclick="selectRoom($(this).attr('id'))">2번방</button>
+				</div>
           </div>
 
           <div style="width: 100%; float: left;">
-
-            <button id="103" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-              max-width: 150px;
-              width: 35%;
-              height: 15%;
-    margin: 3% 5% 3% 10%;
-     ">3번방</button>
-
-            <button id="104" class="col btn-large amber darken-3 " name="action" onclick="selectRoom($(this).attr('id'))" style="
-            max-width: 150px;
-            width: 35%;
-            height: 15%;
-    margin: 3% 5% 3% 5%;
-     ">4번방</button>
+	<div style="float: left; width: 50%;">
+            <button id="103" class="col btn-large yellow darken-1 box3" name="action" onclick="selectRoom($(this).attr('id'))">3번방</button>
+            <div style="clear: both;"></div>
+          <button id="105" class="col btn-large yellow darken-1 box3" style="float: left;" name="action" onclick="selectRoom($(this).attr('id'))">5번방</button>
+</div>
+<div style="float: left; width: 50%;">
+            <button id="104" class="col btn-large orange box4" name="action" onclick="selectRoom($(this).attr('id'))">4번방</button>
           </div>
-
-          <div style="width: 100%; float: left;">
-          <button id="105" class="col btn-large amber darken-3" name="action" onclick="selectRoom($(this).attr('id'))" style="
-           max-width: 150px;
-           width: 35%;
-           height: 15%;
-    margin: 3% 5% 3% 10%;
-   ">5번방</button>
-            </div>
-
+</div>
+     
             </div>
         </div>
 

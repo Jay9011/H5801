@@ -67,7 +67,7 @@ public class BookCommand2 implements Command {
 				// 글 전체 개수 구하기
 				totalCnt = dao.countAll(m_uid);
 				//totalCnt = dao.countAll();
-				System.out.println(totalCnt);
+				//System.out.println(totalCnt);
 				
 				// 총 몇 페이지 분량인가?
 				totalPage = (int)Math.ceil(totalCnt/(double)pageRows);

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.BookAdminCommand;
-import command.BookCommand;
 import command.BookCommand2;
 import command.CancelCommand;
 import command.Command;
@@ -38,7 +37,6 @@ import command.faq.FaqUpdateOk;
 import command.faq.FaqWriteOk;
 import command.intro.IntroLoad;
 import command.notice.NoticeDeleteOk;
-import command.notice.NoticeLoad;
 import command.notice.NoticeUpdate;
 import command.notice.NoticeUpdateOk;
 import command.notice.NoticeView;
@@ -93,7 +91,7 @@ public class Controller extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 
-		// 테스트 출 력
+		// 테스트 출력
 		System.out.println("uri: " + uri);
 		System.out.println("conPath: " + conPath);
 		System.out.println("com: " + com);
@@ -212,11 +210,9 @@ public class Controller extends HttpServlet {
 			viewPage = "/MyPage/reInfoOk.jsp";
 			break;
 
-			// 예약현황 목록
-
+		// 예약현황 목록
 		case "/MyPage/book2.ho":
 			new BookCommand2().execute(request, response);
-			//new BookCommand2().execute(request, response);
 			viewPage = "book2.jsp";
 			break;
 
@@ -224,8 +220,12 @@ public class Controller extends HttpServlet {
 			new BookAdminCommand().execute(request, response);
 			viewPage = "bookAdmin.jsp";
 			break;
+		
+		case "/MyPage/book_modal.ho":
+			viewPage = "book_modal.jsp";
+			break;
 
-		// 예약 결제
+		// 예약 결제 요청
 		case "/Payment/pay.ho":
 			new PrePayCommand().execute(request, response);;
 			new PayCommand().execute(request, response);
@@ -237,11 +237,14 @@ public class Controller extends HttpServlet {
 			viewPage = "cancel.jsp";
 			break;
 
+
+		// 예약 결제 승인
 		case "/Payment/payOk.ho":
 			new PayOkCommand().execute(request, response);
 			viewPage = "payOk.jsp";
 			break;
-
+		
+		// 예약 결제 환불
 		case "/Payment/refundOk.ho":
 			new RefundCommand().execute(request, response);
 			new RefundOkCommand().execute(request, response);
@@ -327,7 +330,7 @@ public class Controller extends HttpServlet {
 
 
 			// JaeHyen Controller FAQ/Notice/Introduce User
-		case "/Faq/faq.ho":
+		case "/Notice/faq.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
 			viewPage = "faq.jsp";

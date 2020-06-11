@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/modal.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/MasterControll.css">
      <!-- Compiled and minified JavaScript -->
+  
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+  <script src="${pageContext.request.contextPath}/JS/MasterControll.js"></script>
