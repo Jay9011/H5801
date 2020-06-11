@@ -20,19 +20,19 @@
  <!-- 페이지에 해당하는 내용 적기  -->
 <section class="container section scrollspy" id="intro">
 	<div class="row">
-		<div class="col s1 "></div>
-		<div class="col s10">
+		<div class="col m1 "></div>
+		<div class="col m10 s12">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
       <h3 class="left-align pfont">공지사항</h3>
- 
+ <div style="padding: 20px 0;"></div>
 <div class="FAQ">
   	<table id="postList" class="highlight">
         <!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
-           <thead>
-          <tr class="header">
-          <th>Title</th>
-          <th width="150px">View Count</th>
-          <th  width="150px">Creation time</th>
+           <thead class="amber lighten-5">
+          <tr >
+          <th width="60%">Title</th>
+          <th width="15%">View</th>
+          <th width="25%">Creation time</th>
           </tr>
           </thead>
 	    <c:choose>
@@ -87,7 +87,7 @@
 		
 		
 		</div>
-		<div class="col s1"></div>
+		<div class="col m1"></div>
 	</div>
 </section>
 

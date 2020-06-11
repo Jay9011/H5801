@@ -9,6 +9,7 @@
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <title>LOGIN</title>
    </head>
    <body>
@@ -23,7 +24,7 @@
                   <div class="row">
                          <div class="col m1 "></div>
                         <div class="input-field col m10 s12">
-                          <input id="email_inline" type="email" name="email" class="validate">
+                          <input id="email_inline" type="email" name="email" class="validate" onkeydown="if(event.keyCode==13) $('#password').focus();">
                           <label for="email_inline">이메일(아이디)</label>
                           <span id="chkid" class="helper-text"></span>
                         </div>
@@ -32,7 +33,7 @@
                     <div class="row">
                       <div class="col m1 "></div>
                         <div class="input-field col m10 s12">
-                            <input id="password" type="password" name="pw" class="validate" minlength="4">
+                            <input id="password" type="password" name="pw" class="validate" minlength="4" onkeydown="if(event.keyCode==13) chkSubmit();">
                             <label for="password">비밀번호</label>
                             <span id="chkpw"class="helper-text"></span>
                         </div>
@@ -55,5 +56,8 @@
   </section>
 <jsp:include page="../foot.jsp"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/JS/submit.js"></script> <!--  로그인 유효성 검사 -->
+<script>
+	$("#email_inline").focus();
+</script>
 </body>
 </html>

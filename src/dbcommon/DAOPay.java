@@ -123,7 +123,7 @@ public class DAOPay {
 
 			try {
 				// "SELECT * FROM test_write ORDER BY wr_uid DESC"
-				pstmt = conn.prepareStatement("SELECT * FROM v_book WHERE p_uid = ?");
+				pstmt = conn.prepareStatement(Common.SQL_SELECT_BY_P_UID);
 				pstmt.setInt(1, p_uid);
 				// executeQuery(): 쿼리문 수행
 					// 리턴값: 수행한 결과를 담은 ResultSet
@@ -142,7 +142,7 @@ public class DAOPay {
 			int cnt = 0;
 
 			try {
-				pstmt= conn.prepareStatement("UPDATE RESERVE SET tid = ?, p_cancel=? WHERE p_uid = ?");
+				pstmt= conn.prepareStatement(Common.SQL_UPDATE_TID_BY_PAY);
 				pstmt.setString(1, tid);
 				pstmt.setInt(2, p_cancel);
 				pstmt.setInt(3, p_uid);
@@ -159,7 +159,7 @@ public class DAOPay {
 			int cnt = 0;
 
 			try {
-				pstmt= conn.prepareStatement("UPDATE RESERVE SET tid = ?, p_cancel=? WHERE p_uid = ?");
+				pstmt= conn.prepareStatement(Common.SQL_UPDATE_TID_BY_REFUND);
 				pstmt.setString(1, tid);
 				pstmt.setInt(2, p_cancel);
 				pstmt.setInt(3, p_uid);

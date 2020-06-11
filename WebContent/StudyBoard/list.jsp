@@ -34,7 +34,7 @@
 						<option value="7">대학생</option>
 					</select>
 				</div>
-				<div style="/* overflow-x:scroll;  */width: 100%">
+				<div style="width: 100%;">
 				<table id="postList" class="highlight ">
 						<div class="preloader-wrapper big active" style="left:50%;">
 							<div class="spinner-layer spinner-blue">

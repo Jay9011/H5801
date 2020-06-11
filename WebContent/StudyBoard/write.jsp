@@ -7,6 +7,7 @@
 <script src="../ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/customModal.css">
 </head>
 <script>
 	function chkSubmit(){
@@ -14,13 +15,13 @@
 		var subject = frm["subject"].value.trim();
 
 		if(subject == ""){
-			alert("제목은 반드시 작성해야 합니다.");
+			openModal2("제목은 반드시 작성해야 합니다.", "글을 올리기 위해서는 제목과 내용이 필요합니다.");
 			frm["subject"].focus();
 			return false;
 		}
 		if(CKEDITOR.instances.editor1.getData() == ""
 				|| CKEDITOR.instances.editor1.getData().length == 0){
-			alert("내용을 입력해 주세요.");
+			openModal2("내용을 입력해 주세요.", "글을 올리기 위해서는 제목과 내용이 필요합니다.");
 			frm["content"].focus();
 			return false;
 		}
@@ -102,6 +103,7 @@
 		    $('#subject').characterCounter();
 		  });
 	</script>
+<jsp:include page="modalForms.jsp"/>
 <jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->
 </body>

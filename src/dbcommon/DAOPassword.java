@@ -89,7 +89,7 @@ public class DAOPassword {
 		DTOPassword [] arr = null;
 		
 		try {
-			pstmt = conn.prepareStatement("SELECT * FROM m_user WHERE m_uid = ?");
+			pstmt = conn.prepareStatement(Common.SQL_SELECT_BY_UID);
 			pstmt.setInt(1, uid);
 			rs = pstmt.executeQuery();
 			arr = createArray(rs);
@@ -103,7 +103,7 @@ public class DAOPassword {
 	public DTOPassword[] selectByEmail(String email) throws SQLException {
 		DTOPassword[] arr = null;
 		try {
-			pstmt = conn.prepareStatement("SELECT * FROM m_user WHERE m_email = ?");
+			pstmt = conn.prepareStatement(Common.SQL_USER_SELECT);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			
@@ -121,13 +121,12 @@ public class DAOPassword {
 		
 		try {
 			// 임시 비밀번호 설정
-			pstmt = conn.prepareStatement("UPDATE m_user SET m_pw = ? WHERE m_uid = ?");
+			pstmt = conn.prepareStatement(Common.SQL_UPDATE_PW_BY_EMAIL);
 			pstmt.setString(1, pw);
 			pstmt.setInt(2, uid);			
 			
 			cnt = pstmt.executeUpdate();
 			
-	
 		} finally {
 			close();
 		}

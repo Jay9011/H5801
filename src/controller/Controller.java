@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import command.BookAdminCommand;
+import command.BookAdminCommand2;
+import command.BookAdminCommand2;
 import command.BookCommand2;
 import command.CancelCommand;
 import command.Command;
@@ -27,9 +28,9 @@ import command.ReinfoOkCommand;
 import command.SelectCommand;
 import command.SendCommand;
 import command.UpdateCommand;
-import command.chkMailCommand;
-import command.chkNickCommand;
-import command.joinEmailCommand;
+import command.ChkMailCommand;
+import command.ChkNickCommand;
+import command.JoinEmailCommand;
 import command.faq.FaqDeleteOk;
 import command.faq.FaqLoad;
 import command.faq.FaqUpdate;
@@ -215,10 +216,10 @@ public class Controller extends HttpServlet {
 			new BookCommand2().execute(request, response);
 			viewPage = "book2.jsp";
 			break;
-
-		case "/MyPage/bookAdmin.ho":
-			new BookAdminCommand().execute(request, response);
-			viewPage = "bookAdmin.jsp";
+			
+		case "/MyPage/bookAdmin2.ho":
+			new BookAdminCommand2().execute(request, response);
+			viewPage = "bookAdmin2.jsp";
 			break;
 		
 		case "/MyPage/book_modal.ho":
@@ -271,7 +272,7 @@ public class Controller extends HttpServlet {
 			break;
 
 		case "/User/joinEchk.ho":
-			new joinEmailCommand().execute(request, response);
+			new JoinEmailCommand().execute(request, response);
 			viewPage = "joinEchk.jsp";
 			break;
 
@@ -288,12 +289,12 @@ public class Controller extends HttpServlet {
 			viewPage = "joinOk.jsp";
 			break;
 		case "/User/nickChk.ho":
-			command = new chkNickCommand();
+			command = new ChkNickCommand();
 			command.execute(request, response);
 			viewPage = "nickChk.jsp";
 			break;
 		case "/User/emailChk.ho":
-			command = new chkMailCommand();
+			command = new ChkMailCommand();
 			command.execute(request, response);
 			viewPage = "emailChk.jsp";
 			break;

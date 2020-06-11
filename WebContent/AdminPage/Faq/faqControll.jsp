@@ -31,7 +31,7 @@
       <div class="col s10"></div>
 	<button class="s2 btn waves-effect btn2 right-align" onclick="location.href='write.ho'">추가</button>
   <div>
-
+<div style="padding: 20px 0;"></div>
       <div class="FAQ">
 
     <div>

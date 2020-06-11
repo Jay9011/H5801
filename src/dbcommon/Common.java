@@ -120,12 +120,21 @@ public class Common {
 		 public static final String SQL_INSERT_ORDER_RESERVE = "INSERT INTO RESERVE (p_uid, P_STARTTIME , P_ENDTIME , ITEM_NAME , TOTAL_AMOUNT , PAY_DATE , P_CANCEL , M_UID , T_UID ) VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date(?, 'yyyy-mm-dd'), to_date(?, 'yyyy-mm-dd'), ?, ?, SYSDATE, 0, ?, ?)";
 
 		 
-		 // 예약 현황 게시판 관련 Query
+		 // 예약 현황 게시판
 		 public static final String SQL_SELECT_MUID_FROM_VBOOK = "SELECT COUNT(*) FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2)";
 		 public static final String SQL_SELECT_ALL_FROM_VBOOK = "SELECT COUNT(*) FROM v_book WHERE p_cancel IN (1, 2)";
 		 public static final String SQL_SELECT_FROM_ROW2 = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?";
 		 public static final String SQL_SELECT_FROM_ROW_BY_ADMIN = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?";
 
+		 
+		 // 비밀번호 변경
+		 public static final String SQL_SELECT_BY_UID = "SELECT * FROM m_user WHERE m_uid = ?";
+		 public static final String SQL_UPDATE_PW_BY_EMAIL="UPDATE m_user SET m_pw = ? WHERE m_uid = ?";
+		 
+		 // 예약 결제
+		 
+		 public static final String SQL_SELECT_BY_P_UID = "SELECT * FROM v_book WHERE p_uid = ?";
 		 public static final String SQL_DELETE_ORDER_RESERVE = "DELETE FROM RESERVE WHERE p_uid = ?";
-
+		 public static final String SQL_UPDATE_TID_BY_PAY ="UPDATE RESERVE SET tid = ?, p_cancel=? WHERE p_uid = ?";
+		 public static final String SQL_UPDATE_TID_BY_REFUND = "UPDATE RESERVE SET tid = ?, p_cancel=? WHERE p_uid = ?";
 }

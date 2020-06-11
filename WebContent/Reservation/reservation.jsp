@@ -15,12 +15,12 @@
 					class="modal-close waves-effect  btn-flat amber">확인</a>
 			</div>
 		</div>
-		<script>	
-document.addEventListener('DOMContentLoaded', function () {	
-    var Modalelem = document.querySelector('.modal');	
-    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});	
-    instance.open();	
-});	
+		<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var Modalelem = document.querySelector('.modal');
+    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
+    instance.open();
+});
 		</script>
 	</c:when>
 	<c:otherwise>
@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
     margin: 8% 5% 3% 30%;
     border-radius: 10px;
     background-color: #fdd835;
+}
+#selectDate {
+	cursor: pointer;
 }
 </style>
 <script>
@@ -115,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <button id="104" class="col btn-large orange box4" name="action" onclick="selectRoom($(this).attr('id'))">4번방</button>
           </div>
 </div>
-     
+
             </div>
         </div>
 
