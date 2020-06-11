@@ -7,8 +7,8 @@
               <div class="col s8">
                   <h4>Team 5801</h4>
                   <h5>Made By</h5>
-                    <p>Captain Jongsub Yoon</p>
-                    <p>
+                    <p class="left-align">Captain Jongsub Yoon</p>
+                    <p class="left-align">
                     	Jiwoo Yoon,
                     	Nakkyeong Ju,
                     	Jaehyeon Kim,
