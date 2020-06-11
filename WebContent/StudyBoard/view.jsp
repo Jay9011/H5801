@@ -5,23 +5,22 @@
 <c:choose>
 	<c:when test="${empty viewInfo || fn:length(viewInfo) == 0 }">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
- <jsp:include page="../modal.jsp"/>
+		<jsp:include page="../modal.jsp" />
 		<div id="demo-modal" class="modal">
 			<div class="modal-content">
 				<h5>접근 실패</h5>
 				<p class="left-align">해당 정보가 삭제되었거나 존재하지 않습니다.</p>
 			</div>
 			<div class="modal-footer">
-				<a href="javascript:window.history.back();"
-					class="modal-close waves-effect  btn-flat amber">확인</a>
+				<a href="javascript:window.history.back();" class="modal-close waves-effect  btn-flat amber">확인</a>
 			</div>
 		</div>
-		<script>	
-document.addEventListener('DOMContentLoaded', function () {	
-    var Modalelem = document.querySelector('.modal');	
-    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});	
-    instance.open();	
-});	
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+			    var Modalelem = document.querySelector('.modal');
+			    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
+			    instance.open();
+			});
 		</script>
 	</c:when>
 	<c:otherwise>
@@ -33,19 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/customModal.css">
 <title>학습 문의 ${viewInfo[0].s_title}</title>
 <script src="../ckeditor/ckeditor.js"></script>
 </head>
-<script>
-function chkDelete(s_uid){
-	var r = confirm("정말로 삭제하시겠습니까?");
-	if(r){
-		location.href = 'deleteOk.ho?s_uid=' + s_uid;
-	} else {
-
-	}
-}
-</script>
 <body>
 <jsp:include page="../nav.jsp"/>
 <jsp:include page="../header.jsp"/>
@@ -134,6 +124,16 @@ function chkDelete(s_uid){
 		}
 	});
 
+	function chkDelete(s_uid){
+		$("#DeletePost").css({"display": "block"});
+		$("#DeletePost #s_uid").val(s_uid);
+	}
+
+	function chkDeleteOk(){
+		var s_uid = $("#DeletePost #s_uid").val();
+		location.href = 'deleteOk.ho?s_uid=' + s_uid;
+	}
+
 	var replyClick = false;
 	function createComment(jsonObj, prevId){
 		var commentrow = "";
@@ -150,6 +150,7 @@ function chkDelete(s_uid){
 				if(${grade != null}){
 					var user_grade = ${grade};
 				}
+				commentrow += "<div style='clear:both;'></div>";
 				if(row[i].sr_depth == 0){
 					commentrow += "<div class='row'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>";
 				} else {
@@ -233,11 +234,10 @@ function chkDelete(s_uid){
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					alert("등록 성공");
 					createComment(data, prevId);
 					CKEDITOR.instances.editor1.setData('');
 				} else if(data.status == "FAIL"){
-					alert("등록 실패 : " + data.message);
+					openModal2("등록 실패", "등록 실패 : " + data.message);
 				}
 			}
 			,error: function(e){
@@ -248,7 +248,14 @@ function chkDelete(s_uid){
 	}
 
 	function deleteComment(sr_uid){
-		if(confirm("지금 바로 삭제할래?")){$.ajax({
+		$("#DeleteQuetion").css({"display": "block"});
+		$("#DeleteQuetion #sr_uid").val(sr_uid);
+	}
+
+	function deleteCommentOk(){
+		var sr_uid = $("#DeleteQuetion #sr_uid").val();
+		$("#DeleteQuetion").css({"display": "none"});
+		$.ajax({
 			type:"POST"
 			,url:"comDeleteOk.ho?sr_uid=" + sr_uid
 			,dataType:"json"
@@ -257,21 +264,18 @@ function chkDelete(s_uid){
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					alert("삭제 성공");
+					openModal1("삭제 성공", "정상적으로 삭제되었습니다.");
 					/* $("#" + sr_uid).remove(); */
-					location.reload();
+					/* location.reload(); */
 				} else if(data.status == "FAIL"){
-					alert("삭제 실패. ");
+					openModal2("삭제 실패", "삭제를 실패했습니다. 잠시 후 다시 시도해 주세요.");
 				}
 			}
 			,error: function(e){
 				console.log("ERROR : ", e);
-                alert("서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.");
+	            alert("서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.");
 			}
-		});}
-		else{
-			return false;
-		}
+		});
 	}
 
 	function alterComment(sr_uid){
@@ -340,10 +344,9 @@ function chkDelete(s_uid){
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					alert("수정 성공");
-					location.reload();
+					openModal1("수정 성공", "정상적으로 수정되었습니다.");
 				} else if(data.status == "FAIL"){
-					alert("수정 실패. ");
+					openModal2("수정 실패", "수정을 실패했습니다.");
 				}
 			}
 			,error: function(e){
@@ -376,7 +379,7 @@ function chkDelete(s_uid){
 						$("#likeBtn").html("좋아요 취소 <i class='material-icons dp48'>favorite</i>");
 					}
 				} else if(data.status == "FAIL"){
-					alert("등록 실패");
+					alert("서버와의 연결이 원활하지 않습니다. 다시 시도해 주세요.");
 				}
 			}
 			,error: function(e){
@@ -391,6 +394,7 @@ function chkDelete(s_uid){
 		</div>
 
 </section>
+	<jsp:include page="modalForms.jsp"/>
 	<jsp:include page="../foot.jsp"/>
 </body>
 </html>
