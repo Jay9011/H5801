@@ -8,7 +8,7 @@
 	
 
 		<div id="demo-modal" class="modal">
-	    	<div class="modal-content">
+	    	<div class="modal-content"> 
 	      		<h5 style='color:blue'>※결제 성공!</h5>
 	      			<p class="left-align">"${total }원 (${item_name })이 결제 되었습니다. "</p>
 			</div>
