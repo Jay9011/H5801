@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../top.jsp"/>
           <link rel="stylesheet" href="../CSS/introduce.css">
- <title>FAQ</title>
+ <title>HOLIC 소개</title>
    </head>
    <body>
 <jsp:include page="../nav.jsp"/>
@@ -24,9 +24,6 @@
       <div class="col s10">
       <!--  여기에다가 적어주기 (반응형은 필수이다. -->
       
-
-      
-     
          <div id="i_intro" class="section scrollspy pfont set-2">
       <div class="w-12 center-align firstSet-1">
          <h1 class="pfont t1">Introduce Holic Reading Room</h1>
@@ -172,9 +169,28 @@
       </div>
       <div class="map2 left" id="map">
          <div id="map" style="height: 700px;"></div>
-         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpXCUpAbetxI0sTqAX8IgAJ3UG8zGLn2E&callback=initMap" async defer>
-            
-         </script>
+        <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7498c3868ab21028b64464d2774c74e3"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(37.4999529, 127.03549318),
+			level: 3
+		};
+		var map = new kakao.maps.Map(container, options);
+		
+		var imageSrc = '../IMAGES/mark.png', // 마커이미지의 주소입니다    
+	    imageSize = new kakao.maps.Size(40, 50), // 마커이미지의 크기입니다
+	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+	    markerPosition = new kakao.maps.LatLng(37.4999529, 127.03549318); // 마커가 표시될 위치입니다
+	    var marker = new kakao.maps.Marker({
+	    	  position: markerPosition,
+	    	  image: markerImage // 마커이미지 설정 
+	    	});
+	    marker.setMap(map);  
+	</script>
       </div>
       <!-- //map -->
       <div class="map2 left">

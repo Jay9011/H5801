@@ -29,18 +29,17 @@
   <div class="col s12 text_title FAQ pfont"><h2>공지사항 <br>Admin Controll Page</h2></div>
       <div class="col s10"></div>
 	<button class="s2 btn waves-effect btn2 right-align"onclick="location.href = 'write.ho'">추가</button>
-  
   <div>
-
+<div style="padding: 20px 0;"></div>
 <div class="FAQ">
   	<table id="postList" class="highlight">
         <!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
-        <thead>
+         <thead class="amber lighten-5">
           <tr class="header">
-          <th width="100px">UID</th>
-          <th>Title</th>
-          <th width="150px">View Count</th>
-          <th  width="150px">Creation time</th>
+          <th width="5%">UID</th>
+          <th width="55%">Title</th>
+          <th width="15%">View</th>
+          <th  width="30%">Creation time</th>
           </tr>
           </thead>
 	    <c:choose>

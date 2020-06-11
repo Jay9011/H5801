@@ -13,7 +13,7 @@ function getList() {
 		dataType : "json",
 		success : function(data) {
 			if (data.status == "OK") {
-				var table = "<thead><tr><th>NO</th><th style='width:75px'>카테고리</th><th>제목</th>\<th class='writer'>작성자</th><th class='writedate'>작성일</th><th class='viewcount'>조회수</th></tr></thead>";
+				var table = "<thead class='amber lighten-5'><tr><th>NO</th><th style='width:75px'>카테고리</th><th>제목</th>\<th class='writer'>작성자</th><th class='writedate'>작성일</th><th class='viewcount'>조회수</th></tr></thead>";
 				if (data.count > 0) {
 					var row = data.data;
 					var now = new Date();
