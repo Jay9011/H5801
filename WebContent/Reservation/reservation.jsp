@@ -45,10 +45,10 @@ background-color: #dfb429;
 					<div class="col s12">
 						<form id="frm" action="${pageContext.request.contextPath}/Payment/pay.ho">
 							<input id="selectDate" name="selectDate" type="text" class="datepicker pfont " readonly="readonly">
-							<input id="item_name" name="item_name" type="text">
-							<input id="total_amount" name="total_amount" type="text">
-							<input id="m_uid" name="m_uid" type="text" value="${uid }">
-							<input id="t_uid" name="t_uid" type="text">
+							<input id="item_name" name="item_name" type="text" hidden="hidden">
+							<input id="total_amount" name="total_amount" type="text" hidden="hidden">
+							<input id="m_uid" name="m_uid" type="text" value="${uid }" hidden="hidden">
+							<input id="t_uid" name="t_uid" type="text" hidden="hidden">
 						</form>
 					</div>
 					<!--<div class="row"> -->
