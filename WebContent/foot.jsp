@@ -10,7 +10,7 @@
                     <p>Captain Jongsub Yoon</p>
                     <p>
                     	Jiwoo Yoon,
-                    	Nakkyeong Ju,
+                    	Nagkyeong Ju,
                     	Jaehyeon Kim,
                     	Subin Han
                     </p>

@@ -1,5 +1,5 @@
 // 작성자: 낙경
-// 2020-06-02  22:00 수정
+// 2020-06-11  22:00 수정
 
 package dbcommon;
 
@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class DAOBook {
@@ -126,32 +125,12 @@ public class DAOBook {
 			return arr;
 		} // end createArray()
 		
-		// 전체 SELECT
-		public DTOBook [] selectByUid(int uid) throws SQLException {
-			DTOBook [] arr = null;
-			
-			try {
-				// "SELECT * FROM test_write ORDER BY wr_uid DESC"
-				pstmt = conn.prepareStatement("SELECT * FROM v_book WHERE m_uid = ? ORDER BY p_startTime DESC");
-				pstmt.setInt(1, uid);
-				// executeQuery(): 쿼리문 수행
-					// 리턴값: 수행한 결과를 담은 ResultSet
-				rs = pstmt.executeQuery();
-				// 쿼리 수행 -> ResultSet -> WriteDTO 생성(한 row씩) -> ArrayList에 담기(한 row씩) -> Array 변환
-				arr = createArray(rs);
-			} finally {
-				close();
-			}		
-			
-			return arr;
-		} // end select()
-		
-		// 쿼리: 페이지네이션 구현
+		// 페이지네이션 구현 (전체 페이지 계산)
 		public int countAll(int m_uid) throws SQLException {
 			int cnt = 0;
 
 			try {
-				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2)");
+				pstmt = conn.prepareStatement(Common.SQL_SELECT_MUID_FROM_VBOOK);
 				pstmt.setInt(1, m_uid);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
@@ -163,12 +142,12 @@ public class DAOBook {
 			return cnt;
 		}
 		
-		// 관리자 페이지용
+		// 전체 글 조회(관리자 페이지용)
 		public int countAllAdmin() throws SQLException {
 			int cnt = 0;
 
 			try {
-				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book WHERE p_cancel IN (1, 2)");
+				pstmt = conn.prepareStatement(Common.SQL_SELECT_ALL_FROM_VBOOK);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					cnt = rs.getInt(1);
@@ -179,60 +158,13 @@ public class DAOBook {
 			return cnt;
 		}
 		
-		// Ajax 테스트용
-		public int countAll() throws SQLException {
-			int cnt = 0;
-
-			try {
-				pstmt = conn.prepareStatement("SELECT COUNT(*) FROM v_book");
-				rs = pstmt.executeQuery();
-				rs.next();
-				cnt = rs.getInt(1);
-			
-			} finally {
-				closeWithoutConn();
-			}
-			return cnt;
-		}
 		
-		// BOARD의 페이징
-		public DTOBook[] selectPaging_st(int m_uid, int fromRow, int toRow) throws SQLException {
-			DTOBook[] arr = null;
-			
-			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
-				pstmt.setInt(1, m_uid);
-				pstmt.setInt(2, fromRow);
-				pstmt.setInt(3, toRow);
-				rs = pstmt.executeQuery();
-				arr = createArray(rs);
-			} finally {
-				close();
-			}
-			return arr;
-		}
-		
-		public DTOBook[] selectPaging_stAdmin(int fromRow, int toRow) throws SQLException {
-			DTOBook[] arr = null;
-			
-			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
-				pstmt.setInt(1, fromRow);
-				pstmt.setInt(2, toRow);
-				rs = pstmt.executeQuery();
-				arr = createArray(rs);
-			} finally {
-				close();
-			}
-			return arr;
-		}
-		
-		// Ajax용
+		// 페이지 조회
 		public DTOBook[] selectFromRow(int m_uid, int from, int rows) throws SQLException {
 			DTOBook[] arr = null;
 			
 			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_ROW2);
 				pstmt.setInt(1, m_uid);
 				pstmt.setInt(2, from);
 				pstmt.setInt(3, from+rows);
@@ -244,20 +176,23 @@ public class DAOBook {
 			return arr;
 		}
 		
-		public DTOBook[] selectFromRow(int from, int rows) throws SQLException{
-			DTOBook[] arr =null;
+		// 페이지 조회(관리자 페이지용)
+		public DTOBook[] selectFromRowAdmin(int fromRow, int toRow) throws SQLException {
+			DTOBook[] arr = null;
 			
-		try {
-			pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
-			pstmt.setInt(1, from);
-			pstmt.setInt(2, from+rows);
-			rs= pstmt.executeQuery();
-			arr = createArray(rs);
-		} finally {
-			close();
+			try {
+				pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_ROW_BY_ADMIN);
+				pstmt.setInt(1, fromRow);
+				pstmt.setInt(2, toRow);
+				rs = pstmt.executeQuery();
+				arr = createArray(rs);
+			} finally {
+				close();
+			}
+			return arr;
 		}
-		return arr;
-	}
+		
+
 		
 
 	
