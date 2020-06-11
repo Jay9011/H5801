@@ -116,8 +116,9 @@ h2.pfont{
   z-index: 999;
 }
 #topBtn i{
-	vertical-align: middle;
+vertical-align: middle;
 	 transform: rotate(-90deg);
+    line-height: inherit;
 }
 #topBtn:hover {
 	 background: #000;
