@@ -7,7 +7,7 @@ $(document).ready(function(){
 	loadPage(page);
 	
 });
-
+ 
 //page 번째 페이지 로딩
 function loadPage(page){
 	
