@@ -23,18 +23,6 @@
 			<div class="col s1 "></div>
 			<div class="col s10">
 
-				<div class="col m7 offset-m5 s12  right-align"
-					style="margin-bottom: 51px;">
-					<ul class="tabs">
-						<li class="tab col s6 m6"><a target="_self"
-							href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a>
-						</li>
-						<li class="tab col s6 m6"><a target="_self" class="active"
-							href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></li>
-						<li class="indicator" style="left: 0px; right: 284px;"></li>
-					</ul>
-				</div>
-
 				<h3 class="left-align pfont">자주하는 질문</h3>
 
 					<div class=" FAQ">

@@ -330,7 +330,7 @@ public class Controller extends HttpServlet {
 
 
 			// JaeHyen Controller FAQ/Notice/Introduce User
-		case "/Faq/faq.ho":
+		case "/Notice/faq.ho":
 			command = new FaqLoad();
 			command.execute(request, response);
 			viewPage = "faq.jsp";
