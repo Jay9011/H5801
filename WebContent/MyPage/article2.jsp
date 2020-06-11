@@ -18,7 +18,7 @@
 	<table id="postList" class="highlight">
 	<thead>
 		<tr>
-			<th width="100px">uid</th>
+			<th width="100px">NO</th>
                 <th>제목</th>
                 <th width="150px">작성일</th>		
 		</tr>
