@@ -117,20 +117,17 @@ h2.pfont{
 }
 #topBtn i{
 vertical-align: middle;
-	 transform: rotate(-90deg);
+    transform: rotate(-90deg);
     line-height: inherit;
 }
 #topBtn:hover {
 	 background: #000;
   color: #FFC107;
 }
-.sidenav-trigger {
-			top: 5px;
-		}
     @media screen and (max-width: 670px){
-	     h2{
-	     	margin-top:1rem;
-	     }
+     h2{
+     	margin-top:1rem;
+     }
     }
     @media only screen and (min-width: 1200px){
     html {
