@@ -118,4 +118,14 @@ public class Common {
 		 public static final String SQL_SELECT_RESERV_BY_DATE = "SELECT * FROM RESERVE WHERE TO_CHAR(P_STARTTIME ,'YYYY-MM-DD') = ? AND P_CANCEL = 1";
 		 public static final String SQL_SELECT_ROOM_INFO = "SELECT * FROM T_DETAIL WHERE t_uid = ?";
 		 public static final String SQL_INSERT_ORDER_RESERVE = "INSERT INTO RESERVE (p_uid, P_STARTTIME , P_ENDTIME , ITEM_NAME , TOTAL_AMOUNT , PAY_DATE , P_CANCEL , M_UID , T_UID ) VALUES (SEQ_Reserve_p_uid.NEXTVAL, to_date(?, 'yyyy-mm-dd'), to_date(?, 'yyyy-mm-dd'), ?, ?, SYSDATE, 0, ?, ?)";
+
+		 
+		 // 예약 현황 게시판 관련 Query
+		 public static final String SQL_SELECT_MUID_FROM_VBOOK = "SELECT COUNT(*) FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2)";
+		 public static final String SQL_SELECT_ALL_FROM_VBOOK = "SELECT COUNT(*) FROM v_book WHERE p_cancel IN (1, 2)";
+		 public static final String SQL_SELECT_FROM_ROW2 = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?";
+		 public static final String SQL_SELECT_FROM_ROW_BY_ADMIN = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?";
+
+		 public static final String SQL_DELETE_ORDER_RESERVE = "DELETE FROM RESERVE WHERE p_uid = ?";
+
 }

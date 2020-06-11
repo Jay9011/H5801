@@ -13,7 +13,7 @@
 	      			<p class="left-align">"${total }원 (${item_name })이 결제 되었습니다. "</p>
 			</div>
 	    	<div class="modal-footer">
-	      		<a href="${pageContext.request.contextPath}/MyPage/book.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+	      		<a href="${pageContext.request.contextPath}/MyPage/book2.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 	    	</div>
     	</div>		
 	</c:when>
@@ -27,7 +27,7 @@
 	      			<p class="left-align">결제에 실패하셨습니다.</p>
 			</div>
 	    	<div class="modal-footer">
-	      		<a href="${pageContext.request.contextPath}/MyPage/book.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
+	      		<a href="${pageContext.request.contextPath}/MyPage/book2.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 	    	</div>
     	</div>
 	
