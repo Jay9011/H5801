@@ -18,7 +18,7 @@
       <div class="row">
            <div class="col s1 "></div>
           <div class="col s10 14">
-              <h1 class="center-align pfont">JOIN CHACK</h1>
+              <h1 class="center-align pfont">JOIN CHECK</h1>
               <form action="joinEmail.ho" name="joinChkFrm" method="post">
                   <section>
                       <div class="row">

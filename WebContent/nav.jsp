@@ -37,7 +37,7 @@
 						지원</a>
 					<ul id='dropdown2' class='dropdown-content'>
 						<li><a href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a></li>
-						<li><a href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a></li>
+						<li><a href="${pageContext.request.contextPath}/Notice/faq.ho">FAQ</a></li>
 					</ul></li>
 				<li><a class="dropdown-trigger btnOut" data-target="dropdown3"
 					style="display: none;">마이페이지</a>
@@ -81,8 +81,8 @@
 			<li><a class="collapsible-header apad">고객 지원</a>
 				<div class="collapsible-body">
 					<ul>
-						<li><a href="#!">공지사항</a></li>
-						<li><a href="#!">FAQ</a></li>
+						<li><a href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/Notice/faq.ho">FAQ</a></li>
 					</ul>
 				</div></li>
 		</ul>

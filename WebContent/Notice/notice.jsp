@@ -23,59 +23,31 @@
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-	<div class="col m7 offset-m5 s12  right-align" style="margin-bottom:51px; ">
-      <ul class="tabs">
-        <li class="tab col s6 m6">
-          <a target="_self" class="active" href="${pageContext.request.contextPath}/Notice/notice.ho">공지사항</a>
-        </li>
-        <li class="tab col s6 m6">
-          <a target="_self" href="${pageContext.request.contextPath}/Faq/faq.ho">FAQ</a>
-        </li>
-      <li class="indicator" style="left: 0px; right: 284px;"></li></ul>
-    </div>
-		      
-		      
-      <div class="w-12 text_title FAQ pfont"><h1>공지사항</h1></div>
-  <div class="text_title left-1" style="width: 100%">
-  
-  
-  
-  
-  
-
-  </div>
-  
-  <br>
-  <div>
-  <div class="clear"></div>
-    <div class="hr"><hr class="hr2"></div>
-
-
-<br>
+      <h3 class="left-align pfont">공지사항</h3>
+ 
 <div class="FAQ">
-  	<table id="postList">
+  	<table id="postList" class="highlight">
         <!-- <카테고리> - <수정/삭제 버튼> - <타이틀> - <아이콘?> - <10개당 1페이지> -->
+           <thead>
           <tr class="header">
-          <td class="w-8 left-1">Title</td>
-          <td class="w-2 left-1 firstSet-1">View Count</td>
-          <td class="w-2 left-1 firstSet-1">Creation time</td>
+          <th>Title</th>
+          <th width="150px">View Count</th>
+          <th  width="150px">Creation time</th>
           </tr>
+          </thead>
 	    <c:choose>
     	<c:when test="${empty npagetable || fn:length(npagetable) == 0 }"></c:when>
     	<c:otherwise>
     		<c:forEach var="notice" items="${npagetable }">
-        <tr class="menu s10 " id="postList ">
-          <td class="w-8 left-1 s4 firstSet-3 " id="postList "><a class="firstSet-3" href="noticeview.ho?uid=${notice.n_uid}">${notice.n_title }</a></td>
-          <td class="w-2 left-1 s4 firstSet-1">${notice.n_viewCnt }</td>
-          <td class="w-2 left-1 s4 right-align firstSet-2">${notice.n_date }</td>
-          <td class="clear">
+        <tr>
+          <td ><a class="firstSet-3" href="noticeview.ho?uid=${notice.n_uid}"> ${notice.n_title }</a></td>
+          <td>${notice.n_viewCnt }</td>
+          <td>${notice.n_date }</td>
         </tr>
            </c:forEach>
     	</c:otherwise>
     </c:choose>
         </table>
-      <br><br><br>
-      <div class="hr"><hr class="hr2"></div>
       
       <!-- ===========================================페이징============================================= -->
 	<div class="pager center-align">
@@ -108,7 +80,7 @@
 </div> 
       </div>
       <!--  -->
-  </div>  <!-- END -->
+  <!-- END -->
 		
 		
 		
