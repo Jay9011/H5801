@@ -29,8 +29,7 @@
 	<c:when test="${grade > 8 }">
       <div class="w-12 text_title FAQ pfont"><h1>자주하는 질문 <br>Admin Controll Page</h1></div>
   <div class="text_title right-align " style="width: 100%">
-	<button class="btn waves-effect btn2" onclick="location.href = 'write.ho'">추가</button>
-
+	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho'">추가</button>
   </div>
   
   

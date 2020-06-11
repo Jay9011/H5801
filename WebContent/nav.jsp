@@ -46,12 +46,7 @@
 
 						<li><a href="${pageContext.request.contextPath}/MyPage/book2.ho">예약현황</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/list.ho">게시물 조회</a></li>
-						<li><a href="${pageContext.request.contextPath}/MyPage/reInfo.ho">정보수정</a></li>
-						    <c:choose>
-						    <c:when test="${grade > 8 }">
-								<li><a href="${pageContext.request.contextPath}/AdminPage/MasterControll.ho">관리페이지</a></li>
-							</c:when>
-							</c:choose>						
+						<li><a href="${pageContext.request.contextPath}/MyPage/reInfo.ho">정보수정</a></li>					
 					</ul></li>
 				<li>
 					<button class="btn waves-effect waves-red btnIn"
@@ -101,11 +96,6 @@
 						<li><a href="${pageContext.request.contextPath}/MyPage/book2.ho">예약현황</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/list.ho">게시물 조회</a></li>
 						<li><a href="${pageContext.request.contextPath}/MyPage/reInfo.ho">정보수정</a></li>
-						<c:choose>
-						    <c:when test="${grade > 8 }">
-								<li><a href="${pageContext.request.contextPath}/AdminPage/MasterControll.ho">관리페이지</a></li>
-							</c:when>
-						</c:choose>	
 					</ul>
 				</div></li>
 		</ul>
@@ -119,25 +109,31 @@
 	</li>
 </ul>
 
+						    <c:choose>
+						    <c:when test="${grade > 8 }">
 			<table id="tbody1">
 				<tbody id="tbody">
 					<tr>
 					<th id="top"></th>
 					</tr>
 					<tr>
-						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/MyPage/bookAdmin.ho">예약현황<br>관리하기</a></th>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/MyPage/bookAdmin1.ho">예약현황<br>관리하기</a></th>
 					</tr>
 					<tr>
 						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/faqControll.ho">FAQ<br>관리하기</a></th>
 					</tr>
 					<tr>
-						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Faq/noticeControll.ho">Notice<br>관리하기</a></th>
+						<th id="midle"><a id="link" href="${pageContext.request.contextPath}/AdminPage/Notice/noticeControll.ho">Notice<br>관리하기</a></th>
 					</tr>
 					<tr>
 					<th id="buttom"></th>
 					</tr>
 				</tbody>
 			</table>
+							</c:when>
+							</c:choose>	
+
+
 
 
 <div id="topBtn" class="z-depth-2" onclick=" $('html, body').stop().animate({scrollTop: 0});">
