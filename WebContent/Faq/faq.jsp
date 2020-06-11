@@ -11,7 +11,7 @@
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
-   <link rel="stylesheet" href="../CSS/faq.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/faq.css">
  <title>타이틀 써주기</title>
    </head>
    <body>
@@ -40,11 +40,6 @@
       
       <div class="w-12 text_title FAQ pfont"><h1>자주하는 질문</h1></div>
   <div class="text_title left-1" style="width: 100%">
-    <c:choose>
-	<c:when test="${grade > 8 }">
-	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho'">추가</button>
-	</c:when>
-	</c:choose>	
 
   </div>
   
@@ -64,12 +59,6 @@
     	<li>
       		<div class="collapsible-header s12"><i class="material-icons">live_help</i>${faq.f_title }</div>
       		<div class="collapsible-body s12" id="test"><span>${faq.f_content }</span>
-      		 <c:choose>
-				<c:when test="${grade > 8 }">
-					<button class="btn waves-effect btn2 right-1" onclick="location.href = 'update.ho?f_uid=${faq.f_uid }'">수정</button>
-					<button class="btn waves-effect btn2 right-1" onclick="location.href = 'deleteOk.ho?f_uid=${faq.f_uid }'">삭제</button>
-				</c:when>
-			</c:choose>	
       		</div>
     	</li>
     		</c:forEach>
@@ -96,6 +85,6 @@
 
 	<jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->
-<script src="../JS/faq.js"></script>
+<script src="${pageContext.request.contextPath}/JS/faq.js"></script>
 </body>
 </html>

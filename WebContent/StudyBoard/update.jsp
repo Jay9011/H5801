@@ -48,12 +48,12 @@
 		<div class="row">
 			<div class="col s1 "></div>
 			<div class="col s10">
-				<h1 class="center-align pfont">수정</h1>
+				<h1 class="center-align pfont">기존 글 수정</h1>
 				<form action="updateOk.ho" name="frm" method="post"
 					onsubmit="return chkSubmit()">
-					<input type="hidden" name="s_uid" value="${selected[0].s_uid}" /> <input
-						type="text" name="m_nick" value="${nick }" disabled="disabled" />
-					<label for="subject">제목</label> 
+					<input type="hidden" name="s_uid" value="${selected[0].s_uid}" />
+					<input type="hidden" name="m_nick" value="${nick }" disabled="disabled" />
+					<label for="subject">제목</label>
 					<input type="text" id="subject" name="subject" value="${selected[0].s_title }" class="validate" />
 					내용 : <br>
 					<textarea id="editor1" name="content">${selected[0].s_content}</textarea>

@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="../top.jsp"/>
- <title>글 쓰기</title>
-<script src="../ckeditor/ckeditor.js"></script>
+<jsp:include page="../../top.jsp"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
+<script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
 </head>
 <script>
 	function chkSubmit(){
@@ -27,51 +31,22 @@
 		return true;
 	}
 </script>
+
 <body>
-<jsp:include page="../nav.jsp"/>
-<jsp:include page="../header.jsp"/>
+<jsp:include page="../../nav.jsp"/>
+<jsp:include page="../../header.jsp"/>
+<c:choose>
+	<c:when test="${grade > 8 }">
 <section class="container section scrollspy" id="intro">
 	<div class="row">
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		<h1 class="center-align pfont">새로운 글</h1>
+		<h1 class="center-align pfont">Write</h1>
 	<form name="writeTable" action="writeOk.ho" method="post" onsubmit="return chkSubmit()">
-		<input type="hidden" name="m_uid" value="${uid }" />
-		<div>
-		<span>학년 &emsp;</span>
-        <label>
-            <input type="radio" name="sc_uid" value="1" checked="checked">
-            <span>중1</span>
-        </label> &emsp;
-        <label>
-            <input type="radio" name="sc_uid" value="2">
-            <span>중2</span>
-        </label> &emsp;
-        <label>
-            <input type="radio" name="sc_uid" value="3">
-            <span>중3</span>
-        </label> &emsp;
-        <label>
-            <input type="radio" name="sc_uid" value="4">
-            <span>고1</span>
-        </label> &emsp;
-        <label>
-            <input type="radio" name="sc_uid" value="5">
-            <span>고2</span>
-        </label> &emsp;
-        <label>
-            <input type="radio" name="sc_uid" value="6">
-            <span>고3</span>
-        </label> &emsp;
-        <label>
-            <input type="radio" name="sc_uid" value="7">
-            <span>대학생</span>
-        </label> &emsp;
-        </div>
         <div class="row">
 		<div class="input-field col s12">
-		<input type="text" id="subject" name="subject" class="validate" data-length="50"/>
+		<input type="text" id="subject" name="subject" class="validate"/>
 		<label for="subject">
 		제목
 		</label>
@@ -82,27 +57,28 @@
 		<br>
 		<div class="col s12 right-align" style="margin-bottom: 50px;">
 			<button type="submit" class="btn waves-effect btn2" style="margin:0 10px;">등록</button>
-			<button class="btn waves-effect btn2" type="button" onclick="location.href = 'list.ho'">목록으로</button>
+			<button class="btn waves-effect btn2" type="button" onclick="location.href = 'notice.ho'">목록으로</button>
 		</div>
 	</form>
-
-
+	
+		
 		</div>
 		<div class="col s1"></div>
 	</div>
 </section>
-
+	
 	<script>
 		CKEDITOR.replace('editor1', {
 			allowedContent: true	// HTML 태그 자동 삭제 방지 설정
 			,filebrowserUploadUrl: '${pageContext.request.contextPath}/StudyBoard/fileUpload.ho'
 		});
-
-		$(document).ready(function() {
-		    $('#subject').characterCounter();
-		  });
 	</script>
-<jsp:include page="../foot.jsp"/>
+<jsp:include page="../../foot.jsp"/>
 <!--  js 추가는 여기에 -->
+		</c:when>
+		<c:otherwise>관리자가 아닙니다.</c:otherwise>
+	</c:choose>
 </body>
+
+
 </html>

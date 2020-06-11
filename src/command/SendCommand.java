@@ -1,7 +1,7 @@
 package command;
 
 // 작성자: 낙경
-// 2020-06-01  23:00 수정
+// 2020-06-10  23:00 수정
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -104,10 +104,10 @@ public class SendCommand implements Command, Email{
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 			
 			// 메일 제목
-			msg.setSubject("Holic 스터디 카페 인증 메일");
+			msg.setSubject("[HOLICE STUDY ROOM] 비밀번호 변경 인증키");
 			
 			// 메일 내용
-			msg.setText("인증 번호는 : " + temp);
+			msg.setText("인증키 : " + temp);
 			
 			
 			Transport.send(msg);

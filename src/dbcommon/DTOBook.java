@@ -10,7 +10,7 @@ public class DTOBook {
 	private int rnum;
 	private int p_uid; // 테이블명: RESERVE 컬럼명: p_uid
 	private String tid;
-	private Date b_sdate;// 테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
+	private String b_sdate;// 테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
 	private String b_stime;//	테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'HH24:MI:SS') AS "b_stime"
 	private String b_etime;//	테이블명: v_book 컬럼명: TO_CHAR(a.p_endTime, 'HH24:MI:SS') AS "b_etime"
 	private int b_term;//	테이블명: v_book 컬럼명:ROUND((a.p_endTime-a.p_startTime)*24) AS "b_term"
@@ -35,7 +35,7 @@ public class DTOBook {
 	}
 	
 	// 매개변수 생성자
-	public DTOBook(int rnum, int p_uid, String tid, Date b_sdate, String b_stime, String b_etime, int b_term, int b_duration, int b_refund,
+	public DTOBook(int rnum, int p_uid, String tid, String b_sdate, String b_stime, String b_etime, int b_term, int b_duration, int b_refund,
 			int total_amount, Date b_date, int p_cancel, int m_uid, String email, String m_nick, String m_name,
 			int m_grade, String b_seatType, int t_name, float t_pay, int t_maxmun) {
 		super();
@@ -92,11 +92,11 @@ public class DTOBook {
 		this.p_uid = p_uid;
 	}
 
-	public Date getB_sdate() {
+	public String getB_sdate() {
 		return b_sdate;
 	}
 
-	public void setB_sdate(Date b_sdate) {
+	public void setB_sdate(String b_sdate) {
 		this.b_sdate = b_sdate;
 	}
 

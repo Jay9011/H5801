@@ -11,8 +11,8 @@ public class DTOPay {
 	private int p_uid; // 테이블명: RESERVE 컬럼명: p_uid
 	private String tid;
 	private Date b_sdate;// 테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'YYYY-MM-DD') AS "b_sdate"
-	private Time b_stime;//	테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'HH24:MI:SS') AS "b_stime"
-	private Time b_etime;//	테이블명: v_book 컬럼명: TO_CHAR(a.p_endTime, 'HH24:MI:SS') AS "b_etime"
+	private String b_stime;//	테이블명: v_book 컬럼명: TO_CHAR(a.p_startTime, 'HH24:MI:SS') AS "b_stime"
+	private String b_etime;//	테이블명: v_book 컬럼명: TO_CHAR(a.p_endTime, 'HH24:MI:SS') AS "b_etime"
 	private int b_term;//	테이블명: v_book 컬럼명:ROUND((a.p_endTime-a.p_startTime)*24) AS "b_term"
 	private int b_duration;//	테이블명: v_book 컬럼명: ROUND((a.p_startTime-SYSDATE)*24) AS "b_duration"
 	private int b_refund;// 테이블명: v_book 컬럼명: CASE WHEN ROUND((a.p_startTime-SYSDATE)*24) >= 2 THEN '1' ELSE '0' END AS "b_refund"
@@ -35,7 +35,7 @@ public class DTOPay {
 	}
 	
 	// 매개변수 생성자
-	public DTOPay(int p_uid, String tid, Date b_sdate, Time b_stime, Time b_etime, int b_term, int b_duration, int b_refund,
+	public DTOPay(int p_uid, String tid, Date b_sdate, String b_stime, String b_etime, int b_term, int b_duration, int b_refund,
 			int total_amount, Date b_date, int p_cancel, int m_uid, String email, String m_nick, String m_name,
 			int m_grade, String b_seatType, int t_name, float t_pay, int t_maxmun) {
 		super();
@@ -92,19 +92,19 @@ public class DTOPay {
 		this.b_sdate = b_sdate;
 	}
 
-	public Time getB_stime() {
+	public String getB_stime() {
 		return b_stime;
 	}
 
-	public void setB_stime(Time b_stime) {
+	public void setB_stime(String b_stime) {
 		this.b_stime = b_stime;
 	}
 
-	public Time getB_etime() {
+	public String getB_etime() {
 		return b_etime;
 	}
 
-	public void setB_etime(Time b_etime) {
+	public void setB_etime(String b_etime) {
 		this.b_etime = b_etime;
 	}
 

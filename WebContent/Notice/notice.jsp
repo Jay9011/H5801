@@ -45,11 +45,7 @@
   
   
   
-      <c:choose>
-	<c:when test="${grade > 8 }">
-	<button class="btn waves-effect btn2 right-1" onclick="location.href = 'write.ho'">추가</button>
-	</c:when>
-	</c:choose>	
+
   </div>
   
   <br>
@@ -128,7 +124,7 @@
 
 	<jsp:include page="../foot.jsp"/>
 <!--  js 추가는 여기에 -->
-<script src="../JS/faq.js"></script>
+<script src="${pageContext.request.contextPath}/JS/faq.js"></script>
 </body>
 </html>
 

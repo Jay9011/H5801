@@ -15,7 +15,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%-- JSTL 버전으로 바뀌니, import 번잡함도 사라진다. JAVA 변수 선언도 사라진다 --%>
-<jsp:include page="../modal.jsp"/>
+<jsp:include page="${pageContext.request.contextPath}/modal.jsp"/>
 
 
 <c:choose>
@@ -31,7 +31,7 @@
 <!-- initial-scale=1.0(100%): 뷰포트의 초기 배율 (로딩시 확대/축소 없는 원래 크기, 범위: 0~10)-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<jsp:include page="../top.jsp"/>
+<jsp:include page="${pageContext.request.contextPath}/top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>MY RESERVATION</title>
@@ -96,8 +96,8 @@ function chkPayCancelSubmit(){
 </script>
 
 <body>
-<jsp:include page="../nav.jsp"/>
-<jsp:include page="../header.jsp"/>
+<jsp:include page="${pageContext.request.contextPath}/nav.jsp"/>
+<jsp:include page="${pageContext.request.contextPath}/header.jsp"/>
 <section class="container section scrollspy" id="intro">
 	<div class="row">
 	<div class="col s1 "></div>
@@ -230,7 +230,7 @@ function chkPayCancelSubmit(){
 		<div class="col s1 "></div>
 	</div>
 </section>
-<jsp:include page="../foot.jsp"/>
+<jsp:include page="${pageContext.request.contextPath}/foot.jsp"/>
 
 	</c:when>
 

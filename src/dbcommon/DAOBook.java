@@ -64,7 +64,7 @@ public class DAOBook {
 				int rnum = rs.getInt("rnum");
 				int p_uid = rs.getInt("p_uid");
 				String tid = rs.getString("tid");
-				Date b_sdate = rs.getDate("b_sdate");
+				String b_sdate = rs.getString("b_sdate");
 				String b_stime = rs.getString("b_stime");
 				String b_etime = rs.getString("b_etime");
 				int b_term = rs.getInt("b_term");
@@ -227,11 +227,12 @@ public class DAOBook {
 			return arr;
 		}
 		
+		// Ajax용
 		public DTOBook[] selectFromRow(int m_uid, int from, int rows) throws SQLException {
 			DTOBook[] arr = null;
 			
 			try {
-				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? ORDER BY m_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
+				pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?");
 				pstmt.setInt(1, m_uid);
 				pstmt.setInt(2, from);
 				pstmt.setInt(3, from+rows);

@@ -18,16 +18,16 @@ public class BookCommand2 implements Command {
 		DAOBook dao = new DAOBook();  // DAO 객체 생성
 		DTOBook [] arr = null;
 
-//		HttpSession session = request.getSession(true);
-//		int m_uid;
-//		
+		HttpSession session = request.getSession(true);
+		int m_uid;
+		
 //		// 매개변수 받아오기
-//		if(request.getSession().getAttribute("uid") != null) {
-//			m_uid = (Integer)(request.getSession().getAttribute("uid"));
-//		} else {
-//			m_uid = 0;
-//			return;
-//		}
+		if(request.getSession().getAttribute("uid") != null) {
+			m_uid = (Integer)(request.getSession().getAttribute("uid"));
+		} else {
+			m_uid = 0;
+			return;
+		}
 		
 		
 		// ajax response 에 필요한 값들
@@ -52,8 +52,6 @@ public class BookCommand2 implements Command {
 			}
 		}
 				
-
-	
 		// pageRows 값 :  '한 페이지' 에 몇개의 글?
 		param = request.getParameter("pageRows");
 		if(param != null && param.trim().length() !=0){
@@ -67,8 +65,8 @@ public class BookCommand2 implements Command {
 
 			try {
 				// 글 전체 개수 구하기
-				//totalCnt = dao.countAll(m_uid);
-				totalCnt = dao.countAll();
+				totalCnt = dao.countAll(m_uid);
+				//totalCnt = dao.countAll();
 				System.out.println(totalCnt);
 				
 				// 총 몇 페이지 분량인가?
@@ -79,10 +77,10 @@ public class BookCommand2 implements Command {
 				//int fromRow = (page - 1) * pageRows;  // MySQL 은 0부터 시작
 				
 				//arr = dao.selectFromRow( fromRow, pageRows);
-				arr = dao.selectFromRow(fromRow, pageRows);
+				arr = dao.selectFromRow(m_uid, fromRow, pageRows);
 				
 				if(arr == null) {
-					message.append("데이터 없음");
+					message.append("데이터가 없습니다.");
 				} else {
 					status = "OK";
 				}
@@ -97,6 +95,7 @@ public class BookCommand2 implements Command {
 		request.setAttribute("message", message.toString());
 		request.setAttribute("list", arr);
 		
+		request.setAttribute("m_uid", m_uid);
 		request.setAttribute("page", page);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("writePages", writePages);
