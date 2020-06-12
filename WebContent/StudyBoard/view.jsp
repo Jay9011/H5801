@@ -29,13 +29,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <jsp:include page="../top.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/comment.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/customModal.css">
 <title>학습 문의 ${viewInfo[0].s_title}</title>
 <script src="../ckeditor/ckeditor.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <jsp:include page="../nav.jsp"/>
@@ -151,11 +151,11 @@
 				if(${grade != null}){
 					var user_grade = ${grade};
 				}
-				commentrow += "<div style='clear:both;'></div>";
+				/* commentrow += "<div style='clear:both;'></div>"; */
 				if(row[i].sr_depth == 0){
-					commentrow += "<div class='row showOnOff' style='display:none;'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>";
+					commentrow += "<div class='row showOnOff' style='display:none; clear:both;'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + " replyOn'>";
 				} else {
-					commentrow += "<div class='row showOnOff' style='display:none;'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>";
+					commentrow += "<div class='row showOnOff' style='display:none; clear:both;'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>";
 				}
 				commentrow += "<div class='left pfont' style='cursor: pointer;'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>";
 
@@ -268,21 +268,24 @@
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					/*openModal2("삭제 성공", "정상적으로 삭제되었습니다.");*/
+					openModal2("삭제 성공", "정상적으로 삭제되었습니다.");
 					var curRp = $("#" + sr_uid);
 					var tempRp = curRp;
 					curRp.hide('slow', function(){
-						var nextRp = curRp.parent().next().next().children('div');
-						while(true){
-							var nextId = nextRp.attr('id');
-							var nextDepth = nextRp.attr('class');
-							tempRp = nextRp.parent().next().next().children('div');
-							if(nextDepth == 'depth1'){
-								nextRp.parent().remove();
-								nextRp = tempRp;
-							} else {
-								break;
+						var nextRp = curRp.parent().next().children('div');
+						if(curRp.attr('class') != 'depth1'){
+							while(true){
+								var nextId = nextRp.attr('id');
+								var nextDepth = nextRp.attr('class');
+								tempRp = nextRp.parent().next().children('div');
+								if(nextDepth == 'depth1'){
+									nextRp.parent().remove();
+									nextRp = tempRp;
+								} else {
+									break;
+								}
 							}
+
 						}
 						curRp.parent().remove();
 					});
@@ -364,13 +367,13 @@
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					/*openModal1("수정 성공", "정상적으로 수정되었습니다.");*/
+					openModal1("수정 성공", "정상적으로 수정되었습니다.");
 					var modiRP = $("#" + sr_uid + " .RPContext");
 					modiRP.html(data.data[0].sr_com);
 					initPage();
 					var RPoffset = $("#" + sr_uid).offset().top - ($(window).height() / 2);
-					$('html, body').animate({scrollTop : RPoffset}, 100);
-					modiRP.animate({backgroundColor : "#ff8e04"}, 100).animate({backgroundColor : "#FFF"}, 100).animate({backgroundColor : "#ff8e04"}, 100).animate({backgroundColor : "#FFF"}, 100);
+					$('html, body').animate({scrollTop : RPoffset}, 500);
+					/* modiRP.animate({backgroundColor : "#ff8e04"}, 100).animate({backgroundColor : "#FFF"}, 100).animate({backgroundColor : "#ff8e04"}, 100).animate({backgroundColor : "#FFF"}, 100); */
 				} else if(data.status == "FAIL"){
 					openModal2("수정 실패", "수정을 실패했습니다.");
 				}

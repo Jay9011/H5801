@@ -57,6 +57,7 @@ import command.studying.FileUploadCommand;
 import command.studying.ListCommand;
 import command.studying.ListJSONParse;
 import command.studying.ResultJsonParse;
+import command.studying.ResultJsonParse2;
 import command.studying.Update;
 import command.studying.UpdateOk;
 import command.studying.View;
@@ -170,7 +171,7 @@ public class Controller extends HttpServlet {
 
 		case "/StudyBoard/comDeleteOk.ho":
 			new ComDeleteOk().execute(request, response);
-			new ResultJsonParse().execute(request, response);
+			new ResultJsonParse2().execute(request, response);
 			break;
 
 		case "/StudyBoard/favor.ho":
@@ -216,12 +217,12 @@ public class Controller extends HttpServlet {
 			new BookCommand2().execute(request, response);
 			viewPage = "book2.jsp";
 			break;
-			
+
 		case "/MyPage/bookAdmin2.ho":
 			new BookAdminCommand2().execute(request, response);
 			viewPage = "bookAdmin2.jsp";
 			break;
-		
+
 		case "/MyPage/book_modal.ho":
 			viewPage = "book_modal.jsp";
 			break;
@@ -244,7 +245,7 @@ public class Controller extends HttpServlet {
 			new PayOkCommand().execute(request, response);
 			viewPage = "payOk.jsp";
 			break;
-		
+
 		// 예약 결제 환불
 		case "/Payment/refundOk.ho":
 			new RefundCommand().execute(request, response);
