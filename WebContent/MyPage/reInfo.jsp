@@ -4,17 +4,26 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <c:choose>
-	<c:when test="${email == null}">
-	<script>
-				alert("회원이 아니시면 접근할 수 없습니다.");
-				location.href="${pageContext.request.contextPath}/index.ho";
-			</script>
-	</c:when>
-	<c:when test="${empty ulist || fn:length(ulist) == 0}">
-	<script>
-				alert("회원님의 정보가 삭제되었거나 없습니다.");
-				location.href="${pageContext.request.contextPath}/index.ho";
-			</script>
+	<c:when test="${email == null || empty ulist || fn:length(ulist) == 0}">
+			 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+ <jsp:include page="../modal.jsp"/>
+		<div id="demo-modal" class="modal">
+			<div class="modal-content">
+				<h5>접근 실패</h5>
+				<p class="left-align">회원이 아니시면 접근할 수 없습니다.</p>
+			</div>
+			<div class="modal-footer">
+				<a href="${pageContext.request.contextPath}/index.ho"
+					class="modal-close waves-effect  btn-flat amber">확인</a>
+			</div>
+		</div>
+		<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var Modalelem = document.querySelector('.modal');
+    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
+    instance.open();
+});
+		</script>
 	</c:when>
 	<c:otherwise>
 	
