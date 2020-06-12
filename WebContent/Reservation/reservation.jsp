@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					</div>
 					<!--<div class="row"> -->
             <div id="rooms" class="col m6 s12" style="margin-bottom: 10px; height: 100%;">
-              <div class="col s12 center-align"style="border-radius: 5px;  border: 1px solid #ffa537 ;   height: 100%;">
+              <div class="col s12 center-align"style="height: 100%;">
             <div style="width: 100%;">
             	<div style="float: left; width: 50%;">
                 <button id="101" class="col btn-large amber darken-1 box1" name="action" onclick="selectRoom($(this).attr('id'))">1번방</button>
@@ -124,8 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
           <div class="col m6 s12" style="margin-bottom: 10px;">
-            <div class="col s12 center-align"style="border-radius: 5px; border: 1px solid #ffa537;
-            ">
+            <div class="col s12 center-align"style="border-radius: 5px; border: 1px solid #ffa537; padding:100px 0;">
 						<div id="RoomInfo" class="col s12 center-align">
 							<h5 class="pfont">방을 선택해 주세요</h5>
 						</div>

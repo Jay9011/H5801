@@ -367,7 +367,7 @@
 			,cache:false
 			,success: function(data){
 				if(data.status == "OK"){
-					openModal1("수정 성공", "정상적으로 수정되었습니다.");
+					openModal2("수정 성공", "정상적으로 수정되었습니다.");
 					var modiRP = $("#" + sr_uid + " .RPContext");
 					modiRP.html(data.data[0].sr_com);
 					initPage();
