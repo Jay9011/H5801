@@ -94,7 +94,7 @@
       <img class="activator" src="../IMAGES/room1.jpg">
    </div>
     <div class="card-content">
-       <span class="card-title activator grey-text text-darken-4 center-align">Room<p>(다인실)</p></span>
+       <span class="card-title activator grey-text text-darken-4 center-align">Room(다인실)</span>
     </div>
     <div class="card-reveal">
        <span class="card-title grey-text text-darken-4">Room(다인실)<i class="material-icons right card-title" style="position: absolute;top: 15px;right: 10px;">close</i></span>
