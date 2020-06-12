@@ -11,13 +11,15 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/loginout.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/inputc.css">
 <title>JOIN</title>
+ 	 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 </head>
 <body> 
 <%
 String chk = (String)session.getAttribute("chk");
 String email_chk =(String)session.getAttribute("email_chk"); 
  if(chk == null ||chk.equals("NO") || email_chk == null){%>
-<div id="demo-modal" class="modal">
+ <jsp:include page="../modal.jsp"/>
+		<div id="demo-modal" class="modal">
 	    	<div class="modal-content">
 	      		<h5 style='color:olive'>유효하지 않은 경로입니다.</h5>
 	      			<p class="left-align">이메일 인증 시간이 지났거나 잘못된 경로로 들어왔습니다.</p>
@@ -26,6 +28,14 @@ String email_chk =(String)session.getAttribute("email_chk");
 	      		<a href="${pageContext.request.contextPath}/User/joinchk.ho" class="modal-close waves-effect waves-green btn-flat amber">확인</a>
 	    	</div>
     	</div>
+		<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var Modalelem = document.querySelector('.modal');
+    var instance = M.Modal.init(Modalelem, {dismissible:false, preventScrolling:false});
+    instance.open();
+});
+		</script>
+
 <%} else{%>
 <jsp:include page="../nav.jsp"/>
 <jsp:include page="../header.jsp"/>
