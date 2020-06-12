@@ -6,7 +6,7 @@ function joinmit(){
     //닉네임 정규식
     var nickJ = /^[가-힣A-z0-9]{3,8}$/;
     // 비밀번호 정규식
-    var pwJ = /^[A-Za-z0-9]{4,12}$/; 
+    var pwJ = /^[A-Za-z0-9-^@]{4,12}$/; 
     // 이름 정규식
     var nameJ = /^[가-힣]{2,9}$/;
     // 휴대폰 번호 정규식
@@ -59,7 +59,7 @@ function joinmit(){
 		   return false;	
 	}
 	if(!pwJ.test(pw)){
-		cPw.innerHTML = "비밀번호는 영어(대소문자), 숫자만 가능합니다. 4이상 12까지";
+		cPw.innerHTML = "비밀번호는 영어(대소문자), 숫자, 특수문자(- @ ^)만 가능합니다. 4이상 12까지";
 		   frm.pw.focus();
 		   return false;	
 	}
@@ -142,7 +142,7 @@ function reInfomit(){
     //닉네임 정규식
     var nickJ = /^[가-힣A-z0-9]{3,12}$/;
     // 비밀번호 정규식
-    var pwJ = /^[A-Za-z0-9]{4,12}$/; 
+    var pwJ = /^[A-Za-z0-9-^@!%*]{4,12}$/; 
  
     var phoneJ = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
     
@@ -176,7 +176,7 @@ function reInfomit(){
 		   return false;	
 	}
 	if(!pwJ.test(pw)){
-		cPw.innerHTML = "비밀번호는 영어(대소문자), 숫자만 가능합니다. 4이상 12까지";
+		cPw.innerHTML = "비밀번호는 영어(대소문자), 숫자 특수문자(-^@!%*)만 가능합니다. 4이상 12까지";
 		   frm.pw.focus();
 		   return false;	
 	}
@@ -258,7 +258,7 @@ function chkKeyCodeSubmit(){
 	var resetPw = frm.resetPw.value.trim();
 	var confirmPw = frm.confirmPw.value.trim();
     // 비밀번호 정규식
-    var pwJ = /^[A-Za-z0-9]{4,12}$/; 
+    var pwJ = /^[A-Za-z0-9-^@!%*]{4,12}$/; 
 
 	document.getElementById("chkKeyCode").innerHTML = "";
 	if(chkKeyCode == ""){
@@ -274,7 +274,7 @@ function chkKeyCodeSubmit(){
 	}
 	
 	if(!pwJ.test(resetPw)){
-		document.getElementById("chkpw1").innerHTML = "비밀번호는 영어(대소문자), 숫자만 가능합니다. 4이상 12까지";
+		document.getElementById("chkpw1").innerHTML = "비밀번호는 영어(대소문자), 숫자, 특수문자(-^@!%*)만 가능합니다. 4이상 12까지";
 		frm.resetPw.focus();
 		return false;	
 	}
