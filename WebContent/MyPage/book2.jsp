@@ -130,9 +130,14 @@
 		</table>
 		</div>
 		</form>
-		<div>
-		<p style="font-size:13px; color:grey">※ 예약한 이용시간 2시간 전 환불 불가</p>
-		</div>
+		<div class="row">
+		<div class="col s12">
+		<p class="col m8 s12" style="    font-size: 13px; margin: 0px 0px; color: grey; display: inline;">※ 예약한 이용시간 2시간 전 환불 불가</p>
+			<div class="col m4 s12 right-align">
+			<button type="button" id="btnCancel" class="btn waves-effect btn2">예약 취소</button>
+			</div>
+			  </div>
+     </div>
 </div>	
 		
 		<%-- 페이징 --%>
@@ -145,12 +150,7 @@
 	</div>
 </div>
 </c:if>
-<div class="row">
-		<div class="col s12 right-align">
-			<%--<button type="button" id="btn1" class="btn waves-effect" style="margin-right: 5px;" onclick="chkPaySubmit()">결제</button>--%>
-			<button type="button" id="btnCancel" class="btn waves-effect">취소</button>
-        </div>
-     </div>
+
 </div>
 <div class="col s1 "></div>
 </div>
