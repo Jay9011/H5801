@@ -42,7 +42,7 @@
 		<div class="col s1 "></div>
 		<div class="col s10">
 		<!--  여기에다가 적어주기 (반응형은 필수이다. -->
-		<h1 class="center-align pfont">Write</h1>
+		<h1 class="center-align pfont">공지사항 글 작성</h1>
 	<form name="writeTable" action="writeOk.ho" method="post" onsubmit="return chkSubmit()">
         <div class="row">
 		<div class="input-field col s12">

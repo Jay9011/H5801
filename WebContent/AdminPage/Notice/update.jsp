@@ -35,7 +35,7 @@
 <jsp:include page="../../top.jsp" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>수정 ${selected[0].n_title}</title>
+<title>공지사항 글 수정</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet"

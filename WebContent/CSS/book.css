@@ -49,10 +49,15 @@ div#select-modal {
 }
 
 .lightcyan {
-    background-color: lightcyan;
+    background-color: #f9fbe7;
 }
 .important {
-   color: blue;
+   color: #827717;
+}
+.btn2{
+	background-color:white !important;
+	  color: #ad855a !important;
+	  border: 1px solid #ad855a ;
 }
 
 @media screen and (max-width: 670px){

@@ -102,7 +102,7 @@
 		<textarea id="editor1"></textarea>
 		</div>
 		<div class="col m10 offset-m1 s12 right-align">
-		<button id="newComFormSubmit" type="button" class="btn waves-effect btn2" onclick="comSubmit('newComForm${viewInfo[0].s_uid }');">등록</button></div>
+		<button id="newComFormSubmit" type="button" class="btn waves-effect btn2" onclick="comSubmit('newComForm${viewInfo[0].s_uid }');">댓글 등록</button></div>
 		</div>
 
 	</form>
@@ -157,13 +157,13 @@
 				} else {
 					commentrow += "<div class='row showOnOff' style='display:none;'><div id='" + row[i].sr_numUid + "' class='depth" + row[i].sr_depth + "'>";
 				}
-				commentrow += "<div class='left pfont'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>";
+				commentrow += "<div class='left pfont' style='cursor: pointer;'><i class='material-icons dp48' style='vertical-align: middle;'>sentiment_satisfied</i> " +  row[i].m_nick + "</div>";
 
 				if(user_id == logined_id || user_grade > 8){
-					commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='삭제' onclick='event.stopPropagation(); deleteComment(" + row[i].sr_numUid + ");'><i class='material-icons dp48' style='vertical-align: middle;'>delete</i></a></div>";
+					commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='삭제' onclick='event.stopPropagation(); deleteComment(" + row[i].sr_numUid + ");'><i class='material-icons dp48' style='vertical-align: middle; cursor: pointer;'>delete</i></a></div>";
 				}
 				if(user_id == logined_id){
-					commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='수정'  style='border: none; width:' onclick='event.stopPropagation(); alterComment(" + row[i].sr_numUid + ")'><i class='material-icons dp48' style='vertical-align: middle;'>mode_edit</i></a></div>";
+					commentrow += "<div class='right'><a class='tooltipped orange-text text-darken-1' data-position='top' data-tooltip='수정'  style='border: none; width:' onclick='event.stopPropagation(); alterComment(" + row[i].sr_numUid + ")'><i class='material-icons dp48' style='vertical-align: middle; cursor: pointer;'>mode_edit</i></a></div>";
 				}
 				commentrow += "<div class='right pfont' style='margin-right: 3%;'>" + row[i].sr_date + " </div>";
 				commentrow += "<div class='clear'></div>";

@@ -36,7 +36,7 @@
 <jsp:include page="../../top.jsp" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>수정 ${selected[0].f_title}</title>
+<title>FAQ 글 수정</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/CSS/board.css">
 <link rel="stylesheet"
@@ -68,7 +68,7 @@
 		<div class="row">
 			<div class="col s1 "></div>
 			<div class="col s10">
-				<h1 class="center-align pfont">글 수정</h1>
+				<h1 class="center-align pfont">FAQ 글 수정</h1>
 				<form action="FaqUpdateOk.ho" name="frm" method="post"
 					onsubmit="return chkSubmit()">
 					<input type="hidden" name="f_uid" value="${selected[0].f_uid}" />
