@@ -24,7 +24,7 @@ function getList() {
 								+ "</td>";
 						table += "<td><a href='view.ho?s_uid=" + row[i].postId + "'>" + row[i].title + "</a></td>";
 						table += "<td class='writer'>" + row[i].nickname + "</td>";
-						if ((Math.ceil((now - new Date(row[i].date))
+						if ((Math.ceil((now - new Date(row[i].dateDay))
 										/ (1000 * 3600 * 24)) - 1) == 0) {
 							table += "<td class='writedate'>" + row[i].dateTime
 									+ "</td>";

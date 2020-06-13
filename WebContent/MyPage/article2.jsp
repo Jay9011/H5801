@@ -21,7 +21,7 @@
 		<tr>
 			<th width="100px">NO</th>
                 <th>제목</th>
-                <th width="150px">작성일</th>		
+                <th width="150px">작성일</th>
 		</tr>
 	</thead>
 		<c:choose>
@@ -34,7 +34,7 @@
 					<td id="tdd${status.index }">
 						<script>
 						if ((Math
-								.ceil((new Date() - new Date('${comment.s_date}'))
+								.ceil((new Date() - new Date('${comment.s_date_day}'))
 										/ (1000 * 3600 * 24)) - 1) == 0) {
 							$("#tdd${status.index}").html('${comment.s_date_time}');
 						} else {
@@ -52,11 +52,11 @@
         <c:if test="${ curPageNum > 5 && !empty kwd }">
             <li><a href="list.ho?menu=1&page=${ blockStartNum - 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
-        
+
         <c:if test="${ curPageNum > 5 }">
             <li><a href="list.ho?menu=1&page=${ blockStartNum - 1 }"><i class='material-icons'>chevron_left</i></a></li>
         </c:if>
-        
+
         <c:forEach var="i" begin="${ blockStartNum }" end="${ blockLastNum }">
             <c:choose>
                 <c:when test="${ i > lastPageNum }">
@@ -73,16 +73,16 @@
                 </c:otherwise>
             </c:choose>
         </c:forEach>
-        
+
         <c:if test="${ lastPageNum > blockLastNum && !empty kwd }">
             <li><a href="list.ho?menu=2&a=search&page=${ blockLastNum + 1 }&kwd=${ kwd }"><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
-        
+
         <c:if test="${ lastPageNum > blockLastNum }">
             <li><a href="list.ho?menu=2&page=${ blockLastNum + 1 }"><i class='material-icons'>chevron_right</i></a></li>
         </c:if>
     </ul>
-</div> 
+</div>
 </body>
 </html>
 
