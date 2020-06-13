@@ -13,7 +13,7 @@ function getList() {
 		dataType : "json",
 		success : function(data) {
 			if (data.status == "OK") {
-				var table = "<thead class='amber lighten-5'><tr><th>NO</th><th style='width:75px'>카테고리</th><th>제목</th>\<th class='writer'>작성자</th><th class='writedate'>작성일</th><th class='viewcount'>조회수</th></tr></thead>";
+				var table = "<thead class='amber lighten-5'><tr><th class='listuid'>NO</th><th class='category'>카테고리</th><th class='title'>제목</th>\<th class='writer'>작성자</th><th class='writedate'>작성일</th><th class='viewcount'>조회수</th></tr></thead>";
 				if (data.count > 0) {
 					var row = data.data;
 					var now = new Date();
@@ -22,7 +22,7 @@ function getList() {
 						table += "<td>" + row[i].postId + "</td>";
 						table += "<td>" + row[i].categoryName
 								+ "</td>";
-						table += "<td><a href='view.ho?s_uid=" + row[i].postId + "'>" + row[i].title + "</a></td>";
+						table += "<td><a href='view.ho?s_uid=" + row[i].postId + "' title='" + row[i].title + "'><div class='titlediv'>" + row[i].title + "</div></a></td>";
 						table += "<td class='writer'>" + row[i].nickname + "</td>";
 						if ((Math.ceil((now - new Date(row[i].dateDay))
 										/ (1000 * 3600 * 24)) - 1) == 0) {
