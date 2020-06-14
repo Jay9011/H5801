@@ -69,6 +69,13 @@ document.addEventListener('DOMContentLoaded', function () {
 #selectDate {
 	cursor: pointer;
 }
+
+h3.center-align {
+	margin-top: 0;
+	border-bottom: 1px dotted #666;
+	padding: 5px 0;
+	padding-bottom: 15px;
+}
 </style>
 <script>
 	window.history.forward();
