@@ -124,7 +124,7 @@ public class Common {
 		 public static final String SQL_SELECT_MUID_FROM_VBOOK = "SELECT COUNT(*) FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2)";
 		 public static final String SQL_SELECT_ALL_FROM_VBOOK = "SELECT COUNT(*) FROM v_book WHERE p_cancel IN (1, 2)";
 		 public static final String SQL_SELECT_FROM_ROW2 = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?";
-		 public static final String SQL_SELECT_FROM_ROW_ORDER_BY_DATE = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_starttime DESC) T) WHERE RNUM >= ? AND RNUM < ?";
+		 public static final String SQL_SELECT_FROM_ROW_ORDER_BY_DATE = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE m_uid = ? AND p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?";
 		 public static final String SQL_SELECT_FROM_ROW_BY_ADMIN = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT * FROM v_book WHERE p_cancel IN (1, 2) ORDER BY p_uid DESC) T) WHERE RNUM >= ? AND RNUM < ?";
 
 
