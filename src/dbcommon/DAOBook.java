@@ -17,43 +17,43 @@ public class DAOBook {
 	Statement stmt = null; // SQL 문을 수행하고 그 결과를 리턴하기 위한 객체
 	PreparedStatement pstmt = null; // 강화된 statement(precompiled SQL문, for multiple time)
 	ResultSet rs = null;   // SELECT 결과, executeQuery() // 쿼리 수행결과를 테이블로 담는 객체 (행 단위로 커서 이동)
-	
+
 	// DAO 객체가 생성될때 Connection 도 생성된다.
 	public DAOBook() {
-		
+
 		try {
 			Class.forName(Common.DRIVER);
-			// DriverManager: JDBC 드라이버를 관리하기 위한 기본 서비스 
+			// DriverManager: JDBC 드라이버를 관리하기 위한 기본 서비스
 			// getConnection: 해당 DB URL에 연결 시도
 			conn = DriverManager.getConnection(Common.URL, Common.USERID, Common.USERPW);
 			System.out.println("WriteDAO 생성, 데이터 베이스 연결!");
 		} catch(Exception e) {
 			e.printStackTrace();
 			// throw e;
-		}		
-		
+		}
+
 	} // 생성자
 
 	// DB 자원 반납 메소드
 	public void close() throws SQLException {
-		// 오픈한 반대로 반납. 
+		// 오픈한 반대로 반납.
 		if(rs != null) rs.close();
 		if(pstmt != null) pstmt.close();
 		if(stmt != null) stmt.close();
 		if(conn != null) conn.close();
 	} // end close()
-	
+
 	public void closeWithoutConn() throws SQLException{
 		if(rs != null) rs.close();
 		if(pstmt != null) pstmt.close();
 	} // end closeWithoutConn()
-	
+
 	// ResultSet --> DTO 배열로 리턴
 		public DTOBook [] createArray(ResultSet rs) throws SQLException {
 			DTOBook [] arr = null;  // DTO 배열
-			
+
 			ArrayList<DTOBook> list = new ArrayList<DTOBook>();
-			
+
 			// next(): 커서를 첫 행부터 다음 행으로 옮김
 				// 리턴값: true - 다음 행이 있음, false - 다음 행이 없음
 			while(rs.next()) {
@@ -81,7 +81,7 @@ public class DAOBook {
 				int t_name = rs.getInt("t_name");
 				float t_pay = rs.getFloat("t_pay");
 				int t_maxmun = rs.getInt("t_maxnum");
-				
+
 				// add(): Appends the specified element to the end of this list.
 				// 매개변수: element
 				// 리턴값: true
@@ -107,24 +107,24 @@ public class DAOBook {
 										, t_pay
 										, t_maxmun);
 				list.add(dto);
-				
+
 			} // end while
-			
+
 			// size()
 				// 리턴값: list의 element 갯수
 			int size = list.size();
-			
+
 			// list에 add된 게 없으면 null 리턴
 			if(size == 0) return null;
-			
+
 			arr = new DTOBook[size];
 			// toArray()
 				// 매개변수: list의 elements를 담을 array
 				// 리턴값: list의 elements를 순서대로 담은 array
-			list.toArray(arr);  // List -> 배열		
+			list.toArray(arr);  // List -> 배열
 			return arr;
 		} // end createArray()
-		
+
 		// 페이지네이션 구현 (전체 페이지 계산)
 		public int countAll(int m_uid) throws SQLException {
 			int cnt = 0;
@@ -141,7 +141,7 @@ public class DAOBook {
 			}
 			return cnt;
 		}
-		
+
 		// 전체 글 조회(관리자 페이지용)
 		public int countAllAdmin() throws SQLException {
 			int cnt = 0;
@@ -157,14 +157,14 @@ public class DAOBook {
 			}
 			return cnt;
 		}
-		
-		
+
+
 		// 페이지 조회
 		public DTOBook[] selectFromRow(int m_uid, int from, int rows) throws SQLException {
 			DTOBook[] arr = null;
-			
+
 			try {
-				pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_ROW2);
+				pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_ROW_ORDER_BY_DATE);
 				pstmt.setInt(1, m_uid);
 				pstmt.setInt(2, from);
 				pstmt.setInt(3, from+rows);
@@ -175,11 +175,11 @@ public class DAOBook {
 			}
 			return arr;
 		}
-		
+
 		// 페이지 조회(관리자 페이지용)
 		public DTOBook[] selectFromRowAdmin(int from, int rows) throws SQLException {
 			DTOBook[] arr = null;
-			
+
 			try {
 				pstmt = conn.prepareStatement(Common.SQL_SELECT_FROM_ROW_BY_ADMIN);
 				pstmt.setInt(1, from);
@@ -191,9 +191,9 @@ public class DAOBook {
 			}
 			return arr;
 		}
-		
 
-		
 
-	
+
+
+
 } // end class

@@ -37,7 +37,7 @@
 	<div class="col s1 "></div>
 	<div class="col s10">
 
-		<h3 class="center-align pfont">나의 예약현황</h3>
+		<h3 class="center-align pfont">고객 예약현황</h3>
 		<div style="padding: 30px;"></div>
 		
 		<c:if test="${empty list || fn:length(list) == 0}">

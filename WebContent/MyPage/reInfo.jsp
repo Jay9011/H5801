@@ -48,9 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
               <form action="reInfoOk.ho" name="reInfoFrm" method="post">
                   <div class="row">
                      <div class="input-field col s12">
-                          <input type="text" name="name" id="name" class="validate" value="${ulist[0].name }" readonly>
+                          <input type="text" name="name" id="name" value="${ulist[0].name }" readonly>
                           <label for="name">이름</label>
-                          <span id="chkName" class="helper-text"></span>
                       </div>
                   </div>
                   <div class="row">
@@ -60,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                           <span id="chkNick" class="helper-text"></span>
                       </div>
                          <div class="input-field col s12 m6">
-                          <input type="email" name="email" id="email" class="validate"
+                          <input type="email" name="email" id="email" 
                              value="${ulist[0].email }" readonly><label for="email">이메일</label>
                       </div>
                   </div>
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   </div>
                   <div class="row">
                          <div class="input-field col s12 m6">
-                          <input type="text" name="birth" id="birth" maxlength="10" class="validate"  value="${ulist[0].birth }" readonly>
+                          <input type="text" name="birth" id="birth" maxlength="10" value="${ulist[0].birth }" readonly>
                           <label for="birth">생년월일</label>
                       </div>
                        <div class="input-field col s12 m6">

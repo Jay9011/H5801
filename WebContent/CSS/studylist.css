@@ -11,7 +11,37 @@
 .searchbtn {
 	min-width:53px;
 }
-
+#postList {
+	table-layout: fixed;
+}
+#postList .listuid {
+	width: 10%;
+}
+#postList .category {
+	min-width:75px;
+	width: 10%;
+}
+#postList .title {
+	width: 50%;
+}
+#postList .writer {
+	width: 15%;
+}
+#postList .writedate {
+	min-width:85px;
+	width: 15%;
+}
+#postList .viewcount {
+	min-width:65px;
+	width: 10%;
+}
+#postList td,
+#postList th,
+.titlediv {
+ 	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
 @media screen and (min-width: 716px) {
 	.writedate {
 		display: none;
