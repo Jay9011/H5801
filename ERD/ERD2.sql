@@ -287,14 +287,6 @@ INSERT INTO M_USER (m_uid, m_name, m_nick, m_email, m_pw, m_birth, m_gender, m_p
 
 
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
-	VALUES (SEQ_n_table_n_uid.NEXTVAL, '카페테리아 이용안내', '카페테리아에서 쓰레기 무단투기 혹은 정리를 안하시고 가실경우 경고1회 2회누적시 독서실 이용을 금지하겠습니다', 1);
-INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
-	VALUES (SEQ_n_table_n_uid.NEXTVAL, '개인실 증축안내', '자유좌석 이외에 자신만의 공간을위한 개인실을 증축하고있습니다 많은 관심과 사랑 감사합니다.', 1);
-INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
-	VALUES (SEQ_n_table_n_uid.NEXTVAL, '회원탈퇴', '탈퇴는 할수 없습니다.', 1);
-
-
-INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
 	VALUES (SEQ_n_table_n_uid.NEXTVAL, '네번째 공지사항', '냉무', 1);
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
 	VALUES (SEQ_n_table_n_uid.NEXTVAL, '다섯번째 공지사항', '냉무', 1);
@@ -322,6 +314,12 @@ INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
 	VALUES (SEQ_n_table_n_uid.NEXTVAL, '열여덟번째 공지사항', '냉무', 1);
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
 	VALUES (SEQ_n_table_n_uid.NEXTVAL, '열아홉번째 공지사항', '냉무', 1);
+INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
+	VALUES (SEQ_n_table_n_uid.NEXTVAL, '카페테리아 이용안내', '카페테리아에서 쓰레기 무단투기 혹은 정리를 안하시고 가실경우 경고1회 2회누적시 독서실 이용을 금지하겠습니다', 1);
+INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
+	VALUES (SEQ_n_table_n_uid.NEXTVAL, '개인실 증축안내', '자유좌석 이외에 자신만의 공간을위한 개인실을 증축하고있습니다 많은 관심과 사랑 감사합니다.', 1);
+INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid)
+	VALUES (SEQ_n_table_n_uid.NEXTVAL, '회원탈퇴', '탈퇴는 할수 없습니다.', 1);
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.NEXTVAL, n_title, n_content, m_uid FROM N_TABLE;
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.NEXTVAL, n_title, n_content, m_uid FROM N_TABLE;
 INSERT INTO N_TABLE (n_uid, n_title, n_content, m_uid) SELECT SEQ_n_table_n_uid.NEXTVAL, n_title, n_content, m_uid FROM N_TABLE;
