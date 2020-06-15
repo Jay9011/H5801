@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                           <span id="chkNick" class="helper-text"></span>
                       </div>
                        <div class="input-field col s12 m6">
-                          <input type="email" name="email" id="email" class="validate" value="<%=email_chk %>">
+                          <input type="email" name="email" id="email" value="<%=email_chk %>" readonly>
                           <label for="email">이메일(아이디)</label>
 <!--                           <span id="chkEmail" class="helper-text">유효한 이메일을 써주셔야 비밀번호 찾기가 가능합니다.</span> -->
                       </div>
