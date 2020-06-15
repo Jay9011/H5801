@@ -6,7 +6,7 @@ function joinmit(){
     //닉네임 정규식
     var nickJ = /^[가-힣A-z0-9]{3,8}$/;
     // 비밀번호 정규식
-    var pwJ = /^[A-Za-z0-9-^@]{4,12}$/; 
+    var pwJ = /^[A-Za-z0-9-^@!%*]{4,12}$/; 
     // 이름 정규식
     var nameJ = /^[가-힣]{2,9}$/;
     // 휴대폰 번호 정규식
@@ -59,7 +59,7 @@ function joinmit(){
 		   return false;	
 	}
 	if(!pwJ.test(pw)){
-		cPw.innerHTML = "비밀번호는 영어(대소문자), 숫자, 특수문자(- @ ^)만 가능합니다. 4이상 12까지";
+		cPw.innerHTML = "비밀번호는 영어(대소문자), 숫자, 특수문자(-^@!%*)만 가능합니다. 4이상 12까지";
 		   frm.pw.focus();
 		   return false;	
 	}
@@ -182,7 +182,7 @@ function reInfomit(){
 	}
 	if(pwchk == ""){
 		cPw.innerHTML = "비밀번호 확인을 해주세요 ᕦ(ò_óˇ)ᕤ";
-		   frm.pw.focus();
+		   frm.pwchk.focus();
 		   return false;	
 	}
 	if(pw != pwchk){
