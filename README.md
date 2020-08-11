@@ -1,20 +1,63 @@
-# Holic <br>
-Java JDK 1.8.0_251 <br>
- <br>
-Eclipse IDE 2019-12 <br>
- <br>
-OracleXE 112_Win64 <br>
- <br>
-DB 접속 : sqlplus system/1234 <br>
-계정 생성 : create user scott5801 identified by tiger5801; <br>
-생성 확인 : select * from ALL_users; <br>
-권한 부여 : GRANT connect, resource, create view, create procedure to scott5801; <br>
-접속 확인 : connect scott5801/tiger5801; <br>
-현재 접속중인 계정 확인 : show user; <br>
-포트 번호 확인 : select dbms_xdb.gethttpport() from dual; <br>
- <br>
- <br>
-apache-tomcat-9.0.35 <br>
- <br>
- <br>
-<Connector URIEncoding="UTF-8" connectionTimeout="20000" port="8101" protocol="HTTP/1.1" redirectPort="8443" useBodyEncodingForURI="true"/>
+# Holic 
+독서실 예약 시스템
+
+##### 1. Development Environment & Tools
+  - Used Model :  MVC2 model
+  - Backend :  Java 1.8 , Tomcat 9, Oracle 11g, JDBC, DBeaver, ERMaster
+  - Frontend :  ajax, jstl, el, HTML5, CSS3, Jquery 3.4, JavaScript, Marerialize
+
+##### 2. Configuration Management
+  - Git
+  - GitHub
+  - Source tree
+
+
+##### 3. API
+  - daum Address API
+  - kakaopay API 단건결제
+  - kakaoMap API
+  - CKeditior, Marerialize, IMAP/POP3/SMTP
+
+##### 4. Syllabus
+  - JAVA Programming (120 hr) <br>
+    &nbsp;기본문법, 객체지향 프로그래밍, 다형성, Collection, Exception, Inner class, Stream
+
+
+  - Oracle 및 JDBC(40 hr) <br>
+    &nbsp;DML, DDL, DCL, 단일행/그룹함수, Join, SubQuery, View , JDBC, 트랜잭션 처리
+
+
+  - 안드로이드 (50 hr) <br>
+    &nbsp;뷰, 위젯, 이벤트 핸들링, 액티비티, 
+    Handler, Storage, 위치기반앱, 구글맵, 플레이스토어 
+
+
+  - 웹 프론트 엔드  (110 hr)<br>
+    &nbsp; HTML 5 / CSS3 / JavaScript / jQuery
+    반응형웹 / BootStrap / AJAX
+    JSON / XML / 각종 API
+
+
+  - JSP 기반 웹 프로그래밍 (100 hr)<br>
+     &nbsp;&nbsp; Servlet / JSP / JSTL / EL / 
+ 쿠키, 세션, 파일업로드
+ MVC model2 기반 웹 어플리케이션 구현<br>
+ &nbsp;&nbsp; AJAX, API 서버 설계 및 구축<br>
+ &nbsp;&nbsp; Jackson, COS 등 라이브러리 활용
+ CKEditor 연동
+ Tomcat 서버
+
+
+  - MVC모델2 기반 웹어플리케이션 제작 (80 hr)
+  
+  - Spring Framework (100 hr) <br>
+  &nbsp;&nbsp; Dependency Injection, Autowire, DI Config,<br>
+  &nbsp;&nbsp; AOP, Spring MVC, request mapping, Spring validation,<br>
+  &nbsp;&nbsp; Spring-jdbc, Transaction, ORM(MyBatis), Interceptor,<br>
+  &nbsp;&nbsp; REST, Spring Security
+  
+  
+  - Arduino (40 hr) <br>
+  &nbsp;&nbsp; Tinkercad를 이용한 임베디드 시스템 구현
+  
+  - 스프링 프레임워크 기반 웹어플리케이션 제작 (136 hr)
